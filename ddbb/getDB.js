@@ -2,7 +2,7 @@
 require('dotenv').config();
 
 // Requerir mysql2
-const mysql = require('mysql2').promises;
+const mysql = require('mysql2/promise');
 
 // Definir las variables del .env con destructuring
 const { MYSQL_HOST, MYSQL_USER, MYSQL_PASSWORD, MYSQL_DATABASE } = process.env;
@@ -15,7 +15,7 @@ const getDB = async () => {
   if (!pool) {
     // Método para crear una conexión con mySQL dentro de la variable pool.
     pool = mysql.createPool({
-      connectionLimit: 15,
+      connectionLimit: 10,
       host: MYSQL_HOST,
       user: MYSQL_USER,
       password: MYSQL_PASSWORD,
