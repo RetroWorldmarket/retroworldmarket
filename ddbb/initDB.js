@@ -16,7 +16,9 @@ async function main () {
 
         // Crear la tabla de USUARIOS:
         await connection.query(`
-        CREATE TABLE users
+            CREATE TABLE users (
+                
+            )
         `)
     }
 }
