@@ -1,18 +1,12 @@
-// Módulo para Iniciar la Base de Datos
-
 // Traer el módulo getDB.js
 const getDB = require('./getDB.js');
-
-// FALTA IMPORTAR LA DEPENDENCIA FAKER para simular los usuarios
-
-// FALTAN MÁS PASOS, VAMOS POCO A POCO...
 
 // Crear la función principal donde se crearán las tablas:
 async function main() {
   // Establecer la conexión con la Base de Datos:
   let connection;
   try {
-    connnection = await getDB();
+    connection = await getDB();
 
     //Eliminamos tablas si existen
 
@@ -23,6 +17,7 @@ async function main() {
     await connection.query('DROP TABLE IF EXISTS photos');
 
     await connection.query('DROP TABLE IF EXISTS historyProducts');
+    console.log('funcionas');
 
     console.log('tablas eliminadas');
 
