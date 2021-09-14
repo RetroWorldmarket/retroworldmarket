@@ -15,6 +15,11 @@
 
 const getDB = require('./getDB.js');
 
+const faker = require('faker/locale/es');
+
+// Traemos la función formatDate creada en helpers con destructuring:
+const { formatDate } = require('../helpers.js');
+
 // Crear la función principal donde se crearán las tablas:
 async function main() {
   // Establecer la conexión con la Base de Datos:
@@ -28,13 +33,13 @@ async function main() {
 
     //Eliminamos tablas si existen
 
+    await connection.query('DROP TABLE IF EXISTS historialProducts');
     await connection.query('DROP TABLE IF EXISTS votes');
     await connection.query('DROP TABLE IF EXISTS messages');
     await connection.query('DROP TABLE IF EXISTS photos');
     await connection.query('DROP TABLE IF EXISTS products');
     await connection.query('DROP TABLE IF EXISTS users');
 
-    await connection.query('DROP TABLE IF EXISTS historyProducts');
     console.log('funcionas');
 
     console.log('tablas eliminadas');
@@ -50,7 +55,7 @@ async function main() {
                 password VARCHAR(512) NOT NULL,
                 location VARCHAR(50) NOT NULL,
                 province VARCHAR(50) NOT NULL,
-                postalCode INT(5) NOT NULL,
+                postalCode VARCHAR(5) NOT NULL,
                 rol ENUM('usuario','administrador') DEFAULT 'usuario' NOT NULL,
                 active BOOLEAN DEFAULT false,
                 deleted BOOLEAN DEFAULT false,
@@ -142,7 +147,28 @@ async function main() {
                 dateSoldProduct DATETIME
             )
     `);
-    console.log('Tabla de Hostorial de productos Creada correctamente');
+    console.log('Tabla de Historial de productos Creada correctamente');
+
+    ///////////////////////////////////////
+    ///Creamos usuarios administradores///
+    /////////////////////////////////////
+
+    await connection.query(`
+    INSERT INTO users (name, alias, email, password, location, province, postalCode, rol, active, deleted, createdDate)
+    VALUES (
+      "retroworldmarket",
+      "retroworld",
+      "retroworldmarket2021@gmail.com",
+      "000000",
+      "PONTEVEDRA",
+      "PONTEVEDRA",
+      "36002",
+      "administrador",
+      true,
+      false,
+      "${formatDate(new Date())}")
+
+    `);
 
     ///////////////////////////////////////////////////////////////////////////
     /////////////// Insertar Datos en las Tablas, con Faker ///////////////////
@@ -158,22 +184,21 @@ async function main() {
     // Insertamos los usuarios con un bucle for:
     for (let i = 0; i < USERS; i++) {
       // Pedirle datos concretos de los usuarios usando los métodos de la API Faker, almacenarlos en variables:
+      //falta avatar que lo crearemos manualmente
       const name = faker.name.findName();
       const alias = faker.internet.userName();
-      const avatar = faker.internet.avatar();
       const email = faker.internet.email();
       const password = faker.internet.password();
       const location = faker.address.city();
       const province = faker.address.state();
-      const postalCode = faker.address.zipCode();
+      const postalCode = faker.address.zipCode('#####');
 
       // Creamos la Query para insertarlos:
       await connection.query(`
-          INSERT INTO users (name, alias, avatar, email, password, location, province, postalCode, active, deleted, createdDate)
+          INSERT INTO users (name, alias, email, password, location, province, postalCode, active, deleted, createdDate)
           VALUES (
             "${name}",
             "${alias}",
-            "${avatar}",
             "${email}",
             "${password}",
             "${location}",
@@ -190,6 +215,21 @@ async function main() {
     //////////////////////////
     /// Tabla de Productos ///
     //////////////////////////
+
+    const PRODUCTS = 10;
+    for (let i = 0; i < PRODUCTS; i++) {
+      const idUser = Math.ceil(Math.random() * USERS + 1);
+      const nameProduct = faker.commerce.productName();
+      const brand = faker.company.companyName();
+      const yearOfProduction = formatDate();
+      console.log(brand);
+
+      // await connection.query(`
+      //   INSERT INTO products (idUser, nameProduct, brand, yearOfProduction,
+      //     status, category, description, price, createdDate, midifiedDate,
+      //     deletedDate, active, sold, reserved, reservedDate, deleted, chatRoom)
+      // `);
+    }
 
     // Capturamos TODOS los errores en el CATCH.
   } catch (error) {

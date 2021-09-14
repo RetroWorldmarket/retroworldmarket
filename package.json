@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "DB": "initDB.js"
+    "DB": "./ddbb/initDB.js"
   },
   "repository": {
     "type": "git",
