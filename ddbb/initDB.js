@@ -221,13 +221,13 @@ async function main() {
     /// Tabla de Productos ///
     //////////////////////////
 
-    const PRODUCTS = 10;
+    const PRODUCTS = 50;
 
     for (let i = 0; i < PRODUCTS; i++) {
       const idUser = Math.ceil(Math.random() * USERS + 1);
       const nameProduct = faker.commerce.productName();
       const brand = faker.company.companyName();
-      const yearOfProduction = faker.random.datatype.number(1960, 2010);
+      const yearOfProduction = Math.round(Math.random() * 50 + 1960);
       ////////  Comprobar si funcionan STATUS y CATEGORY   /////////////////////////
       const arrayStatus = [
         'No funciona',
@@ -236,7 +236,11 @@ async function main() {
         'Muy bien',
         'Excelente',
       ];
-      const status = arrayStatus[Math.random() * (5 - 0) + 0];
+      const status =
+        arrayStatus[
+          Number(Math.floor(Math.random() * (arrayStatus.length - 1)))
+        ];
+
       const arrayCategories = [
         'Todas las Categorías',
         'Ordenadores',
@@ -245,7 +249,10 @@ async function main() {
         'Música y Rádio',
         'Consolas y Juegos',
       ];
-      const category = arrayCategories[Math.random() * (6 - 0) + 0];
+      const category =
+        arrayCategories[
+          Number(Math.floor(Math.random() * (arrayStatus.length - 1)))
+        ];
 
       //    Comfirmar si .productDescription va bien, sino podemos sustituirlo
       // por faker.lorem.paragraph()
@@ -270,6 +277,8 @@ async function main() {
 
       `);
     }
+
+    console.log('productos creados satisfactoriamente');
 
     // Capturamos TODOS los errores en el CATCH.
   } catch (error) {
