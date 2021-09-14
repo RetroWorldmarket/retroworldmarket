@@ -10,11 +10,11 @@ async function main() {
 
     //Eliminamos tablas si existen
 
-    await connection.query('DROP TABLE IF EXISTS users');
-    await connection.query('DROP TABLE IF EXISTS products');
     await connection.query('DROP TABLE IF EXISTS votes');
     await connection.query('DROP TABLE IF EXISTS messages');
     await connection.query('DROP TABLE IF EXISTS photos');
+    await connection.query('DROP TABLE IF EXISTS products');
+    await connection.query('DROP TABLE IF EXISTS users');
 
     await connection.query('DROP TABLE IF EXISTS historyProducts');
     console.log('funcionas');
@@ -94,8 +94,8 @@ async function main() {
                 idUser INT NOT NULL,
                 FOREIGN KEY (IdUser) REFERENCES users (id),
                 text VARCHAR(255),
-                idmessage PRIMARY KEY AUTO_INCREMENT,
-                createdMsg DATETIME NOT NULL 
+                idmessage INT PRIMARY KEY AUTO_INCREMENT,
+                createdDateMessage DATETIME NOT NULL 
               )
     `);
 
@@ -109,19 +109,19 @@ async function main() {
                 FOREIGN KEY (idUsers) REFERENCES users (id) ON DELETE CASCADE,
                 vote ENUM('1','2', '3', '4', '5'),
                 idproduct INT NOT NULL,
-                FOREIGN KEY (idproduct) REFERENCES product (id) ON DELETE CASCADE
+                FOREIGN KEY (idproduct) REFERENCES products (id) ON DELETE CASCADE
               )
     `);
     console.log('Tabla de Votos de Vendedores creada correctamente');
     // Creamos la tabla de HistorialProducts (idProducto, idUsers, datePublications, dateSoldProducts, dateDeletedProducts)
     await connection.query(`
-            CREATE TABLE historialProductos (
+            CREATE TABLE historialProducts (
                 id INT PRIMARY KEY,
-                idProducts INT NOT NULL,
+                idProduct INT NOT NULL,
                 FOREIGN KEY (idProduct) REFERENCES products (id),
                 idUser INT NOT NULL,
                 FOREIGN KEY (idUser) REFERENCES users (id),
-                dateSoldProduct DATETIME,
+                dateSoldProduct DATETIME
             )
     `);
     console.log('Tabla de Hostorial de productos Creada correctamente');
