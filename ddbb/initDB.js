@@ -1,18 +1,36 @@
-// Módulo para Iniciar la Base de Datos
+////////////////////////////////////////////
+/// Módulo para Iniciar la Base de Datos ///
+////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Mensaje para Desarrolladores:
+//
+// Está pendiente:
+//                  - Crear al menos un AVATAR por default
+//                  - Insertar datos en tabla de Productos...
+//
+/////////////////////////////////////////////////////////////////////////////////////
 
 // Traer el módulo getDB.js
 const getDB = require('./getDB.js');
 
-// FALTA IMPORTAR LA DEPENDENCIA FAKER para simular los usuarios
+// Importamos de helpers.js la función para formatear fechas para que las acepte DATETIME:
+const { formatDate } = require('../helpers.js');
 
-// FALTAN MÁS PASOS, VAMOS POCO A POCO...
+// Requerimos la API Faker para simular los datos de usuarios locales de España:
+const faker = require('faker/locale/es');
+
+//////////////////////////
+/// Creación de Tablas ///
+//////////////////////////
 
 // Crear la función principal donde se crearán las tablas:
 async function main() {
   // Establecer la conexión con la Base de Datos:
   let connection;
+
   try {
-    connnection = await getDB();
+    connection = await getDB();
 
     //Eliminamos tablas si existen
 
@@ -21,10 +39,9 @@ async function main() {
     await connection.query('DROP TABLE IF EXISTS votes');
     await connection.query('DROP TABLE IF EXISTS messages');
     await connection.query('DROP TABLE IF EXISTS photos');
-
     await connection.query('DROP TABLE IF EXISTS historyProducts');
 
-    console.log('tablas eliminadas');
+    console.log('Tablas eliminadas');
 
     // Crear la tabla de USUARIOS con las respectivas columnas (location = localidad):
     await connection.query(`
@@ -47,8 +64,8 @@ async function main() {
                 modifiedDate DATETIME
             )
     `);
+    console.log('Tabla usuarios creada');
 
-    console.log('tabla usuarios creada');
     // Creamos la tabla de PRODUCTOS (brand = Marca; yearOfProduction = Año de Fabricación;
     // status = Estado de funcionamiento; MEDIUMINT = Nº entre 0 y 16.777.215)
     await connection.query(`
@@ -74,10 +91,10 @@ async function main() {
                 chatRoom VARCHAR(250)
             )
     `);
+    console.log('Tabla productos creada');
 
-    console.log('tabla productos creada');
-
-    // Creamos la tabla de Photos (idphoto, idProducts, idUsers, datePublications)
+    // Creamos la tabla de Photos
+    // ****************************   namePhoto FALTA UUID    *****************************
     await connection.query(`
             CREATE TABLE photos (
                 id INT PRIMARY KEY AUTO_INCREMENT,
@@ -88,23 +105,23 @@ async function main() {
             )
     `);
 
-    console.log('tabla fotos creada');
+    console.log('Tabla fotos creada');
 
-    //Creamos la tabla de mensajes entre usuarios
-
+    // Creamos la tabla de mensajes entre usuarios
+    //  *********   Modifiqué el nombre de createdMsg por el que está ahora, para mayor claridad  14/9 *******************
     await connection.query(`
               CREATE TABLE messages (
+                idmessage PRIMARY KEY AUTO_INCREMENT,
                 idProducts  INT NOT NULL,
                 FOREIGN KEY (idProducts) REFERENCES products(id),
                 idUser INT NOT NULL,
                 FOREIGN KEY (IdUser) REFERENCES users (id),
                 text VARCHAR(255),
-                idmessage PRIMARY KEY AUTO_INCREMENT,
-                createdMsg DATETIME NOT NULL 
+                createdDateMessage DATETIME NOT NULL
               )
     `);
 
-    console.log('tabla mensajes creada');
+    console.log('Tabla mensajes creada');
 
     // Creamos la Tabla de Votos de los Vendedores (FALTARÍA EL ID DEL DUEÑO DEL PRODUCTO, es decir, a quién vota??):
     await connection.query(`
@@ -118,6 +135,7 @@ async function main() {
               )
     `);
     console.log('Tabla de Votos de Vendedores creada correctamente');
+
     // Creamos la tabla de HistorialProducts (idProducto, idUsers, datePublications, dateSoldProducts, dateDeletedProducts)
     await connection.query(`
             CREATE TABLE historialProductos (
@@ -130,11 +148,81 @@ async function main() {
             )
     `);
     console.log('Tabla de Hostorial de productos Creada correctamente');
+
+    // Ahora vamos a crear el usuario administrador:
+    // Problema con el formato de FECHA ---> Solución: crear función formatDate()
+    await connection.query(`
+              INSERT INTO users (name, alias, avatar, email, password, location, province, postalCode, rol, active, deleted, createdDate)
+              VALUES (
+                "Admin",
+                "Admin",
+                "retroworldmarket@gmail.com",
+                "123456",
+                "Pontevedra",
+                "Pontevedra",
+                "36002",
+                "administrador",
+                true,
+                false,
+                "${formatDate(new Date())}"
+              )
+    `);
+
+    console.log('Creado correctamente el usuario Administrador');
+
+    ///////////////////////////////////////////////////////////////////////////
+    /////////////// Insertar Datos en las Tablas, con Faker ///////////////////
+    ///////////////////////////////////////////////////////////////////////////
+
+    /////////////////////////
+    /// Tabla de Usuarios ///
+    /////////////////////////
+
+    // Declaramos una variable con el Nº de usuarios que queremos introducir:
+    const USERS = 10;
+
+    // Insertamos los usuarios con un bucle for:
+    for (let i = 0; i < USERS; i++) {
+      // Pedirle datos concretos de los usuarios usando los métodos de la API Faker, almacenarlos en variables:
+      const name = faker.name.findName();
+      const alias = faker.internet.userName();
+      const avatar = faker.internet.avatar();
+      const email = faker.internet.email();
+      const password = faker.internet.password();
+      const location = faker.address.city();
+      const province = faker.address.state();
+      const postalCode = faker.address.zipCode();
+
+      // Creamos la Query para insertarlos:
+      await connection.query(`
+          INSERT INTO users (name, alias, avatar, email, password, location, province, postalCode, active, deleted, createdDate)
+          VALUES (
+            "${name}",
+            "${alias}",
+            "${avatar}",
+            "${email}",
+            "${password}",
+            "${location}",
+            "${province}",
+            "${postalCode}",
+            true,
+            false,
+            "${formatDate(new Date())}"
+         )
+      `);
+    }
+    console.log('Usuarios creados correctamente en la Tabla de usuarios');
+
+    //////////////////////////
+    /// Tabla de Productos ///
+    //////////////////////////
+
     // Capturamos TODOS los errores en el CATCH.
   } catch (error) {
     console.error(error.message);
-  } finally {
+
     // Bloque FINALLY obligatorio. Tanto si todo va PERFECTO como si hay ERRORES se ejecutará
+  } finally {
     // para terminar la conexión:
     if (connection) connection.release();
     process.exit(0);
