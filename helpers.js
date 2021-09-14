@@ -1,4 +1,4 @@
-//crreamos una función que se encarga de formatear una fecha(dependencia date-fns)
+// Creamos una función que se encarga de formatear una fecha(dependencia date-fns)
 //porque el DATETIME de la base de datos no entiende el formato newDate()
 
 // Importamos solo la función FORMATEAR de date-fns con destructuring:
