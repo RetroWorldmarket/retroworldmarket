@@ -7,7 +7,11 @@
 //
 // Está pendiente:
 //                  - Crear al menos un AVATAR por default
-//                  - Insertar datos en tabla de Productos...
+//                  - Confirmar si tabla de Productos tiene productos dentro (Workbench)
+//
+// Creo que si no hay fallos hasta este punto podemos empezar con los Endpoints.
+//    Ya que tanto las fotos, como los mensajes y sala de chat, como los votos
+//    en principio van por body, igual me equivoco.
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -166,7 +170,8 @@ async function main() {
       "administrador",
       true,
       false,
-      "${formatDate(new Date())}")
+      "${formatDate(new Date())}"
+      )
 
     `);
 
@@ -217,18 +222,53 @@ async function main() {
     //////////////////////////
 
     const PRODUCTS = 10;
+
     for (let i = 0; i < PRODUCTS; i++) {
       const idUser = Math.ceil(Math.random() * USERS + 1);
       const nameProduct = faker.commerce.productName();
       const brand = faker.company.companyName();
-      const yearOfProduction = formatDate();
-      console.log(brand);
+      const yearOfProduction = faker.random.datatype.number(1960, 2010);
+      ////////  Comprobar si funcionan STATUS y CATEGORY   /////////////////////////
+      const arrayStatus = [
+        'No funciona',
+        'A veces falla',
+        'Bien',
+        'Muy bien',
+        'Excelente',
+      ];
+      const status = arrayStatus[Math.random() * (5 - 0) + 0];
+      const arrayCategories = [
+        'Todas las Categorías',
+        'Ordenadores',
+        'Televisores',
+        'Telefonía',
+        'Música y Rádio',
+        'Consolas y Juegos',
+      ];
+      const category = arrayCategories[Math.random() * (6 - 0) + 0];
 
-      // await connection.query(`
-      //   INSERT INTO products (idUser, nameProduct, brand, yearOfProduction,
-      //     status, category, description, price, createdDate, midifiedDate,
-      //     deletedDate, active, sold, reserved, reservedDate, deleted, chatRoom)
-      // `);
+      //    Comfirmar si .productDescription va bien, sino podemos sustituirlo
+      // por faker.lorem.paragraph()
+      const description = faker.commerce.productDescription();
+      const price = faker.commerce.price();
+
+      await connection.query(`
+        INSERT INTO products (idUser, nameProduct, brand, yearOfProduction, status, category, description, price, createdDate, active, deleted)
+        VALUES (
+          "${idUser}",
+          "${nameProduct}",
+          "${brand}",
+          "${yearOfProduction}",
+          "${status}",
+          "${category}",
+          "${description}",
+          "${price}",
+          "${formatDate(new Date())}",
+          true,
+          false
+        )
+
+      `);
     }
 
     // Capturamos TODOS los errores en el CATCH.
