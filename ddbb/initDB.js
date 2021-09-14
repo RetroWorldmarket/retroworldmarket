@@ -1,4 +1,18 @@
+////////////////////////////////////////////
+/// Módulo para Iniciar la Base de Datos ///
+////////////////////////////////////////////
+
+/////////////////////////////////////////////////////////////////////////////////////
+// Mensaje para Desarrolladores:
+//
+// Está pendiente:
+//                  - Crear al menos un AVATAR por default
+//                  - Insertar datos en tabla de Productos...
+//
+/////////////////////////////////////////////////////////////////////////////////////
+
 // Traer el módulo getDB.js
+
 const getDB = require('./getDB.js');
 
 // Crear la función principal donde se crearán las tablas:
@@ -7,6 +21,10 @@ async function main() {
   let connection;
   try {
     connection = await getDB();
+
+    //////////////////////////
+    /// Creación de Tablas ///
+    //////////////////////////
 
     //Eliminamos tablas si existen
 
@@ -125,6 +143,54 @@ async function main() {
             )
     `);
     console.log('Tabla de Hostorial de productos Creada correctamente');
+
+    ///////////////////////////////////////////////////////////////////////////
+    /////////////// Insertar Datos en las Tablas, con Faker ///////////////////
+    ///////////////////////////////////////////////////////////////////////////
+
+    /////////////////////////
+    /// Tabla de Usuarios ///
+    /////////////////////////
+
+    // Declaramos una variable con el Nº de usuarios que queremos introducir:
+    const USERS = 10;
+
+    // Insertamos los usuarios con un bucle for:
+    for (let i = 0; i < USERS; i++) {
+      // Pedirle datos concretos de los usuarios usando los métodos de la API Faker, almacenarlos en variables:
+      const name = faker.name.findName();
+      const alias = faker.internet.userName();
+      const avatar = faker.internet.avatar();
+      const email = faker.internet.email();
+      const password = faker.internet.password();
+      const location = faker.address.city();
+      const province = faker.address.state();
+      const postalCode = faker.address.zipCode();
+
+      // Creamos la Query para insertarlos:
+      await connection.query(`
+          INSERT INTO users (name, alias, avatar, email, password, location, province, postalCode, active, deleted, createdDate)
+          VALUES (
+            "${name}",
+            "${alias}",
+            "${avatar}",
+            "${email}",
+            "${password}",
+            "${location}",
+            "${province}",
+            "${postalCode}",
+            true,
+            false,
+            "${formatDate(new Date())}"
+         )
+      `);
+    }
+    console.log('Usuarios creados correctamente en la Tabla de usuarios');
+
+    //////////////////////////
+    /// Tabla de Productos ///
+    //////////////////////////
+
     // Capturamos TODOS los errores en el CATCH.
   } catch (error) {
     console.error(error.message);
