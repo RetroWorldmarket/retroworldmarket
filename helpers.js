@@ -3,10 +3,48 @@
 
 // Importamos solo la función FORMATEAR de date-fns con destructuring:
 const { format } = require('date-fns');
+//importamos la dependencia de encriptación(ya está en desuso
+//pero no se de otra)
+
+const crypto = require('crypto');
+require('dotenv').config();
 
 function formatDate(date) {
   // La función retorna la fecha dada en formato Año, Mes, Día, Horas, Minutos y Segundos
   return format(date, 'yyyy-MM-dd-HH-mm-ss');
+}
+
+/*
+
+*******************************
+**CREAR UN STRING ENCRIPTADO***
+*******************************
+
+*/
+
+function generateCryptoString(length) {
+  //la propiedad 'hex' es la forma en la que nos retorna el string
+  //en este caso formato hexadecimal
+  return crypto.randomBytes(length).toString('hex');
+}
+
+/*
+ ***********************************************
+ **ENVIO DE EMAIL CON CÓDIGO DE VERIFICACIÓN****
+ ***********************************************
+ */
+
+async function emailVerification(email, registerCode, name) {
+  //mensaje
+
+  const emailBody = `
+  Hola ${name} te has registrado en Retro World Market.
+  Por favor pulsa este enlace para verificar tu cuenta:
+  ${process.env.PUBLIC_HOST}/users/validation/${registerCode}
+
+  `;
+  //no se utiliza el try catch porque ya se utilizará en el módulo
+  //createUser.js
 }
 
 /***
@@ -28,4 +66,6 @@ async function validar(schema, data) {
 module.exports = {
   formatDate,
   validar,
+  generateCryptoString,
+  emailVerification,
 };
