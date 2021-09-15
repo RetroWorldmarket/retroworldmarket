@@ -5,7 +5,7 @@ const express = require('express');
 // Requerimos la dependencia morgan, que sirve, básicamente,  para registrar
 // los detalles de las solicitudes al servidor. Es un "Logger".
 const morgan = require('morgan');
-const createUser = require('./controllers/users/createUser.js');
+const { createUser, validateUser } = require('./controllers/users/index.js');
 
 const { PORT } = process.env;
 
@@ -40,8 +40,12 @@ app.post('/sellretro', newProduct);
  * **ENDPOINTS USUARIOS***
  * ***********************
  */
-
+//crear usuario
 app.post('/users', createUser);
+
+//validar código de verificación
+
+app.get('/users/validate', validateUser);
 
 app.use((req, res) => {
   res.send('clarinete');
