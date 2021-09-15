@@ -5,6 +5,7 @@ const express = require('express');
 // Requerimos la dependencia morgan, que sirve, básicamente,  para registrar
 // los detalles de las solicitudes al servidor. Es un "Logger".
 const morgan = require('morgan');
+const createUser = require('./controllers/users/createUser.js');
 
 const { PORT } = process.env;
 
@@ -32,6 +33,15 @@ const newProduct = require('./controllers/ventas/newProduct.js');
 //      POST /sellretro-----> Esta es la función CONTROLADORA. La función estará definida
 //      en la carpeta CONTROLLERS para hacer el código más limpio y organizado:
 app.post('/sellretro', newProduct);
+
+/**
+ *
+ * ***********************
+ * **ENDPOINTS USUARIOS***
+ * ***********************
+ */
+
+app.post('/users', createUser);
 
 app.use((req, res) => {
   res.send('clarinete');
