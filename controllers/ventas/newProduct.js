@@ -3,7 +3,7 @@
 /////////////////////////////////////////////////////////////////
 
 // Necesitamos conectarnos a la BD (getDB)
-const getDB = require('../ddbb/getDB.js');
+const getDB = require('../../ddbb/getDB.js');
 
 // Ahora creamos la función asíncrona newProduct:
 const newProduct = async (req, res) => {
