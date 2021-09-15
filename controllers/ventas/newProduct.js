@@ -15,7 +15,7 @@ const getDB = require('../../ddbb/getDB.js');
 const { formatDate } = require('../../helpers.js');
 
 // Ahora creamos la función asíncrona newProduct:
-const newProduct = async (req, res) => {
+const newProduct = async (req, res, next) => {
   // Primero: Solicitar una conexión con la DB (declaramos la variable vacía):
   let connection;
 
@@ -111,12 +111,9 @@ const newProduct = async (req, res) => {
       message: 'El producto ha sido creado correctamente',
     });
   } catch (error) {
-    console.error(error.message);
-    // Enviamos mensaje si el usuario no existe:
-    res.send({
-      status: 'error',
-      message: 'El usuario seleccionado no existe',
-    });
+    next(error);
+
+    res.send(error.message);
   } finally {
     // Pase lo que pase con la función, debemos liberar la conexión establecida:
     if (connection) connection.release();
