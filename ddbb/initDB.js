@@ -16,9 +16,9 @@
 /////////////////////////////////////////////////////////////////////////////////////
 
 // Traer el módulo getDB.js
-
 const getDB = require('./getDB.js');
 
+// Traer el faker.js para simular las entradas de datos de usuarios y productos a la BD:
 const faker = require('faker/locale/es');
 
 // Traemos la función formatDate creada en helpers con destructuring:
@@ -44,9 +44,7 @@ async function main() {
     await connection.query('DROP TABLE IF EXISTS products');
     await connection.query('DROP TABLE IF EXISTS users');
 
-    console.log('funcionas');
-
-    console.log('tablas eliminadas');
+    console.log('Tablas anteriores eliminadas correctamente');
 
     // Crear la tabla de USUARIOS con las respectivas columnas (location = localidad):
     await connection.query(`
@@ -70,7 +68,7 @@ async function main() {
             )
     `);
 
-    console.log('tabla usuarios creada');
+    console.log('Tabla usuarios creada correctamente');
     // Creamos la tabla de PRODUCTOS (brand = Marca; yearOfProduction = Año de Fabricación;
     // status = Estado de funcionamiento; MEDIUMINT = Nº entre 0 y 16.777.215)
     await connection.query(`
@@ -97,7 +95,7 @@ async function main() {
             )
     `);
 
-    console.log('tabla productos creada');
+    console.log('Tabla productos creada correctamente');
 
     // Creamos la tabla de Photos (idphoto, idProducts, idUsers, datePublications)
     await connection.query(`
@@ -110,7 +108,7 @@ async function main() {
             )
     `);
 
-    console.log('tabla fotos creada');
+    console.log('Tabla fotos creada correctamente');
 
     //Creamos la tabla de mensajes entre usuarios
 
@@ -126,7 +124,7 @@ async function main() {
               )
     `);
 
-    console.log('tabla mensajes creada');
+    console.log('Tabla mensajes creada correctamente');
 
     // Creamos la Tabla de Votos de los Vendedores (FALTARÍA EL ID DEL DUEÑO DEL PRODUCTO, es decir, a quién vota??):
     await connection.query(`
@@ -174,6 +172,7 @@ async function main() {
       )
 
     `);
+    console.log('Usuario Administrador creado correctamente en Tabla usuarios');
 
     ///////////////////////////////////////////////////////////////////////////
     /////////////// Insertar Datos en las Tablas, con Faker ///////////////////

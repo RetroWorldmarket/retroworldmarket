@@ -1,11 +1,11 @@
 {
   "name": "retroworldmarket",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "DB": "./ddbb/initDB.js"
+    "DB": "./ddbb/initDB.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -23,10 +23,12 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.2",
+    "morgan": "^1.10.0",
     "mysql2": "^2.3.0"
   },
   "devDependencies": {
     "faker": "^5.5.3",
     "nodemon": "^2.0.12"
-  }
+  },
+  "description": ""
 }
