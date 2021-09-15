@@ -1,4 +1,4 @@
-// Requerir .env
+// Necesitamos requerir dotenv (.env) ya que ahí tenemos configurado el puerto y la BD:
 require('dotenv').config();
 
 // Requerir mysql2

@@ -14,8 +14,14 @@ const app = express();
 app.use(morgan('dev'));
 
 // La información de las Request nos llegan a través del Body y, necesariamente,
-// tenemos que DESERIALIZARLO. Para ello usamos el método json de express:
+// tenemos que ¡¡¡¡¡DESERIALIZARLO!!!!! Para ello usamos el método json de express:
+// ** (Como las peticiones vendrán en las líneas siguientes, ya estarán deserializadas.)
 app.use(express.json());
+
+/////////////////////////////////////////////////////////////////////////////////
+// Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
+/////////////////////////////////////////////////////////////////////////////////
+const newProduct = require('./controllers/ventas/newProduct.js');
 
 /////////////////////
 ///// ENDPOINTS /////
@@ -23,6 +29,9 @@ app.use(express.json());
 
 // Endpoint para subir un producto:
 //  POST /sellretro/-----> Botón PUBLICAR
+//      POST /sellretro-----> Esta es la función CONTROLADORA. La función estará definida
+//      en la carpeta CONTROLLERS para hacer el código más limpio y organizado:
+app.post('/sellretro', newProduct);
 
 app.use((req, res) => {
   res.send('clarinete');
@@ -36,6 +45,7 @@ app.use((req, res) => {
   });
 });
 
+// Función para poner a funcionar el servido en el puerto dado:
 app.listen(PORT, () => {
   console.log(`Conectado al puerto: ${PORT}`);
 });
