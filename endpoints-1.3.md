@@ -4,7 +4,14 @@
 
     15/9 - Empezamos a desarrollar los Endpoints:
 
-    	· POST /sellretro/-----> Botón PUBLICAR
+    	· POST /sellretro/ ----> Botón PUBLICAR (Terminado)
+    	· POST /users/ ----> Botón ENVIAR en Pop-Up CREAR USUARIO (Terminado)
+    	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.(terminado)
+    		¿POR QUÉ NO SALE EN AZUL?
+
+    	· POST /sellretro/:IDProduct -----> Botón EDITAR (Terminado)
+    16/9 -Siguientes Endpoints a desarrollar:
+
 
 
 

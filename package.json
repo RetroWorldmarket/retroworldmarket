@@ -4,7 +4,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "DB": "./ddbb/initDB.js",
+    "DB": "node ./ddbb/initDB.js",
     "start": "node server.js"
   },
   "repository": {
@@ -19,10 +19,13 @@
   },
   "homepage": "https://github.com/RetroWorldmarket/retroworldmarket#readme",
   "dependencies": {
+    "@sendgrid/mail": "^7.4.6",
+    "crypto": "^1.0.1",
     "date-fns": "^2.23.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "joi": "^17.4.2",
+    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.3.0"
   },
