@@ -6,7 +6,11 @@ const express = require('express');
 // Requerimos la dependencia morgan, que sirve, básicamente,  para registrar
 // los detalles de las solicitudes al servidor. Es un "Logger".
 const morgan = require('morgan');
-const { createUser, validateUser } = require('./controllers/users/index.js');
+const {
+  createUser,
+  validateUser,
+  login,
+} = require('./controllers/users/index.js');
 
 const { PORT } = process.env;
 
@@ -19,6 +23,13 @@ app.use(morgan('dev'));
 // tenemos que ¡¡¡¡¡DESERIALIZARLO!!!!! Para ello usamos el método json de express:
 // ** (Como las peticiones vendrán en las líneas siguientes, ya estarán deserializadas.)
 app.use(express.json());
+
+/*******************
+ * ***MIDDLEWARES***
+ * *****************
+ */
+
+const authUser = require('./middlware/index');
 
 /////////////////////////////////////////////////////////////////////////////////
 // Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
@@ -50,6 +61,9 @@ app.post('/users', createUser);
 //validar código de verificación
 
 app.get('/users/validate/:verifiedCode', validateUser);
+
+// Hacer login y retornar token
+app.post('/users/login', login);
 
 app.use((req, res) => {
   res.send('clarinete');
