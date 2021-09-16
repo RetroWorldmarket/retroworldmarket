@@ -1,5 +1,6 @@
 require('dotenv').config();
 
+const { areIntervalsOverlappingWithOptions } = require('date-fns/fp');
 const express = require('express');
 
 // Requerimos la dependencia morgan, que sirve, básicamente,  para registrar
@@ -23,16 +24,19 @@ app.use(express.json());
 // Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
 /////////////////////////////////////////////////////////////////////////////////
 const newProduct = require('./controllers/ventas/newProduct.js');
+const editProduct = require('./controllers/ventas/editProduct.js');
 
 /////////////////////
 ///// ENDPOINTS /////
 /////////////////////
 
-// Endpoint para subir un producto:
-//  POST /sellretro/-----> Botón PUBLICAR
 //      POST /sellretro-----> Esta es la función CONTROLADORA. La función estará definida
 //      en la carpeta CONTROLLERS para hacer el código más limpio y organizado:
+
+// Endpoint para subir un producto:
 app.post('/sellretro', newProduct);
+// Editar un producto
+app.put('/sellretro/:idProduct', editProduct);
 
 /**
  *
