@@ -2,26 +2,31 @@
     /// ENDPOINTS ///
     /////////////////
 
-    15/9 - Empezamos a desarrollar los Endpoints:
+    16/9 - Empezamos a desarrollar los Endpoints:
 
-    	· POST /sellretro/ ----> Botón PUBLICAR (Terminado)
-    	· POST /users/ ----> Botón ENVIAR en Pop-Up CREAR USUARIO (Terminado)
-    	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.(terminado)
-    		¿POR QUÉ NO SALE EN AZUL?
+    	· POST /users/ ----> Botón ENVIAR en Pop-Up CREAR USUARIO (Terminado) ✅
+    	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado. ✅(terminado)
+    	· POST /users/login -----> Botón ENVIAR. Hacer login y retornar token ✅
+    			** En el Midleware de autorización hay que comprobar que el usuario exista **
+    	· POST /sellretro/ ----> Botón PUBLICAR (Terminado) ✅
+    	· POST /sellretro/:IDProduct -----> Botón EDITAR (Terminado) ✅
 
-    	· POST /sellretro/:IDProduct -----> Botón EDITAR (Terminado)
-    16/9 -Siguientes Endpoints a desarrollar:
+    17/9 -Siguientes Endpoints a desarrollar:
 
+    	· POST /users/:idUser -----> Botón editar Usuario
 
+////////////////////////////////////////////////////////////////////////////
+///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
+////////////////////////////////////////////////////////////////////////////
 
-
-
+    1)	Por qué tenemos que ponerle el .id a: const idReqUser = req.userAuth.id; ??????
+    		Lo tenemos en editUser.js línea 20.
 
 
     ENDPOINTS DE USUARIOS:
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
+✅ · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
 
     	CABECERA DE AUTORIZACIÓN :	NO
 
@@ -39,7 +44,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.
+✅ · GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.
 
     	CABECERA DE AUTORIZACIÓN :	NO
 
@@ -49,7 +54,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /users/login -----> Botón ENVIAR. Hacer login y retornar token
+✅ · POST /users/login -----> Botón ENVIAR. Hacer login y retornar token
 
     	CABECERA DE AUTORIZACIÓN :	NO
 
@@ -182,7 +187,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /sellretro/-----> Botón PUBLICAR
+✅ · POST /sellretro/-----> Botón PUBLICAR
 
     	CABECERA DE AUTORIZACIÓN : SI
 
@@ -199,7 +204,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /sellretro/:IDProduct -----> Botón EDITAR
+✅ · POST /sellretro/:IDProduct -----> Botón EDITAR
 
     	CABECERA DE AUTORIZACIÓN : SI
 
