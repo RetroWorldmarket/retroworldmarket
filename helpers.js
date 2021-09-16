@@ -11,8 +11,12 @@ const crypto = require('crypto');
 // Importamos las variables de .env
 require('dotenv').config();
 
+//requerimos las variables del dontenv
+const { SENDGRID_API_KEY, SENDGRID_FROM } = process.env;
 // Requerimos la dependencia SENGRID para enviar el mail de verificación al usuario
-const sgMail = require('sendgrid').mail;
+const sgMail = require('@sendgrid/mail');
+// Asignamos el API Key a Sendgrid.
+sgMail.setApiKey(SENDGRID_API_KEY);
 
 //////////////////////////
 /// función formatDate ///
@@ -46,8 +50,8 @@ async function emailVerification(email, registerCode, name) {
 
   const emailBody = `
   Hola ${name} te has registrado en Retro World Market.
-  Por favor pulsa este enlace para verificar tu cuenta:
-  ${process.env.PUBLIC_HOST}/users/validation/${registerCode}
+  Por favor pulsa este enlace para verificar tu cuenta: 
+   ${process.env.PUBLIC_HOST}/users/validate/${registerCode}
 
   `;
   //para enviar el correo usamos la función siguiente:

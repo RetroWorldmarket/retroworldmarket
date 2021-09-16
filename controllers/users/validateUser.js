@@ -9,13 +9,16 @@ const validateUser = async (req, res, next) => {
     //obtenemos el código de registrocode
     const { verifiedCode } = req.params;
 
+    console.log(verifiedCode);
     //Hacemos una petición a la base de datos para saber si hay algun registro pendiente
 
     const [user] = await connection.query(
       `
         SELECT id FROM users  WHERE verifiedCode = ?
-    `[verifiedCode]
+    `,
+      [verifiedCode]
     );
+
     // Vemos si hay algun codigo de verificacion pendiente para ese usuario
 
     if (user.length < 1) {

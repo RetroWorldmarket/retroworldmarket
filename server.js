@@ -45,7 +45,7 @@ app.post('/users', createUser);
 
 //validar código de verificación
 
-app.get('/users/validate', validateUser);
+app.get('/users/validate/:verifiedCode', validateUser);
 
 app.use((req, res) => {
   res.send('clarinete');

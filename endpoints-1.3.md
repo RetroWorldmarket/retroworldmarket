@@ -6,10 +6,11 @@
 
     	· POST /sellretro/ ----> Botón PUBLICAR (Terminado)
     	· POST /users/ ----> Botón ENVIAR en Pop-Up CREAR USUARIO (Terminado)
-
+    	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.(terminado)
+    		¿POR QUÉ NO SALE EN AZUL?
     16/9 -Siguientes Endpoints a desarrollar:
 
-    	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.
+
     	· POST /sellretro/:IDProduct -----> Botón EDITAR
 
 
