@@ -52,12 +52,35 @@ app.use((req, res) => {
   console.log('vamos');
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////
+/// Middleware de error ///
+///////////////////////////
+
+// Aquí llega si entra un "next(error)"
+app -
+  use((error, req, res, next) => {
+    console.error(error);
+    // Definimos el status de la respuesta al cliente: Si el error tiene un status code, lo
+    // enviamos, sino le asignamos el code 500 (El servidor ha encontrado una situación que
+    // no sabe cómo manejarla.)
+    res.status(error.httpStatus || 500).send({
+      status: 'error',
+      message: error.message,
+    });
+  });
+
+///////////////////////////////
+/// Middleware de not found ///
+///////////////////////////////
 app.use((req, res) => {
   res.status(404).send({
     estatus: 'error',
     message: 'Not found',
   });
 });
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Función para poner a funcionar el servido en el puerto dado:
 app.listen(PORT, () => {
