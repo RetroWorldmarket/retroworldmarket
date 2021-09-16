@@ -12,7 +12,7 @@ const crypto = require('crypto');
 require('dotenv').config();
 
 // Requerimos la dependencia SENGRID para enviar el mail de verificación al usuario
-const sgMail = require('@sendgrid/mail');
+const sgMail = require('sendgrid').mail;
 
 //////////////////////////
 /// función formatDate ///
