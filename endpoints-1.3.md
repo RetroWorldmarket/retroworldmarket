@@ -2,25 +2,29 @@
     /// ENDPOINTS ///
     /////////////////
 
+    17/9	Problema con el login del usuario... Estamos trabajando en ello.
+
     16/9 - Empezamos a desarrollar los Endpoints:
 
     	· POST /users/ ----> Botón ENVIAR en Pop-Up CREAR USUARIO (Terminado) ✅
     	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado. ✅(terminado)
     	· POST /users/login -----> Botón ENVIAR. Hacer login y retornar token ✅
-    			** En el Midleware de autorización hay que comprobar que el usuario exista **
+    			** En el Midleware de autorización hay que comprobar que el usuario exista ** ✅
+    	· userExist.js --> Middleware para comprobar que un usuario existe. ✅
     	· POST /sellretro/ ----> Botón PUBLICAR (Terminado) ✅
     	· POST /sellretro/:IDProduct -----> Botón EDITAR (Terminado) ✅
 
     17/9 -Siguientes Endpoints a desarrollar:
 
-    	· POST /users/:idUser -----> Botón editar Usuario
+    · GET /users/:idUser -----> Obtener un usuario en concreto (Necesariamente esta función hay que hacerla antes de poder editar al usuario, lógicamente)
+    · POST /users/:idUser -----> Botón editar Usuario
 
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
     1)	Por qué tenemos que ponerle el .id a: const idReqUser = req.userAuth.id; ??????
-    		Lo tenemos en editUser.js línea 20.
+    		Lo tenemos en editUser.js línea 20 y en getUser.js línea 16.
 
 
     ENDPOINTS DE USUARIOS:

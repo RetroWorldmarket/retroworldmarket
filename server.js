@@ -10,6 +10,7 @@ const {
   createUser,
   validateUser,
   login,
+  getUser,
 } = require('./controllers/users/index.js');
 
 const { PORT } = process.env;
@@ -30,6 +31,7 @@ app.use(express.json());
  */
 
 const authUser = require('./middlware/index');
+const userExists = require('./middlware/index');
 
 /////////////////////////////////////////////////////////////////////////////////
 // Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
@@ -59,16 +61,13 @@ app.put('/sellretro/:idProduct', editProduct);
 app.post('/users', createUser);
 
 //validar código de verificación
-
 app.get('/users/validate/:verifiedCode', validateUser);
 
 // Hacer login y retornar token
 app.post('/users/login', login);
 
-app.use((req, res) => {
-  res.send('clarinete');
-  console.log('vamos');
-});
+// Obtener un usuario en concreto:
+app.get('/users/:idUser', authUser, userExists, getUser);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -34,7 +34,7 @@ const login = async (req, res, next) => {
     );
 
     //IMPORTANTE saber si los datos son correctos y que el usuario está activo
-    if (usuario.lenght < 1) {
+    if (usuario.length < 1) {
       const error = new Error('Usuario o contraseña incorrectos');
       error.httpStatus = 401;
       throw error;
