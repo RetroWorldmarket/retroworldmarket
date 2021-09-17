@@ -166,7 +166,7 @@ async function main() {
       "retroworldmarket",
       "retroworld",
       "retroworldmarket2021@gmail.com",
-      "SHA2(000000,512)",
+      "00000000",
       "PONTEVEDRA",
       "PONTEVEDRA",
       "36002",
@@ -175,7 +175,7 @@ async function main() {
       false,
       "${formatDate(new Date())}"
       )
-      SHA2(000000,512)
+     
     `);
     console.log('Usuario Administrador creado correctamente en Tabla usuarios');
 

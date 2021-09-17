@@ -33,8 +33,7 @@ const {
  * *****************
  */
 
-const authUser = require('./middlware/index');
-const userExists = require('./middlware/index');
+const { authUser, userExists } = require('./middlware/index.js');
 
 /////////////////////////////////////////////////////////////////////////////////
 // Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
@@ -70,7 +69,7 @@ app.get('/users/validate/:verifiedCode', validateUser);
 app.post('/users/login', login);
 
 // Obtener un usuario en concreto:
-app.get('/users/:idUser', authUser, userExists, getUser);
+app.get('/users/:idUser', userExists, authUser, getUser);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
