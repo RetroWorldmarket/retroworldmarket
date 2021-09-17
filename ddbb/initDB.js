@@ -5,6 +5,11 @@
 /////////////////////////////////////////////////////////////////////////////////////
 // Mensaje para Desarrolladores:
 //
+//  Nota 17/9: Debido al problema dado en tests de login.js, hemos modificado el encriptado
+//              de la contraseña del usuario Administrador (línea 167).
+//              Si da fallos al meter los datos de administrador, probablemente sea por esta
+//              causa. Se puede reestablecer al parámetro sin codificar.
+//
 // Está pendiente:
 //                  - Crear al menos un AVATAR por default
 //                  - Confirmar si tabla de Productos tiene productos dentro (Workbench)
@@ -161,7 +166,7 @@ async function main() {
       "retroworldmarket",
       "retroworld",
       "retroworldmarket2021@gmail.com",
-      "000000",
+      "SHA2(000000,512)",
       "PONTEVEDRA",
       "PONTEVEDRA",
       "36002",
@@ -170,7 +175,7 @@ async function main() {
       false,
       "${formatDate(new Date())}"
       )
-
+      SHA2(000000,512)
     `);
     console.log('Usuario Administrador creado correctamente en Tabla usuarios');
 

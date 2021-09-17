@@ -35,7 +35,7 @@ const authUser = async (req, res, next) => {
     }
 
     //añadimos una nueva variable a la cabecera de peticiones con
-    //la información del nuevo token
+    //la información del nuevo token (es decir el idUser y el rol)
 
     req.userAuth = token;
 

@@ -50,7 +50,7 @@ const login = async (req, res, next) => {
     //le pasamos la información como un objeto
     const tokenInfo = {
       id: usuario[0].id,
-      role: usuario[0].rol,
+      rol: usuario[0].rol,
     };
 
     //creamos el token le añadimos el SECRETO de .env , la información del token

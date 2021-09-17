@@ -12,6 +12,8 @@ const getUser = async (req, res, next) => {
     // el id del usuario:
     const { idUser } = req.params;
 
+    // Test 17 Setiembre, Bernardo.
+    console.log('la variable idUser en getUser tiene: ', idUser);
     /////////////////////////////////////////////////////////////////////////////////////////
     ///   AQUÍ TENEMOS UNA DUDA ANOTADA: POR QUÉ el .id de req.userAuth para recoger el   ///
     ///   id del usuario. Es imprescindible??? Cómo funciona realmente??                  ///
@@ -21,6 +23,9 @@ const getUser = async (req, res, next) => {
     // Este es el usuario que hace la request
     const idReqUser = req.userAuth.id;
 
+    // Test 17 Setiembre, Bernardo.
+    console.log('La variable idReqUser en getUser tiene: ', idReqUser);
+
     // Ahora vamos a obtener de la Base de Datos la información del usuario solicitado por
     // Path Params y la guardaremos en un array:
     const [user] = await connection.query(
@@ -29,6 +34,9 @@ const getUser = async (req, res, next) => {
     `,
       [idUser]
     );
+    // Test 17 Setiembre, Bernardo.
+    console.log('El array user en getUser tiene: ', user);
+    console.log('El array idUser en getUser tiene: ', idUser);
 
     // Ahora hay solo dos opciones: que el usuario sea el dueño de idUser y quiera ver
     // su perfíl (le daremos casi toda su información), o que no lo sea y quiera ver el
