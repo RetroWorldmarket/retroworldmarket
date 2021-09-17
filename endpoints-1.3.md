@@ -2,26 +2,35 @@
     /// ENDPOINTS ///
     /////////////////
 
-    15/9 - Empezamos a desarrollar los Endpoints:
+    17/9	Problema con el login del usuario... Estamos trabajando en ello.
 
-    	· POST /sellretro/ ----> Botón PUBLICAR (Terminado)
-    	· POST /users/ ----> Botón ENVIAR en Pop-Up CREAR USUARIO (Terminado)
-    	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.(terminado)
-    		¿POR QUÉ NO SALE EN AZUL?
+    16/9 - Empezamos a desarrollar los Endpoints:
 
-    	· POST /sellretro/:IDProduct -----> Botón EDITAR (Terminado)
-    16/9 -Siguientes Endpoints a desarrollar:
+    	· POST /users/ ----> Botón ENVIAR en Pop-Up CREAR USUARIO (Terminado) ✅
+    	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado. ✅(terminado)
+    	· POST /users/login -----> Botón ENVIAR. Hacer login y retornar token ✅
+    			** En el Midleware de autorización hay que comprobar que el usuario exista ** ✅
+    	· userExist.js --> Middleware para comprobar que un usuario existe. ✅
+    	· POST /sellretro/ ----> Botón PUBLICAR (Terminado) ✅
+    	· POST /sellretro/:IDProduct -----> Botón EDITAR (Terminado) ✅
 
+    17/9 -Siguientes Endpoints a desarrollar:
 
+    · GET /users/:idUser -----> Obtener un usuario en concreto (Necesariamente esta función hay que hacerla antes de poder editar al usuario, lógicamente)
+    · POST /users/:idUser -----> Botón editar Usuario
 
+////////////////////////////////////////////////////////////////////////////
+///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
+////////////////////////////////////////////////////////////////////////////
 
-
+    1)	Por qué tenemos que ponerle el .id a: const idReqUser = req.userAuth.id; ??????
+    		Lo tenemos en editUser.js línea 20 y en getUser.js línea 16.
 
 
     ENDPOINTS DE USUARIOS:
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
+✅ · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
 
     	CABECERA DE AUTORIZACIÓN :	NO
 
@@ -39,7 +48,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.
+✅ · GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.
 
     	CABECERA DE AUTORIZACIÓN :	NO
 
@@ -49,7 +58,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /users/login -----> Botón ENVIAR. Hacer login y retornar token
+✅ · POST /users/login -----> Botón ENVIAR. Hacer login y retornar token
 
     	CABECERA DE AUTORIZACIÓN :	NO
 
@@ -182,7 +191,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /sellretro/-----> Botón PUBLICAR
+✅ · POST /sellretro/-----> Botón PUBLICAR
 
     	CABECERA DE AUTORIZACIÓN : SI
 
@@ -199,7 +208,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /sellretro/:IDProduct -----> Botón EDITAR
+✅ · POST /sellretro/:IDProduct -----> Botón EDITAR
 
     	CABECERA DE AUTORIZACIÓN : SI
 
