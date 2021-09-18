@@ -21,9 +21,6 @@ const userExists = async (req, res, next) => {
       [idUser]
     );
 
-    // Test 17 Setiembre, Bernardo.
-    console.log('El array idUser en userExists tiene: ', idUser);
-
     // En caso que el usuario no exista en la BD lanzamos un error:
     if (user.length < 1) {
       const error = new Error('El usuario seleccionado no existe');

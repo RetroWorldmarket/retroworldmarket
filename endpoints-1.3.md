@@ -24,11 +24,17 @@
 ////////////////////////////////////////////////////////////////////////////
 
     1)	Por qué tenemos que ponerle el .id a: const idReqUser = req.userAuth.id; ??????
-    		Lo tenemos en editUser.js línea 20 y en getUser.js línea 16.
+    		Lo tenemos en editUser.js línea 20 y en getUser.js línea 16.----->RESUELTA--ENRIQUE
 
+************\*\*\*************
+**\*PUNTOS POR TERMINAR\*\*\*\***
 
-    ENDPOINTS DE USUARIOS:
-    -------------------------------------------------------------------------------------------------------------------------------
+---
+
+1. Colocar el AuthUser en los endpoints
+2. Mirar la base de datos con la encriptacion SHA2
+   ENDPOINTS DE USUARIOS:
+   ***
 
 ✅ · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
 

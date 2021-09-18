@@ -7,11 +7,11 @@ const jwt = require('jsonwebtoken');
 const authUser = async (req, res, next) => {
   try {
     //obtenemos la autorización de la petición por medio del headers
-    const { autorizacion } = req.headers;
+    const { authorization } = req.headers;
 
     //si no existe,  lanzamos un error
 
-    if (!autorizacion) {
+    if (!authorization) {
       const error = new Error('Error, falta la cabecera de autorización');
       error.httpStatus = 401;
       throw error;
@@ -26,7 +26,7 @@ const authUser = async (req, res, next) => {
     try {
       //Para que nos cree un token correcto le debemos pasar la cabecera de
       //autentificación y un número secreto que lo guadaremos en .env
-      token = jwt.verify(autorizacion, process.env.SECRET);
+      token = jwt.verify(authorization, process.env.SECRETO);
     } catch (_) {
       //este errror preguntarselo a david
       const error = new Error('el token no es válido');
