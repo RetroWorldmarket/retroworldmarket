@@ -14,10 +14,10 @@
     	· POST /sellretro/ ----> Botón PUBLICAR (Terminado) ✅
     	· POST /sellretro/:IDProduct -----> Botón EDITAR (Terminado) ✅
     	· GET /users/:idUser -----> Obtener un usuario en concreto (Necesariamente esta función hay que hacerla antes de poder editar al usuario, lógicamente)✅
+    · POST /users/:idUser -----> Botón editar Usuario
+        · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA(enri)✅
 
     17/9 -Siguientes Endpoints a desarrollar:
-
-    · POST /users/:idUser -----> Botón editar Usuario
 
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
@@ -26,7 +26,7 @@
     1)	Por qué tenemos que ponerle el .id a: const idReqUser = req.userAuth.id; ??????
     		Lo tenemos en editUser.js línea 20 y en getUser.js línea 16.----->RESUELTA--ENRIQUE
 
-****\*\*\*\*****\*\*\*****\*\*\*\*****
+\***\*\*\*\*\*\*\***\*\*\*\***\*\*\*\*\*\*\***
 **\*PUNTOS POR TERMINAR\*\*\*\***
 
 ---
@@ -34,7 +34,10 @@
 1. Colocar el AuthUser en los endpoints
 2. Mirar la base de datos con la encriptacion SHA2
    ENDPOINTS DE USUARIOS:
-    ***
+
+   ***
+
+   2.Pregunta para Berto o DAVID; ¿Hacer una barra de categorias se pide en el body o es cosa de la querystring?
 
 ✅ · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
 
@@ -95,7 +98,8 @@
 
 
     -------------------------------------------------------------------------------------------------------------------------------
-    · GET /users/:idUser -----> Obtener un usuario en concreto
+
+✅ · GET /users/:idUser -----> Obtener un usuario en concreto
 
     	CABECERA DE AUTORIZACIÓN :	SI
 
@@ -121,7 +125,7 @@
     -------------------------------------------------------------------------------------------------------------------------------
 
 
-    · GET /products/:IDCategories/ -----> Obtener CATEGORIAS de productos ordenadas por numeros.
+    ✅· GET /products/:IDCategories/ -----> Obtener CATEGORIAS de productos ordenadas por numeros.
 
     	CABECERA DE AUTORIZACIÓN : NO
 

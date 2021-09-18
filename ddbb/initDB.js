@@ -246,7 +246,6 @@ async function main() {
         ];
 
       const arrayCategories = [
-        'Todas las Categorías',
         'Ordenadores',
         'Televisores',
         'Telefonía',
@@ -254,9 +253,7 @@ async function main() {
         'Consolas y Juegos',
       ];
       const category =
-        arrayCategories[
-          Number(Math.floor(Math.random() * (arrayStatus.length - 1)))
-        ];
+        arrayCategories[Number(Math.floor(Math.random() * arrayStatus.length))];
 
       //    Comfirmar si .productDescription va bien, sino podemos sustituirlo
       // por faker.lorem.paragraph()
