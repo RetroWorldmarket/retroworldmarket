@@ -26,6 +26,7 @@ const {
   validateUser,
   login,
   getUser,
+  editUser,
 } = require('./controllers/users/index.js');
 
 /*******************
@@ -70,6 +71,10 @@ app.post('/users/login', login);
 
 // Obtener un usuario en concreto:
 app.get('/users/:idUser', userExists, authUser, getUser);
+
+//Editar un Usuario:
+
+app.put('/users/:idUser', authUser, userExists, editUser);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 

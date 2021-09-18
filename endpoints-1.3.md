@@ -13,10 +13,10 @@
     	· userExist.js --> Middleware para comprobar que un usuario existe. ✅
     	· POST /sellretro/ ----> Botón PUBLICAR (Terminado) ✅
     	· POST /sellretro/:IDProduct -----> Botón EDITAR (Terminado) ✅
+    	· GET /users/:idUser -----> Obtener un usuario en concreto (Necesariamente esta función hay que hacerla antes de poder editar al usuario, lógicamente)✅
 
     17/9 -Siguientes Endpoints a desarrollar:
 
-    · GET /users/:idUser -----> Obtener un usuario en concreto (Necesariamente esta función hay que hacerla antes de poder editar al usuario, lógicamente)
     · POST /users/:idUser -----> Botón editar Usuario
 
 ////////////////////////////////////////////////////////////////////////////
@@ -26,7 +26,7 @@
     1)	Por qué tenemos que ponerle el .id a: const idReqUser = req.userAuth.id; ??????
     		Lo tenemos en editUser.js línea 20 y en getUser.js línea 16.----->RESUELTA--ENRIQUE
 
-************\*\*\*************
+****\*\*\*\*****\*\*\*****\*\*\*\*****
 **\*PUNTOS POR TERMINAR\*\*\*\***
 
 ---
@@ -34,7 +34,7 @@
 1. Colocar el AuthUser en los endpoints
 2. Mirar la base de datos con la encriptacion SHA2
    ENDPOINTS DE USUARIOS:
-   ***
+    ***
 
 ✅ · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
 
