@@ -34,10 +34,9 @@ const categoryProduct = async (req, res, next) => {
         SELECT products.id, products.nameProduct, products.brand, products.price, products.category, products.idUser, products.yearOfProduction,
         AVG(IFNULL(idUser_votes.vote, 0)) AS votes
         FROM products, users 
- 
         LEFT JOIN votes AS idUser_votes ON (users.id = idUser_votes.id)
-        group by id
-        ORDER BY products.yearOfProduction ASC        
+       group by id
+        ORDER BY products.yearOfProduction ASC 
         `
       );
     } else {
@@ -46,10 +45,10 @@ const categoryProduct = async (req, res, next) => {
         SELECT products.id, products.nameProduct, products.brand, products.price, products.category, products.idUser, products.yearOfProduction,
         AVG(IFNULL(idUser_votes.vote, 0)) AS votes
         FROM products, users 
-        WHERE products.category = ?;
         LEFT JOIN votes AS idUser_votes ON (users.id = idUser_votes.id)
-        group by id
-        ORDER BY products.yearOfProduction ASC    
+        WHERE products.category = ?
+       group by id
+        ORDER BY products.yearOfProduction ASC 
     `,
         [valoresCategories[categoria]]
       );
