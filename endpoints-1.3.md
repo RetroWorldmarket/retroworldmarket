@@ -26,6 +26,9 @@
     1)	Por qué tenemos que ponerle el .id a: const idReqUser = req.userAuth.id; ??????
     		Lo tenemos en editUser.js línea 20 y en getUser.js línea 16.----->RESUELTA--ENRIQUE
 
+    2)	Por qué en test de editUser (app.put('/users/:idUser', authUser, userExists, editUser)
+    		SOLO lee la request si está en formato json (body-raw) y no la lee si esta en formato form-data (aunque no tenga archivo gráfico) ???????????????
+
 \***\*\*\*\*\*\*\***\*\*\*\***\*\*\*\*\*\*\***
 **\*PUNTOS POR TERMINAR\*\*\*\***
 
@@ -34,6 +37,8 @@
 1. Colocar el AuthUser en los endpoints
 2. Mirar la base de datos con la encriptacion SHA2
    ENDPOINTS DE USUARIOS:
+
+   ***
 
    ***
 
