@@ -29,6 +29,14 @@ const {
   editUser,
 } = require('./controllers/users/index.js');
 
+/*
+ **********************************
+ ***Controladores de compras*******
+ **********************************
+ */
+
+const { categoryProduct } = require('./controllers/compras/index.js');
+
 /*******************
  * ***MIDDLEWARES***
  * *****************
@@ -75,6 +83,17 @@ app.get('/users/:idUser', userExists, authUser, getUser);
 //Editar un Usuario:
 
 app.put('/users/:idUser', authUser, userExists, editUser);
+
+/*
+************************
+***BARRAS DE BÚSQUEDA***
+************************
+
+*/
+
+//    · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA
+
+app.get('/product', categoryProduct);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
