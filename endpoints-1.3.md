@@ -29,20 +29,19 @@
     2)	Por qué en test de editUser (app.put('/users/:idUser', authUser, userExists, editUser)
     		SOLO lee la request si está en formato json (body-raw) y no la lee si esta en formato form-data (aunque no tenga archivo gráfico) ???????????????
 
+3.Pregunta para Berto o DAVID; ¿Hacer una barra de categorias se pide en el body o es cosa de la querystring?
+
 \***\*\*\*\*\*\*\***\*\*\*\***\*\*\*\*\*\*\***
 **\*PUNTOS POR TERMINAR\*\*\*\***
 
 ---
 
 1. Colocar el AuthUser en los endpoints
-2. Mirar la base de datos con la encriptacion SHA2
    ENDPOINTS DE USUARIOS:
 
    ***
 
    ***
-
-   2.Pregunta para Berto o DAVID; ¿Hacer una barra de categorias se pide en el body o es cosa de la querystring?
 
 ✅ · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
 

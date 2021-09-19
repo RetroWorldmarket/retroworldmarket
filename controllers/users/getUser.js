@@ -28,7 +28,10 @@ const getUser = async (req, res, next) => {
     // Path Params y la guardaremos en un array:
     const [user] = await connection.query(
       `
-        SELECT id, name, alias, avatar, email, location, province, postalCode, rol, createdDate FROM users WHERE id = ?
+        SELECT id, name, alias, avatar, email, location,
+         province, postalCode, rol, createdDate 
+        FROM users WHERE id = ?
+
     `,
       [idUser]
     );

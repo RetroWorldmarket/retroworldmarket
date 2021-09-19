@@ -7,16 +7,26 @@ const { format } = require('date-fns');
 //importamos la dependencia de encriptación(ya está en desuso
 //pero no se de otra)
 const crypto = require('crypto');
+//importamos la dependencia sharp(para fotos) te codifica las fotos y también necesitaremos el
+//uuid que crea un nombre único para los documentos
+const sharp = require('sharp');
+const uuid = require('uuid');
+
+const path = require('path');
 
 // Importamos las variables de .env
 require('dotenv').config();
 
 //requerimos las variables del dontenv
-const { SENDGRID_API_KEY, SENDGRID_FROM } = process.env;
+//sacamos las rutas del upload de .env q crearemos nosotros
+const { SENDGRID_API_KEY, SENDGRID_FROM, UPLOAD_PATH } = process.env;
 // Requerimos la dependencia SENGRID para enviar el mail de verificación al usuario
 const sgMail = require('@sendgrid/mail');
 // Asignamos el API Key a Sendgrid.
 sgMail.setApiKey(SENDGRID_API_KEY);
+
+//SACAMOS LA RUTA DE LAS FOTOS(DONDE IRŃ GUARDADAS)
+const uploadPath = path.join(__dirname, UPLOAD_PATH);
 
 //////////////////////////
 /// función formatDate ///
@@ -106,10 +116,67 @@ async function validar(schema, data) {
     throw error;
   }
 }
+
+/*
+ *************************
+ ****GUARDAR FOTOS********
+ *************************
+ */
+
+async function guardarFoto(imagen) {
+  //¿Existe directorio de imágenes?
+  await ensureDir(uploadPath);
+
+  //convertimos imagen con sharp
+
+  const sharpImage = sharp(imagen.data);
+
+  //Accedemos a los metadatos de la imagen para ver su anchura
+  const infoImage = await sharpImage.metadata();
+
+  //definimos el ancho máximo
+  const maxWidth = 1000;
+
+  //redimensionamos si supera el ancho
+
+  if (infoImage.width > maxWidth) {
+    sharpImage.resize(maxWidth);
+  }
+
+  //generamos un nombre único para la imagen
+
+  const nameImage = `${uuid.v4()}.jpg`;
+
+  //creamos la ruta absoluta de la imagen
+
+  const pathImage = path.join(uploadPath, nameImage);
+
+  //guardamos la imagen como string
+  await sharpImage.toFile(pathImage);
+
+  //retornamos el nombre del fichero
+  return nameImage;
+}
+
+/*
+ ***********************
+ *****BORRAR FOTO*******
+ ***********************
+ */
+async function borrarFoto(nameImage) {
+  // Creamos la ruta absoluta al archivo.
+  const photoPath = path.join(uploadPath, nameImage);
+
+  // Eliminamos la foto del disco.
+  await unlink(photoPath);
+}
+
 // Exportamos la función:
 module.exports = {
   formatDate,
   validar,
   generateCryptoString,
   emailVerification,
+  guardarFoto,
+  borrarFoto,
 };
