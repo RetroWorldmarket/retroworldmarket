@@ -31,19 +31,25 @@ const categoryProduct = async (req, res, next) => {
     if (categoria > valoresCategories.length - 1) {
       products = await connection.query(
         `
-        SELECT products.id, products.category, products.idUser, products.yearOfProduction 
-        FROM products
-        ORDER BY products.yearOfProduction ASC
-        
+        SELECT products.id, products.nameProduct, products.brand, products.price, products.category, products.idUser, products.yearOfProduction,
+        AVG(IFNULL(idUser_votes.vote, 0)) AS votes
+        FROM products, users 
+ 
+        LEFT JOIN votes AS idUser_votes ON (users.id = idUser_votes.id)
+        group by id
+        ORDER BY products.yearOfProduction ASC        
         `
       );
     } else {
       products = await connection.query(
         `
-    SELECT products.id, products.category, products.idUser, products.yearOfProduction 
-    FROM products WHERE products.category = ? 
-    ORDER BY products.yearOfProduction ASC
-    
+        SELECT products.id, products.nameProduct, products.brand, products.price, products.category, products.idUser, products.yearOfProduction,
+        AVG(IFNULL(idUser_votes.vote, 0)) AS votes
+        FROM products, users 
+        WHERE products.category = ?;
+        LEFT JOIN votes AS idUser_votes ON (users.id = idUser_votes.id)
+        group by id
+        ORDER BY products.yearOfProduction ASC    
     `,
         [valoresCategories[categoria]]
       );
