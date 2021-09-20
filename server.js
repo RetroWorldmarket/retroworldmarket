@@ -8,6 +8,7 @@ const fileUpload = require('express-fileupload');
 // los detalles de las solicitudes al servidor. Es un "Logger".
 const morgan = require('morgan');
 
+// eslint-disable-next-line no-undef
 const { PORT } = process.env;
 
 const app = express();
@@ -134,6 +135,7 @@ app.get('/messages/list', authUser, getMessage);
 ///////////////////////////
 
 // Aquí llega si entra un "next(error)"
+// eslint-disable-next-line no-unused-vars
 app.use((error, req, res, next) => {
   console.error(error);
   // Definimos el status de la respuesta al cliente: Si el error tiene un status code, lo
