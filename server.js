@@ -29,6 +29,11 @@ const {
   editUser,
 } = require('./controllers/users/index.js');
 
+//////////////////////////////////
+/// Controladores de Mensajes: ///
+//////////////////////////////////
+const { sendMessage } = require('./controllers/mensajes/index.js');
+
 /*
  **********************************
  ***Controladores de compras*******
@@ -98,7 +103,16 @@ app.put('/users/:idUser', authUser, userExists, editUser);
 
 //    · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA
 
-app.get('/product', categoryProduct);
+app.post('/product', categoryProduct);
+
+/**
+ *
+ * ****************************
+ * ** ENDPOINTS DE MENSAJES ***
+ * ****************************
+ */
+// Botón para enviar mensaje entre usuarios (mediante producto)
+app.post('/messages/:idProduct', sendMessage);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 

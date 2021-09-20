@@ -17,7 +17,10 @@
     · POST /users/:idUser -----> Botón editar Usuario
         · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA(enri)✅
 
-    17/9 -Siguientes Endpoints a desarrollar:
+    19/9 -Siguientes Endpoints a desarrollar:
+
+    	- GET /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje al destinatario.
+    			Método GET??? No sería mejor método POST para enviar????
 
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
