@@ -47,8 +47,11 @@ const { authUser, userExists } = require('./middlware/index.js');
 /////////////////////////////////////////////////////////////////////////////////
 // Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
 /////////////////////////////////////////////////////////////////////////////////
-const newProduct = require('./controllers/ventas/newProduct.js');
-const editProduct = require('./controllers/ventas/editProduct.js');
+const {
+  newProduct,
+  editProduct,
+  addPhotoProduct,
+} = require('./controllers/ventas/index.js');
 
 /////////////////////
 ///// ENDPOINTS /////
@@ -58,9 +61,11 @@ const editProduct = require('./controllers/ventas/editProduct.js');
 //      en la carpeta CONTROLLERS para hacer el código más limpio y organizado:
 
 // Endpoint para subir un producto:
-app.post('/sellretro', newProduct);
+app.post('/sellretro', authUser, newProduct);
 // Editar un producto
-app.put('/sellretro/:idProduct', editProduct);
+app.put('/sellretro/:idProduct', authUser, editProduct);
+//Agregar foto al producto
+app.post('/sellretro/:idProduct/photos', authUser, addPhotoProduct);
 
 /**
  *
