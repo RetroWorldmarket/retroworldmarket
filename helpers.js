@@ -16,6 +16,7 @@ const path = require('path');
 
 // Importamos las variables de .env
 require('dotenv').config();
+const { ensureDir, unlink } = require('fs-extra');
 
 //requerimos las variables del dontenv
 //sacamos las rutas del upload de .env q crearemos nosotros

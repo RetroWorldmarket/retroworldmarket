@@ -1,6 +1,8 @@
 require('dotenv').config();
 
 const express = require('express');
+//para que se puedan leer los archivos en express
+const fileUpload = require('express-fileupload');
 
 // Requerimos la dependencia morgan, que sirve, básicamente,  para registrar
 // los detalles de las solicitudes al servidor. Es un "Logger".
