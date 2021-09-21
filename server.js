@@ -89,8 +89,6 @@ app.delete('/sellretro/:idProduct', authUser, userCanEdit, deleteProduct);
 //venta de producto
 app.get('/sellretro/:idProduct', authUser, userCanEdit, sellRetro);
 
-app.get('sellretro/:idProduct', authUser, userCanEdit, sellRetro);
-
 /**
  *
  * ***********************
