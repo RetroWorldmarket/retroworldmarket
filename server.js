@@ -114,7 +114,7 @@ app.post('/product', categoryProduct);
  * ****************************
  */
 // Botón para enviar mensaje entre usuarios (mediante producto)
-app.post('/messages/:idProduct', sendMessage);
+app.post('/messages/:idProduct', authUser, sendMessage);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
