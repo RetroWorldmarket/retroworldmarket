@@ -98,6 +98,10 @@ app.put('/sellretro/:idProduct/reserved', authUser , userCanEdit , reservedProdu
 
 app.put('/sellretro/:idProduct/reserved', authUser , userCanEdit , reservedProduct);
 
+//Boton de reserva de producto
+
+app.put('/sellretro/:idProduct/reserved', authUser , userCanEdit , reservedProduct);
+
 /**
  *
  * ***********************
