@@ -37,7 +37,7 @@ const {
 //////////////////////////////////
 /// Controladores de Mensajes: ///
 //////////////////////////////////
-const { sendMessage } = require('./controllers/mensajes/index.js');
+const { sendMessage, getMessage } = require('./controllers/mensajes/index.js');
 
 /*
  **********************************
@@ -118,6 +118,9 @@ app.post('/product', categoryProduct);
  */
 // Botón para enviar mensaje entre usuarios (mediante producto)
 app.post('/messages/:idProduct', authUser, sendMessage);
+
+// Obtener los mensajes un usuario:
+app.get('/messages/list', authUser, getMessage);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 

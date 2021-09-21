@@ -6,6 +6,7 @@
 
     16/9 - Empezamos a desarrollar los Endpoints:
 
+    	· POST /users/:idUser -----> Botón editar Usuario ✅
     	· POST /users/ ----> Botón ENVIAR en Pop-Up CREAR USUARIO (Terminado) ✅
     	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado. ✅(terminado)
     	· POST /users/login -----> Botón ENVIAR. Hacer login y retornar token ✅
@@ -13,14 +14,15 @@
     	· userExist.js --> Middleware para comprobar que un usuario existe. ✅
     	· POST /sellretro/ ----> Botón PUBLICAR (Terminado) ✅
     	· POST /sellretro/:IDProduct -----> Botón EDITAR (Terminado) ✅
-    	· GET /users/:idUser -----> Obtener un usuario en concreto (Necesariamente esta función hay que hacerla antes de poder editar al usuario, lógicamente)✅
-    · POST /users/:idUser -----> Botón editar Usuario
+    	· GET /users/:idUser -----> Obtener un usuario en concreto (Necesariamente esta función hay 		que hacerla antes de poder editar al usuario, lógicamente)✅
+    	· POST /users/:idUser -----> Botón editar Usuario
         · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA(enri)✅
+    	- POST /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje al destinatario.✅
+
 
     19/9 -Siguientes Endpoints a desarrollar:
 
-    	- GET /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje al destinatario.
-    			Método GET??? No sería mejor método POST para enviar????
+    	· GET /menssages/:IDProduct -----> Botón "MOSTRAR mensajes" ALGO FALLA, REVISAR.
 
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
@@ -85,7 +87,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /users/:idUser -----> Botón editar Usuario
+✅ · POST /users/:idUser -----> Botón editar Usuario
 
     	CABECERA DE AUTORIZACIÓN :	SI
 
@@ -282,7 +284,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /messages/:IDProduct -----> Botón Mensaje con el Vendedor
+✅ · POST /messages/:IDProduct -----> Botón Mensaje con el Vendedor
 
     	CABECERA DE AUTORIZACIÓN : SI
 
