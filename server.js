@@ -88,7 +88,7 @@ app.post(
 //borrar producto
 app.delete('/sellretro/:idProduct', authUser, userCanEdit, deleteProduct);
 //venta de producto
-app.get('/sellretro/:idProduct', authUser, userCanEdit, sellRetro);
+app.put('/sellretro/:idProduct/sell/:idUser', authUser, userCanEdit, sellRetro);
 
 //Boton de reserva de producto
 

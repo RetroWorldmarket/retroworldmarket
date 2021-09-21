@@ -144,7 +144,7 @@ async function main() {
     // Creamos la tabla de HistorialProducts (idProducto, idUsers, datePublications, dateSoldProducts, dateDeletedProducts)
     await connection.query(`
             CREATE TABLE historialProducts (
-                id INT PRIMARY KEY,
+                id INT PRIMARY KEY AUTO_INCREMENT,
                 idProduct INT NOT NULL,
                 FOREIGN KEY (idProduct) REFERENCES products (id),
                 idUser INT NOT NULL,

@@ -18,7 +18,7 @@
     	· POST /users/:idUser -----> Botón editar Usuario
         · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA(enri)✅
     	- POST /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje al destinatario.✅
-
+    -boton de venta hecho get sellretro✅
 
     19/9 -Siguientes Endpoints a desarrollar:
 
@@ -26,6 +26,7 @@
     	- GET /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje al destinatario.
     			Método GET??? No sería mejor método POST para enviar????
     	-desarrollar boton de votos
+    	-MIDDLWARE de que exista el producto para el error de que no exista
 
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
@@ -39,6 +40,8 @@
 
 3.Pregunta para Berto o DAVID; ¿Hacer una barra de categorias se pide en el body o es cosa de la querystring?
 
+4.query string en venta de producto o params
+
 \***\*\*\*\*\*\*\***\*\*\*\***\*\*\*\*\*\*\***
 **\*PUNTOS POR TERMINAR\*\*\*\***
 
@@ -47,9 +50,9 @@
 1. Colocar el AuthUser en los endpoints
    ENDPOINTS DE USUARIOS:
 
-    ***
+   ***
 
-    ***
+   ***
 
 ✅ · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
 

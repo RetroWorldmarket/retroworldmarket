@@ -30,8 +30,11 @@ const newProduct = async (req, res, next) => {
 
     // Obtenemos del Body (lo que nos envía el cliente en la REQUEST) los valores que
     // necesitamos con destructuring:
+    const idUser = req.userAuth.id;
+
+    console.log(idUser);
+
     const {
-      idUser,
       nameProduct,
       brand,
       yearOfProduction,
@@ -44,7 +47,6 @@ const newProduct = async (req, res, next) => {
     // Para confirmar que el usuario nos dé todos los datos que le pedimos, vamos a
     // hacer que si faltan datos se lance un error y creamos el status del error:
     if (
-      !idUser ||
       !nameProduct ||
       !brand ||
       !yearOfProduction ||
@@ -113,8 +115,6 @@ const newProduct = async (req, res, next) => {
     });
   } catch (error) {
     next(error);
-
-    res.send(error.message);
   } finally {
     // Pase lo que pase con la función, debemos liberar la conexión establecida:
     if (connection) connection.release();
