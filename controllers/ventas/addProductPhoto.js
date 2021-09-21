@@ -1,6 +1,5 @@
 const getDB = require('../../ddbb/getDB');
-const guardarFoto = require('../../helpers.js');
-const formatDate = require('../../helpers.js');
+const { guardarFoto, formatDate } = require('../../helpers.js');
 
 const addPhotoProduct = async (req, res, next) => {
   let connection;
@@ -10,8 +9,6 @@ const addPhotoProduct = async (req, res, next) => {
 
     //obtenemos el id del producto
     const { idProduct } = req.params;
-
-    console.log(req.headers);
 
     //SIEMPRE DEBE HABER AL MENOS UNA FOTO, por lo tanto si no hay foto lanzamos error
     //miraremos siempre en la petición en add form data
@@ -61,7 +58,7 @@ const addPhotoProduct = async (req, res, next) => {
 
     await connection.query(
       `
-  INSERT INTO photos (namePhoto, idProduct, createdDate)
+  INSERT INTO photos (namePhoto, idProducts, createdDate)
   VALUES (?, ?, ?)
   `,
       [photoName, idProduct, formatDate(new Date())]

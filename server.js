@@ -15,6 +15,9 @@ const app = express();
 // Usamos morgan como "Logger":
 app.use(morgan('dev'));
 
+//usamos upload
+app.use(fileUpload());
+
 // La información de las Request nos llegan a través del Body y, necesariamente,
 // tenemos que ¡¡¡¡¡DESERIALIZARLO!!!!! Para ello usamos el método json de express:
 // ** (Como las peticiones vendrán en las líneas siguientes, ya estarán deserializadas.)
