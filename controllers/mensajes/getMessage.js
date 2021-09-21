@@ -1,9 +1,6 @@
 ////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////   En CONSTRUCCIÓN   /////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
-//  FALLOS:
-// - Nota 21/9 de Bernardo: No lee la función getMessage, aunque la ruta es correcta (a priori)
-//                          Carga los console.log de sendMessage.js, pero no los propios de getMessage
 
 const getDB = require('../../ddbb/getDB');
 
@@ -19,22 +16,25 @@ const getMessage = async (req, res, next) => {
 
     // Empezaremos por saber quén quiere obtener los mensajes:
     // Vamos a obtener ese idReqUser:
-    //const idReqUser = req.userAuth.id;
+    const idReqUser = req.userAuth.id;
 
-    // Para tests vamos a enviar el idUser por el body, a ver si lo lee y procesa la query:
-    const idUser = req.body;
+    const idProduct = req.params.idProduct;
 
-    // Comprobar:
-    console.log('idUser = ', idUser);
+    console.log('idProduct tiene : ', idProduct);
 
-    // Ahora le preguntamos a la BdD por los mensajes donde esté idUser como vendedor:
+    console.log('idReqUser tiene : ', idReqUser);
+
+    // Ahora le preguntamos a la BdD por los mensajes donde esté idReqUser como vendedor:
     const [data] = await connection.query(
       `
         SELECT * FROM messages
-        WHERE idOwner = ?
+        WHERE idUser = ? AND idProducts = ?
     `,
-      [idUser]
+      [idReqUser, idProduct]
     );
+    console.log('data tiene : ', data);
+
+    //
   } catch (error) {
     next(error);
   } finally {

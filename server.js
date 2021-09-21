@@ -126,7 +126,7 @@ app.post('/product', categoryProduct);
 app.post('/messages/:idProduct', authUser, sendMessage);
 
 // Obtener los mensajes un usuario:
-app.get('/messages/list', authUser, getMessage);
+app.get('/messages/list/:idProduct', authUser, getMessage);
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 
