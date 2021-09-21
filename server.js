@@ -92,15 +92,32 @@ app.get('/sellretro/:idProduct', authUser, userCanEdit, sellRetro);
 
 //Boton de reserva de producto
 
-app.put('/sellretro/:idProduct/reserved', authUser , userCanEdit , reservedProduct);
+app.put(
+  '/sellretro/:idProduct/reserved',
+  authUser,
+  userCanEdit,
+  reservedProduct
+);
 
 //Boton de reserva de producto
 
-app.put('/sellretro/:idProduct/reserved', authUser , userCanEdit , reservedProduct);
+app.put(
+  '/sellretro/:idProduct/reserved',
+  authUser,
+  userCanEdit,
+  reservedProduct
+);
 
 //Boton de reserva de producto
 
-app.put('/sellretro/:idProduct/reserved', authUser , userCanEdit , reservedProduct);
+app.put(
+  '/sellretro/:idProduct/reserved',
+  authUser,
+  userCanEdit,
+  reservedProduct
+);
+
+app.get('sellretro/:idProduct', authUser, userCanEdit, sellRetro);
 
 /**
  *
