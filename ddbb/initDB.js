@@ -12,11 +12,7 @@
 //
 // Está pendiente:
 //                  - Crear al menos un AVATAR por default
-//                  - Confirmar si tabla de Productos tiene productos dentro (Workbench)
 //
-// Creo que si no hay fallos hasta este punto podemos empezar con los Endpoints.
-//    Ya que tanto las fotos, como los mensajes y sala de chat, como los votos
-//    en principio van por body, igual me equivoco.
 //
 /////////////////////////////////////////////////////////////////////////////////////
 
@@ -234,7 +230,7 @@ async function main() {
       const nameProduct = faker.commerce.productName();
       const brand = faker.company.companyName();
       const yearOfProduction = Math.round(Math.random() * 50 + 1960);
-      ////////  Comprobar si funcionan STATUS y CATEGORY   /////////////////////////
+
       const arrayStatus = [
         'No funciona',
         'A veces falla',

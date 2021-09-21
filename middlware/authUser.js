@@ -26,6 +26,7 @@ const authUser = async (req, res, next) => {
     try {
       //Para que nos cree un token correcto le debemos pasar la cabecera de
       //autentificación y un número secreto que lo guadaremos en .env
+      // eslint-disable-next-line no-undef
       token = jwt.verify(authorization, process.env.SECRETO);
     } catch (_) {
       //este errror preguntarselo a david
