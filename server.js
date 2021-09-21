@@ -64,6 +64,7 @@ const {
   addPhotoProduct,
   deleteProduct,
   sellRetro,
+  reservedProduct,
 } = require('./controllers/ventas/index.js');
 
 /////////////////////
@@ -88,6 +89,14 @@ app.post(
 app.delete('/sellretro/:idProduct', authUser, userCanEdit, deleteProduct);
 //venta de producto
 app.get('/sellretro/:idProduct', authUser, userCanEdit, sellRetro);
+
+//Boton de reserva de producto
+
+app.put('/sellretro/:idProduct/reserved', authUser , userCanEdit , reservedProduct);
+
+//Boton de reserva de producto
+
+app.put('/sellretro/:idProduct/reserved', authUser , userCanEdit , reservedProduct);
 
 /**
  *
