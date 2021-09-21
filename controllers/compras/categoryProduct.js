@@ -35,6 +35,8 @@ const categoryProduct = async (req, res, next) => {
         AVG(IFNULL(idUser_votes.vote, 0)) AS votes
         FROM products, users 
         LEFT JOIN votes AS idUser_votes ON (users.id = idUser_votes.id)
+        WHERE products.active = true
+
        group by id
         ORDER BY products.yearOfProduction ASC 
         `
@@ -46,7 +48,7 @@ const categoryProduct = async (req, res, next) => {
         AVG(IFNULL(idUser_votes.vote, 0)) AS votes
         FROM products, users 
         LEFT JOIN votes AS idUser_votes ON (users.id = idUser_votes.id)
-        WHERE products.category = ?
+        WHERE products.category = ? AND products.active = true
        group by id
         ORDER BY products.yearOfProduction ASC 
     `,

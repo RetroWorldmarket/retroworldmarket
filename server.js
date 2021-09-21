@@ -28,11 +28,11 @@ app.use(express.json());
 /// Controladores de Usuarios: ///
 //////////////////////////////////
 const {
-    createUser,
-    validateUser,
-    login,
-    getUser,
-    editUser,
+  createUser,
+  validateUser,
+  login,
+  getUser,
+  editUser,
 } = require('./controllers/users/index.js');
 
 //////////////////////////////////
@@ -59,10 +59,11 @@ const { authUser, userExists, userCanEdit } = require('./middlware/index.js');
 // Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
 /////////////////////////////////////////////////////////////////////////////////
 const {
-    newProduct,
-    editProduct,
-    addPhotoProduct,
-    deleteProduct,
+  newProduct,
+  editProduct,
+  addPhotoProduct,
+  deleteProduct,
+  sellRetro,
 } = require('./controllers/ventas/index.js');
 
 /////////////////////
@@ -78,13 +79,15 @@ app.post('/sellretro', authUser, newProduct);
 app.put('/sellretro/:idProduct', authUser, editProduct);
 //Agregar foto al producto
 app.post(
-    '/sellretro/:idProduct/photos',
-    authUser,
-    userCanEdit,
-    addPhotoProduct
+  '/sellretro/:idProduct/photos',
+  authUser,
+  userCanEdit,
+  addPhotoProduct
 );
-
+//borrar producto
 app.delete('/sellretro/:idProduct', authUser, userCanEdit, deleteProduct);
+//venta de producto
+app.get('/sellretro/:idProduct', authUser, userCanEdit, sellRetro);
 
 /**
  *
@@ -140,28 +143,28 @@ app.get('/messages/list/:idProduct', authUser, getMessage);
 // Aquí llega si entra un "next(error)"
 // eslint-disable-next-line no-unused-vars
 app.use((error, req, res, next) => {
-    console.error(error);
-    // Definimos el status de la respuesta al cliente: Si el error tiene un status code, lo
-    // enviamos, sino le asignamos el code 500 (El servidor ha encontrado una situación que
-    // no sabe cómo manejarla.)
-    res.status(error.httpStatus || 500).send({
-        status: 'error',
-        message: error.message,
-    });
+  console.error(error);
+  // Definimos el status de la respuesta al cliente: Si el error tiene un status code, lo
+  // enviamos, sino le asignamos el code 500 (El servidor ha encontrado una situación que
+  // no sabe cómo manejarla.)
+  res.status(error.httpStatus || 500).send({
+    status: 'error',
+    message: error.message,
+  });
 });
 
 ///////////////////////////////
 /// Middleware de not found ///
 ///////////////////////////////
 app.use((req, res) => {
-    res.status(404).send({
-        estatus: 'error',
-        message: 'Not found',
-    });
+  res.status(404).send({
+    estatus: 'error',
+    message: 'Not found',
+  });
 });
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Función para poner a funcionar el servido en el puerto dado:
 app.listen(PORT, () => {
-    console.log(`Conectado al puerto: ${PORT}`);
+  console.log(`Conectado al puerto: ${PORT}`);
 });
