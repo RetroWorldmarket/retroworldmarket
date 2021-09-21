@@ -1,5 +1,8 @@
 const getDB = require('../../ddbb/getDB');
 
+// requerimo formatDate para establecer la fecha de creación del mensaje
+const { formatDate } = require('../../helpers');
+
 const sendMessage = async (req, res, next) => {
   let connection;
 
@@ -21,7 +24,7 @@ const sendMessage = async (req, res, next) => {
     // Empezaremos con idUser el que escribe el mensaje:
     // idUser ha pasado ya por authUser y tiene un idReqUser... Aunque en los tests aún no lo tiene
     // Vamos a obtener ese idReqUser:
-    // const idReqUser = req.userAuth.id;
+    const idReqUser = req.userAuth.id;
 
     // Necesitamos, también obtener el id del producto al que hace referencia:
     const idProduct = req.params.idProduct;
@@ -31,26 +34,25 @@ const sendMessage = async (req, res, next) => {
     const { text } = req.body;
 
     // Preguntarle a la Base de Datos Quién es el dueño del producto:
-    const [idOwner] = await connection.query(
+    const [owner] = await connection.query(
       `
         SELECT idUser FROM products WHERE id = ?
     `,
       [idProduct]
     );
 
+    idOwner = owner[0].idUser;
     console.log('idOwner = ', idOwner);
+    console.log('idReqUser = ', idReqUser);
 
-    // CREATE TABLE messages (
-    //     idProducts  INT NOT NULL,
-    //     FOREIGN KEY (idProducts) REFERENCES products(id),
-    //     idOwner INT NOT NULL,
-    //     FOREIGN KEY (IdUser) REFERENCES products (idUser),
-    //     idUser INT NOT NULL,
-    //     FOREIGN KEY (IdUser) REFERENCES users (id),
-    //     text VARCHAR(255),
-    //     idmessage INT PRIMARY KEY AUTO_INCREMENT,
-    //     createdDateMessage DATETIME NOT NULL
-    //   )
+    // Por último enviamos el mensaje a la base de datos:
+    await connection.query(
+      `
+      INSERT INTO messages (idProducts, idOwner, idUser, text, createdDateMessage)
+      VALUES(?, ?, ?, ?, ?)
+    `,
+      [idProduct, idOwner, idReqUser, text, formatDate(new Date())]
+    );
 
     res.send({
       status: 'ok',
