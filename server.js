@@ -52,7 +52,7 @@ const { categoryProduct } = require('./controllers/compras/index.js');
  * *****************
  */
 
-const { authUser, userExists } = require('./middlware/index.js');
+const { authUser, userExists, userCanEdit } = require('./middlware/index.js');
 
 /////////////////////////////////////////////////////////////////////////////////
 // Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
@@ -75,7 +75,12 @@ app.post('/sellretro', authUser, newProduct);
 // Editar un producto
 app.put('/sellretro/:idProduct', authUser, editProduct);
 //Agregar foto al producto
-app.post('/sellretro/:idProduct/photos', authUser, addPhotoProduct);
+app.post(
+  '/sellretro/:idProduct/photos',
+  authUser,
+  userCanEdit,
+  addPhotoProduct
+);
 
 /**
  *

@@ -36,6 +36,15 @@ const getUser = async (req, res, next) => {
       [idUser]
     );
 
+    const [products] = await connection.query(
+      `
+    
+    SELECT nameProduct, brand, description, price FROM products
+    WHERE idUser = ?
+    `,
+      [idUser]
+    );
+
     // Ahora hay solo dos opciones: que el usuario sea el dueño de idUser y quiera ver
     // su perfíl (le daremos casi toda su información), o que no lo sea y quiera ver el
     // perfíl de otro usuario (le daremos información básica del otro usuario).
@@ -65,6 +74,7 @@ const getUser = async (req, res, next) => {
     res.send({
       status: 'Ok',
       userInfo,
+      products,
     });
   } catch (error) {
     next(error);
