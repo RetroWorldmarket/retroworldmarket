@@ -23,6 +23,9 @@
     19/9 -Siguientes Endpoints a desarrollar:
 
     	· GET /menssages/:IDProduct -----> Botón "MOSTRAR mensajes" ALGO FALLA, REVISAR.
+    	- GET /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje al destinatario.
+    			Método GET??? No sería mejor método POST para enviar????
+    	-desarrollar boton de votos
 
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
@@ -44,9 +47,9 @@
 1. Colocar el AuthUser en los endpoints
    ENDPOINTS DE USUARIOS:
 
-   ***
+    ***
 
-   ***
+    ***
 
 ✅ · POST /users -----> Pop-Up REGISTRO. Botón ENVIAR. Crea un usuario pendiente de activar.
 
@@ -162,6 +165,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
+ana
 
     · GET /products/:IDProduct -----> Botón Solicitud de Reserva de Producto.
 
@@ -194,7 +198,8 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-
+hecho jaime
+✅
 
     · DELETE /sellretro/:IDProduct -----> Botón Eliminar Retro
 
@@ -239,7 +244,8 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · GET /sellretro/:IDProduct -----> Botón RETRO VENDIDO
+enrique
+· GET /sellretro/:IDProduct -----> Botón RETRO VENDIDO
 
     	CABECERA DE AUTORIZACIÓN : SI
 
