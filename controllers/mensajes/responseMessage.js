@@ -1,7 +1,3 @@
-///////////////////////////////////////////////////////////////////////////
-////////////////////////// EN CONSTRUCCIÓN ////////////////////////////////
-///////////////////////////////////////////////////////////////////////////
-
 const getDB = require('../../ddbb/getDB');
 
 // Importamos la función que hicimos para formatear fechas desde helpers.js:
@@ -20,32 +16,43 @@ const responseMessage = async (req, res, next) => {
 
     // Quién envió??? --> idReqUser(comprador) a idOwner(dueño) A TRAVÉS DEL PRODUCTO
 
+    // Empezaremos por saber quién quiere obtener los mensajes:
+    // Vamos a obtener ese idReqUser:
+    const idReqUser = req.userAuth.id;
+
     // Necesitamos obtener el id del producto al que se hace referencia:
     const idProduct = req.params.idProduct;
 
-    // Empezaremos por hacer la consulta a la base de datos preguntando por ese producto en concreto:
+    // Ahora le preguntamos a la BdD por los mensajes donde estén idReqUser
+    // (como comprador o vendedor) y el producto en cuestión:
     const [data] = await connection.query(
       `
-        SELECT * FROM messages WHERE idProducts = ?
-        `,
-      [idProduct]
+        SELECT * FROM messages
+        WHERE idOwner = ? OR idUser = ? AND idProducts = ?
+    `,
+      [idReqUser, idReqUser, idProduct]
     );
-    console.log(data);
 
-    // Extraemos todos los datos que nos interesan de la respuesta de la BdD:
-    const idOwner = data[0].idOwner;
-    const idUser = data[0].idUser;
-    const idMessage = data[0].idmessage;
+    // Si no tenemos respuesta de la BdD o está vacía, es porque no hubo mensaje
+    // previo, y no queremos eso, así que lanzamos un error 409 (Conflict)
+    if (!data) {
+      const error = new Error('Aún no hay mensajes para contestar');
+      error.httpStatus = 409;
+      throw error;
+    }
 
-    // Establecemos la fecha actual, para pasarle la fecha de creación del mensaje:
-    const createdDateMessage = formatDate(new Date());
+    ////////////////////////////////
+    /// PREPARANDO EL MENSAJE... ///
+    ////////////////////////////////
 
     // Ahora necesitamos el mensaje que ha enviado en el body:
     const { text } = req.body;
 
-    //////////////////////
-    /// Comprobaciones ///
-    //////////////////////
+    // Declaramos las variables de manera global para poder acceder a ellas más adelante
+    const idOwner = data[0].idOwner;
+    const idUser = data[0].idUser;
+    let emisor;
+    let receptor;
 
     // Comprobaremos que el nadie se envíe mensajes a sí mismo:
     // Si fuera así, lanzaríamos un error 409 (conflict)
@@ -57,36 +64,45 @@ const responseMessage = async (req, res, next) => {
       throw error;
     }
 
-    // Comprobaremos que el mensaje es una respuesta a un mensaje anterior al vendedor:
-    if (idMessage.length < 1 || !idOwner) {
-      const error = new Error(
-        'Tiene que esperar a que los interesados le escriban para responderle'
-      );
+    // Vamos a definir quién envía el mensaje y quién lo recibe y si hay conflicto
+    // lanzamos un error:
+    if (idReqUser === idOwner) {
+      emisor = idReqUser;
+      receptor = idUser;
+    } else if (idReqUser === idUser) {
+      receptor = idReqUser;
+      emisor = idUser;
+    } else {
+      const error = new Error('Usuario no autorizado');
       error.httpStatus = 409;
       throw error;
     }
 
-    // Solo si hubo un mensaje previo al vendedor, este puede contestar
-    if (idMessage.length > 0) {
-      await connection.query(
-        `
-              INSERT INTO messages (idProducts, idOwner, idUser, text, createdDateMessage)
-              VALUES (?, ?, ?, ?, ?)
-          `,
-        [idProduct, idOwner, idUser, text, createdDateMessage]
-      );
-    }
+    // Si todo ha ido bien, enviamos en mensaje a la base de datos:
+    await connection.query(
+      `
+      INSERT INTO messages (idProducts, idOwner, idUser, text, emisor, receptor, createdDateMessage)
+      VALUES(?, ?, ?, ?, ?, ?, ?)
+    `,
+      [
+        idProduct,
+        idOwner,
+        idUser,
+        text,
+        emisor,
+        receptor,
+        formatDate(new Date()),
+      ]
+    );
 
-    // // Empezaremos con idUser el que escribe el mensaje:
-    // // idUser ha pasado ya por authUser y tiene un idReqUser... Aunque en los tests aún no lo tiene
-
-    // // Guardamos la autorización en una constante. La autorización viene del middleware authUser.js
-    // // Este es el usuario que hace la request
-    // const idReqUser = req.userAuth.id;
+    //////////////////////////////////////////////////////////////////////////
 
     res.send({
       status: 'ok',
       text: text,
+      emisor: emisor,
+      receptor: receptor,
+      product: idProduct,
     });
   } catch (error) {
     next(error);

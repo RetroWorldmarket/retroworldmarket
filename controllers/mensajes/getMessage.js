@@ -14,27 +14,27 @@ const getMessage = async (req, res, next) => {
   try {
     connection = await getDB();
 
-    // Empezaremos por saber quén quiere obtener los mensajes:
+    // Empezaremos por saber quién quiere obtener los mensajes:
     // Vamos a obtener ese idReqUser:
     const idReqUser = req.userAuth.id;
 
     const idProduct = req.params.idProduct;
 
-    console.log('idProduct tiene : ', idProduct);
-
-    console.log('idReqUser tiene : ', idReqUser);
-
-    // Ahora le preguntamos a la BdD por los mensajes donde esté idReqUser como vendedor:
+    // Ahora le preguntamos a la BdD por los mensajes donde estén idReqUser
+    // (como comprador o vendedor) y el producto en cuestión:
     const [data] = await connection.query(
       `
         SELECT * FROM messages
-        WHERE idUser = ? AND idProducts = ?
+        WHERE idOwner = ? OR idUser = ? AND idProducts = ?
     `,
-      [idReqUser, idProduct]
+      [idReqUser, idReqUser, idProduct]
     );
     console.log('data tiene : ', data);
 
-    //
+    res.send({
+      status: 'ok',
+      data: data,
+    });
   } catch (error) {
     next(error);
   } finally {

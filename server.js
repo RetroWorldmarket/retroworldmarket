@@ -38,7 +38,11 @@ const {
 //////////////////////////////////
 /// Controladores de Mensajes: ///
 //////////////////////////////////
-const { sendMessage, getMessage } = require('./controllers/mensajes/index.js');
+const {
+  sendMessage,
+  getMessage,
+  responseMessage,
+} = require('./controllers/mensajes/index.js');
 
 /*
  **********************************
@@ -158,8 +162,11 @@ app.post('/product', categoryProduct);
  * ** ENDPOINTS DE MENSAJES ***
  * ****************************
  */
-// Botón para enviar mensaje entre usuarios (mediante producto)
+// Botón para enviar mensaje al vendedor (mediante producto)
 app.post('/messages/:idProduct', authUser, sendMessage);
+
+// Botón ENVIAR para contestar mensajes (mediante producto)
+app.post('/messages/chat/:idProduct', authUser, responseMessage);
 
 // Obtener los mensajes un usuario:
 app.get('/messages/list/:idProduct', authUser, getMessage);
