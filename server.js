@@ -57,7 +57,12 @@ const { categoryProduct } = require('./controllers/compras/index.js');
  * *****************
  */
 
-const { authUser, userExists, userCanEdit } = require('./middlware/index.js');
+const {
+  authUser,
+  userExists,
+  userCanEdit,
+  productExist,
+} = require('./middlware/index.js');
 
 /////////////////////////////////////////////////////////////////////////////////
 // Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
@@ -82,18 +87,41 @@ const {
 // Endpoint para subir un producto:
 app.post('/sellretro', authUser, newProduct);
 // Editar un producto
-app.put('/sellretro/:idProduct', authUser, editProduct);
+app.put(
+  '/sellretro/:idProduct',
+  authUser,
+  productExist,
+  userCanEdit,
+  editProduct
+);
 //Agregar foto al producto
 app.post(
   '/sellretro/:idProduct/photos',
   authUser,
   userCanEdit,
+  productExist,
   addPhotoProduct
 );
 //borrar producto
-app.delete('/sellretro/:idProduct', authUser, userCanEdit, deleteProduct);
+app.delete(
+  '/sellretro/:idProduct',
+  authUser,
+  userCanEdit,
+  productExist,
+  deleteProduct
+);
+
+app.get('sellretro/:idProduct', authUser, userCanEdit, sellRetro);
+
+app.post('/sellretro/reqReserve/:idProduct', authUser, requestReserve);
 //venta de producto
-app.put('/sellretro/:idProduct/sell/:idUser', authUser, userCanEdit, sellRetro);
+app.put(
+  '/sellretro/:idProduct/sell/:idUser',
+  authUser,
+  userCanEdit,
+  productExist,
+  sellRetro
+);
 
 //Boton de reserva de producto
 
@@ -101,12 +129,9 @@ app.put(
   '/sellretro/:idProduct/reserved',
   authUser,
   userCanEdit,
+  productExist,
   reservedProduct
 );
-
-app.get('sellretro/:idProduct', authUser, userCanEdit, sellRetro);
-
-app.post('/sellretro/reqReserve/:idProduct', authUser, requestReserve);
 
 /**
  *

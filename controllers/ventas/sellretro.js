@@ -8,6 +8,7 @@ const sellRetro = async (req, res, next) => {
     connection = await getDB();
 
     const { idProduct, idUser } = req.params;
+    console.log(typeof idProduct, typeof idUser);
 
     const [sold] = await connection.query(
       `
@@ -16,7 +17,7 @@ const sellRetro = async (req, res, next) => {
       [Number(idProduct)]
     );
 
-    console.log(sold[0].sold);
+    console.log(sold);
     if (sold[0].sold === 1 || sold[0].reserved === 0) {
       const error = new Error(
         'El producto no está reservado previamente. O no se puede vender dos veces'
