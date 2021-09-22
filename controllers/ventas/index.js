@@ -4,6 +4,7 @@ const newProduct = require('./newProduct');
 const deleteProduct = require('./deleteProduct');
 const sellRetro = require('./sellretro');
 const reservedProduct = require('./reservedRetro');
+const requestReserve = require('./requestReserve');
 
 module.exports = {
   addPhotoProduct,
@@ -12,4 +13,5 @@ module.exports = {
   deleteProduct,
   sellRetro,
   reservedProduct,
+  requestReserve,
 };
