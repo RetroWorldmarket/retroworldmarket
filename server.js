@@ -90,7 +90,6 @@ app.post('/sellretro', authUser, newProduct);
 app.put(
   '/sellretro/:idProduct',
   authUser,
-  productExist,
   userCanEdit,
   editProduct
 );
@@ -99,7 +98,6 @@ app.post(
   '/sellretro/:idProduct/photos',
   authUser,
   userCanEdit,
-  productExist,
   addPhotoProduct
 );
 //borrar producto
@@ -107,7 +105,6 @@ app.delete(
   '/sellretro/:idProduct',
   authUser,
   userCanEdit,
-  productExist,
   deleteProduct
 );
 
@@ -119,7 +116,6 @@ app.put(
   '/sellretro/:idProduct/sell/:idUser',
   authUser,
   userCanEdit,
-  productExist,
   sellRetro
 );
 
@@ -129,7 +125,6 @@ app.put(
   '/sellretro/:idProduct/reserved',
   authUser,
   userCanEdit,
-  productExist,
   reservedProduct
 );
 

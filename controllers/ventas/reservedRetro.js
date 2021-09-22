@@ -11,19 +11,11 @@ const reservedProduct = async (req, res, next) => {
 
   try {
     connection = await getDB();
-      console.log(req.params)
+      
     // Obtenemos el id del producto
-    const { idProduct } = req.params;
+    const  {idProduct} = req.params;
 
   
-
-    //Estado de un producto
-    const estadosProductos =[
-
-      'activo',
-      'sold',
-      'reservado'
-    ]
     //comprobamos que el producto existe en la base de datos, sino existe lanzamos error el producto no fue encontrado
 
     const [product] = await connection.query(
@@ -31,9 +23,8 @@ const reservedProduct = async (req, res, next) => {
         SELECT * FROM products WHERE id = ?`,
       [idProduct]
     );
-
-    console.log(product)
-
+      
+    
     if (product.length < 1) {
       const error = new Error('El producto no fue encontrado');
       error.httpStatus = 400;
@@ -41,13 +32,13 @@ const reservedProduct = async (req, res, next) => {
     }
 
       // el prodcuto ya fue reservado
-      if (idProduct[0].reserved===1) { 
+      if (product[0].reserved === 1) { 
         
-        const error = new Error('El producto ya fue reservado');
+        const error = new Error('El producto ya fué reservado');
         error.httpStatus= 400;
         throw error;
       }
-    console.log(idProduct[0].reserved)
+    
     //
     
     

@@ -13,7 +13,8 @@
 const getDB = require('../../ddbb/getDB');
 
 // Traemos la función formatDate creada en helpers para establecer la fecha de modificación:
-const { formatDate } = require('../../helpers.js');
+const { formatDate , generateCryptoString,guardarFoto,borrarFoto} = require('../../helpers.js');
+const { deletePhoto } = require('../ventas');
 
 const editUser = async (req, res, next) => {
   let connection;
@@ -39,21 +40,14 @@ const editUser = async (req, res, next) => {
     // Es decir, el usuario ya está autorizado (esa es la diferencia entre idUser y idReqUser)
     const idReqUser = req.userAuth.id;
 
-    // Comprobamos el tipo de dato que teine idReqUser
-    console.log('Este es el idReqUser: ', typeof idReqUser, idReqUser);
+    
 
     // Ahora bien, vamos pedirle al body de la request todos los campos que podemos modificar:
     const { name, email, alias, location, province, postalCode } = req.body;
 
-    console.log('En la línea 46 req.body tiene :', req.body);
+    
 
-    // Test Bernardo 18/9:
-    console.log('name = ', name);
-    console.log('email = ', email);
-    console.log('alias = ', alias);
-    console.log('location = ', location);
-    console.log('province = ', province);
-    console.log('postalCode = ', postalCode);
+
 
     // Si en el paso anterior no nos llega NINGÚN dato, lanzamos un error (no se puede
     // modificar lo que no tenemos, no?):
@@ -196,7 +190,32 @@ const editUser = async (req, res, next) => {
       `,
         [postalCode, modifiedDate, idUser]
       );
+
+     
+      
     }
+     /////////////////////////
+      /// Obtenemos el avatar////
+      //////////////////////////
+    //Comprobamos tiene un avatar previo
+    if (req.files && req.files.avatar) {
+
+      if( idUser[0].avatar) await borrarFoto( idUser[0].avatar)
+
+      const nombreAvatar = await guardarFoto (req.files.avatar)
+
+      await connection.query(`
+        UPDATE users SET avatar = ? , modifiedDate = ? WHERE  id = ?,
+
+        
+      `
+      [ nombreAvatar , modifiedDate, idUser]
+      );
+
+
+    }
+
+  
 
     // Por último enviamos la respuesta al usuario:
     res.send({
