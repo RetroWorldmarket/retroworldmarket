@@ -128,7 +128,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA
+✅ · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA
 
     	CABECERA DE AUTORIZACIÓN :	NO
 
@@ -151,8 +151,7 @@
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-
-    · GET /products/:IDCategories/ -----> Obtener productos filtrados por precios, ubicacion, etc..
+✅ · GET /products/:IDCategories/ -----> Obtener productos filtrados por precios, ubicacion, etc..
 
     	CABECERA DE AUTORIZACIÓN : NO
 
@@ -170,7 +169,7 @@
 
 ana
 
-    · GET /products/:IDProduct -----> Botón Solicitud de Reserva de Producto.
+✅ · GET /products/:IDProduct -----> Botón Solicitud de Reserva de Producto.
 
     	CABECERA DE AUTORIZACIÓN : SI
 
@@ -181,21 +180,6 @@ ana
 
 
     -------------------------------------------------------------------------------------------------------------------------------
-
-    · GET /products/:IDProduct -----> Botón Cancelar Solicitud (de Reserva de Producto).
-
-    	CABECERA DE AUTORIZACIÓN : SI
-
-    	QueryParams :   · IDProduct
-
-    	QUÉ RETORNA? :	Mensaje de "Solicitud de Reserva CANCELADA Correctamente"
-
-
-
-    -------------------------------------------------------------------------------------------------------------------------------
-
-
-
 
     ENDPOINTS DE VENTA:
 
@@ -248,7 +232,7 @@ hecho jaime
     -------------------------------------------------------------------------------------------------------------------------------
 
 enrique
-· GET /sellretro/:IDProduct -----> Botón RETRO VENDIDO
+✅· GET /sellretro/:IDProduct -----> Botón RETRO VENDIDO
 
     	CABECERA DE AUTORIZACIÓN : SI
 
@@ -263,7 +247,7 @@ enrique
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · GET /menssages/:IDProduct -----> Botón "MOSTRAR mensajes"
+✅ · GET /menssages/:IDProduct -----> Botón "MOSTRAR mensajes"
 
     	CABECERA DE AUTORIZACIÓN : SI
 
@@ -273,17 +257,7 @@ enrique
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · GET /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje al destinatario.
-
-    	CABECERA DE AUTORIZACIÓN : SI
-
-    	QueryParam :    · IDProduct
-
-    	QUÉ RETORNA? :
-
-    -------------------------------------------------------------------------------------------------------------------------------
-
-    · GET /messages/:IDProduct -----> Botón
+✅ · GET /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje.
 
     	CABECERA DE AUTORIZACIÓN : SI
 
@@ -307,7 +281,7 @@ enrique
 
     -------------------------------------------------------------------------------------------------------------------------------
 
-    · POST /messages/:IDProduct -----> Botón ACEPTAR RESERVA
+✅ · POST /messages/:IDProduct -----> Botón ACEPTAR RESERVA
 
     	CABECERA DE AUTORIZACIÓN : SI
 

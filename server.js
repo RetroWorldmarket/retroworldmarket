@@ -52,6 +52,13 @@ const {
 
 const { categoryProduct } = require('./controllers/compras/index.js');
 
+/*
+ ***********************************
+ ***Controladores de busqueda*******
+ ***********************************
+ */
+const { search } = require('./controllers/compras/index.js');
+
 /*******************
  * ***MIDDLEWARES***
  * *****************
@@ -62,6 +69,7 @@ const {
   userExists,
   userCanEdit,
   productExist,
+  productActive,
 } = require('./middlware/index.js');
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -75,6 +83,7 @@ const {
   sellRetro,
   reservedProduct,
   requestReserve,
+  rejectReserve,
 } = require('./controllers/ventas/index.js');
 
 /////////////////////
@@ -110,7 +119,22 @@ app.delete(
 
 app.get('sellretro/:idProduct', authUser, userCanEdit, sellRetro);
 
-app.post('/sellretro/reqReserve/:idProduct', authUser, requestReserve);
+// Solicitud de reserva de producto al vendedor
+app.post(
+  '/sellretro/reqReserve/:idProduct',
+  authUser,
+  productActive,
+  requestReserve
+);
+
+// Rechazar la solicitud de reserva del producto (por el vendedor)
+app.post(
+  '/sellretro/reject/:idProduct',
+  authUser,
+  productActive,
+  rejectReserve
+);
+
 //venta de producto
 app.put(
   '/sellretro/:idProduct/sell/:idUser',
@@ -151,14 +175,15 @@ app.get('/users/:idUser', userExists, authUser, getUser);
 app.put('/users/:idUser', authUser, userExists, editUser);
 
 /*
-************************
-***BARRAS DE BÚSQUEDA***
-************************
+ ************************
+ ***BARRAS DE BÚSQUEDA***
+ ************************
+ */
 
-*/
+// Barra de busqueda
+app.get('/search', search);
 
 //    · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA
-
 app.post('/product', categoryProduct);
 
 /**

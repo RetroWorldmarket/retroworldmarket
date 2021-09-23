@@ -2,7 +2,6 @@
 // Faltaría:
 //            - Si se modifica el email, enviar un nuevo correo de verificación ( con todo lo que
 //              ello implica)
-//            - AGREGAR el AVATAR
 //            - Para modificar el PASSWORD haremos un CONTROLADOR EXCLUSIVO para eso.
 //
 //
@@ -30,11 +29,6 @@ const editUser = async (req, res, next) => {
 
     // Comprobamos el tipo de dato que teine idUser
     console.log('Este es el idUser: ', typeof idUser, idUser);
-
-    /////////////////////////////////////////////////////////////////////////////////////////
-    ///   AQUÍ TENEMOS UNA DUDA ANOTADA: POR QUÉ el .id de req.userAuth para recoger el   ///
-    ///   id del usuario. Es imprescindible??? Cómo funciona realmente??                  ///
-    /////////////////////////////////////////////////////////////////////////////////////////
 
     // Declarar la autorización en una constante. La autorización viene del middleware authUser.js
     // Es decir, el usuario ya está autorizado (esa es la diferencia entre idUser y idReqUser)
