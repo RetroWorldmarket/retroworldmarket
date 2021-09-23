@@ -10,7 +10,7 @@ const deleteProduct = async (req, res, next) => {
     try {
         connection = await getDB();
 
-        //obtenemos el idProducts a eliminar
+        //obtenemos el idProduct a eliminar
         const { idProduct } = req.params;
 
         //comprobamos que el idProduct exista
