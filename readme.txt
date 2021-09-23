@@ -4,8 +4,12 @@
   !!! FALTA REVISAR LA QUERY PARA EL JOIN CON PROVINCE
  -✅ Compras/ Faltan 2 barra de busqueda por hacer. (Ordenar productos por: Precio, Estado, Ubicación)
 
+<<<<<<< HEAD
  - Producto/ Botón CANCELAR RESERVA de producto.
  - Producto/ Botón CANCELAR SOLICITUD de RESERVA --> Realmente es imprescindible este botón??
+=======
+ -✅ Producto/ Botón RECHAZAR RESERVA de producto.
+>>>>>>> 60f5b6976efe67e888d029bb5ed8fbaefa564cad
  -✅ Producto/ Botón ACEPTAR (ANA)
  -✅ Producto/ Botón solicitud de reserva de producto
 

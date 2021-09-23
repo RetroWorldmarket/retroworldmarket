@@ -27,28 +27,28 @@ const { formatDate } = require('../helpers.js');
 
 // Crear la función principal donde se crearán las tablas:
 async function main() {
-  // Establecer la conexión con la Base de Datos:
-  let connection;
-  try {
-    connection = await getDB();
+    // Establecer la conexión con la Base de Datos:
+    let connection;
+    try {
+        connection = await getDB();
 
-    //////////////////////////
-    /// Creación de Tablas ///
-    //////////////////////////
+        //////////////////////////
+        /// Creación de Tablas ///
+        //////////////////////////
 
-    //Eliminamos tablas si existen
+        //Eliminamos tablas si existen
 
-    await connection.query('DROP TABLE IF EXISTS historialProducts');
-    await connection.query('DROP TABLE IF EXISTS votes');
-    await connection.query('DROP TABLE IF EXISTS messages');
-    await connection.query('DROP TABLE IF EXISTS photos');
-    await connection.query('DROP TABLE IF EXISTS products');
-    await connection.query('DROP TABLE IF EXISTS users');
+        await connection.query('DROP TABLE IF EXISTS historialProducts');
+        await connection.query('DROP TABLE IF EXISTS votes');
+        await connection.query('DROP TABLE IF EXISTS messages');
+        await connection.query('DROP TABLE IF EXISTS photos');
+        await connection.query('DROP TABLE IF EXISTS products');
+        await connection.query('DROP TABLE IF EXISTS users');
 
-    console.log('Tablas anteriores eliminadas correctamente');
+        console.log('Tablas anteriores eliminadas correctamente');
 
-    // Crear la tabla de USUARIOS con las respectivas columnas (location = localidad):
-    await connection.query(`
+        // Crear la tabla de USUARIOS con las respectivas columnas (location = localidad):
+        await connection.query(`
             CREATE TABLE users (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 name VARCHAR(50) NOT NULL,
@@ -69,10 +69,10 @@ async function main() {
             )
     `);
 
-    console.log('Tabla usuarios creada correctamente');
-    // Creamos la tabla de PRODUCTOS (brand = Marca; yearOfProduction = Año de Fabricación;
-    // status = Estado de funcionamiento; MEDIUMINT = Nº entre 0 y 16.777.215)
-    await connection.query(`
+        console.log('Tabla usuarios creada correctamente');
+        // Creamos la tabla de PRODUCTOS (brand = Marca; yearOfProduction = Año de Fabricación;
+        // status = Estado de funcionamiento; MEDIUMINT = Nº entre 0 y 16.777.215)
+        await connection.query(`
             CREATE TABLE products (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 idUser INT NOT NULL,
@@ -96,27 +96,27 @@ async function main() {
             )
     `);
 
-    console.log('Tabla productos creada correctamente');
+        console.log('Tabla productos creada correctamente');
 
-    // Creamos la tabla de Photos (idphoto, idProducts, idUsers, datePublications)
-    await connection.query(`
+        // Creamos la tabla de Photos (idphoto, idProduct, idUser, datePublications)
+        await connection.query(`
             CREATE TABLE photos (
                 id INT PRIMARY KEY AUTO_INCREMENT,
-                idProducts INT NOT NULL,
-                FOREIGN KEY (idProducts) REFERENCES products(id),
+                idProduct INT NOT NULL,
+                FOREIGN KEY (idProduct) REFERENCES products(id),
                 namePhoto VARCHAR(50) NOT NULL,
                 createdDate DATETIME NOT NULL
             )
     `);
 
-    console.log('Tabla fotos creada correctamente');
+        console.log('Tabla fotos creada correctamente');
 
-    //Creamos la tabla de mensajes entre usuarios
+        //Creamos la tabla de mensajes entre usuarios
 
-    await connection.query(`
+        await connection.query(`
               CREATE TABLE messages (
-                idProducts  INT NOT NULL,
-                FOREIGN KEY (idProducts) REFERENCES products(id),
+                idProduct  INT NOT NULL,
+                FOREIGN KEY (idProduct) REFERENCES products(id),
                 idOwner INT NOT NULL,
                 FOREIGN KEY (IdUser) REFERENCES products (idUser),
                 emisor INT NOT NULL,
@@ -131,22 +131,23 @@ async function main() {
               )
     `);
 
-    console.log('Tabla mensajes creada correctamente');
+        console.log('Tabla mensajes creada correctamente');
 
-    // Creamos la Tabla de Votos de los Vendedores (FALTARÍA EL ID DEL DUEÑO DEL PRODUCTO, es decir, a quién vota??):
-    await connection.query(`
+        // Creamos la Tabla de Votos de los Vendedores (FALTARÍA EL ID DEL DUEÑO DEL PRODUCTO, es decir, a quién vota??):
+        await connection.query(`
               CREATE TABLE votes (
                 id INT PRIMARY KEY AUTO_INCREMENT,
-                idUsers INT NOT NULL,
-                FOREIGN KEY (idUsers) REFERENCES users (id) ON DELETE CASCADE,
+                idUser INT NOT NULL,
+                FOREIGN KEY (idUser) REFERENCES users (id) ON DELETE CASCADE,
                 vote ENUM('1','2', '3', '4', '5'),
                 idproduct INT NOT NULL,
-                FOREIGN KEY (idproduct) REFERENCES products (id) ON DELETE CASCADE
+                FOREIGN KEY (idproduct) REFERENCES products (id) ON DELETE CASCADE,
+                createdAt DATETIME NOT NULL
               )
     `);
-    console.log('Tabla de Votos de Vendedores creada correctamente');
-    // Creamos la tabla de HistorialProducts (idProducto, idUsers, datePublications, dateSoldProducts, dateDeletedProducts)
-    await connection.query(`
+        console.log('Tabla de Votos de Vendedores creada correctamente');
+        // Creamos la tabla de HistorialProducts (idProducto, idUser, datePublications, dateSoldProducts, dateDeletedProducts)
+        await connection.query(`
             CREATE TABLE historialProducts (
                 id INT PRIMARY KEY AUTO_INCREMENT,
                 idProduct INT NOT NULL,
@@ -156,13 +157,13 @@ async function main() {
                 dateSoldProduct DATETIME
             )
     `);
-    console.log('Tabla de Historial de productos Creada correctamente');
+        console.log('Tabla de Historial de productos Creada correctamente');
 
-    ///////////////////////////////////////
-    ///Creamos usuarios administradores///
-    /////////////////////////////////////
+        ///////////////////////////////////////
+        ///Creamos usuarios administradores///
+        /////////////////////////////////////
 
-    await connection.query(`
+        await connection.query(`
     INSERT INTO users (name, alias, email, password, location, province, postalCode, rol, active, deleted, createdDate)
     VALUES (
       "retroworldmarket",
@@ -179,33 +180,35 @@ async function main() {
       )
      
     `);
-    console.log('Usuario Administrador creado correctamente en Tabla usuarios');
+        console.log(
+            'Usuario Administrador creado correctamente en Tabla usuarios'
+        );
 
-    ///////////////////////////////////////////////////////////////////////////
-    /////////////// Insertar Datos en las Tablas, con Faker ///////////////////
-    ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////
+        /////////////// Insertar Datos en las Tablas, con Faker ///////////////////
+        ///////////////////////////////////////////////////////////////////////////
 
-    /////////////////////////
-    /// Tabla de Usuarios ///
-    /////////////////////////
+        /////////////////////////
+        /// Tabla de Usuarios ///
+        /////////////////////////
 
-    // Declaramos una variable con el Nº de usuarios que queremos introducir:
-    const USERS = 10;
+        // Declaramos una variable con el Nº de usuarios que queremos introducir:
+        const USERS = 10;
 
-    // Insertamos los usuarios con un bucle for:
-    for (let i = 0; i < USERS; i++) {
-      // Pedirle datos concretos de los usuarios usando los métodos de la API Faker, almacenarlos en variables:
-      //falta avatar que lo crearemos manualmente
-      const name = faker.name.findName();
-      const alias = faker.internet.userName();
-      const email = faker.internet.email();
-      const password = faker.internet.password();
-      const location = faker.address.city();
-      const province = faker.address.state();
-      const postalCode = faker.address.zipCode('#####');
+        // Insertamos los usuarios con un bucle for:
+        for (let i = 0; i < USERS; i++) {
+            // Pedirle datos concretos de los usuarios usando los métodos de la API Faker, almacenarlos en variables:
+            //falta avatar que lo crearemos manualmente
+            const name = faker.name.findName();
+            const alias = faker.internet.userName();
+            const email = faker.internet.email();
+            const password = faker.internet.password();
+            const location = faker.address.city();
+            const province = faker.address.state();
+            const postalCode = faker.address.zipCode('#####');
 
-      // Creamos la Query para insertarlos:
-      await connection.query(`
+            // Creamos la Query para insertarlos:
+            await connection.query(`
           INSERT INTO users (name, alias, email, password, location, province, postalCode, active, deleted, createdDate)
           VALUES (
             "${name}",
@@ -220,49 +223,51 @@ async function main() {
             "${formatDate(new Date())}"
          )
       `);
-    }
-    console.log('Usuarios creados correctamente en la Tabla de usuarios');
+        }
+        console.log('Usuarios creados correctamente en la Tabla de usuarios');
 
-    //////////////////////////
-    /// Tabla de Productos ///
-    //////////////////////////
+        //////////////////////////
+        /// Tabla de Productos ///
+        //////////////////////////
 
-    const PRODUCTS = 50;
+        const PRODUCTS = 50;
 
-    for (let i = 0; i < PRODUCTS; i++) {
-      const idUser = Math.ceil(Math.random() * USERS + 1);
-      const nameProduct = faker.commerce.productName();
-      const brand = faker.company.companyName();
-      const yearOfProduction = Math.round(Math.random() * 50 + 1960);
+        for (let i = 0; i < PRODUCTS; i++) {
+            const idUser = Math.ceil(Math.random() * USERS + 1);
+            const nameProduct = faker.commerce.productName();
+            const brand = faker.company.companyName();
+            const yearOfProduction = Math.round(Math.random() * 50 + 1960);
 
-      const arrayStatus = [
-        'No funciona',
-        'A veces falla',
-        'Bien',
-        'Muy bien',
-        'Excelente',
-      ];
-      const status =
-        arrayStatus[
-          Number(Math.floor(Math.random() * (arrayStatus.length - 1)))
-        ];
+            const arrayStatus = [
+                'No funciona',
+                'A veces falla',
+                'Bien',
+                'Muy bien',
+                'Excelente',
+            ];
+            const status =
+                arrayStatus[
+                    Number(Math.floor(Math.random() * (arrayStatus.length - 1)))
+                ];
 
-      const arrayCategories = [
-        'Ordenadores',
-        'Televisores',
-        'Telefonía',
-        'Música y Rádio',
-        'Consolas y Juegos',
-      ];
-      const category =
-        arrayCategories[Number(Math.floor(Math.random() * arrayStatus.length))];
+            const arrayCategories = [
+                'Ordenadores',
+                'Televisores',
+                'Telefonía',
+                'Música y Rádio',
+                'Consolas y Juegos',
+            ];
+            const category =
+                arrayCategories[
+                    Number(Math.floor(Math.random() * arrayStatus.length))
+                ];
 
-      //    Comfirmar si .productDescription va bien, sino podemos sustituirlo
-      // por faker.lorem.paragraph()
-      const description = faker.commerce.productDescription();
-      const price = faker.commerce.price();
+            //    Comfirmar si .productDescription va bien, sino podemos sustituirlo
+            // por faker.lorem.paragraph()
+            const description = faker.commerce.productDescription();
+            const price = faker.commerce.price();
 
-      await connection.query(`
+            await connection.query(`
         INSERT INTO products (idUser, nameProduct, brand, yearOfProduction, status, category, description, price, createdDate, active, deleted)
         VALUES (
           "${idUser}",
@@ -279,18 +284,18 @@ async function main() {
         )
 
       `);
+        }
+
+        console.log('productos creados satisfactoriamente');
+
+        // Capturamos TODOS los errores en el CATCH.
+    } catch (error) {
+        console.error(error.message);
+    } finally {
+        // Bloque FINALLY obligatorio. Tanto si todo va PERFECTO como si hay ERRORES se ejecutará
+        // para terminar la conexión:
+        if (connection) connection.release();
+        process.exit(0);
     }
-
-    console.log('productos creados satisfactoriamente');
-
-    // Capturamos TODOS los errores en el CATCH.
-  } catch (error) {
-    console.error(error.message);
-  } finally {
-    // Bloque FINALLY obligatorio. Tanto si todo va PERFECTO como si hay ERRORES se ejecutará
-    // para terminar la conexión:
-    if (connection) connection.release();
-    process.exit(0);
-  }
 }
 main();
