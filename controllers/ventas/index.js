@@ -9,13 +9,13 @@ const deletePhoto = require('./deletePhoto');
 const rejectReserve = require('./rejectReserve');
 
 module.exports = {
-    addPhotoProduct,
-    editProduct,
-    newProduct,
-    deleteProduct,
-    sellRetro,
-    reservedProduct,
-    requestReserve,
-    rejectReserve,
-    deletePhoto,
+  addPhotoProduct,
+  editProduct,
+  newProduct,
+  deleteProduct,
+  sellRetro,
+  reservedProduct,
+  requestReserve,
+  rejectReserve,
+  deletePhoto,
 };
