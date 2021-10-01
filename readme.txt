@@ -5,11 +5,15 @@
  -✅ Compras/ Faltan 2 barra de busqueda por hacer. (Ordenar productos por: Precio, Estado, Ubicación)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
  - Producto/ Botón CANCELAR RESERVA de producto.
  - Producto/ Botón CANCELAR SOLICITUD de RESERVA --> Realmente es imprescindible este botón??
 =======
  -✅ Producto/ Botón RECHAZAR RESERVA de producto.
 >>>>>>> 60f5b6976efe67e888d029bb5ed8fbaefa564cad
+=======
+ -✅ Producto/ Botón RECHAZAR RESERVA de producto.
+>>>>>>> 07abfc14e28b75a40d7881678f2153bac1663f6a
  -✅ Producto/ Botón ACEPTAR (ANA)
  -✅ Producto/ Botón solicitud de reserva de producto
 

@@ -12,7 +12,12 @@
 const getDB = require('../../ddbb/getDB');
 
 // Traemos la función formatDate creada en helpers para establecer la fecha de modificación:
-const { formatDate , generateCryptoString,guardarFoto,borrarFoto} = require('../../helpers.js');
+const {
+  formatDate,
+  generateCryptoString,
+  guardarFoto,
+  borrarFoto,
+} = require('../../helpers.js');
 const { deletePhoto } = require('../ventas');
 
 const editUser = async (req, res, next) => {
@@ -34,14 +39,8 @@ const editUser = async (req, res, next) => {
     // Es decir, el usuario ya está autorizado (esa es la diferencia entre idUser y idReqUser)
     const idReqUser = req.userAuth.id;
 
-    
-
     // Ahora bien, vamos pedirle al body de la request todos los campos que podemos modificar:
     const { name, email, alias, location, province, postalCode } = req.body;
-
-    
-
-
 
     // Si en el paso anterior no nos llega NINGÚN dato, lanzamos un error (no se puede
     // modificar lo que no tenemos, no?):
@@ -184,32 +183,24 @@ const editUser = async (req, res, next) => {
       `,
         [postalCode, modifiedDate, idUser]
       );
-
-     
-      
     }
-     /////////////////////////
-      /// Obtenemos el avatar////
-      //////////////////////////
+    /////////////////////////
+    /// Obtenemos el avatar////
+    //////////////////////////
     //Comprobamos tiene un avatar previo
     if (req.files && req.files.avatar) {
+      if (idUser[0].avatar) await borrarFoto(idUser[0].avatar);
 
-      if( idUser[0].avatar) await borrarFoto( idUser[0].avatar)
+      const nombreAvatar = await guardarFoto(req.files.avatar);
 
-      const nombreAvatar = await guardarFoto (req.files.avatar)
-
-      await connection.query(`
+      await connection.query(
+        `
         UPDATE users SET avatar = ? , modifiedDate = ? WHERE  id = ?,
 
         
-      `
-      [ nombreAvatar , modifiedDate, idUser]
+      `[(nombreAvatar, modifiedDate, idUser)]
       );
-
-
     }
-
-  
 
     // Por último enviamos la respuesta al usuario:
     res.send({
