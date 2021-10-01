@@ -73,8 +73,10 @@ const getUser = async (req, res, next) => {
     // solicitado según corresponda (userInfo)
     res.send({
       status: 'Ok',
-      userInfo,
-      products,
+      userInfo: {
+        ...userInfo,
+        products,
+      },
     });
   } catch (error) {
     next(error);

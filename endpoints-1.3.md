@@ -309,4 +309,4 @@ enrique
 
 ## --Perfil de usuario-------> POP UP
 
-/Cerrar Sesión/--> Cerrar sesión de usuario actual. ---------------------Preguntarle a David si va en el Front o Back-end
+/Cerrar Sesión/--> Cerrar sesión de usuario actual. ---------------------Preguntarle a David si va en el Front o Back-end ---> En React. se elimina el Token.

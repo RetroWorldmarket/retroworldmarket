@@ -1,9 +1,10 @@
  Falta por hacer:
 
  -✅ Compras/ categoryProduct/ Hacerlo por QueryString. Barra search
-  !!! FALTA REVISAR LA QUERY PARA EL JOIN CON PROVINCE
+  
  -✅ Compras/ Faltan 2 barra de busqueda por hacer. (Ordenar productos por: Precio, Estado, Ubicación)
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
  - Producto/ Botón CANCELAR RESERVA de producto.
@@ -14,6 +15,9 @@
 =======
  -✅ Producto/ Botón RECHAZAR RESERVA de producto.
 >>>>>>> 07abfc14e28b75a40d7881678f2153bac1663f6a
+=======
+ -✅ Producto/ Botón RECHAZAR RESERVA de producto.
+>>>>>>> Stashed changes
  -✅ Producto/ Botón ACEPTAR (ANA)
  -✅ Producto/ Botón solicitud de reserva de producto
 
@@ -22,7 +26,7 @@
  -✅ Mensajes/ Primer mensaje al VENDEDOR (Bernardo)
  - Eliminar mensajes (PENDIENTE)
 
- - Borrar fotos (PENDIENTE)
+ -✅ Borrar fotos (PENDIENTE)
 
  - Borrar Usuario
  - Modificar email y password.
@@ -35,7 +39,7 @@
  PREGUNTAS:
     - En requestReserve.js podríamos enviar en el mensaje dos enlaces para aceptar o
         rechazar la propuesta de reserva????
-        Cómo??????
+        Cómo?????? --> React.
 
 
 
