@@ -5,6 +5,7 @@
  -✅ Compras/ Faltan 2 barra de busqueda por hacer. (Ordenar productos por: Precio, Estado, Ubicación)
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <<<<<<< HEAD
  - Producto/ Botón CANCELAR RESERVA de producto.
@@ -15,6 +16,9 @@
 =======
  -✅ Producto/ Botón RECHAZAR RESERVA de producto.
 >>>>>>> 07abfc14e28b75a40d7881678f2153bac1663f6a
+=======
+ -✅ Producto/ Botón RECHAZAR RESERVA de producto.
+>>>>>>> Stashed changes
 =======
  -✅ Producto/ Botón RECHAZAR RESERVA de producto.
 >>>>>>> Stashed changes
