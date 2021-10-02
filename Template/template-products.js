@@ -4,14 +4,15 @@
 
 const cambiarNombre = [
   {
-    idUser: '',
-    nameProduct: '',
-    brand: '',
-    yearOfProduction: '',
-    status: '',
-    category: 'cambiar nombre',
-    description: '',
-    price: '',
-    namePhoto: 'nombre de texto normal',
+    nameProduct: 'Playstation',
+    brand: 'Sony',
+    yearOfProduction: 'Random',
+    category: 'Consolas y Juegos',
+    description: 'Consola clásica / (Lorem Ipsum)',
+    price: 'Random',
+    namePhoto: {
+      1: 'nombre de texto normal',
+      2: 'nombre de foto',
+    },
   },
 ];
