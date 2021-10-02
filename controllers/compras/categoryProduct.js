@@ -7,6 +7,9 @@ const categoryProduct = async (req, res, next) => {
     connection = await getDB();
 
     //Obtenemos los QUERYSTRING que llegarán por las categorias
+    // // Primero obtenemos los QUERYSTRING que llegarán: (search, order y direction)
+    //   const { categoria } = req.query;
+    //   console.log('req.query tiene: ', req.query);
 
     //obtenemos la categoria del body (se la pedimos al 'usuario')
     const { categoria } = req.body;
