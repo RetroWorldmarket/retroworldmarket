@@ -180,7 +180,7 @@ app.post('/sellretro/:idProduct/votes', authUser, productExist, userVotes);
 app.get('/search', search);
 
 //    · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA
-app.post('/product', categoryProduct);
+app.get('/category', categoryProduct);
 
 /**
  *

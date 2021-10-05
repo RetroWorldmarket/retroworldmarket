@@ -81,7 +81,7 @@ async function main() {
                 brand VARCHAR(50) NOT NULL,
                 yearOfProduction VARCHAR(4),
                 status ENUM('No funciona', 'A veces falla', 'Bien', 'Muy bien', 'Excelente') NOT NULL,
-                category ENUM('Todas las Categorías', 'Ordenadores', 'Televisores', 'Telefonía', 'Música y Rádio', 'Consolas y Juegos') NOT NULL,
+                category ENUM('Ordenadores', 'Televisores', 'Telefonía', 'Música y Rádio', 'Consolas y Juegos') NOT NULL,
                 description VARCHAR(200) NOT NULL,
                 price MEDIUMINT NOT NULL,
                 createdDate DATETIME NOT NULL,
