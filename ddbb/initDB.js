@@ -207,10 +207,11 @@ async function main() {
 
       // Creamos la Query para insertarlos:
       await connection.query(`
-          INSERT INTO users (name, alias, email, password, location, province, postalCode, active, deleted, createdDate)
+          INSERT INTO users (name, alias, avatar, email, password, location, province, postalCode, active, deleted, createdDate)
           VALUES (
             "${name}",
             "${alias}",
+            "defaultAvatar.jpg"
             "${email}",
             SHA2("${password}", 512),
             "${location}",
