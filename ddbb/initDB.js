@@ -211,7 +211,7 @@ async function main() {
           VALUES (
             "${name}",
             "${alias}",
-            "defaultAvatar.jpg"
+            "defaultAvatar.jpg",
             "${email}",
             SHA2("${password}", 512),
             "${location}",
