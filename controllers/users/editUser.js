@@ -40,7 +40,8 @@ const editUser = async (req, res, next) => {
     const idReqUser = req.userAuth.id;
 
     // Ahora bien, vamos pedirle al body de la request todos los campos que podemos modificar:
-    const { name, email, alias, location, province, postalCode } = req.body;
+    const { name, avatar, email, alias, location, province, postalCode } =
+      req.body;
 
     // Si en el paso anterior no nos llega NINGÚN dato, lanzamos un error (no se puede
     // modificar lo que no tenemos, no?):
@@ -64,7 +65,7 @@ const editUser = async (req, res, next) => {
     // Ahora obtenemos los datos del usuario de la Base de Datos:
     const [user] = await connection.query(
       `
-    SELECT name, email, alias, location, province, postalCode FROM users WHERE id = ?
+    SELECT name, email, avatar, alias, location, province, postalCode FROM users WHERE id = ?
     `,
       [idUser]
     );
@@ -189,17 +190,28 @@ const editUser = async (req, res, next) => {
     //////////////////////////
     //Comprobamos tiene un avatar previo
     if (req.files && req.files.avatar) {
-      if (idUser[0].avatar) await borrarFoto(idUser[0].avatar);
-
-      const nombreAvatar = await guardarFoto(req.files.avatar);
-
-      await connection.query(
-        `
-        UPDATE users SET avatar = ? , modifiedDate = ? WHERE  id = ?,
-
-        
-      `[(nombreAvatar, modifiedDate, idUser)]
-      );
+      if (user[0].avatar !== 'defaultAvatar.jpg') {
+        const nombreAvatar = await guardarFoto(req.files.avatar);
+        await connection.query(
+          `
+          UPDATE users SET avatar = ? , modifiedDate = ? WHERE  id = ?
+  
+          
+        `,
+          [nombreAvatar, modifiedDate, idUser]
+        );
+      } else {
+        await borrarFoto(user[0].avatar);
+        const nombreAvatar = await guardarFoto(req.files.avatar);
+        await connection.query(
+          `
+          UPDATE users SET avatar = ? , modifiedDate = ? WHERE  id = ?
+  
+          
+        `,
+          [nombreAvatar, modifiedDate, idUser]
+        );
+      }
     }
 
     // Por último enviamos la respuesta al usuario:
