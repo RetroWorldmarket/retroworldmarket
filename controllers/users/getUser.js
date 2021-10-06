@@ -28,9 +28,11 @@ const getUser = async (req, res, next) => {
     // Path Params y la guardaremos en un array:
     const [user] = await connection.query(
       `
-        SELECT id, name, alias, avatar, email, location,
-         province, postalCode, rol, createdDate 
-        FROM users WHERE id = ?
+      SELECT users.id, users.name, users.alias, users.avatar, users.email, users.location,
+      users.province, users.postalCode, users.rol, users.createdDate, votes.vote
+      FROM users 
+      LEFT JOIN votes ON (votes.idUser = users.id)
+      WHERE users.id = ?
 
     `,
       [idUser]
@@ -39,7 +41,7 @@ const getUser = async (req, res, next) => {
     const [products] = await connection.query(
       `
     
-    SELECT nameProduct, brand, description, price FROM products
+    SELECT nameProduct, brand, description, price, status FROM products
     WHERE idUser = ?
     `,
       [idUser]
@@ -57,6 +59,7 @@ const getUser = async (req, res, next) => {
       alias: user[0].alias,
       avatar: user[0].avatar,
       province: user[0].province,
+      votos: user[0].vote,
     };
 
     // Si el usuario es propio (el dueño de idUser, que lo tenemos aquí como idReqUser) o es
