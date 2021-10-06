@@ -59,10 +59,12 @@ function generateCryptoString(length) {
 async function emailVerification(email, registerCode, name) {
   //mensaje
 
-  const emailBody = `
-  Hola ${name} te has registrado en Retro World Market.
+  const emailBody = `<p>Hola ${name} te has registrado en Retro World Market.
   Por favor pulsa este enlace para verificar tu cuenta: 
-   ${process.env.PUBLIC_HOST}/users/validate/${registerCode}
+  Por favor pulsa este enlace para verificar tu cuenta: 
+  <a href="${process.env.PUBLIC_HOST}/users/validate/${registerCode}"</a>
+  
+   ${process.env.PUBLIC_HOST}/users/validate/${registerCode}</p>
 
   `;
   //para enviar el correo usamos la función siguiente:

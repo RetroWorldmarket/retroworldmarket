@@ -83,7 +83,6 @@ const createUser = async (req, res, next) => {
       ]
     );
 
-    console.log('hola');
     res.send({
       status: 'ok',
       message: `Usuario registrado como ${name}, necesaria la activación; compruebe su email`,
