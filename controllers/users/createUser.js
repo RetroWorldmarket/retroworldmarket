@@ -73,7 +73,7 @@ const createUser = async (req, res, next) => {
         name,
         email,
         alias,
-        avatar,
+        'defaultAvatar.jpg',
         password,
         location,
         province,
