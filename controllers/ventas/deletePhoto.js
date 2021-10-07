@@ -15,13 +15,11 @@ const deletePhoto = async (req, res, next) => {
 
     const [data] = await connection.query(
       `
-        SELECT namePhoto FROM photos WHERE id = ? AND idProducts = ?
+        SELECT namePhoto FROM photos WHERE id = ? AND idProduct = ?
         
     `,
       [idPhoto, idProduct]
     );
-
-    console.log(data[0].namePhoto);
 
     if (data.length < 1) {
       const error = new Error('La foto seleccionada no existe');
@@ -31,7 +29,7 @@ const deletePhoto = async (req, res, next) => {
     await borrarFoto(data[0].namePhoto);
 
     await connection.query(
-      `DELETE FROM photos WHERE id = ? AND idProducts = ?`,
+      `DELETE FROM photos WHERE id = ? AND idProduct = ?`,
 
       [idPhoto, idProduct]
     );
