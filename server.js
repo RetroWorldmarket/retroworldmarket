@@ -34,6 +34,7 @@ const {
   getUser,
   editUser,
   userVotes,
+  deleteUser,
 } = require('./controllers/users/index.js');
 
 //////////////////////////////////
@@ -169,6 +170,8 @@ app.put('/users/:idUser', authUser, userExists, editUser);
 
 //creo boton de votos
 app.post('/sellretro/:idProduct/votes', authUser, productExist, userVotes);
+//eliminar usuario
+app.delete('/users/:idUser', authUser, userExists, deleteUser);
 
 /*
  ************************

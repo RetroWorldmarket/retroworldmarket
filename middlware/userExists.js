@@ -16,14 +16,16 @@ const userExists = async (req, res, next) => {
     // Luego obtenemos el usuario de la Base de Datos con una query:
     const [user] = await connection.query(
       `
-      SELECT id FROM users WHERE id = ?
+      SELECT id, deleted, active FROM users WHERE id = ?
     `,
       [idUser]
     );
 
     // En caso que el usuario no exista en la BD lanzamos un error:
-    if (user.length < 1) {
-      const error = new Error('El usuario seleccionado no existe');
+    if (user.length < 1 || user[0].active === 0 || user[0].deleted === 1) {
+      const error = new Error(
+        'El usuario seleccionado no existe, o no está activo'
+      );
       error.httpStatus = 404;
       throw error;
     }
