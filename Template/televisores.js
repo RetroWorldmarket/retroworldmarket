@@ -3,7 +3,7 @@ const televisores = [
     nameProduct: 'Akura CX4 15"',
     brand: 'Akura',
     yearOfProduction: 1970,
-    category: 'Televisores',
+    category: 'televisores',
     description:
       'Retro televisor, aqui puedes conectar la play 5 sin problemas, se ve mejor que el digital',
     price: '150',
@@ -16,7 +16,7 @@ const televisores = [
     nameProduct: 'TV century',
     brand: 'Mid',
     yearOfProduction: 1973,
-    category: 'Televisores',
+    category: 'televisores',
     description:
       'Para los amantes de las series antiguas, el peluche es mi único amigo',
     price: '1200',
@@ -29,7 +29,7 @@ const televisores = [
     nameProduct: 'Crt tv réplica',
     brand: 'NovaVision',
     yearOfProduction: 1950,
-    category: 'Televisores',
+    category: 'televisores',
     description:
       'Si quieres dejarte los ojos, pero siempre "vintagmente" hablando',
     price: '950',
@@ -42,7 +42,7 @@ const televisores = [
     nameProduct: 'Vintage Portable TV Set',
     brand: 'Kapsch',
     yearOfProduction: 1981,
-    category: 'Televisores',
+    category: 'televisores',
     description:
       'Un televisor 3d vintage, no necesitas ni gafas, muy útil para tirarlo por la ventana',
     price: '200',
@@ -55,7 +55,7 @@ const televisores = [
     nameProduct: 'Televisor portatil Yugoslavia',
     brand: 'Iskra Trim',
     yearOfProduction: 1983,
-    category: 'Televisores',
+    category: 'televisores',
     description:
       'Para ser el más chulo de la playa, hasta puedes hacer de dj con sus controles',
     price: '350',
@@ -68,7 +68,7 @@ const televisores = [
     nameProduct: 'Televisor portátil',
     brand: 'Iskra Tv',
     yearOfProduction: 1982,
-    category: 'Televisores',
+    category: 'televisores',
     description:
       'Mega televisor con corona, para cuando no sabes que ver en la tele, metes la cabeza y te entretienes',
     price: '225',
@@ -81,7 +81,7 @@ const televisores = [
     nameProduct: 'Mini tv portátil',
     brand: 'Junost',
     yearOfProduction: 1991,
-    category: 'Televisores',
+    category: 'televisores',
     description:
       'He escogido esta panorámica para que parezca más grande, pero no mide ni el índice de mi dedo',
     price: '60',
@@ -94,7 +94,7 @@ const televisores = [
     nameProduct: 'CLUZEVELECTRONIC',
     brand: 'Toshiba',
     yearOfProduction: 1974,
-    category: 'Televisores',
+    category: 'televisores',
     description: 'De regalo te llevas un episodeo de star trek',
     price: '182',
     namePhoto: {
@@ -106,7 +106,7 @@ const televisores = [
     nameProduct: 'Televisor VHS',
     brand: 'Zenith',
     yearOfProduction: 1995,
-    category: 'Televisores',
+    category: 'televisores',
     description:
       'Televisor con VHS, pero también le puedes meter discos a la fuerza todo depende de las neuronas que tengas',
     price: '192',
@@ -119,7 +119,7 @@ const televisores = [
     nameProduct: 'Tv pórtatil con adaptador de modulador RF',
     brand: 'RCA 9',
     yearOfProduction: 1975,
-    category: 'Televisores',
+    category: 'televisores',
     description:
       'Para los amantes de búsqueda de cobertura, mueves las antenas y a jugar',
     price: '135',
