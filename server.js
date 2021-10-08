@@ -52,14 +52,17 @@ const {
  **********************************
  */
 
-const { categoryProduct } = require('./controllers/compras/index.js');
+const {
+  categoryProduct,
+  search,
+  pagination,
+} = require('./controllers/compras/index.js');
 
 /*
  ***********************************
  ***Controladores de busqueda*******
  ***********************************
  */
-const { search } = require('./controllers/compras/index.js');
 
 /*******************
  * ***MIDDLEWARES***
@@ -99,22 +102,38 @@ const {
 // Endpoint para subir un producto:
 app.post('/sellretro', authUser, newProduct);
 // Editar un producto
-app.put('/sellretro/:idProduct', authUser, userCanEdit, editProduct);
+app.put(
+  '/sellretro/:idProduct',
+  productExist,
+  productActive,
+  authUser,
+  userCanEdit,
+  editProduct
+);
 //Agregar foto al producto
 app.post(
   '/sellretro/:idProduct/photos',
+  productExist,
   authUser,
   userCanEdit,
   addPhotoProduct
 );
 //borrar producto
-app.delete('/sellretro/:idProduct', authUser, userCanEdit, deleteProduct);
 
-app.get('/sellretro/:idProduct', authUser, userCanEdit, sellRetro);
+app.delete(
+  '/sellretro/:idProduct',
+  productExist,
+  productActive,
+  authUser,
+  userCanEdit,
+  deleteProduct
+);
 
 // Solicitud de reserva de producto al vendedor
 app.post(
   '/sellretro/reqReserve/:idProduct',
+  productExist,
+  productActive,
   authUser,
   productActive,
   requestReserve
@@ -123,18 +142,28 @@ app.post(
 // Rechazar la solicitud de reserva del producto (por el vendedor)
 app.post(
   '/sellretro/reject/:idProduct',
+  productExist,
+  productActive,
   authUser,
   productActive,
   rejectReserve
 );
 
 //venta de producto
-app.put('/sellretro/:idProduct/sell/:idUser', authUser, userCanEdit, sellRetro);
+app.put(
+  '/sellretro/:idProduct/sell/:idUser',
+  productExist,
+  authUser,
+  userCanEdit,
+  sellRetro
+);
 
 //Boton de reserva de producto
 
 app.put(
   '/sellretro/:idProduct/reserved',
+  productExist,
+  productActive,
   authUser,
   userCanEdit,
   reservedProduct
@@ -142,6 +171,8 @@ app.put(
 //borrar foto de producto
 app.delete(
   '/sellretro/:idProduct/photos/:idPhoto',
+  productExist,
+  productActive,
   authUser,
   userCanEdit,
   deletePhoto
@@ -185,6 +216,8 @@ app.get('/search', search);
 //    · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA
 app.get('/category', categoryProduct);
 
+//endpoint de paginacion
+// app.get('/product', pagination);
 /**
  *
  * ****************************

@@ -1,35 +1,34 @@
 const getDB = require('../ddbb/getDB');
 
 const productExist = async (req, res, next) => {
-    let connection;
+  let connection;
 
-    try {
-        connection = await getDB();
+  try {
+    connection = await getDB();
 
-        const { idProduct } = req.params;
+    const { idProduct } = req.params;
 
-        console.log(idProduct);
+    console.log(idProduct);
 
-        const [exist] = await connection.query(
-            `
+    const [exist] = await connection.query(
+      `
     SELECT * FROM products WHERE id = ?
     `,
-            [idProduct]
-        );
-        console.log(exist[0]);
+      [idProduct]
+    );
 
-        if (exist[0] < 1) {
-            const error = new Error('El producto seleccionado no existe');
-            error.httpStatus = 404;
-            throw error;
-        }
-
-        next();
-    } catch (error) {
-        next(error);
-    } finally {
-        if (connection) connection.release();
+    if (exist < 1) {
+      const error = new Error('El producto seleccionado no existe');
+      error.httpStatus = 404;
+      throw error;
     }
+
+    next();
+  } catch (error) {
+    next(error);
+  } finally {
+    if (connection) connection.release();
+  }
 };
 
 module.exports = productExist;

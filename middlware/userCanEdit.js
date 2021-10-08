@@ -14,6 +14,7 @@ const userCanEdit = async (req, res, next) => {
       `SELECT idUser FROM products WHERE id = ?`,
       [idProduct]
     );
+    console.log(owner[0]);
 
     // Si el usuario que hace la request no es el propietario o no
     // es el administrador lanzamos un error.
