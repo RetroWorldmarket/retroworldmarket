@@ -59,7 +59,7 @@ const musica = [
     price: '6500',
     namePhoto: {
       1: 'musica5-1.jpg',
-      2: 'musica5-2.jpg',
+      2: 'musica5-2.webp',
     },
   },
   {
