@@ -46,4 +46,5 @@
         Cómo?????? --> React.
 
 
-
+en lugar del espacio %20 en html;
+cambiar sellretro por product en ruta de ENDPOINTS

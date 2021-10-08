@@ -174,6 +174,35 @@ async function borrarFoto(nameImage) {
   await unlink(photoPath);
 }
 
+/**
+ *
+ **********************
+ **FUNCION PAGINACION**
+ **********************
+ */
+
+const paginacion = (productos, page, limit) => {
+  //variable pagina
+  page = page || 1;
+  limit = limit || 10;
+
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+
+  const next = productos[endIndex] ? true : false;
+  const prev = productos[startIndex - 1] ? true : false;
+
+  return {
+    results: productos.slice(startIndex, endIndex),
+    info: {
+      count: productos.length,
+      next,
+      prev,
+      page,
+    },
+  };
+};
+
 // Exportamos la función:
 module.exports = {
   formatDate,
@@ -182,4 +211,5 @@ module.exports = {
   emailVerification,
   guardarFoto,
   borrarFoto,
+  paginacion,
 };
