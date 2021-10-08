@@ -20,18 +20,8 @@
     	- POST /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje al destinatario.✅
     -boton de venta hecho get sellretro✅
 
-<<<<<<< .merge_file_NU4k8B
-    19/9 -Siguientes Endpoints a desarrollar:
-
-    	· GET /menssages/:IDProduct -----> Botón "MOSTRAR mensajes" ALGO FALLA, REVISAR.
-    	- GET /messages/:IDProduct -----> Botón ENVIAR/ --> Envía el mensaje al destinatario.
-    			Método GET??? No sería mejor método POST para enviar????
-    	-desarrollar boton de votos
-    	-MIDDLWARE de que exista el producto para el error de que no exista
-=======
     	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.
     	· POST /sellretro/:IDProduct -----> Botón EDITAR
->>>>>>> .merge_file_NaXZsH
 
 ////////////////////////////////////////////////////////////////////////////
 ///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
