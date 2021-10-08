@@ -14,20 +14,16 @@ const categoryProduct = async (req, res, next) => {
 
     //valores para category ---> sacada de las columnas que hicimos en base de datos
     const valoresCategories = [
-      'Ordenadores',
-      'Televisores',
-      'Telefonía',
-      'Música y Rádio',
-      'Consolas y Juegos',
+      'ordenadores',
+      'televisores',
+      'telefonia',
+      'musica y radio',
+      'consolas y juegos',
     ];
 
     //declaramos fuera la variable donde se almacenarán los productos por categorias
     let products = [];
     let photos = [];
-    console.log('category tiene: ', category);
-    console.log('valoresCategories tiene: ', valoresCategories);
-    console.log('la condicion tiene: ', !valoresCategories.includes(category));
-    console.log('category es un : ', typeof category);
 
     //le pedimos la respuesta a la  base de datos para obtener la información
     if (!valoresCategories.includes(category)) {

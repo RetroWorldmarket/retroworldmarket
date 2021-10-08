@@ -52,7 +52,7 @@ const {
  **********************************
  */
 
-const { categoryProduct, search } = require('./controllers/compras/index.js');
+const { categoryProduct, search ,getProduct } = require('./controllers/compras/index.js');
 
 /*
  ***********************************
@@ -211,6 +211,11 @@ app.get('/search', search);
 
 //    · GET /products -----> Obtener los productos filtrados en la BARRA de BUSQUEDA
 app.get('/category', categoryProduct);
+
+//    · GET /products -----> Obtener un producto en concreto
+app.get( '/product/:idProduct',  productExist, productActive, getProduct );
+
+
 
 /**
  *
