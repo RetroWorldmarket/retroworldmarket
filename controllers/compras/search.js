@@ -12,7 +12,7 @@ const search = async (req, res, next) => {
     connection = await getDB();
 
     // Primero obtenemos los QUERYSTRING que llegarán: (search, order y direction)
-    const { search, order, direction } = req.query;
+    const { search, order, direction , page , limmit } = req.query;
     console.log('req.query tiene: ', req.query);
 
     // Las busquedas estarán referenciadas a las siguientes tuplas si coinciden
@@ -101,9 +101,11 @@ const search = async (req, res, next) => {
       throw error;
     }
 
+    const data = paginacion(items, page, limit);
+
     res.send({
       status: 'ok',
-      items,
+      data,
     });
   } catch (error) {
     next(error);
