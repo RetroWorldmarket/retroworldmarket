@@ -1,0 +1,99 @@
+@import 'normalize.css';
+/*
+**************************
+****CABEZERA PRINCIPAL****
+**************************
+*/
+
+/* nav principal */
+
+#cabeceraPrincipalSinLogo{
+    border: 1px solid black;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+}
+
+#cabeceraPrincipalSinLogo>nav>ul{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#cabeceraPrincipalSinLogo button {
+    background-color: green;
+    border: none;
+    
+}
+#cabeceraPrincipalSinLogo button:hover{
+    transition-duration: 1s;
+    font-size: large;
+    font-weight: bolder;
+}
+
+#cabeceraPrincipalSinLogo li {
+    list-style: none;
+
+}
+
+#cabeceraPrincipalSinLogo a {
+    text-decoration: none;
+    color: white
+}
+
+/* barra de busqueda */
+
+#cabeceraPrincipalSinLogo>section {
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+}
+
+
+#cabeceraPrincipalSinLogo>section>form {
+    text-align: center;
+}
+
+#barraBusqueda::placeholder {
+    background-color: #eee;
+    width: 20em;
+    height: 1rem
+
+}
+
+
+
+/*
+*********************
+****MAIN PRINCIPAL***
+*********************
+*/
+
+#mainPaginaPrincipal{
+    background-color: red;
+}
+
+#mainPaginaPrincipal a{
+    text-decoration: none;
+}
+
+#footerPaginaPrincipal{
+    background-color: blue;
+    
+}
+
+/*
+#####################
+###footer Pg. Ppal###
+#####################
+*/
+
+#footerPaginaPrincipal {
+    background-color: aquamarine;
+    font-size: 20px;
+    display: grid;
+    flex-direction: row;
+    transition: .3s all;
+    justify-content: space-around;
+}

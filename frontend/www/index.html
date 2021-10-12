@@ -4,15 +4,17 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="retrologo.png" type="image/x-icon" />
     <title>pagina principal retroworld</title>
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
+    <header id="cabeceraPrincipalSinLogo">
+      <nav id="navCabeceraPrincipalSinLogo">
+        <ul id="ulCabeceraPrincipalSinLogo">
           <li>
             <button>
-              <a href="/">logo</a>
+              <a href="/">Logo</a>
             </button>
           </li>
           <li>
@@ -35,48 +37,57 @@
       <section>
         <form action="/">
           <label for="search">
-            <input type="text" name="search" />
+            <input
+              id="barraBusqueda"
+              type="text"
+              name="search"
+              placeholder="Busca aqui tu producto o categoria"
+            />
+            <button>
+              <img src="./img/search_black_24dp.svg" alt="lupa de busqueda" />
+            </button>
           </label>
-          <button>Busqueda</button>
         </form>
-        <button>abre menu</button>
+        <button><img src="./img/menu-line.png" alt="img menu" /></button>
       </section>
     </header>
-    <main>
+    <main id="mainPaginaPrincipal">
+      <aside>
+        <button>
+          <a href="/compras">Compras</a>
+        </button>
+        <button>
+          <a href="/ventas">Ventas</a>
+        </button>
+      </aside>
       <section>
         <article>
           <figure>
-            <a href="/products"></a>
+            <a href="/"
+              ><img src="/img/telefonos_images.jpeg" alt="Telefonos"
+            /></a>
           </figure>
           <h3>foto1</h3>
         </article>
         <article>
           <figure>
-            <a href="/products"></a>
+            <a href="/products">Producto 2</a>
           </figure>
           <h3>foto2</h3>
         </article>
         <article>
           <figure>
-            <a href="/products"></a>
+            <a href="/products">Producto 3</a>
           </figure>
           <h3>foto3</h3>
         </article>
         <article>
           <figure>
-            <a href="/products"></a>
+            <a href="/products">Producto 4</a>
           </figure>
           <h3>foto4</h3>
         </article>
       </section>
-      <aside>
-        <button>
-          <a href="/compras">compras</a>
-        </button>
-        <button>
-          <a href="/ventas">ventas</a>
-        </button>
-      </aside>
       <nav>
         <ul>
           <li>
@@ -112,7 +123,7 @@
         </ul>
       </nav>
     </main>
-    <footer>
+    <footer id="footerPaginaPrincipal">
       <nav>
         <ul>
           <li>
