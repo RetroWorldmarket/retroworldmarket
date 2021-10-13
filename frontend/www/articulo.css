@@ -1,0 +1,116 @@
+
+/* Div Modal: */
+#contenedorDelModalDelArticulo {
+    position: relative;
+    border-radius: 10px;
+    min-width: 300px;
+    max-width: 1920px;
+    min-height: 200px;
+    max-height: 1280px;
+    background-color: #fff;
+    /* border: 10px solid violet; */
+    box-shadow: 2px 2px 1px lightgray;
+}
+
+#modalDelArticulo  {
+    border: 1px solid black;
+    background-color: #eee;
+    border-radius: 10px;
+    width: 100%;
+    /* margin: 2%; */
+
+}
+
+#modalDelArticulo button {
+    border-radius: 6px;
+    margin: 2%;
+    padding: 2%;
+    box-shadow: 2px 2px 1px lightgray;
+    border: hidden;
+    background-color: whitesmoke;
+}
+
+
+#modalDelArticulo a {
+    text-decoration: none;
+    /* position: fixed; */
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    /* background-color: grey; */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Las fotos... */
+#fotoPrecioNombre {
+    /* border: 10px solid greenyellow; */
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+
+
+.articuloImagen {
+    width: 100%;
+}
+
+#precio {
+    margin-left: 1%;
+}
+#nombreProducto {
+    margin-left: 1%;
+    font-size: 150%;
+
+}
+
+#propiedadesProducto>ul>li {
+    list-style: none;
+}
+
+
+#sectionMensajeAlVendedor {
+    /* border: 1px solid black; */
+    display: flex;
+    /* justify-content: space-between; */
+    margin-left: 3%;
+    margin-right: 3%;
+    background-color: white;
+    border-radius: 3px;
+}
+
+#asideMensajeAlVendedor {
+    width: 100%;
+    margin: 2%;
+}
+
+#inputMensajeAlVendedor {
+    width: 70%;
+}
+
+#inputMensajeAlVendedor::placeholder {
+    color: lightgray;
+}
+
+#divSolicitarReserva {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#botonSolicitarReserva {
+    background-color: grey;
+    display: flex;
+    /* align-self: flex-end; */
+    justify-content: flex-end;
+}
+
+
+
+#articuloPaginacion {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-around;
+}
+
