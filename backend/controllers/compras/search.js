@@ -4,6 +4,7 @@
 // Devuelve los productos (activos) filtrados por los para metros enviados por QueryStrings
 
 const getDB = require('../../ddbb/getDB');
+const { paginacion } = require('../../helpers');
 
 const search = async (req, res, next) => {
   let connection;
@@ -12,8 +13,7 @@ const search = async (req, res, next) => {
     connection = await getDB();
 
     // Primero obtenemos los QUERYSTRING que llegarán: (search, order y direction)
-    const { search, order, direction , page , limmit } = req.query;
-    console.log('req.query tiene: ', req.query);
+    const { search, order, direction, page, limit } = req.query;
 
     // Las busquedas estarán referenciadas a las siguientes tuplas si coinciden
     // con los parametros buscados
@@ -36,7 +36,7 @@ const search = async (req, res, next) => {
     // Establecemos que el orden por defecto sea createdDate
     // Primero se recorre el array validOrderOptions buscando la coincidencia con el
     // criterio recibido, si no lo encuentra, entra el operador ternario (?) y asigna createdDate.
-    const orderBy = validOrderOptions.includes(order) ? order : 'createdDate';
+    const orderBy = validOrderOptions.includes(order) ? order : 'p.createdDate';
 
     // Establecemos la dirección por defecto en caso que no venga ninguna dirección dada:
     // Con el mismo método que orderBy
@@ -51,12 +51,19 @@ const search = async (req, res, next) => {
     if (search) {
       [items] = await connection.query(
         `
-            SELECT products.nameProduct, products.brand, products.yearOfProduction, products.status, products.category, products.description, products.price, products.createdDate, products.idUser 
-            FROM products
-            LEFT JOIN users ON users.province
-            WHERE products.nameProduct LIKE ? OR products.brand LIKE ? OR products.yearOfProduction LIKE ? OR products.status LIKE ? OR products.category LIKE ? OR products.description LIKE ? OR products.price LIKE ? OR products.createdDate LIKE ? OR products.idUser LIKE ? OR users.province LIKE ?
-            ORDER BY ${orderBy} ${orderDirection}
-        `,
+        SELECT p.id, p.nameProduct, p.idUser, p.brand, p.price, p.category, 
+        p.yearOfProduction, p.status, ph1.namePhoto, u.province, AVG(IFNULL(v.vote, 0)) AS votes
+        FROM products p
+        LEFT JOIN users u ON (p.idUser = u.id)
+        LEFT JOIN votes v ON (u.id = v.idUser)
+        JOIN photos ph1 ON ph1.idProduct = p.id 
+        WHERE NOT EXISTS (
+          SELECT *
+            FROM photos ph2
+            WHERE  ph2.idProduct = ph1.idProduct
+            AND (ph2.idProduct > ph1.idProduct OR (ph2.createdDate = ph1.createdDate AND ph2.id > ph1.id))
+        ) AND  p.nameProduct LIKE ? OR p.brand LIKE ? OR p.yearOfProduction LIKE ? OR p.status LIKE ? OR p.category LIKE ? OR p.description LIKE ? OR p.price LIKE ? OR p.createdDate LIKE ? OR p.idUser LIKE ? OR u.province LIKE ?
+        GROUP BY p.id, ph1.namePhoto; `,
         [
           `%${search}%`,
           `%${search}%`,
@@ -82,18 +89,28 @@ const search = async (req, res, next) => {
     } else {
       [items] = await connection.query(
         `
-                SELECT products.nameProduct, products.brand, products.yearOfProduction, products.status, products.category, products.description, products.price, products.createdDate, products.idUser FROM products
-                LEFT JOIN users ON user.province
-                GROUP BY products.createdDate
-                ORDER BY ${orderBy} ${orderDirection}
-            `
+        SELECT p.id, p.nameProduct, p.idUser, p.brand, p.price, p.category, 
+        p.yearOfProduction, p.status, ph1.namePhoto, u.province, AVG(IFNULL(v.vote, 0)) AS votes
+
+        FROM products p
+        LEFT JOIN users u ON (p.idUser = u.id)
+        LEFT JOIN votes v ON (u.id = v.idUser)
+        JOIN photos ph1 ON ph1.idProduct = p.id 
+        WHERE NOT EXISTS (
+          SELECT *
+            FROM photos ph2
+            WHERE  ph2.idProduct = ph1.idProduct
+            AND (ph2.idProduct > ph1.idProduct OR (ph2.createdDate = ph1.createdDate AND ph2.id > ph1.id))
+        ) AND  p.category LIKE "ordenadores" OR p.brand LIKE "toshiba"
+        GROUP BY p.id, ph1.namePhoto
+        ORDER BY p.id AND ${orderBy} ${orderDirection};  `
       );
     }
     // Tests
+    // ORDER BY ${orderBy} ${orderDirection}
     //  LEFT JOIN users AS province_product ON (products.idUser = user.province)
     //
 
-    console.log('items tiene : ', items);
     // Si la BdD no arroja resultados, mostramos un mensaje y lanzamos un error:
     if (items.length < 1) {
       const error = new Error('No hay elementos que coincidan con la busqueda');

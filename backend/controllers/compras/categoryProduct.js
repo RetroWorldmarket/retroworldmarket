@@ -29,26 +29,39 @@ const categoryProduct = async (req, res, next) => {
     if (!valoresCategories.includes(category)) {
       [products] = await connection.query(
         `
-        SELECT products.id, products.nameProduct, products.idUser, products.brand, products.price, products.category, products.yearOfProduction, products.status, namePhoto, vote, province
-          FROM products
-          LEFT JOIN photos on (products.id = photos.idProduct)
-          left join users on (products.idUser = users.id)
-          left join votes on (users.id = votes.idUser)
-          WHERE products.active = true
-          order by products.yearOfProduction
+        SELECT p.id, p.nameProduct, p.idUser, p.brand, p.price, p.category, 
+        p.yearOfProduction, p.status, ph1.namePhoto, u.province, AVG(IFNULL(v.vote, 0)) AS votes
+        FROM products p
+        LEFT JOIN users u ON (p.idUser = u.id)
+        LEFT JOIN votes v ON (u.id = v.idUser)
+        JOIN photos ph1 ON ph1.idProduct = p.id 
+        WHERE NOT EXISTS (
+          SELECT *
+            FROM photos ph2
+            WHERE  ph2.idProduct = ph1.idProduct
+            AND (ph2.idProduct > ph1.idProduct OR (ph2.createdDate = ph1.createdDate AND ph2.id > ph1.id))
+        ) 
+        GROUP BY p.id, ph1.namePhoto
+        ORDER BY p.id ASC;
         `
       );
     } else {
       [products] = await connection.query(
         `
-        SELECT products.id, products.nameProduct, products.idUser, products.brand, products.price, products.category, products.yearOfProduction, products.status, namePhoto, vote, province
-          FROM products
-          LEFT JOIN photos on (products.id = photos.idProduct)
-          left join users on (products.idUser = users.id)
-          left join votes on (users.id = votes.idUser)
-          WHERE products.category = ? AND  products.active = true
-          order by products.yearOfProduction
-      `,
+        SELECT p.id, p.nameProduct, p.idUser, p.brand, p.price, p.category, 
+        p.yearOfProduction, p.status, ph1.namePhoto, u.province, AVG(IFNULL(v.vote, 0)) AS votes
+        FROM products p
+        LEFT JOIN users u ON (p.idUser = u.id)
+        LEFT JOIN votes v ON (u.id = v.idUser)
+        JOIN photos ph1 ON ph1.idProduct = p.id 
+        WHERE NOT EXISTS (
+          SELECT *
+            FROM photos ph2
+            WHERE  ph2.idProduct = ph1.idProduct
+            AND (ph2.idProduct > ph1.idProduct OR (ph2.createdDate = ph1.createdDate AND ph2.id > ph1.id))
+        ) AND p.category = ?
+        GROUP BY p.id, ph1.namePhoto
+        ORDER BY p.id ASC;      `,
         [`${category}`]
       );
     }
