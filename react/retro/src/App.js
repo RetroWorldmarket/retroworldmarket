@@ -1,12 +1,14 @@
 import './App.css';
 import { Inicio, Articulo } from './components/Inicio';
 import { InicioHeader } from './components/InicioHeader';
+import Modales from './components/Modales';
 
 function App() {
   return (
     <div className='App'>
-      <Inicio />
       <InicioHeader />
+      <Inicio />
+      <Modales />
     </div>
   );
 }
