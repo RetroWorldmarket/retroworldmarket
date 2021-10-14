@@ -1,79 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="articulo.css" />
     <title>articulo producto</title>
-</head>
-<body>
-    <header>
-        <nav>
-          <ul>
-            <li>
-              <button>
-                <a href="/">logo</a>
-              </button>
-            </li>
-            <li>
-              <button>
-                <a href="/">¿Como Funciona?</a>
-              </button>
-            </li>
-            <li>
-              <button>
-                <a href="/">Registro</a>
-              </button>
-            </li>
-            <li>
-              <button>
-                <a href="/">Login</a>
-              </button>
-            </li>
-          </ul>
-        </nav>
-        <section>
-          <form action="/">
-            <label for="search">
-              <input type="text" name="search" />
-            </label>
-            <button>Busqueda</button>
-          </form>
-          <button>abre menu</button>
-        </section>
-      </header>
+  </head>
+  <body>
+    <div id="contenedorDelModalDelArticulo">
       <div id="modalDelArticulo">
-          <button><a href="/">Volver al catálogo</a></button>
-          <!-- Aquí irá el producto en sí -->
-          <section>
-            <h1>
-                <figure>
-                    <img src="array de fotos" alt="">
-                <figure>
-            </h1>
-            <article>
-                <ol>
-                    <li>nombre de producto</li>
-                    <li>marca</li>
+        <button><a href="./index.html">Volver al catálogo</a></button>
+        <!-- Aquí irá el producto en sí -->
+        <section id="articulo">
+          <div id="fotoPrecioNombre">
+            <div id="marcoImagen">
+              <img
+                class="articuloImagen"
+                src="./img/telefonos_images.jpeg"
+                alt="Imagen de artículo"
+              />
+            </div>
+            <span id="precio"><h2>300€</h2></span>
+            <span id="nombreProducto">Lote de teléfonos</span>
+          </div>
+          <article id="propiedadesProducto">
+            <ul>
+              <li>Categoría:</li>
+              <li>Estado:</li>
+              <li>
+                Descripción:
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+              </li>
+              <li>Marca:</li>
+              <li>Año de fabricación:</li>
+              <li>Provincia</li>
+              <li>Vendido por:</li>
+              <li>Valoraciones:</li>
+            </ul>
+          </article>
+        </section>
 
-                </ol>
-            </article>
-            <aside>
-                <caption>Mensaje al Vendedor</caption>
-                <form action="/message">
-                    <label for="">
-                        <input type="text">
-                    </label>
-                </form>
-                <button>Enviar</button>
-                <button>Solicitar reserva</button>
+        <section id="sectionMensajeAlVendedor">
+          <aside id="asideMensajeAlVendedor">
+            <caption>
+              Mensaje al Vendedor
+            </caption>
+            <form action="/message">
+              <label for="">
+                <input
+                  id="inputMensajeAlVendedor"
+                  type="text"
+                  placeholder="Escribe tu mensaje..."
+                />
+              </label>
+              <button>Enviar</button>
+            </form>
+            <div id="divSolicitarReserva">
+              <button id="botonSolicitarReserva">Solicitar reserva</button>
+            </div>
+          </aside>
+        </section>
 
-            </aside>
-          </section>
+        <section id="articuloPaginacion">
           <button><a href="/">Artículo siguiente</a></button>
           <button><a href="/">Artículo prévio</a></button>
-
+        </section>
       </div>
-
-</body>
+    </div>
+  </body>
 </html>

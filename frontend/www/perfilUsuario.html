@@ -1,39 +1,122 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="perfilUsuario.css" />
     <title>Document</title>
   </head>
-  <body>
-    <!-- Perfil de Usuario -->
-    <section>
-      <article>
-        <!-- Editar Perfil -->
-        <button>Editar perfil</button>
-        <form action="">
-          <!-- Formulario de edición -->
-          <label for=""></label>
-          <input type="text" />
-        </form>
-      </article>
 
-      <!-- Historial de productos comprados y vendidos -->
-      <article>
-        <h3>Retros Comprados</h3>
-        <ul>
-          <li>Producto comprado</li>
-          <li>Producto comprado 2</li>
-        </ul>
-      </article>
-      <article>
-        <h3>Retros Vendidos</h3>
-        <ul>
-          <li>Producto vendido</li>
-          <li>Producto vendido 2</li>
-        </ul>
-      </article>
-    </section>
+  <body>
+    <div id="containerPerfilUsuario">
+      <button><a href="./index.html">Volver página principal</a></button>
+
+      <div id="containerAvatar">
+        <div id="marcoFotoAvatar">
+          <img id="fotoAvatar" src="./img/avatar.png" alt="Avatar de usuario" />
+        </div>
+
+        <h2 id="tituloPerfilUsuario">Perfíl de Usuario</h2>
+      </div>
+
+      <!-- Perfil de Usuario -->
+      <section id="sectionUsuario">
+        <article>
+          <!-- Editar Perfil -->
+          <button>Editar perfil</button>
+          <form id="formularioEditarUsuario" action="/">
+            <!-- Formulario de edición -->
+            <div>
+              <input type="text" name="nombre" placeholder="Editar nombre..." />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="apellidos"
+                placeholder="Editar apellido..."
+              />
+            </div>
+            <div>
+              <input type="text" name="email" placeholder="Editar email..." />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="password"
+                placeholder="Editar contraseña..."
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="provincia"
+                placeholder="Editar provincia..."
+              />
+            </div>
+            <div>
+              <input
+                type="text"
+                name="alias"
+                placeholder="Editar nombre de usuario..."
+              />
+            </div>
+            <div>
+              <input type="text" name="avatar" placeholder="Editar avatar..." />
+            </div>
+            <button><a href="/">Enviar</a></button>
+          </form>
+        </article>
+
+        <!-- Historial de productos comprados y vendidos -->
+        <section id="sectionHistorial">
+          <article id="containerRetrosComprados">
+            <h3>Retros Comprados</h3>
+
+            <ul id="ulDeArticuloConImagen">
+              <li class="liDeArticuloConImagen">
+                <div id="fotoPrecioNombre">
+                  <div>
+                    <img
+                      class="articuloImagen"
+                      src="./img/telefonos_images.jpeg"
+                      alt="Imagen de artículo"
+                    />
+                  </div>
+                  <span id="precio"><h4>300€</h4></span>
+                  <span id="nombreProducto">Lote de teléfonos</span>
+                  <br />
+                  <span id="nombreProducto">Comprado el 29 Feb 2021</span>
+                </div>
+                <hr />
+              </li>
+              <li class="liDeArticuloConImagen">
+                <div id="fotoPrecioNombre">
+                  <div id="marcoImagen">
+                    <img
+                      class="articuloImagen"
+                      src="./img/atari.jpeg"
+                      alt="Imagen de artículo"
+                    />
+                  </div>
+                  <span id="precio"><h4>120€</h4></span>
+                  <span id="nombreProducto">Atari 2600</span>
+                  <br />
+                  <span id="nombreProducto">Comprado el 29 Feb 2021</span>
+                </div>
+                <hr />
+              </li>
+            </ul>
+          </article>
+          <article id="containerRetrosVendidos">
+            <h3>Retros Vendidos</h3>
+            <ul>
+              <li>Producto vendido</li>
+              <li>Producto vendido 2</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+    </div>
   </body>
 </html>
