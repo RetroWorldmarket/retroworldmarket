@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
+import PlusRegistroModal from './registro/PlusRegistroModal';
+import PlusLoginModal from './login/PlusLoginModal';
+
+// Importamos la lógica que va a tener ese Modal (desarrollada en el hook useModal.js)
+import { useModal } from '../hooks/useModal';
 
 export const InicioHeader = () => {
+  // Modal:
+  const [abierto, abrirModal, cerrarModal] = useModal(false);
   return (
     <header id='cabeceraPrincipalSinLogo'>
       <nav>
@@ -11,14 +18,10 @@ export const InicioHeader = () => {
             </button>
           </li>
           <li>
-            <button>
-              <a href='/'>Registro</a>
-            </button>
+            <PlusRegistroModal abierto={abierto} cerrarModal={cerrarModal} />
           </li>
           <li>
-            <button>
-              <a href='/'>Login</a>
-            </button>
+            <PlusLoginModal />
           </li>
         </ul>
       </nav>
