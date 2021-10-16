@@ -1,0 +1,59 @@
+/*
+********************************
+********PRODUCTOS ALEATORIOS****
+********************************
+*/
+
+.productosAleatorios {
+    margin: auto;
+    width: 18rem;
+    border: 1px solid black;
+    display: grid;
+  
+    grid-template-columns: 18rem;
+    gap: 1rem;
+    padding: 5%;
+
+    border: 1px solid green;
+    background-color: palegreen;
+    padding: 0.5rem;
+  }
+  
+  .productosAleatorios article {
+    border: 1px solid green;
+    background-color: palegreen;
+    padding: 0.5rem;
+  }
+  
+  .productosAleatorios img {
+    min-width: 10rem;
+    max-width: 12rem;
+    object-fit: cover;
+  }
+  
+  .productosAleatorios h3 {
+    text-align: center;
+  }
+  
+
+/* Las fotos... */
+#fotoPrecioNombre {
+    /* border: 10px solid greenyellow; */
+    margin-left: 1%;
+    margin-right: 1%;
+}
+
+
+
+.articuloImagen {
+    width: 100%;
+}
+
+#precio {
+    margin-left: 1%;
+}
+#nombreProducto {
+    margin-left: 1%;
+    font-size: 150%;
+
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { InicioHeader } from './InicioHeader';
+import { TarjetaArticulo } from './TarjetaArticulo';
 
 export const Inicio = () => {
   return (
@@ -14,14 +15,7 @@ export const Inicio = () => {
           </button>
         </aside>
         <section id='productosAleatorios'>
-          <article>
-            <figure>
-              <a href='/'>
-                <img src='/img/telefonos_images.jpeg' alt='Telefonos' />
-              </a>
-            </figure>
-            <h3>Nombre Producto</h3>
-          </article>
+          <TarjetaArticulo />
           <article>
             <figure>
               <a href='/'>
