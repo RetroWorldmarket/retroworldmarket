@@ -3,7 +3,7 @@ import './TarjetaArticulo.css';
 export const TarjetaArticulo = () => {
   return (
     <div id='fotoPrecioNombre' className='productosAleatorios'>
-      <div>
+      <div className='divImagenArticulo'>
         <img
           className='articuloImagen'
           src='../img/telefonos_images.jpeg'

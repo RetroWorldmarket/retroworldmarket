@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { InicioHeader } from './InicioHeader';
 import { TarjetaArticulo } from './TarjetaArticulo';
+import { Categorias } from './Categorias';
 
 export const Inicio = () => {
   return (
     <div>
       <main id='mainPaginaPrincipal'>
+        <Categorias />
         <aside id='botonesCompraVenta'>
           <button>
             <a href='/compras'>Compra tu retro</a>
@@ -16,65 +18,10 @@ export const Inicio = () => {
         </aside>
         <section id='productosAleatorios'>
           <TarjetaArticulo />
-          <article>
-            <figure>
-              <a href='/'>
-                <img src='/img/telefonos_images.jpeg' alt='' />
-              </a>
-            </figure>
-            <h3>Nombre Producto</h3>
-          </article>
-          <article>
-            <figure>
-              <a href='/'>
-                <img src='/img/telefonos_images.jpeg' alt='' />
-              </a>
-            </figure>
-            <h3>Nombre Producto</h3>
-          </article>
-          <article>
-            <figure>
-              <a href='/img/telefonos_images.jpeg'>
-                <img src='/img/telefonos_images.jpeg' alt='' />
-              </a>
-            </figure>
-            <h3>Nombre Producto</h3>
-          </article>
+          <TarjetaArticulo />
+          <TarjetaArticulo />
+          <TarjetaArticulo />
         </section>
-        <nav id='navegacionCategorias'>
-          <ul>
-            <li>
-              <button>
-                <a href='/'>moviles</a>
-              </button>
-            </li>
-            <li>
-              <button>
-                <a href='/'>consolas</a>
-              </button>
-            </li>
-            <li>
-              <button>
-                <a href='/'>moviles</a>
-              </button>
-            </li>
-            <li>
-              <button>
-                <a href='/'>ordenadores</a>
-              </button>
-            </li>
-            <li>
-              <button>
-                <a href='/'>telefonos</a>
-              </button>
-            </li>
-            <li>
-              <button>
-                <a href='/'>todos productos</a>
-              </button>
-            </li>
-          </ul>
-        </nav>
       </main>
       <footer id='footerPaginaPrincipal'>
         <nav>
@@ -110,3 +57,29 @@ export const Inicio = () => {
     </div>
   );
 };
+
+/* Sección del artículo:
+<article>
+            <figure>
+              <a href='/'>
+                <img src='/img/telefonos_images.jpeg' alt='' />
+              </a>
+            </figure>
+            <h3>Nombre Producto</h3>
+          </article>
+          <article>
+            <figure>
+              <a href='/'>
+                <img src='/img/telefonos_images.jpeg' alt='' />
+              </a>
+            </figure>
+            <h3>Nombre Producto</h3>
+          </article>
+          <article>
+            <figure>
+              <a href='/img/telefonos_images.jpeg'>
+                <img src='/img/telefonos_images.jpeg' alt='' />
+              </a>
+            </figure>
+            <h3>Nombre Producto</h3>
+          </article> */

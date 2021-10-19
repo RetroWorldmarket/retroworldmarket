@@ -1,0 +1,46 @@
+#marcoNavegacionCategorias {
+    border: 3px solid black;
+    background: #eee;
+    display: flex;
+    justify-content: space-around;
+}
+
+#marcoNavegacionCategorias nav {
+    width: 100%;
+    margin-left: 8%;
+    margin-right: 8%;
+}
+
+#marcoNavegacionCategorias ul {
+    display: flex;
+    justify-content: space-around;
+    gap: 4%;
+    background-color: whitesmoke;
+}
+
+.li-icono {
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+
+    background: white;
+}
+
+.marco-icono {
+    /* border: 1px solid black; */
+    width: 50%;
+    margin-top: 3%;
+    margin-bottom: 1%;
+}
+
+.icono {
+    margin: auto;
+    width: 100%;
+}
+
+.boton-categoria {
+    margin-bottom: 3%;
+    border-radius: 5px;
+}
