@@ -2,6 +2,7 @@
 import { useModal } from '../../hooks/useModal';
 import { post } from '../../api/post';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { RespuestaRegistro } from '../../components/RespuestaRegistro';
 
 import './RegistroModal.css';
 import { useState } from 'react';
@@ -163,6 +164,7 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
           <button type='reset'>Cancelar</button>
         </form>
       </div>
+      <RespuestaRegistro />
     </div>
   );
 };
