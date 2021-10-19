@@ -3,7 +3,8 @@ require('dotenv').config();
 const express = require('express');
 //para que se puedan leer los archivos en express
 const fileUpload = require('express-fileupload');
-
+//requerios cors para la politica de cors
+const cors = require('cors');
 // Requerimos la dependencia morgan, que sirve, básicamente,  para registrar
 // los detalles de las solicitudes al servidor. Es un "Logger".
 const morgan = require('morgan');
@@ -12,6 +13,10 @@ const morgan = require('morgan');
 const { PORT } = process.env;
 
 const app = express();
+
+//activamos cors de uso simple
+
+app.use(cors());
 
 // Usamos morgan como "Logger":
 app.use(morgan('dev'));
@@ -52,7 +57,11 @@ const {
  **********************************
  */
 
-const { categoryProduct, search ,getProduct } = require('./controllers/compras/index.js');
+const {
+  categoryProduct,
+  search,
+  getProduct,
+} = require('./controllers/compras/index.js');
 
 /*
  ***********************************
@@ -213,9 +222,7 @@ app.get('/search', search);
 app.get('/category', categoryProduct);
 
 //    · GET /products -----> Obtener un producto en concreto
-app.get( '/product/:idProduct',  productExist, productActive, getProduct );
-
-
+app.get('/product/:idProduct', productExist, productActive, getProduct);
 
 /**
  *

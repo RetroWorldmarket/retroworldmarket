@@ -2,6 +2,7 @@ export async function post(
   url,
   body,
   funcionSuceso,
+  token = '',
   ErrorPeticion = () => {},
   ErrorDeConexion = (msg) => {
     console.error('Error', msg);
@@ -12,6 +13,7 @@ export async function post(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(body),
     });
@@ -20,6 +22,7 @@ export async function post(
       funcionSuceso(body);
     } else {
       ErrorPeticion(respuesta);
+
       console.log('Respuesta errónea', respuesta.status, respuesta.statusText);
     }
   } catch (msg) {

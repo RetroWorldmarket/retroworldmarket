@@ -33,7 +33,7 @@ const schemaUserCreate = joi.object().keys({
       return new Error('Error de validación de la contraseña');
     }),
   alias: joi.string().required(),
-  location: joi.string().required(),
+  location: joi.string().allow(''),
   province: joi.string().required(),
   postalCode: joi.string().required(),
   name: joi.string().required(),

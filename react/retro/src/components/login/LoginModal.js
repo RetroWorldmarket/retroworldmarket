@@ -1,4 +1,6 @@
 import './LoginModal.css';
+import { post } from '../../api/post';
+import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 const LoginModal = ({ abierto, cerrarModal }) => {
   const handelModalContenedorClick = (e) => e.stopPropagation();
