@@ -39,6 +39,11 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
 
     //creamos la función para hacer o enviar peticiones al servidor
     const funcionManejadoraDeRespuestaDelServidor = (body) => {
+      if (body.status === 'ok') {
+        alert(`${body.message}`);
+      } else {
+        alert(`${body.message}`);
+      }
       console.log(body);
     };
     post(
@@ -164,9 +169,13 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
           <button type='reset'>Cancelar</button>
         </form>
       </div>
-      <RespuestaRegistro />
     </div>
   );
 };
 
+// Realizar Modal para respuesta de Backend sobre el formulario.
+// Añadir al botón Enviar la función de limpieza del formulario.
+
 export default RegistroModal;
+
+/* <RespuestaRegistro /> */

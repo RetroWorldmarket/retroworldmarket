@@ -22,8 +22,9 @@ export async function post(
       funcionSuceso(body);
     } else {
       ErrorPeticion(respuesta);
+      alert(respuesta);
 
-      console.log('Respuesta errónea', respuesta.status, respuesta.statusText);
+      console.log(body, respuesta, respuesta.statusText, respuesta.status);
     }
   } catch (msg) {
     ErrorDeConexion(msg);
