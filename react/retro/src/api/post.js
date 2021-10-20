@@ -25,7 +25,14 @@ export async function post(
       ErrorPeticion(respuesta);
       alert(body.message);
 
-      console.log(body, respuesta, respuesta.statusText, respuesta.status);
+      console.log(
+        'respuesta servidor:',
+        body.message,
+        'otras:',
+        respuesta,
+        respuesta.statusText,
+        respuesta.status
+      );
     }
   } catch (msg) {
     ErrorDeConexion(msg);

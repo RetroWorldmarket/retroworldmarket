@@ -1,7 +1,5 @@
 // Importamos la lógica de un Modal:
-import { useModal } from '../../hooks/useModal';
 import { post } from '../../api/post';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 import './RegistroModal.css';
 import { useState } from 'react';
