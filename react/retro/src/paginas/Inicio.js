@@ -1,13 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { InicioHeader } from './InicioHeader';
-import { TarjetaArticulo } from './TarjetaArticulo';
-import { Categorias } from './Categorias';
+import { InicioHeader } from '../components/InicioHeader';
+import { TarjetaArticulo } from '../components/TarjetaArticulo';
+import { Categorias } from '../components/Categorias';
+import { PlusArticuloModal } from '../components/articulo/PlusArticuloModal';
+
+// Falta ubicar PlusArticuloModal en los productos
+// importar InicioHeader
+// importar Categorias
 
 export const Inicio = () => {
   return (
     <div>
+      <InicioHeader />
       <main id='mainPaginaPrincipal'>
-        <Categorias />
         <aside id='botonesCompraVenta'>
           <button>
             <a href='/compras'>Compra tu retro</a>
@@ -16,12 +21,14 @@ export const Inicio = () => {
             <a href='/ventas'>Vende tu retro</a>
           </button>
         </aside>
+        <PlusArticuloModal />
         <section id='productosAleatorios'>
           <TarjetaArticulo />
           <TarjetaArticulo />
           <TarjetaArticulo />
           <TarjetaArticulo />
         </section>
+        <Categorias />
       </main>
       <footer id='footerPaginaPrincipal'>
         <nav>

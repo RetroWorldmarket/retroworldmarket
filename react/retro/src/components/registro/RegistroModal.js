@@ -2,7 +2,6 @@
 import { useModal } from '../../hooks/useModal';
 import { post } from '../../api/post';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
-import { RespuestaRegistro } from '../../components/RespuestaRegistro';
 
 import './RegistroModal.css';
 import { useState } from 'react';
@@ -17,6 +16,9 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
   const [provincia, setProvincia] = useState('');
   const [location, setLocation] = useState('');
   const [codigoPostal, setCodigoPostas] = useState('');
+
+  const [response, setResponse] = useState();
+
   //tambien recogemos el token para que nos lo dé una vez registrado
   //(por ahora) porque hay que validar
   // const [token, setToken] = useLocalStorage('', 'accesoToken');
@@ -44,7 +46,7 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
       } else {
         alert(`${body.message}`);
       }
-      console.log(body);
+      console.log('Body: ', body);
     };
     post(
       'http://localhost:4000/users',
@@ -177,5 +179,3 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
 // Añadir al botón Enviar la función de limpieza del formulario.
 
 export default RegistroModal;
-
-/* <RespuestaRegistro /> */

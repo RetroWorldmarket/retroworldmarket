@@ -21,8 +21,9 @@ export async function post(
       const body = await respuesta.json();
       funcionSuceso(body);
     } else {
+      const body = await respuesta.json();
       ErrorPeticion(respuesta);
-      alert(respuesta);
+      alert(body.message);
 
       console.log(body, respuesta, respuesta.statusText, respuesta.status);
     }
