@@ -7,65 +7,65 @@
 */
 
 body {
-  min-width: 300px;
+    min-width: 300px;
 }
 
 /* nav principal */
 
 #cabeceraPrincipalSinLogo {
-  border: 1px solid black;
-  background-color: green;
-  display: flex;
-  flex-direction: column;
+    border: 1px solid black;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
 }
 
 #cabeceraPrincipalSinLogo > nav > ul {
-  border: 1px solid black;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    border: 1px solid black;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 #cabeceraPrincipalSinLogo button {
-  background-color: green;
-  border: none;
+    background-color: green;
+    border: none;
 }
 #cabeceraPrincipalSinLogo button:hover {
-  transition-duration: 1s;
-  font-size: large;
-  font-weight: bolder;
+    transition-duration: 1s;
+    font-size: large;
+    font-weight: bolder;
 }
 
 #cabeceraPrincipalSinLogo li {
-  list-style: none;
+    list-style: none;
 }
 
 #cabeceraPrincipalSinLogo a {
-  text-decoration: none;
-  color: white;
+    text-decoration: none;
+    color: white;
 }
 
 /* barra de busqueda */
 
 #cabeceraPrincipalSinLogo > section {
-  border: 1px solid black;
-  display: grid;
-  grid-template-columns: 3fr 1fr;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
 }
 
 #cabeceraPrincipalSinLogo img {
-  width: 1rem;
+    width: 1rem;
 }
 
 #cabeceraPrincipalSinLogo > section > form {
-  text-align: left;
+    text-align: left;
 }
 
 #barraBusqueda::placeholder {
-  background-color: #eee;
-  width: 20em;
-  height: 1rem;
+    background-color: #eee;
+    width: 20em;
+    height: 1rem;
 }
 
 /*
@@ -75,15 +75,15 @@ body {
 */
 
 #mainPaginaPrincipal {
-  background-color: red;
+    background-color: red;
 }
 
 #mainPaginaPrincipal a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 #footerPaginaPrincipal {
-  background-color: blue;
+    background-color: blue;
 }
 
 /*
@@ -93,7 +93,7 @@ body {
 
 */
 #botonesCompraVenta {
-  text-align: center;
+    text-align: center;
 }
 
 /*
@@ -103,30 +103,31 @@ body {
 */
 
 #productosAleatorios {
-  margin: auto;
-  width: 18rem;
-  border: 1px solid black;
-  display: grid;
+    margin: auto;
+    width: 18rem;
+    border: 1px solid black;
+    display: grid;
+    background-color: green;
 
-  grid-template-columns: 18rem;
-  gap: 1rem;
-  padding: 5%;
+    grid-template-columns: 18rem;
+    gap: 1rem;
+    padding: 5%;
 }
 
 #productosAleatorios article {
-  border: 1px solid green;
-  background-color: palegreen;
-  padding: 0.5rem;
+    border: 1px solid green;
+    background-color: palegreen;
+    padding: 0.5rem;
 }
 
 #productosAleatorios img {
-  min-width: 10rem;
-  max-width: 12rem;
-  object-fit: cover;
+    min-width: 10rem;
+    max-width: 12rem;
+    object-fit: cover;
 }
 
 #productosAleatorios h3 {
-  text-align: center;
+    text-align: center;
 }
 
 /*****************************
@@ -134,16 +135,16 @@ body {
 *****************************/
 
 #navegacionCategorias ul {
-  background-color: pink;
-  display: flex;
-  flex-direction: row;
-  padding: 0;
-  overflow-y: scroll;
+    background-color: pink;
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    overflow-y: scroll;
 }
 
 #navegacionCategorias li {
-  text-decoration: none;
-  list-style: none;
+    text-decoration: none;
+    list-style: none;
 }
 
 /*
@@ -153,20 +154,20 @@ body {
 */
 
 #footerPaginaPrincipal {
-  background-color: aquamarine;
-  font-size: 1rem;
-  display: flex;
-  flex-direction: column;
-  transition: 0.3s all;
+    background-color: aquamarine;
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    transition: 0.3s all;
 }
 
 #footerPaginaPrincipal ul {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
 
 #footerPaginaPrincipal li {
-  list-style: none;
-  text-decoration: none;
+    list-style: none;
+    text-decoration: none;
 }
