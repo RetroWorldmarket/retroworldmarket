@@ -1,9 +1,26 @@
 import './LoginModal.css';
+import React, { useContext, useState } from 'react';
 import { post } from '../../api/post';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { AuthTokenContext } from '../../index';
 
 const LoginModal = ({ abierto, cerrarModal }) => {
   const handelModalContenedorClick = (e) => e.stopPropagation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [token, setToken] = useContext(AuthTokenContext);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const body = {
+      email: email,
+      password: password,
+    };
+    const respuestaServidor = (body) => {
+      console.log(body);
+      setToken(body.token);
+    };
+    post('http://localhost:4000/users/login', body, respuestaServidor);
+  };
   return (
     <div className={`modal ${abierto && 'modal-Abrir'}`} onClick={cerrarModal}>
       <div className='contenedor-Modal' onClick={handelModalContenedorClick}>
@@ -14,28 +31,37 @@ const LoginModal = ({ abierto, cerrarModal }) => {
         </button>
 
         <section>
-          <form action='registro' method='post' id='registroLogin'>
-            <label for='nombre'>Email:</label>
+          <form
+            action='/users/login'
+            method='post'
+            id='login'
+            onSubmit={onSubmit}
+          >
+            <label htmlFor='nombre'>Email:</label>
             <input
               type='text'
               name='email'
               placeholder='Escribe aquí tu email'
               id='email'
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             ></input>
 
             <br />
 
-            <label for='password'>Password:</label>
+            <label htmlFor='password'>Password:</label>
             <input
-              type='text'
+              type='password'
               name='password'
               placeholder='Escribe aquí tu password'
               id='password'
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             ></input>
+            <button type='submit'>Enviar</button>
           </form>
         </section>
 
-        <button>Enviar</button>
         <button>Cancelar</button>
       </div>
     </div>
