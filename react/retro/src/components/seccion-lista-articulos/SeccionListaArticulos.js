@@ -16,9 +16,9 @@ export const SeccionListaArticulos = () => {
 
   return (
     <section id='productosAleatorios'>
-      {/* {articulo.map((art) => {
+      {articulo.length > 0 && articulo.map((art) => {
         <TarjetaArticulo />;
-      })} */}
+      })}
     </section>
   );
 };
