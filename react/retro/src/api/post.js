@@ -21,9 +21,18 @@ export async function post(
       const body = await respuesta.json();
       funcionSuceso(body);
     } else {
+      const body = await respuesta.json();
       ErrorPeticion(respuesta);
+      alert(body.message);
 
-      console.log('Respuesta errónea', respuesta.status, respuesta.statusText);
+      console.log(
+        'respuesta servidor:',
+        body.message,
+        'otras:',
+        respuesta,
+        respuesta.statusText,
+        respuesta.status
+      );
     }
   } catch (msg) {
     ErrorDeConexion(msg);

@@ -1,4 +1,5 @@
 import RegistroModal from './RegistroModal';
+// import { RespuestaRegistro } from '../RespuestaRegistro';
 
 import { useModal } from '../../hooks/useModal';
 

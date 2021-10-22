@@ -3,10 +3,23 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { useLocalStorage } from './hooks/useLocalStorage';
+export const AuthTokenContext = React.createContext('');
+
+const AuthTokenProvider = ({ children }) => {
+  const [token, setToken] = useLocalStorage('', 'accesoToken');
+  return (
+    <AuthTokenContext.Provider value={[token, setToken]}>
+      {children}
+    </AuthTokenContext.Provider>
+  );
+};
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AuthTokenProvider>
+      <App />
+    </AuthTokenProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
