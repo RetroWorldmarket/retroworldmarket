@@ -4,6 +4,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Catalogo } from './paginas/Catalogo';
 import { Error404 } from './components/error404/Error404';
 import { Producto } from './components/producto/Producto';
+import Modales from './components/modal/Modales';
 
 function App() {
   return (
