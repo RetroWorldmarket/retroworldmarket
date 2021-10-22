@@ -2,7 +2,7 @@
 import Modal from './Modal';
 
 // Importamos la lógica que va a tener ese Modal (desarrollada en el hook useModal.js)
-import { useModal } from '../hooks/useModal';
+import { useModal } from '../../hooks/useModal';
 
 const Modales = () => {
   // Aquí declaramos el hook del Modal (viene en un array, ojo al destructurar)

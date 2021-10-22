@@ -1,0 +1,14 @@
+.footer {
+    border: 2px solid black;
+    background-color: #eee;
+    width: 90%;
+    margin: auto;
+    display: flex;
+    /* gap: 3%; */
+    justify-content: space-around;
+    font-size: 70%;
+}
+
+/* .redes-sociales {
+    
+} */
