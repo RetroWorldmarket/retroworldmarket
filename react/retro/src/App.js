@@ -1,9 +1,6 @@
 import './App.css';
 import { Inicio } from './paginas/Inicio';
-import { ToastContainer } from 'react-toastify';
-import { BrowserRouter, Switch, Route, Link } from 'react-router-dom';
-import { PlusArticuloModal } from './components/articulo/PlusArticuloModal';
-import { Mensajes } from './paginas/Mensajes';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Catalogo } from './paginas/Catalogo';
 import { Error404 } from './components/error404/Error404';
 import { Producto } from './components/producto/Producto';

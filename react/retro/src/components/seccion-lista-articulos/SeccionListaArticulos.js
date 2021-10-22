@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { get } from '../../api/get';
-import { TarjetaArticulo } from '../TarjetaArticulo';
 
 export const SeccionListaArticulos = () => {
   const [articulo, setArticulos] = useState([]);
