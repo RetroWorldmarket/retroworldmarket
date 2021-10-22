@@ -16,7 +16,6 @@ const LoginModal = ({ abierto, cerrarModal }) => {
       password: password,
     };
     const respuestaServidor = (body) => {
-      console.log(body);
       setToken(body.token);
     };
     post('http://localhost:4000/users/login', body, respuestaServidor);
