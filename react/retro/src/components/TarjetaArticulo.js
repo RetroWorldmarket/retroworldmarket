@@ -1,6 +1,6 @@
 import './TarjetaArticulo.css';
 
-export const TarjetaArticulo = () => {
+export const TarjetaArticulo = ({ articulo }) => {
   return (
     <div id='fotoPrecioNombre' className='productosAleatorios'>
       <div className='divImagenArticulo'>
