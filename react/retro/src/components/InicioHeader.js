@@ -1,28 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PlusRegistroModal from './registro/PlusRegistroModal';
 import PlusLoginModal from './login/PlusLoginModal';
+import { Link } from 'react-router-dom';
+// Importamos la información token
+import { AuthTokenContext } from '../index';
 
 // Importamos la lógica que va a tener ese Modal (desarrollada en el hook useModal.js)
 import { useModal } from '../hooks/useModal';
+import { UsuarioLogueado } from './UsuarioLogueado/UsuarioLogueado';
 
 export const InicioHeader = () => {
   // Modal:
   const [abierto, abrirModal, cerrarModal] = useModal(false);
+
+  // Definimos el token
+  const [token, setToken] = useContext(AuthTokenContext);
+
   return (
     <header id='cabeceraPrincipalSinLogo'>
       <nav>
         <ul>
           <li>
             <button>
-              <a href='/'>Logo</a>
+              <Link to='/'>Logo</Link>
             </button>
           </li>
-          <li>
-            <PlusRegistroModal abierto={abierto} cerrarModal={cerrarModal} />
-          </li>
-          <li>
-            <PlusLoginModal />
-          </li>
+
+          {token ? (
+            <li>
+              <UsuarioLogueado />
+            </li>
+          ) : (
+            <>
+              <li>
+                <PlusRegistroModal
+                  abierto={abierto}
+                  cerrarModal={cerrarModal}
+                />
+              </li>
+              <li>
+                <PlusLoginModal />
+              </li>
+            </>
+          )}
         </ul>
       </nav>
       <section>
