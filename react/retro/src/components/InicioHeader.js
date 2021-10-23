@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import PlusRegistroModal from './registro/PlusRegistroModal';
 import PlusLoginModal from './login/PlusLoginModal';
 import { Link } from 'react-router-dom';
@@ -11,10 +11,10 @@ import { UsuarioLogueado } from './UsuarioLogueado/UsuarioLogueado';
 
 export const InicioHeader = () => {
   // Modal:
-  const [abierto, abrirModal, cerrarModal] = useModal(false);
+  const [abierto, cerrarModal] = useModal(false);
 
   // Definimos el token
-  const [token, setToken] = useContext(AuthTokenContext);
+  const [token] = useContext(AuthTokenContext);
 
   return (
     <header id='cabeceraPrincipalSinLogo'>
@@ -47,7 +47,7 @@ export const InicioHeader = () => {
       </nav>
       <section>
         <form action='/'>
-          <label for='search'>
+          <label htmlFor='search'>
             <input
               id='barraBusqueda'
               type='text'

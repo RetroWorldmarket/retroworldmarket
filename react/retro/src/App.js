@@ -10,7 +10,7 @@ import { AuthTokenContext } from '.';
 
 function App() {
   // Importamos el token para saber cuándo el usuario está logueado o no.
-  const [token, setToken] = useContext(AuthTokenContext);
+  const [token] = useContext(AuthTokenContext);
   console.log(token);
 
   return (
