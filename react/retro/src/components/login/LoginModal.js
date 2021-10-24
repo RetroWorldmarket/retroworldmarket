@@ -7,7 +7,7 @@ const LoginModal = ({ abierto, cerrarModal }) => {
   const handelModalContenedorClick = (e) => e.stopPropagation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useContext(AuthTokenContext);
+  const [, setToken] = useContext(AuthTokenContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -45,7 +45,7 @@ const LoginModal = ({ abierto, cerrarModal }) => {
               type='text'
               name='email'
               placeholder='Escribe aquí tu email'
-              id='email'
+              id='email-login'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
@@ -57,7 +57,7 @@ const LoginModal = ({ abierto, cerrarModal }) => {
               type='password'
               name='password'
               placeholder='Escribe aquí tu password'
-              id='password'
+              id='password-login'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>

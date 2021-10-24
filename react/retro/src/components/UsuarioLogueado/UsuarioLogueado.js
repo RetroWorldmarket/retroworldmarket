@@ -5,22 +5,22 @@ import { useContext, useEffect, useState } from 'react';
 import { get } from '../../api/get';
 
 export const UsuarioLogueado = () => {
-  const [token, setToken] = useContext(AuthTokenContext);
-  //   const [user, setUser] = useState([]);
-
-  //   useEffect(() => {
-  //     get('http://localhost:4000/users/15', (body) => setUser(body));
-  //   }, []);
-
-  console.log('token', token);
-
-  get('http://localhost:4000/users/15', (body) => console.log(body), token);
+  const [token] = useContext(AuthTokenContext);
+  const [infoUsuario, setInfoUsuario] = useState([]);
+  useEffect(() => {
+    get(
+      'http://localhost:4000/users/9',
+      (body) => setInfoUsuario(body.userInfo),
+      token
+    );
+  }, [token]);
 
   return (
     <>
       <figure>
-        <img src='/img/avatar-por-defecto.svg' alt='usuario logueado'></img>
+        <img src={`img/${infoUsuario.avatar}`} alt='usuario logueado'></img>
       </figure>
+      {infoUsuario ? <p>{infoUsuario.alias}</p> : null}
     </>
   );
 };

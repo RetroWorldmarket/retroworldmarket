@@ -18,7 +18,7 @@ export async function get(
       headers: {
         //no se pone el method porque por defecto es get
         'Content-Type': 'application/json',
-        authorization: `Bearer ${token}`,
+        Authorization: token,
       },
     });
     if (respuesta.ok) {

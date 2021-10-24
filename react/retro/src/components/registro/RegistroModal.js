@@ -15,7 +15,7 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
   const [location, setLocation] = useState('');
   const [codigoPostal, setCodigoPostas] = useState('');
 
-  const [response, setResponse] = useState();
+  // const [response, setResponse] = useState();
 
   //tambien recogemos el token para que nos lo dé una vez registrado
   //(por ahora) porque hay que validar
@@ -153,7 +153,7 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
             </li>
 
             <li>
-              <label for='postalCode'>
+              <label htmlFor='postalCode'>
                 Código postal:
                 <input
                   type='posta'

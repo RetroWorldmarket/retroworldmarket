@@ -1,9 +1,8 @@
-
 /* Revisar la configuracion CSS de TarjetaArticulo para colocarlos guapos */
 
 .centrado {
-    border: 3px solid black;
-    margin: auto;
-    width: 95%;
-    background-color: #eee;
+  border: 3px solid black;
+  margin: auto;
+  width: 95%;
+  background-color: #eee;
 }

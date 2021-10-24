@@ -5,62 +5,60 @@
 */
 
 .productosAleatorios {
-    margin: auto;
-    width: 18rem;
-    border: 1px solid black;
-    display: grid;
-  
-    grid-template-columns: 18rem;
-    gap: 1rem;
-    padding: 5%;
+  margin: auto;
+  width: 18rem;
+  border: 1px solid black;
+  display: grid;
 
-    border: 1px solid green;
-    background-color: palegreen;
-    padding: 0.5rem;
-  }
-  
-  .productosAleatorios article {
-    border: 1px solid green;
-    background-color: palegreen;
-    padding: 0.5rem;
-  }
-  
-  .productosAleatorios img {
-    min-width: 10rem;
-    max-width: 12rem;
-    object-fit: cover;
-  }
-  
-  .productosAleatorios h3 {
-    text-align: center;
-  }
-  
+  grid-template-columns: 18rem;
+  gap: 1rem;
+  padding: 5%;
+
+  border: 1px solid green;
+  background-color: palegreen;
+  padding: 0.5rem;
+}
+
+.productosAleatorios article {
+  border: 1px solid green;
+  background-color: palegreen;
+  padding: 0.5rem;
+}
+
+.productosAleatorios img {
+  min-width: 10rem;
+  max-width: 12rem;
+  object-fit: cover;
+}
+
+.productosAleatorios h3 {
+  text-align: center;
+}
 
 /* Las fotos... */
 #fotoPrecioNombre {
-    /* border: 10px solid greenyellow; */
-   margin-left: 1%;
-    margin-right: 1%;
+  /* border: 10px solid greenyellow; */
+  margin-left: 1%;
+  margin-right: 1%;
 }
 
 .divImagenArticulo {
   margin: auto;
 }
 
-
 .articuloImagen {
-    width: 100%;
-    min-width: 10rem;
-    max-width: 12rem;
-    object-fit: cover;
+  width: 100%;
+  min-width: 10rem;
+  max-width: 12rem;
+  object-fit: cover;
 }
 
 #precio {
-    margin-left: 1%;
-    text-align: center;
+  margin-left: 1%;
+  text-align: center;
 }
 #nombreProducto {
-    margin-left: 1%;
-    font-size: 150%;
-    text-align: center;
+  margin-left: 1%;
+  font-size: 150%;
+  text-align: center;
 }
