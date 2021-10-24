@@ -7,7 +7,7 @@ const LoginModal = ({ abierto, cerrarModal }) => {
   const handelModalContenedorClick = (e) => e.stopPropagation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [, setToken] = useContext(AuthTokenContext);
+  const [token, setToken] = useContext(AuthTokenContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
