@@ -9,11 +9,12 @@ export const UsuarioLogueado = () => {
   const [infoUsuario, setInfoUsuario] = useState([]);
   useEffect(() => {
     get(
-      'http://localhost:4000/users/9',
+      'http://localhost:4000/users',
       (body) => setInfoUsuario(body.userInfo),
       token
     );
   }, [token]);
+  // console.log(infoUsuario, 'informacion usuario');
 
   return (
     <>
