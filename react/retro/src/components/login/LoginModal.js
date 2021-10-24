@@ -15,6 +15,10 @@ const LoginModal = ({ abierto, cerrarModal }) => {
       email: email,
       password: password,
     };
+
+    console.log(body); // {email: 'rodatrapaffi-5088@yopmail.com', password: '12345678'}
+    console.log(token); // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE2MzUwMDE5NjYsImV4cCI6MTY0MDE4NTk2Nn0.DaujncVwAR1l1bElObuh8Z9QiT2iW72E0aXNv808YzI
+
     const respuestaServidor = (body) => {
       setToken(body.token);
     };

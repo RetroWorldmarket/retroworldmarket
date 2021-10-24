@@ -16,6 +16,8 @@ export const InicioHeader = () => {
   // Definimos el token
   const [token, setToken] = useContext(AuthTokenContext);
 
+  console.log(token);
+
   return (
     <header id='cabeceraPrincipalSinLogo'>
       <nav>
