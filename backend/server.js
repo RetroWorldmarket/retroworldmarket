@@ -29,6 +29,10 @@ app.use(fileUpload());
 // ** (Como las peticiones vendrán en las líneas siguientes, ya estarán deserializadas.)
 app.use(express.json());
 
+//para poder acceder a la carpeta static
+
+app.use(express.static('static/upload'));
+
 //////////////////////////////////
 /// Controladores de Usuarios: ///
 //////////////////////////////////

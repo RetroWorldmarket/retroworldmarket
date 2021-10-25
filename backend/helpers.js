@@ -184,7 +184,7 @@ async function borrarFoto(nameImage) {
 const paginacion = (productos, page, limit) => {
   //variable pagina
   page = page || 1;
-  limit = limit || 10;
+  limit = limit || 5;
 
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
