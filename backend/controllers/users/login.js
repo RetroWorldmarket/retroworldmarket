@@ -64,7 +64,7 @@ const login = async (req, res, next) => {
 
     res.send({
       status: 'ok',
-      token,
+      token: `Bearer ${token}`,
     });
   } catch (error) {
     next(error);

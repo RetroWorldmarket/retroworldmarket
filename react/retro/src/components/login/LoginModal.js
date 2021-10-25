@@ -20,7 +20,7 @@ const LoginModal = ({ abierto, cerrarModal }) => {
     console.log(token); // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE2MzUwMDE5NjYsImV4cCI6MTY0MDE4NTk2Nn0.DaujncVwAR1l1bElObuh8Z9QiT2iW72E0aXNv808YzI
 
     const respuestaServidor = (body) => {
-      setToken(body.token);
+      setToken(body.token.split(' ')[1]);
     };
     post('http://localhost:4000/users/login', body, respuestaServidor);
   };

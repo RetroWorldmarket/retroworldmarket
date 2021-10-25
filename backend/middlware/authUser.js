@@ -27,7 +27,7 @@ const authUser = async (req, res, next) => {
       //Para que nos cree un token correcto le debemos pasar la cabecera de
       //autentificación y un número secreto que lo guadaremos en .env
       // eslint-disable-next-line no-undef
-      token = jwt.verify(authorization, process.env.SECRETO);
+      token = jwt.verify(authorization.split(' ')[1], process.env.SECRETO);
     } catch (_) {
       const error = new Error('el token no es válido');
       error.httpStatus = 401;

@@ -14,7 +14,6 @@ export const UsuarioLogueado = () => {
       token
     );
   }, [token]);
-  console.log(infoUsuario, 'informacion usuario');
 
   return (
     <>
