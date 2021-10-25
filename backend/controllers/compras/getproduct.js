@@ -10,11 +10,13 @@ const getProduct = async (req, res, next) => {
 
     const [getProduct] = await connection.query(
       `
-    SELECT products.id, products.idUser , products.nameProduct , products.brand , products.yearOfProduction , products.status, products.category , products.description , products.price, AVG(IFNULL(votes.vote, 0)) AS votes
-    FROM products 
-    LEFT JOIN  votes ON (products.idUser = votes.idUser)
-    WHERE products.id = ?
-	GROUP BY products.id
+      SELECT products.id, products.idUser , products.nameProduct , products.brand , products.yearOfProduction , products.status, products.category , products.description , products.price,
+      users.name, users.province, AVG(IFNULL(votes.vote, 0)) AS votes
+      FROM products 
+      LEFT JOIN  votes ON (products.idUser = votes.idUser)
+      LEFT JOIN users ON (products.idUser = users.id)
+      WHERE products.id = ?
+      GROUP BY products.id
 
     `,
       [idProduct]

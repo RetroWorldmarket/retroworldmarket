@@ -8,8 +8,6 @@ const productExist = async (req, res, next) => {
 
     const { idProduct } = req.params;
 
-    console.log(idProduct);
-
     const [exist] = await connection.query(
       `
     SELECT * FROM products WHERE id = ?

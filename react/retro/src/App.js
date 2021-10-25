@@ -5,13 +5,8 @@ import { Catalogo } from './paginas/Catalogo';
 import { Error404 } from './components/error404/Error404';
 import { Producto } from './components/producto/Producto';
 import Modales from './components/modal/Modales';
-import { useContext } from 'react';
-import { AuthTokenContext } from '.';
-
 function App() {
   // Importamos el token para saber cuándo el usuario está logueado o no.
-  const [token] = useContext(AuthTokenContext);
-  console.log(token);
 
   return (
     <div className='App'>

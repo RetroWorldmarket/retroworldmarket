@@ -19,8 +19,6 @@ const productActive = async (req, res, next) => {
       [idProduct]
     );
 
-    console.log('Data tiene: ', data);
-
     if (!data[0].active) {
       const error = new Error(
         'El producto seleccionado no está activo actualmente'
