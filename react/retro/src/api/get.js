@@ -1,6 +1,7 @@
 export async function get(
   url,
   funcionSuceso,
+  token = '',
   ErrorPeticion = (respuesta) => {
     console.error(
       'Error en la petición al servidor',
@@ -17,6 +18,7 @@ export async function get(
       headers: {
         //no se pone el method porque por defecto es get
         'Content-Type': 'application/json',
+        Authorization: token,
       },
     });
     if (respuesta.ok) {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { InicioHeader } from '../components/InicioHeader';
 import { Categorias } from '../components/categorias/Categorias';
 import { OrdenarPor } from '../components/ordenarPor/OrdenarPor';
