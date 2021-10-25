@@ -4,6 +4,9 @@ import { get } from '../../api/get';
 
 export const Producto = () => {
   const [producto, setProducto] = useState({});
+  //creamos un estado para cambiar las fotos con las posiciones del array
+  //empieza por 0 porque es la posición inicial del array
+  const [foto, setFoto] = useState(0);
   const { idProduct } = useParams();
 
   useEffect(() => {
@@ -11,33 +14,60 @@ export const Producto = () => {
       setProducto(body.producto);
     });
   }, [idProduct]);
-  console.log(producto);
+
+  //hacemos componente boton
+
+  // Ir a la foto anterior. En caso de estar en la primera , pasamos a la última
+  const fotoPrevia = (e) => {
+    e.stopPropagation();
+    setFoto(foto === 0 ? producto.fotos.length - 1 : foto - 1);
+  };
+
+  // Ir a la foto siguiente. En caso de estar en la última  pasamos a la primera
+  const fotoSiguiente = (e) => {
+    e.stopPropagation();
+    setFoto(foto === producto.fotos.length - 1 ? 0 : foto + 1);
+  };
 
   return (
     <section id='contenedorDelModalDelArticulo'>
       {Object.values(producto).length && (
         <section id='articulo'>
-          <figure>
-            <img
-              src={`http://localhost:4000/${producto.fotos[0].namePhoto}`}
-              alt='Imagen de artículo'
-            />
-          </figure>
+          {producto.fotos.length > 1 && (
+            <>
+              <button onClick={fotoPrevia}>previa</button>
+              <button onClick={fotoSiguiente}>anterior</button>
+            </>
+          )}
+
+          {producto.fotos.length &&
+            producto.fotos.map((nombre, posicion) => (
+              <figure key={posicion}>
+                {posicion === foto && (
+                  <>
+                    <img
+                      src={`http://localhost:4000/${producto.fotos[posicion].namePhoto}`}
+                      alt='Imagen de artículo'
+                    />
+                  </>
+                )}
+              </figure>
+            ))}
           <article>
             <ul>
-              <li>Nombre:</li>
-              <li>Precio:</li>
-              <li>Categoría:</li>
-              <li>Estado:</li>
+              <li>{`Nombre: ${producto[0].nameProduct}`} </li>
+              <li>{`Marca: ${producto[0].brand}`}</li>
+              <li>{`Precio: ${producto[0].price}`}</li>
+              <li>{`Categoria: ${producto[0].category}`}</li>
+              <li>{`Estado: ${producto[0].status}`}</li>
               <li>
                 Descripción:
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                <p>{`${producto[0].description}`}</p>
               </li>
-              <li>Marca:</li>
-              <li>Año de fabricación:</li>
-              <li>Provincia</li>
-              <li>Vendido por:</li>
-              <li>Valoraciones:</li>
+              <li>{`Año de Fabricación: ${producto[0].yearOfProduction}`}</li>
+              <li>{`Vendido por: ${producto[0].name}`}</li>
+              <li>{`Valoración: ${producto[0].status}`}</li>
+              <li>{`Lugar: ${producto[0].province}`}</li>
             </ul>
           </article>
         </section>
