@@ -27,11 +27,16 @@
 ///////////////////// Capítulo de DUDAS para PREGUNTAR /////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
+<<<<<<< HEAD:backend/endpoints-1.3.md
     1)	Por qué tenemos que ponerle el .id a: const idReqUser = req.userAuth.id; ??????
     		Lo tenemos en editUser.js línea 20 y en getUser.js línea 16.----->RESUELTA--ENRIQUE
 
     2)	Por qué en test de editUser (app.put('/users/:idUser', authUser, userExists, editUser)
     		SOLO lee la request si está en formato json (body-raw) y no la lee si esta en formato form-data (aunque no tenga archivo gráfico) ???????????????
+=======
+    	· GET /users/validate/:registrationCode -----> Validar un usuario recién registrado.
+    	· POST /sellretro/:IDProduct -----> Botón EDITAR
+>>>>>>> origin:endpoints-1.3.md
 
 3.Pregunta para Berto o DAVID; ¿Hacer una barra de categorias se pide en el body o es cosa de la querystring?
 

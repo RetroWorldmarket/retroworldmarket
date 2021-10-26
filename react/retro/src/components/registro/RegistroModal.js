@@ -13,7 +13,7 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
   const [alias, setAlias] = useState('');
   const [provincia, setProvincia] = useState('');
   const [location, setLocation] = useState('');
-  const [codigoPostal, setCodigoPostas] = useState('');
+  const [codigoPostal, setCodigoPostal] = useState('');
 
   // const [response, setResponse] = useState();
 
@@ -26,6 +26,10 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
   const onSubmit = (e) => {
     //para que no se envie por defecto
     e.preventDefault();
+    console.log('e tiene:', e);
+    // Limpiamos el form después del envío:
+    // e.target.onreset;
+
     //sacamos el body de la peticion; debe coincidir con los nombres de la base de datos
     const body = {
       name: nombre,
@@ -104,6 +108,9 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
             <li>
               <label htmlFor='password'>
                 Contraseña:
+                {contrasena.length < 8 ? (
+                  <span>Mínimo 8 caracteres</span>
+                ) : null}
                 <input
                   type='password'
                   name='password'
@@ -160,7 +167,7 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
                   name='postalCode'
                   id='postalCode'
                   value={codigoPostal}
-                  onChange={(e) => setCodigoPostas(e.target.value)}
+                  onChange={(e) => setCodigoPostal(e.target.value)}
                 />
               </label>
             </li>

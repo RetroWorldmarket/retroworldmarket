@@ -20,7 +20,7 @@ export const UsuarioLogueado = () => {
       <figure>
         <img src={`img/${infoUsuario.avatar}`} alt='usuario logueado'></img>
       </figure>
-      {infoUsuario ? <p>{infoUsuario.alias}</p> : null}
+      {infoUsuario ? <p>Bienvenido {infoUsuario.alias}!!!</p> : null}
     </>
   );
 };
