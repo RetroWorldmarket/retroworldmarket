@@ -15,12 +15,17 @@ const LoginModal = ({ abierto, cerrarModal }) => {
       email: email,
       password: password,
     };
+<<<<<<< Updated upstream
 
     console.log(body); // {email: 'rodatrapaffi-5088@yopmail.com', password: '12345678'}
     console.log(token); // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTQsInJvbCI6InVzdWFyaW8iLCJpYXQiOjE2MzUwMDE5NjYsImV4cCI6MTY0MDE4NTk2Nn0.DaujncVwAR1l1bElObuh8Z9QiT2iW72E0aXNv808YzI
 
     const respuestaServidor = (body) => {
       setToken(body.token.split(' ')[1]);
+=======
+    const respuestaServidor = (body) => {
+      setToken(body.token);
+>>>>>>> Stashed changes
     };
     post('http://localhost:4000/users/login', body, respuestaServidor);
   };
@@ -45,7 +50,11 @@ const LoginModal = ({ abierto, cerrarModal }) => {
               type='text'
               name='email'
               placeholder='Escribe aquí tu email'
+<<<<<<< Updated upstream
               id='email-login'
+=======
+              id='email'
+>>>>>>> Stashed changes
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             ></input>
@@ -57,7 +66,11 @@ const LoginModal = ({ abierto, cerrarModal }) => {
               type='password'
               name='password'
               placeholder='Escribe aquí tu password'
+<<<<<<< Updated upstream
               id='password-login'
+=======
+              id='password'
+>>>>>>> Stashed changes
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             ></input>
