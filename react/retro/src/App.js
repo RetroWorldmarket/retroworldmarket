@@ -6,20 +6,24 @@ import { Error404 } from './components/error404/Error404';
 import { Producto } from './components/producto/Producto';
 import Modales from './components/modal/Modales';
 function App() {
-  // Importamos el token para saber cuándo el usuario está logueado o no.
+    // Importamos el token para saber cuándo el usuario está logueado o no.
 
-  return (
-    <div className='App'>
-      <BrowserRouter>
-        <Switch>
-          <Route exact path='/' component={Inicio} />
-          <Route exact path='/catalogo' component={Catalogo} />
-          <Route exact path='/product/:idProduct' component={Producto} />
-          <Route path='*' component={Error404} />
-        </Switch>
-      </BrowserRouter>
-    </div>
-  );
+    return (
+        <div className='App'>
+            <BrowserRouter>
+                <Switch>
+                    <Route exact path='/' component={Inicio} />
+                    <Route exact path='/catalogo' component={Catalogo} />
+                    <Route
+                        exact
+                        path='/product/:idProduct'
+                        component={Producto}
+                    />
+                    <Route path='*' component={Error404} />
+                </Switch>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;
