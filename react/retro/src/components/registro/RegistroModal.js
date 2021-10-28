@@ -14,6 +14,7 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
   const [provincia, setProvincia] = useState('');
   const [location, setLocation] = useState('');
   const [codigoPostal, setCodigoPostal] = useState('');
+  const [terminos, setTerminos] = useState(false);
 
   // const [response, setResponse] = useState();
 
@@ -108,9 +109,6 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
             <li>
               <label htmlFor='password'>
                 Contraseña:
-                {contrasena.length < 8 ? (
-                  <span>Mínimo 8 caracteres</span>
-                ) : null}
                 <input
                   type='password'
                   name='password'
@@ -149,13 +147,68 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
             <li>
               <label htmlFor='province'>
                 Provincia:
-                <input
-                  type='text'
+                <select
                   name='province'
                   id='province'
+                  //value={value.province}
                   value={provincia}
                   onChange={(e) => setProvincia(e.target.value)}
-                />
+                >
+                  <option value=''>- Seleccione -</option>
+                  <option value='a coruña'>A Coruña</option>
+                  <option value='alava'>Alaba</option>
+                  <option value='albacete'>Albacete</option>
+                  <option value='alicante'>Alicante</option>
+                  <option value='almeria'>Almería</option>
+                  <option value='asturias'>Asturias</option>
+                  <option value='avila'>Ávila</option>
+                  <option value='badajoz'>Badajoz</option>
+                  <option value='baleares'>Baleares</option>
+                  <option value='barcelona'>Barcelona</option>
+                  <option value='burgos'>Burgos</option>
+                  <option value='caceres'>Cáceres</option>
+                  <option value='cadiz'>Cádiz</option>
+                  <option value='cantabria'>Cantabria</option>
+                  <option value='castellon'>Castellón</option>
+                  <option value='ceuta'>Ceuta</option>
+                  <option value='ciudad real'>Córdoba</option>
+                  <option value='cuenca'>Cuenca</option>
+                  <option value='girona'>Girona</option>
+                  <option value='granada'>Granada</option>
+                  <option value='guadalajara'>Guadalajara</option>
+                  <option value='gipuzkoa'>Gipuzkoa</option>
+                  <option value='huelva'>Huelva</option>
+                  <option value='huesca'>Huesca</option>
+                  <option value='jaen'>Jaén</option>
+                  <option value='la rioja'>La Rioja</option>
+                  <option value='las palmas'>Las Palmas</option>
+                  <option value='leon'>León</option>
+                  <option value='lerida'>Lérida</option>
+                  <option value='lugo'>Lugo</option>
+                  <option value='madrid'>Madrid</option>
+                  <option value='malaga'>Málaga</option>
+                  <option value='melilla'>Melilla</option>
+                  <option value='murcia'>Múrcia</option>
+                  <option value='navarra'>Navarra</option>
+                  <option value='ourense'>Ourense</option>
+                  <option value='palencia'>Palencia</option>
+                  <option value='pontevedra'>Pontevedra</option>
+                  <option value='salamanca'>Salamanca</option>
+                  <option value='segovia'>Segovia</option>
+                  <option value='sevilla'>Sevilla</option>
+                  <option value='soria'>Soria</option>
+                  <option value='tarragona'>Tarragona</option>
+                  <option value='santa cruz de tenerife'>
+                    Santa Cruz de Tenerife
+                  </option>
+                  <option value='teruel'>Teruel</option>
+                  <option value='toledo'>Toledo</option>
+                  <option value='valencia'>Valencia</option>
+                  <option value='valladolid'>Valladolid</option>
+                  <option value='vizcaya'>Vizcaya</option>
+                  <option value='zamora'>Zamora</option>
+                  <option value='zaragoza'>Zaragoza</option>
+                </select>
               </label>
             </li>
 
@@ -170,6 +223,16 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
                   onChange={(e) => setCodigoPostal(e.target.value)}
                 />
               </label>
+            </li>
+            <br />
+            <li>
+              <label htmlFor='terminos'>Acepto términos y cóndiciones</label>
+              <input
+                type='checkbox'
+                name='terminos'
+                id='terminos'
+                onChange={(e) => setTerminos(e.target.checked)}
+              />
             </li>
           </ul>
           <button type='submit'>Enviar</button>
