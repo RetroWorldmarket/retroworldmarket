@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { FormularioContacto } from '../../paginas/FormularioContacto';
 import './Footer.css';
 
 export const Footer = () => {

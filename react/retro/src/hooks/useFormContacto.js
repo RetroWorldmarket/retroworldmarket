@@ -11,7 +11,7 @@ import { helpHttp } from '../components/footer/contacto/helpHttp';
 //  3) La función que maneja el envío del formulario (handleSubmit).
 //  4) El objeto con las variables de estado que se declaran.
 
-export const useForm = (initialForm, validateForm) => {
+export const useFormContacto = (initialForm, validateForm) => {
   // Declaramos las variables y las funciones.
 
   // Aquí asignamos a una variable el valor inicial del formulario que

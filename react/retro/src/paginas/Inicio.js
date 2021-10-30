@@ -10,8 +10,6 @@ import { Link } from 'react-router-dom';
 export const Inicio = ({ articulo }) => {
   return (
     <div>
-      <InicioHeader />
-
       <main id='mainPaginaPrincipal'>
         <aside id='botonesCompraVenta'>
           <button>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+// El mensaje para el usuario muestra la respuesta del dervicio solicitado.
+// Recibe por parámetro una variable que es el mensaje y un color de fondo para mostralo.
 const Message = ({ msg, bgColor }) => {
   let styles = {
     padding: '1rem',

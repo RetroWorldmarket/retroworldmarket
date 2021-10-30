@@ -1,4 +1,4 @@
-import { useForm } from '../hooks/useForm';
+import { useFormContacto } from '../hooks/useFormContacto';
 import Loader from '../components/footer/contacto/Loader';
 import Message from '../components/footer/contacto/Message';
 import '../components/footer/contacto/FormularioContacto.css';
@@ -90,7 +90,7 @@ export const FormularioContacto = () => {
     handleChange,
     handleBlur,
     handleSubmit,
-  } = useForm(initialForm, validationsForm);
+  } = useFormContacto(initialForm, validationsForm);
 
   //console.log('form tiene:', form);
 
