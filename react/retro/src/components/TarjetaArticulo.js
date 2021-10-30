@@ -1,21 +1,26 @@
-import './TarjetaArticulo.css'; 
-import {Link} from 'react-router-dom'
+import './TarjetaArticulo.css';
+import { Link } from 'react-router-dom';
 
-export const TarjetaArticulo = ({ articulo }) => {
+export const TarjetaArticulo = (cat) => {
   return (
-    <div id='fotoPrecioNombre' className='productosAleatorios'>
-      <div className='divImagenArticulo'>
-        <img
-          className='articuloImagen'
-          src='../img/telefonos_images.jpeg'
-          alt='Imagen de artículo'
-        />
-      </div>
-      <span id='precio'>
-        <h2>300€</h2>
-      </span>
-      <span id='nombreProducto'>Lote de teléfonos</span>
-    </div>
+    <section id='fotoPrecioNombre' className='productosAleatorios'>
+      <article>
+        <figure className='divImagenArticulo'>
+          <img
+            className='articuloImagen'
+            src={`http://localhost:4000/${cat.articulo.namePhoto}`}
+            alt={`${cat.articulo.namePhoto}`}
+          />
+        </figure>
+        <h2>{`${cat.articulo.price} euros`}</h2>
+        <h3>{`${cat.articulo.nameProduct}`}</h3>
+        <h4>{`${cat.articulo.brand}`}</h4>
+        <h5>{`${cat.articulo.status}`}</h5>
+        <button>
+          <Link to={`/product/${cat.articulo.id}`}>Mira tu producto</Link>
+        </button>
+      </article>
+    </section>
   );
 };
 

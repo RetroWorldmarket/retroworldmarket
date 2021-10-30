@@ -1,4 +1,3 @@
-import { InicioHeader } from '../components/InicioHeader';
 import { SeccionListaArticulos } from '../components/seccion-lista-articulos/SeccionListaArticulos';
 import { Categorias } from '../components/categorias/Categorias';
 import { Footer } from '../components/footer/Footer';
