@@ -13,15 +13,9 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
   const [alias, setAlias] = useState('');
   const [provincia, setProvincia] = useState('');
   const [location, setLocation] = useState('');
-<<<<<<< Updated upstream
   const [codigoPostal, setCodigoPostal] = useState('');
 
   // const [response, setResponse] = useState();
-=======
-  const [codigoPostal, setCodigoPostas] = useState('');
-
-  const [response, setResponse] = useState();
->>>>>>> Stashed changes
 
   //tambien recogemos el token para que nos lo dé una vez registrado
   //(por ahora) porque hay que validar
