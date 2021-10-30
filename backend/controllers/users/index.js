@@ -5,7 +5,7 @@ const getUser = require('./getUser');
 const editUser = require('./editUser');
 const userVotes = require('./userVotes');
 const deleteUser = require('./deleteUser');
-const User = require('./EJEMPLO-USER');
+const User = require('./logUser');
 module.exports = {
   User,
   createUser,

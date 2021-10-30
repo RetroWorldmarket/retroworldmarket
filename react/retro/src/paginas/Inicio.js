@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 // Falta ubicar PlusArticuloModal en los productos
 // importar Categorias
 
-export const Inicio = () => {
+export const Inicio = ({ articulo }) => {
   return (
     <div>
       <InicioHeader />
@@ -21,7 +21,7 @@ export const Inicio = () => {
             <a href='/ventas'>Vende tu retro</a>
           </button>
         </aside>
-        <SeccionListaArticulos />
+        <SeccionListaArticulos articulo={articulo} />
         <Categorias />
       </main>
       <Footer />

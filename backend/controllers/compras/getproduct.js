@@ -32,7 +32,6 @@ const getProduct = async (req, res, next) => {
 
       [idProduct]
     );
-
     res.send({
       status: 'ok',
       producto: {

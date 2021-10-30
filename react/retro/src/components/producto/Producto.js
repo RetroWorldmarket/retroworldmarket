@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useHistory } from 'react-router-dom';
 import { get } from '../../api/get';
 
-export const Producto = () => {
+export const Producto = ({ articulo }) => {
+  const history = useHistory();
+
   const [producto, setProducto] = useState({});
   //creamos un estado para cambiar las fotos con las posiciones del array
   //empieza por 0 porque es la posición inicial del array
@@ -72,6 +74,7 @@ export const Producto = () => {
           </article>
         </section>
       )}
+      <button onClick={() => history.goBack()}>volver</button>
       <section id='sectionMensajeAlVendedor'>
         <button>
           <Link to='/' />

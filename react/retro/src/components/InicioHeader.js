@@ -16,8 +16,6 @@ export const InicioHeader = () => {
   // Definimos el token
   const [token] = useContext(AuthTokenContext);
 
-  console.log(token);
-
   return (
     <header id='cabeceraPrincipalSinLogo'>
       <nav>
@@ -48,7 +46,7 @@ export const InicioHeader = () => {
         </ul>
       </nav>
       <section>
-        <form action='/'>
+        <form action='/catalogo'>
           <label htmlFor='search'>
             <input
               id='barraBusqueda'
