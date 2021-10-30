@@ -1,0 +1,13 @@
+#formularioContacto {
+    border: 3px solid black;
+    background-color: #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /* gap: 10%; */
+    width: 90%;
+    margin: auto;
+    margin-bottom: 5%;
+    /* max-height: 30rem; */
+    min-height: 20rem;
+}
