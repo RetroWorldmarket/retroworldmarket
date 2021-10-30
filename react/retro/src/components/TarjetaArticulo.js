@@ -1,4 +1,5 @@
-import './TarjetaArticulo.css';
+import './TarjetaArticulo.css'; 
+import {Link} from 'react-router-dom'
 
 export const TarjetaArticulo = ({ articulo }) => {
   return (
