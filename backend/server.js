@@ -63,6 +63,7 @@ const {
  */
 
 const {
+  pagInicio,
   categoryProduct,
   search,
   getProduct,
@@ -222,6 +223,8 @@ app.get('/users', authUser, User);
  ***BARRAS DE BÚSQUEDA***
  ************************
  */
+//Página de inicio
+app.get('/inicio', pagInicio);
 
 // Barra de busqueda
 app.get('/search', search);
