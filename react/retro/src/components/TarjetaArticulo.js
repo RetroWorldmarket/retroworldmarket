@@ -1,4 +1,5 @@
-import './TarjetaArticulo.css';
+import './TarjetaArticulo.css'; 
+import {Link} from 'react-router-dom'
 
 export const TarjetaArticulo = ({ articulo }) => {
   return (
@@ -17,3 +18,22 @@ export const TarjetaArticulo = ({ articulo }) => {
     </div>
   );
 };
+
+/* <section id='TarjetaArticulo'>
+{Object.values(art.articulo.id) > 0 && (
+  <article key={art.articulo.id} id='tarjetaArticulo'>
+    <figure>
+      <img
+        src={`http://localhost:4000/${art.articulo.namePhoto}`}
+        alt={`${art.articulo.namePhoto}`}
+      />
+    </figure>
+    <h2>{`${art.articulo.price} euros`}</h2>
+    <h3>{art.articulo.nameProduct}</h3>
+    <h4>{art.articulo.brand}</h4>
+    <button>
+      <Link to={`/product/${art.articulo.id}`}>Mira tu producto</Link>
+    </button>
+  </article>
+)}
+</section> */

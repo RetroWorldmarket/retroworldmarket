@@ -7,67 +7,67 @@
 */
 
 body {
-    min-width: 300px;
+  min-width: 300px;
 }
 
 /* nav principal */
 
 #cabeceraPrincipalSinLogo {
-    border: 2px solid #d20076;
-    background-color: #903495;
-    display: flex;
-    flex-direction: column;
+  border: 2px solid #d20076;
+  background-color: #903495;
+  display: flex;
+  flex-direction: column;
 }
 
 #cabeceraPrincipalSinLogo > nav > ul {
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #cabeceraPrincipalSinLogo button {
-    background-color: #903495;
-    border: none;
+  background-color: #903495;
+  border: none;
 }
 #cabeceraPrincipalSinLogo button:hover {
-    transition-duration: 2s;
-    font-size: x-large;
-    font-weight: bolder;
+  transition-duration: 2s;
+  font-size: x-large;
+  font-weight: bolder;
 }
 
 #cabeceraPrincipalSinLogo li {
-    list-style: none;
+  list-style: none;
 }
 
 #cabeceraPrincipalSinLogo a {
-    text-decoration: none;
-    color: #00fff6;
+  text-decoration: none;
+  color: #00fff6;
 }
 
 /* barra de busqueda */
 
 #cabeceraPrincipalSinLogo > section {
-    border: none;
-    display: grid;
-    grid-template-columns: 12fr 0.5fr;
-    justify-content: center;
-    text-align: center;
-    justify-items: center;
+  border: none;
+  display: grid;
+  grid-template-columns: 12fr 0.5fr;
+  justify-content: center;
+  text-align: center;
+  justify-items: center;
 }
 
 #cabeceraPrincipalSinLogo img {
-    width: 1rem;
+  width: 1rem;
 }
 
 #cabeceraPrincipalSinLogo > section > form {
-    text-align: left;
+  text-align: left;
 }
 
 #barraBusqueda::placeholder {
-    background-color: #6096e5;
-    width: 20em;
-    height: 1rem;
+  background-color: #6096e5;
+  width: 20em;
+  height: 1rem;
 }
 
 /*
@@ -77,15 +77,15 @@ body {
 */
 
 #mainPaginaPrincipal {
-    background-color: #2d2c55;
+  background-color: #2d2c55;
 }
 
 #mainPaginaPrincipal a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #footerPaginaPrincipal {
-    background-color: blue;
+  background-color: blue;
 }
 
 /*
@@ -95,10 +95,10 @@ body {
 
 */
 #botonesCompraVenta {
-    padding-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*
@@ -108,30 +108,29 @@ body {
 */
 
 #productosAleatorios {
-    margin: auto;
-    width: 2rem;
-    border: none;
-    display: flex;
-    opacity: 0.9;
-    gap: 1rem;
-    padding: 5%;
-    display: inline-flex;
+  margin: auto;
+  width: 2rem;
+  border: none;
+  display: flex;
+  opacity: 0.9;
+  gap: 1rem;
+  padding: 5%;
 }
 
 #productosAleatorios article {
-    border: 2px solid violet;
-    background-color: #e0a2eb;
-    padding: 0.5rem;
+  border: 2px solid violet;
+  background-color: #e0a2eb;
+  padding: 0.5rem;
 }
 
 #productosAleatorios img {
-    min-width: 7rem;
-    max-width: 12rem;
-    object-fit: cover;
+  min-width: 7rem;
+  max-width: 12rem;
+  object-fit: cover;
 }
 
 #productosAleatorios h3 {
-    text-align: center;
+  text-align: center;
 }
 
 /*****************************
@@ -139,17 +138,17 @@ body {
 *****************************/
 
 #navegacionCategorias ul {
-    background-color: red;
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    overflow-y: scroll;
+  background-color: red;
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  overflow-y: scroll;
 }
 
 #navegacionCategorias li {
-    text-decoration: none;
-    list-style: none;
-    background-color: #d20076;
+  text-decoration: none;
+  list-style: none;
+  background-color: #d20076;
 }
 
 /*
@@ -159,22 +158,22 @@ body {
 */
 
 #footerPaginaPrincipal {
-    background-color: #be7edc;
-    font-size: 25px;
-    display: flex;
-    flex-direction: column;
-    transition: 0.3s all;
-    padding-top: 15px;
+  background-color: #be7edc;
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  transition: 0.3s all;
+  padding-top: 15px;
 }
 
 #footerPaginaPrincipal ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 #footerPaginaPrincipal li {
-    list-style: none;
-    text-decoration: none;
-    background-color: #be7edc;
+  list-style: none;
+  text-decoration: none;
+  background-color: #be7edc;
 }

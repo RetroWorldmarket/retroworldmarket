@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import jwt_decode from 'jwt-decode';
 export const AuthTokenContext = React.createContext('');
 
 const AuthTokenProvider = ({ children }) => {
   const [token, setToken] = useLocalStorage('', 'accesoToken');
+  const [tokenInfo, setTokenInfo] = useState({});
+
+  useEffect(() => {
+    if (token) setTokenInfo(jwt_decode(token));
+  }, [token]);
+
   return (
-    <AuthTokenContext.Provider value={[token, setToken]}>
+    <AuthTokenContext.Provider value={[token, setToken, tokenInfo]}>
       {children}
     </AuthTokenContext.Provider>
   );

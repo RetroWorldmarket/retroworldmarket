@@ -1,5 +1,5 @@
 import './Categorias.css';
-
+import {Link} from "react-router-dom";
 export const Categorias = () => {
   return (
     <div id='marcoNavegacionCategorias'>
@@ -12,8 +12,11 @@ export const Categorias = () => {
                 src='../img/telefono-viejo.png'
                 alt='telefono-retro'
               />
+              <button className='boton-telefonía' type="submit">
+              <Link to="/catalogo?category=telefonia">Telefonía</Link>
+              </button>
             </div>
-            <button className='boton-categoria'>Telefonía</button>
+           
           </li>
           <li className='li-icono'>
             <div className='marco-icono'>
@@ -23,7 +26,9 @@ export const Categorias = () => {
                 alt='telefono-retro'
               />
             </div>
-            <button className='boton-categoria'>Consolas</button>
+            <button className='boton-categoria' type="submit">
+            <Link to="/catalogo?category=consolas%20y%20juegos">consolas</Link>
+            </button>
           </li>
           <li className='li-icono'>
             <div className='marco-icono'>
@@ -33,7 +38,9 @@ export const Categorias = () => {
                 alt='telefono-retro'
               />
             </div>
-            <button className='boton-categoria'>Música</button>
+            <button className='boton-categoria' type="submit">
+            <Link to="/catalogo?category=musica%20y%20radio">Música</Link>
+            </button>
           </li>
           <li className='li-icono'>
             <div className='marco-icono'>
@@ -43,7 +50,9 @@ export const Categorias = () => {
                 alt='telefono-retro'
               />
             </div>
-            <button className='boton-categoria'>Ordenadores</button>
+            <button className='boton-categoria' type="submit">
+            <Link to="/catalogo?category=ordenadores">Ordenadores</Link> 
+            </button>
           </li>
           <li className='li-icono'>
             <div className='marco-icono'>
@@ -53,7 +62,9 @@ export const Categorias = () => {
                 alt='telefono-retro'
               />
             </div>
-            <button className='boton-categoria'>Todas las categorías</button>
+            <button className='boton-categoria' type="submit">
+            <Link to="/catalogo?category=">Todas las categorias</Link> 
+            </button>
           </li>
         </ul>
       </nav>

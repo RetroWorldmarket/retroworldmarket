@@ -1,79 +1,83 @@
-// Importamos la lógica de un Modal:
-import { post } from '../../api/post';
+// Función para que un usuario edite su perfil.
+import React, { useState, useEffect, useContext } from 'react';
+import Message from '../footer/contacto/Message';
+import { AuthTokenContext } from '../../index';
+import { FormEditarUsuario } from './FormEditarUsuario';
 
-import './RegistroModal.css';
-import { useState } from 'react';
+// Pasos:
+//  Obtener la informacion actual del usuario.
+//    Cuando el usuario está logueado recibe un token y un objeto (infoUsuario) donde viene
+//    {id: 17, alias: 'Felipe 2', avatar: 'defaultAvatar.jpg', province: 'Lugo', votos: null, …}
+//    De aquí usaremos el id para hacer un peticion de toda la informacion del usuario a la BdD.
+//  Mostrarla.
+//  El usuario modifica los campos.
+//  Se actualiza la informacion en la base de datos.
 
-const RegistroModal = ({ abierto, cerrarModal }) => {
-  const handelModalContenedorClick = (e) => e.stopPropagation();
-  //recogemos los estados necesarios para el registro en la pagina
-  const [email, setEmail] = useState('');
-  const [contrasena, setContrasena] = useState('');
-  const [nombre, setNombre] = useState('');
-  const [alias, setAlias] = useState('');
-  const [provincia, setProvincia] = useState('');
-  const [location, setLocation] = useState('');
-  const [codigoPostal, setCodigoPostal] = useState('');
-  const [terminos, setTerminos] = useState(false);
+export const EditarUsuario = (data) => {
+  // Recogemos el token del hook Context:
+  const [token, , tokenInfo] = useContext(AuthTokenContext);
 
-  // const [response, setResponse] = useState();
+  // Definimos una variable donde almacenaremos los datos actuales del usuario.
+  // Definimos una variable para almacenar el error, si lo hubiere.
+  // Las inicializamos como null (no hay info al inicio).
+  const [user, setUser] = useState(null);
+  const [error, setError] = useState(null);
 
-  //tambien recogemos el token para que nos lo dé una vez registrado
-  //(por ahora) porque hay que validar
-  // const [token, setToken] = useLocalStorage('', 'accesoToken');
+  ////////////////////////////////////////////////////////////////////////////////////
 
-  //creamos el evento para recoger los datos del body
+  //////////////////////////////////////////////////////////////////////////////////////
 
-  const onSubmit = (e) => {
-    //para que no se envie por defecto
-    e.preventDefault();
-    console.log('e tiene:', e);
-    // Limpiamos el form después del envío:
-    // e.target.onreset;
+  // La petición GET.
+  useEffect(() => {
+    // Usamos el método get del helper helpHttp, que recibe una url, y devuelve una promesa
+    // Esa promesa la pasamos por .thn y nos devuelve una respuesta
+    const getUserInfo = async () => {
+      try {
+        const url = `http://localhost:4000/users/${tokenInfo.id}`;
+        const response = await fetch(url, {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
-    //sacamos el body de la peticion; debe coincidir con los nombres de la base de datos
-    const body = {
-      name: nombre,
-      email: email,
-      alias: alias,
-      location: location,
-      password: contrasena,
-      province: provincia,
-      postalCode: codigoPostal,
-    };
+        const data = await response.json();
 
-    //creamos la función para hacer o enviar peticiones al servidor
-    const funcionManejadoraDeRespuestaDelServidor = (body) => {
-      if (body.status === 'ok') {
-        alert(`${body.message}`);
-      } else {
-        alert(`${body.message}`);
+        console.log('data tiene :', data);
+
+        if (!response.ok) {
+          throw new Error(data.message);
+        }
+
+        setUser(data.userInfo);
+      } catch (error) {
+        console.error(error);
+        setError(error.message);
       }
-      console.log('Body: ', body);
     };
-    post(
-      'http://localhost:4000/users',
-      body,
-      funcionManejadoraDeRespuestaDelServidor
-    );
-  };
 
-  //cuando se enrute se descomentara la siguiente linea
+    if (tokenInfo.id) {
+      getUserInfo();
+    }
+  }, [tokenInfo.id, token]);
 
-  // if (token) {
-  //   return <Redirect to="/" />;
-  // }
+  console.log('tokenInfo tiene:  ', tokenInfo);
+  console.log('user tiene: ', user);
 
   return (
-    <div className={`modal ${abierto && 'modal-Abrir'}`} onClick={cerrarModal}>
-      <div className='contenedor-Modal' onClick={handelModalContenedorClick}>
-        <h1>Formulario de registro</h1>
+    <>
+      <h2>Editar Usuario</h2>
 
-        <button className='modal-Cerrar' onClick={cerrarModal}>
-          X
-        </button>
+      {user ? <FormEditarUsuario user={{ user }} /> : null}
 
-        <form
+      {error ? <Message msg={error} bgColor={'red'} /> : null}
+    </>
+  );
+};
+
+//<pre>{JSON.stringify(user, null, 4)}</pre>
+
+/* <form
           onSubmit={onSubmit}
           action='/users'
           method='post'
@@ -225,25 +229,138 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
               </label>
             </li>
             <br />
-            <li>
-              <label htmlFor='terminos'>Acepto términos y cóndiciones</label>
-              <input
-                type='checkbox'
-                name='terminos'
-                id='terminos'
-                onChange={(e) => setTerminos(e.target.checked)}
-              />
-            </li>
+            
           </ul>
           <button type='submit'>Enviar</button>
           <button type='reset'>Cancelar</button>
-        </form>
-      </div>
-    </div>
-  );
-};
+        </form> */
 
-// Realizar Modal para respuesta de Backend sobre el formulario.
-// Añadir al botón Enviar la función de limpieza del formulario.
+//////////////////////////////////////////////////////////////////////////////
 
-export default RegistroModal;
+// import React, { useEffect, useState } from "react";
+// import { helpHttp } from "../helpers/helpHttp";
+// import CrudForm from "./CrudForm";
+// import CrudTable from "./CrudTable";
+// import Loader from "./Loader";
+// import Message from "./Message";
+
+// const CrudApi = () => {
+//   const [db, setDb] = useState(null);
+//   const [dataToEdit, setDataToEdit] = useState(null);
+//   const [error, setError] = useState(null);
+//   const [loading, setLoading] = useState(false);
+
+//   let api = helpHttp();
+//   let url = "http://localhost:5000/santos";
+
+//   useEffect(() => {
+//     setLoading(true);
+//     helpHttp()
+//       .get(url)
+//       .then((res) => {
+//         //console.log(res);
+//         if (!res.err) {
+//           setDb(res);
+//           setError(null);
+//         } else {
+//           setDb(null);
+//           setError(res);
+//         }
+//         setLoading(false);
+//       });
+//   }, [url]);
+
+//   const createData = (data) => {
+//     data.id = Date.now();
+//     //console.log(data);
+
+//     let options = {
+//       body: data,
+//       headers: { "content-type": "application/json" },
+//     };
+
+//     api.post(url, options).then((res) => {
+//       //console.log(res);
+//       if (!res.err) {
+//         setDb([...db, res]);
+//       } else {
+//         setError(res);
+//       }
+//     });
+//   };
+
+//   const updateData = (data) => {
+//     let endpoint = `${url}/${data.id}`;
+//     //console.log(endpoint);
+
+//     let options = {
+//       body: data,
+//       headers: { "content-type": "application/json" },
+//     };
+
+//     api.put(endpoint, options).then((res) => {
+//       //console.log(res);
+//       if (!res.err) {
+//         let newData = db.map((el) => (el.id === data.id ? data : el));
+//         setDb(newData);
+//       } else {
+//         setError(res);
+//       }
+//     });
+//   };
+
+//   const deleteData = (id) => {
+//     let isDelete = window.confirm(
+//       `¿Estás seguro de eliminar el registro con el id '${id}'?`
+//     );
+
+//     if (isDelete) {
+//       let endpoint = `${url}/${id}`;
+//       let options = {
+//         headers: { "content-type": "application/json" },
+//       };
+
+//       api.del(endpoint, options).then((res) => {
+//         //console.log(res);
+//         if (!res.err) {
+//           let newData = db.filter((el) => el.id !== id);
+//           setDb(newData);
+//         } else {
+//           setError(res);
+//         }
+//       });
+//     } else {
+//       return;
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <h2>CRUD API</h2>
+//       <article className="grid-1-2">
+//         <CrudForm
+//           createData={createData}
+//           updateData={updateData}
+//           dataToEdit={dataToEdit}
+//           setDataToEdit={setDataToEdit}
+//         />
+//         {loading && <Loader />}
+//         {error && (
+//           <Message
+//             msg={`Error ${error.status}: ${error.statusText}`}
+//             bgColor="#dc3545"
+//           />
+//         )}
+//         {db && (
+//           <CrudTable
+//             data={db}
+//             setDataToEdit={setDataToEdit}
+//             deleteData={deleteData}
+//           />
+//         )}
+//       </article>
+//     </div>
+//   );
+// };
+
+// export default CrudApi;

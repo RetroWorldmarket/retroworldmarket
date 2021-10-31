@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Footer.css';
 
 export const Footer = () => {
@@ -5,7 +6,9 @@ export const Footer = () => {
     <div className='footer'>
       <p>Política de Privacidad</p>
       <p>Preguntas frecuentes</p>
-      <p>Contacto</p>
+      <p>
+        <Link to='/contacto'>Contacto</Link>
+      </p>
       <div>
         <img
           src='../img/facebook.png'
