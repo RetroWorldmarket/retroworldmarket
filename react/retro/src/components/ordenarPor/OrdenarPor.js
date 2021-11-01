@@ -4,7 +4,7 @@ import './OrdenarPor.css';
 export const OrdenarPor = () => {
   return (
     <div className='ordenarPor'>
-      <label for='precio'>
+      <label htmlFor='precio'>
         Precio
         <select name='precio' id='precio'>
           <option value='0-5'>0-5</option>
@@ -18,7 +18,7 @@ export const OrdenarPor = () => {
         </select>
       </label>
 
-      <label for='estado'>
+      <label htmlFor='estado'>
         {' '}
         Estado
         <select name='estado' id='estado'>
@@ -40,7 +40,7 @@ export const OrdenarPor = () => {
         </select>
       </label>
 
-      <label for='ubicacion'>
+      <label htmlFor='ubicacion'>
         {' '}
         Provincia
         <select name='ubicacion' id='ubicacion'>
