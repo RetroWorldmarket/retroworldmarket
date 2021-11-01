@@ -1,5 +1,4 @@
 import React from 'react';
-import { InicioHeader } from '../components/InicioHeader';
 import { Categorias } from '../components/categorias/Categorias';
 import { OrdenarPor } from '../components/ordenarPor/OrdenarPor';
 import { GaleriaProductos } from '../components/galeriaProductos/GaleriaProductos';
@@ -7,7 +6,6 @@ import { GaleriaProductos } from '../components/galeriaProductos/GaleriaProducto
 export const Catalogo = () => {
   return (
     <div>
-      <InicioHeader />
       <Categorias />
       <OrdenarPor />
       <GaleriaProductos />

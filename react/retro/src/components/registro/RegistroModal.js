@@ -150,7 +150,6 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
                 <select
                   name='province'
                   id='province'
-                  //value={value.province}
                   value={provincia}
                   onChange={(e) => setProvincia(e.target.value)}
                 >
