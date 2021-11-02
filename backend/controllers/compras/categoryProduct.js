@@ -19,6 +19,7 @@ const categoryProduct = async (req, res, next) => {
       'telefonia',
       'musica y radio',
       'consolas y juegos',
+      'todos',
     ];
 
     //declaramos fuera la variable donde se almacenarán los productos por categorias
@@ -26,7 +27,7 @@ const categoryProduct = async (req, res, next) => {
     let photos = [];
 
     //le pedimos la respuesta a la  base de datos para obtener la información
-    if (!valoresCategories.includes(category)) {
+    if (category === 'todos') {
       [products] = await connection.query(
         `
         SELECT p.id, p.nameProduct, p.idUser, p.brand, p.price, p.category, 

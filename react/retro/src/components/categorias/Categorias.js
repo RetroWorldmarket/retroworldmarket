@@ -1,5 +1,5 @@
 import './Categorias.css';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 export const Categorias = () => {
   return (
     <div id='marcoNavegacionCategorias'>
@@ -12,11 +12,12 @@ export const Categorias = () => {
                 src='../img/telefono-viejo.png'
                 alt='telefono-retro'
               />
-              <button className='boton-telefonía' type="submit">
-              <Link to="/catalogo?category=telefonia">Telefonía</Link>
+              <button className='boton-telefonía' type='submit'>
+                <Link to={`/catalogo?category=telefonia&page=1`}>
+                  Telefonía
+                </Link>
               </button>
             </div>
-           
           </li>
           <li className='li-icono'>
             <div className='marco-icono'>
@@ -26,8 +27,10 @@ export const Categorias = () => {
                 alt='telefono-retro'
               />
             </div>
-            <button className='boton-categoria' type="submit">
-            <Link to="/catalogo?category=consolas%20y%20juegos">consolas</Link>
+            <button className='boton-categoria' type='submit'>
+              <Link to='/catalogo?category=consolas%20y%20juegos&page=1'>
+                consolas
+              </Link>
             </button>
           </li>
           <li className='li-icono'>
@@ -38,8 +41,10 @@ export const Categorias = () => {
                 alt='telefono-retro'
               />
             </div>
-            <button className='boton-categoria' type="submit">
-            <Link to="/catalogo?category=musica%20y%20radio">Música</Link>
+            <button className='boton-categoria' type='submit'>
+              <Link to='/catalogo?category=musica%20y%20radio&page=1'>
+                Música
+              </Link>
             </button>
           </li>
           <li className='li-icono'>
@@ -50,8 +55,8 @@ export const Categorias = () => {
                 alt='telefono-retro'
               />
             </div>
-            <button className='boton-categoria' type="submit">
-            <Link to="/catalogo?category=ordenadores">Ordenadores</Link> 
+            <button className='boton-categoria' type='submit'>
+              <Link to='/catalogo?category=ordenadores'>Ordenadores</Link>
             </button>
           </li>
           <li className='li-icono'>
@@ -62,8 +67,10 @@ export const Categorias = () => {
                 alt='telefono-retro'
               />
             </div>
-            <button className='boton-categoria' type="submit">
-            <Link to="/catalogo?category=">Todas las categorias</Link> 
+            <button className='boton-categoria' type='submit'>
+              <Link to='/catalogo?category=todos&page=1'>
+                Todas las categorias
+              </Link>
             </button>
           </li>
         </ul>
