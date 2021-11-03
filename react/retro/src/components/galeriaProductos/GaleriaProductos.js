@@ -5,9 +5,7 @@ import { TarjetaArticulo } from '../TarjetaArticulo';
 import './GaleriaProductos.css';
 import { useState, useEffect } from 'react';
 import { get } from '../../api/get';
-
-// Falta: componente de paginacion de cada galeria (boton Anterior y Siguiente)
-//        componente Footer
+import { OrdenarPor } from '../ordenarPor/OrdenarPor';
 
 export const GaleriaProductos = () => {
     function useQuery() {
@@ -81,8 +79,7 @@ export const GaleriaProductos = () => {
     );
 =======
   let query = useQuery();
-  const [PeticionPorCategorias, setPeticionPorCategorias] = useState([]);
-  const [PeticionSearch, setPeticionSearch] = useState([]);
+  const [Peticion, setPeticion] = useState([]);
   const [paginas, setPaginas] = useState([]);
   const [numPagina, setNumPagina] = useState(1);
   const [MasBuscado, setMasBuscado] = useState([]);
@@ -95,17 +92,16 @@ export const GaleriaProductos = () => {
       get(
         `http://localhost:4000/category?category=${categorias}&page=${numPagina}`,
         (body) => {
-          setPeticionPorCategorias(body.data.results);
+          setPeticion([]);
+          setPeticion(body.data.results);
           setPaginas(body.data.info);
-
-          setPeticionSearch([]);
         }
       );
     } else if (search) {
       get(
         `http://localhost:4000/search?search=${search}&page=${numPagina}`,
         (body) => {
-          setPeticionSearch(body.data.results);
+          setPeticion(body.data.results);
           setPaginas(body.data.info);
         }
       );
@@ -127,26 +123,13 @@ export const GaleriaProductos = () => {
     return setNumPagina(numPagina - 1);
   };
 
-  console.log(paginas);
-
   return (
     <div>
       {(search || categorias) && (
         <div className='centrado'>
           <nav className='nav-galeria'>
-            {PeticionSearch.length > 0 &&
-              PeticionSearch.map((art) => {
-                return (
-                  <TarjetaArticulo
-                    id='TarjetaArticulo'
-                    key={art.id}
-                    articulo={art}
-                  />
-                );
-              })}
-
-            {PeticionPorCategorias.length > 0 &&
-              PeticionPorCategorias.map((art) => {
+            {Peticion.length > 0 &&
+              Peticion.map((art) => {
                 return (
                   <TarjetaArticulo
                     id='TarjetaArticulo'
@@ -185,9 +168,6 @@ export const GaleriaProductos = () => {
                   );
                 })}
             </nav>
-            <button>
-              <Link to='/'>Volver al inicio</Link>
-            </button>
           </div>
           <div className='centrado'>
             <h3>Lo más buscado...</h3>
@@ -203,12 +183,12 @@ export const GaleriaProductos = () => {
                   );
                 })}
             </nav>
-            <button>
-              <Link to='/'>Volver al inicio</Link>
-            </button>
           </div>
         </section>
       )}
+      <button>
+        <Link to='/'>Volver al inicio</Link>
+      </button>
       <Footer />
     </div>
   );
