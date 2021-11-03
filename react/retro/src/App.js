@@ -13,6 +13,8 @@ import React from 'react';
 import { EditarUsuario } from './components/editarUsuario/EditarUsuario';
 import { AuthTokenContext } from './index';
 import { InicioHeader } from './components/InicioHeader';
+import { CrearProducto } from './components/crearProducto/CrearProducto';
+import { Ventas } from './components/ventas/Ventas';
 
 const PrivateRoute = ({ children }) => {
   const [token] = useContext(AuthTokenContext);
@@ -36,6 +38,7 @@ function App() {
             <Inicio />
           </Route>
           <Route exact path='/catalogo' component={Catalogo} />
+          <Route exact path='/ventas' component={Ventas} />
 
           <Route exact path='/product/:idProduct'>
             <Producto />

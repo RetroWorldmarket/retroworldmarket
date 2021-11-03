@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import jwt_decode from 'jwt-decode';
+
 export const AuthTokenContext = React.createContext('');
 
 const AuthTokenProvider = ({ children }) => {
