@@ -1,28 +1,60 @@
 // Falta importar CSS del componente
 import './OrdenarPor.css';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
+import { useState, useEffect, useMemo } from 'react';
 
 export const OrdenarPor = () => {
-  function useQuery() {
-    return new URLSearchParams(useLocation().search);
-  }
-  const query = useQuery();
-  const q = query.toString();
-  const ff = `?${q}`;
-  const final = new URLSearchParams(ff);
-  console.log('primera query', ff);
+  const location = useLocation();
 
-  const clikar = (e) => {
-    final.append('order', 'ASC');
-    console.log(query.toString());
-  };
+  const search = location.search;
+  const history = useHistory();
+
+  const params = useMemo(() => new URLSearchParams(search), [search]);
+  const category = params.get('category');
+  const searchString = params.get('search');
+
+  const [precio, setPrecio] = useState('');
+  const [estado, setEstado] = useState('');
+  const [provincia, setProvincia] = useState('');
+
+  const [filter, setFilter] = useState(search);
+
+  useEffect(() => {
+    setPrecio('');
+    setEstado('');
+    setProvincia('');
+  }, [category, searchString]);
+
+  useEffect(() => {
+    //const params = new URLSearchParams(search);
+
+    if (precio) {
+      params.set('precio', precio);
+    }
+
+    if (estado) {
+      params.set('estado', estado);
+    }
+
+    if (provincia) {
+      params.set('provincia', provincia);
+    }
+
+    setFilter(params.toString());
+  }, [precio, estado, provincia, params]);
 
   return (
     <div className='ordenarPor'>
-      <form action={`/catalogo${q}`} method='GET'>
+      <form action='' method='GET'>
         <label htmlFor='precio'>
           Precio
-          <select name='precio' id='precio'>
+          <select
+            value={precio}
+            onChange={(e) => setPrecio(e.target.value)}
+            name='precio'
+            id='precio'
+          >
+            <option value=''>selecciona</option>
             <option value='0-5'>0-5</option>
             <option value='5-10'>5-10</option>
             <option value='10-20'>10-20</option>
@@ -35,9 +67,15 @@ export const OrdenarPor = () => {
         </label>
 
         <label htmlFor='estado'>
-          {' '}
           Estado
-          <select name='estado' id='estado'>
+          <select
+            onChange={(e) => setEstado(e.target.value)}
+            value={estado}
+            name='estado'
+            id='estado'
+          >
+            <option value=''>selecciona</option>
+
             <option value='1 estrella'>
               &#11088; &#9734; &#9734; &#9734; &#9734;
             </option>
@@ -57,9 +95,15 @@ export const OrdenarPor = () => {
         </label>
 
         <label htmlFor='ubicacion'>
-          {' '}
           Provincia
-          <select name='ubicacion' id='ubicacion'>
+          <select
+            value={provincia}
+            onChange={(e) => setProvincia(e.target.value)}
+            name='ubicacion'
+            id='ubicacion'
+          >
+            <option value=''>selecciona</option>
+
             <option value='cualquiera'>Cualquiera</option>
             <option value='a coruña'>A Coruña</option>
             <option value='alava'>Álava</option>
@@ -117,8 +161,14 @@ export const OrdenarPor = () => {
             <option value='zaragoza'>Zaragoza</option>
           </select>
         </label>
-        <button onClick={clikar} type='submit'>
-          eeeeee
+        <button
+          type='submit'
+          onClick={(e) => {
+            e.preventDefault();
+            history.push(`${location.pathname}?${filter}`);
+          }}
+        >
+          Filtrar
         </button>
       </form>
     </div>

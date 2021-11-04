@@ -36,7 +36,7 @@ const sendMessage = async (req, res, next) => {
       [idProduct]
     );
 
-    idOwner = owner[0].idUser;
+    const idOwner = owner[0].idUser;
     // console.log('idOwner = ', idOwner);
     // console.log('idReqUser = ', idReqUser);
 
