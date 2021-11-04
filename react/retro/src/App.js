@@ -16,7 +16,7 @@ import { InicioHeader } from './components/InicioHeader';
 import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
 import { CrearProducto } from './components/crearProducto/CrearProducto';
 import { Ventas } from './components/ventas/Ventas';
-import { Mensajes } from './paginas/Mensajes';
+
 const PrivateRoute = ({ children }) => {
   const [token] = useContext(AuthTokenContext);
 
@@ -50,12 +50,6 @@ function App() {
               <EditarUsuario />
             </PrivateRoute>
           </Route>
-          <Route exact path='/mensajes/:idProduct'>
-            <PrivateRoute>
-              <Mensajes />
-            </PrivateRoute>
-          </Route>
-
           <Route exact path='/contacto' component={FormularioContacto} />
           <Route
             exact
@@ -69,42 +63,5 @@ function App() {
     </div>
   );
 }
+
 export default App;
-// Importamos el token para saber cuándo el usuario está logueado o no.
-
-//   return (
-//     <div className='App'>
-//       <BrowserRouter>
-//         <InicioHeader />
-//         <Switch>
-//           <Route exact path='/'>
-//             <Inicio />
-//           </Route>
-//           <Route exact path='/catalogo' component={Catalogo} />
-//           <Route exact path='/ventas' component={Ventas} />
-
-//           <Route exact path='/product/:idProduct'>
-//             <Producto />
-//           </Route>
-
-//           <Route exact path='/product/:idProduct' component={Producto} />
-//           <Route exact path='/editarUsuario'>
-//             <PrivateRoute>
-//               <EditarUsuario />
-//             </PrivateRoute>
-//           </Route>
-// <Route exact path='/mensajes/:idProduct'>
-//   <PrivateRoute>
-//     <Mensajes />
-//   </PrivateRoute>
-// </Route>
-
-//           <Route exact path='/contacto' component={FormularioContacto} />
-
-//           <Route path='*' component={Error404} />
-//         </Switch>
-//       </BrowserRouter>
-//     </div>
-//   );
-
-// }
