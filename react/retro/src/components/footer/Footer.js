@@ -5,7 +5,7 @@ export const Footer = () => {
     return (
         <div className='footer'>
             <p>
-                <Link to='/politicaPrivacidad'>Política de Privacidad</Link>
+                <Link to='/Politica_privacidad'>Política de Privacidad</Link>
             </p>
             <p>Preguntas frecuentes</p>
             <p>

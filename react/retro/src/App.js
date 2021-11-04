@@ -13,12 +13,9 @@ import React from 'react';
 import { EditarUsuario } from './components/editarUsuario/EditarUsuario';
 import { AuthTokenContext } from './index';
 import { InicioHeader } from './components/InicioHeader';
-<<<<<<< HEAD
-import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
-=======
 import { CrearProducto } from './components/crearProducto/CrearProducto';
 import { Ventas } from './components/ventas/Ventas';
->>>>>>> main
+import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
 
 const PrivateRoute = ({ children }) => {
     const [token] = useContext(AuthTokenContext);
@@ -31,7 +28,6 @@ const PrivateRoute = ({ children }) => {
 };
 
 function App() {
-<<<<<<< HEAD
     // Importamos el token para saber cuándo el usuario está logueado o no.
 
     return (
@@ -43,6 +39,7 @@ function App() {
                         <Inicio />
                     </Route>
                     <Route exact path='/catalogo' component={Catalogo} />
+                    <Route exact path='/ventas' component={Ventas} />
 
                     <Route exact path='/product/:idProduct'>
                         <Producto />
@@ -65,47 +62,14 @@ function App() {
                     />
                     <Route
                         exact
-                        path='/politicaPrivacidad'
+                        path='/Politica_privacidad'
                         component={Politica_privacidad}
                     />
-
                     <Route path='*' component={Error404} />
                 </Switch>
             </BrowserRouter>
         </div>
     );
-=======
-  // Importamos el token para saber cuándo el usuario está logueado o no.
-
-  return (
-    <div className='App'>
-      <BrowserRouter>
-        <InicioHeader />
-        <Switch>
-          <Route exact path='/'>
-            <Inicio />
-          </Route>
-          <Route exact path='/catalogo' component={Catalogo} />
-          <Route exact path='/ventas' component={Ventas} />
-
-          <Route exact path='/product/:idProduct'>
-            <Producto />
-          </Route>
-
-          <Route exact path='/product/:idProduct' component={Producto} />
-          <Route exact path='/editarUsuario'>
-            <PrivateRoute>
-              <EditarUsuario />
-            </PrivateRoute>
-          </Route>
-          <Route exact path='/contacto' component={FormularioContacto} />
-
-          <Route path='*' component={Error404} />
-        </Switch>
-      </BrowserRouter>
-    </div>
-  );
->>>>>>> main
 }
 
 export default App;
