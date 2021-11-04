@@ -4,9 +4,11 @@ import { useContext, useEffect, useState } from 'react';
 // Importamos GET para la peticion de datos a la BdD
 import { get } from '../../api/get';
 import { Link } from 'react-router-dom';
-import { EditarUsuario } from '../editarUsuario/EditarUsuario';
+import { CerrarSesion } from '../cerrarSesion/CerrarSesion';
+import { useModal } from '../../hooks/useModal';
 
 export const UsuarioLogueado = () => {
+  const [abierto, abrirModal, cerrarModal] = useModal(false);
   const [token] = useContext(AuthTokenContext);
   const [infoUsuario, setInfoUsuario] = useState([]);
   useEffect(() => {
@@ -19,6 +21,11 @@ export const UsuarioLogueado = () => {
 
   console.log('infoUsuario tiene: ', infoUsuario);
 
+  const cerrarSesion = (e) => {
+    e.preventDefault();
+    <CerrarSesion />;
+  };
+
   return (
     <>
       <figure>
@@ -26,6 +33,9 @@ export const UsuarioLogueado = () => {
       </figure>
       {infoUsuario ? <p>Bienvenido {infoUsuario.alias}!!!</p> : null}
       <Link to='./editarUsuario'>Editar perfil</Link>
+      <button onClick={cerrarSesion}></button>
+      <button onClick={abrirModal}>Cerrar sesión</button>
+      <CerrarSesion abierto={abierto} cerrarModal={cerrarModal}></CerrarSesion>
     </>
   );
 };

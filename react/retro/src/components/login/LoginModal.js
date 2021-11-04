@@ -9,6 +9,12 @@ const LoginModal = ({ abierto, cerrarModal }) => {
   const [password, setPassword] = useState('');
   const [token, setToken] = useContext(AuthTokenContext);
 
+  // Funcion para resetear el formulario:
+  const vaciarFormulario = () => {
+    setEmail('');
+    setPassword('');
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
     const body = {
@@ -23,6 +29,8 @@ const LoginModal = ({ abierto, cerrarModal }) => {
       setToken(body.token.split(' ')[1]);
     };
     post('http://localhost:4000/users/login', body, respuestaServidor);
+    vaciarFormulario();
+    setInterval(cerrarModal(), 4000);
   };
   return (
     <div className={`modal ${abierto && 'modal-Abrir'}`} onClick={cerrarModal}>

@@ -23,14 +23,23 @@ export const EditarUsuario = (data) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
 
-  ////////////////////////////////////////////////////////////////////////////////////
+  // ////////////////////////////////////////////////////////////////////////////////////
 
-  //////////////////////////////////////////////////////////////////////////////////////
+  // //tests:
+  // console.log(
+  //   'token en EditarUsuario tiene: ***************************',
+  //   token
+  // );
+  // console.log(
+  //   'tokenInfo en EditarUsuario tiene: +++++++++++++++++++++++++',
+  //   tokenInfo
+  // );
 
-  // La petición GET.
+  // //////////////////////////////////////////////////////////////////////////////////////
+
+  // La petición GET para tomar la información del Usuario.
   useEffect(() => {
-    // Usamos el método get del helper helpHttp, que recibe una url, y devuelve una promesa
-    // Esa promesa la pasamos por .thn y nos devuelve una respuesta
+    // Usamos el método get que recibe una url, y devuelve una promesa
     const getUserInfo = async () => {
       try {
         const url = `http://localhost:4000/users/${tokenInfo.id}`;
@@ -61,19 +70,23 @@ export const EditarUsuario = (data) => {
     }
   }, [tokenInfo.id, token]);
 
-  console.log('tokenInfo tiene:  ', tokenInfo);
-  console.log('user tiene: ', user);
+  // console.log('tokenInfo tiene:  ', tokenInfo);
+  // console.log('user tiene: ', user);
 
   return (
     <>
       <h2>Editar Usuario</h2>
 
-      {user ? <FormEditarUsuario user={{ user }} /> : null}
+      {user ? (
+        <FormEditarUsuario user={{ user }} tokenInfo={tokenInfo} />
+      ) : null}
 
       {error ? <Message msg={error} bgColor={'red'} /> : null}
     </>
   );
 };
+
+//<pre>{JSON.stringify(user, null, 4)}</pre>
 
 //<pre>{JSON.stringify(user, null, 4)}</pre>
 

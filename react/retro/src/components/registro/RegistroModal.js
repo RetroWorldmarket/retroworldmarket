@@ -16,6 +16,17 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
   const [codigoPostal, setCodigoPostal] = useState('');
   const [terminos, setTerminos] = useState(false);
 
+  const vaciarFormulario = () => {
+    setEmail('');
+    setContrasena('');
+    setNombre('');
+    setAlias('');
+    setProvincia('');
+    setLocation('');
+    setCodigoPostal('');
+    setTerminos(false);
+  };
+
   // const [response, setResponse] = useState();
 
   //tambien recogemos el token para que nos lo dé una vez registrado
@@ -28,8 +39,6 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
     //para que no se envie por defecto
     e.preventDefault();
     console.log('e tiene:', e);
-    // Limpiamos el form después del envío:
-    // e.target.onreset;
 
     //sacamos el body de la peticion; debe coincidir con los nombres de la base de datos
     const body = {
@@ -56,6 +65,10 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
       body,
       funcionManejadoraDeRespuestaDelServidor
     );
+    // Resetear el formulario:
+    //e.target.reset();
+    vaciarFormulario();
+    setInterval(cerrarModal(), 4000);
   };
 
   //cuando se enrute se descomentara la siguiente linea
@@ -150,7 +163,6 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
                 <select
                   name='province'
                   id='province'
-                  //value={value.province}
                   value={provincia}
                   onChange={(e) => setProvincia(e.target.value)}
                 >

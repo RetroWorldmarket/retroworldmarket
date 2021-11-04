@@ -15,7 +15,7 @@ export const Inicio = ({ articulo }) => {
             <Link to='/catalogo'>Compra tu retro</Link>
           </button>
           <button>
-            <a href='/ventas'>Vende tu retro</a>
+            <Link to='/ventas'>Vende tu retro</Link>
           </button>
         </aside>
         <SeccionListaArticulos articulo={articulo} />
