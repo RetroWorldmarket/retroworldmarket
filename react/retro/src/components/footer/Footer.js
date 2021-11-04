@@ -5,12 +5,7 @@ export const Footer = () => {
     return (
         <div className='footer'>
             <p>
-                <Link
-                    to='/politcaPrivacidad'
-                    href='https://www.freeprivacypolicy.com/live/ed8f8fc5-caf0-4893-9a6d-0fcf0517ff48'
-                >
-                    Política de Privacidad
-                </Link>
+                <Link to='/politicaPrivacidad'>Política de Privacidad</Link>
             </p>
             <p>Preguntas frecuentes</p>
             <p>

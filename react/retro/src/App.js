@@ -13,7 +13,7 @@ import React from 'react';
 import { EditarUsuario } from './components/editarUsuario/EditarUsuario';
 import { AuthTokenContext } from './index';
 import { InicioHeader } from './components/InicioHeader';
-import Politica_privacidad from './components/politicasPrivacidad/Politica_privacidad';
+import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
 
 const PrivateRoute = ({ children }) => {
     const [token] = useContext(AuthTokenContext);
@@ -59,7 +59,7 @@ function App() {
                     />
                     <Route
                         exact
-                        path='/politicasPrivacidad'
+                        path='/politicaPrivacidad'
                         component={Politica_privacidad}
                     />
 
