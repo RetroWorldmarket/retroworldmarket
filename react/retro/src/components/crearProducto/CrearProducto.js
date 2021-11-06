@@ -3,6 +3,7 @@ import { AuthTokenContext } from '../../index';
 //import { post } from '../../api/post';
 
 export const CrearProducto = () => {
+  //
   // Obtenemos la informacion del usuario.
   const [token, , tokenInfo] = useContext(AuthTokenContext);
   console.log('tokenInfo tiene: ', tokenInfo);
