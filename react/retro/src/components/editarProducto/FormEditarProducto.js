@@ -2,102 +2,86 @@ import { useState, useContext, useEffect } from 'react';
 import { AuthTokenContext } from '../../index';
 //import { post } from '../../api/post';
 
-export const CrearProducto = () => {
+export const FormEditarProducto = (idProduct) => {
   //
   // Obtenemos la informacion del usuario.
   const [token, , tokenInfo] = useContext(AuthTokenContext);
-  console.log('tokenInfo tiene: ', tokenInfo);
+  //console.log('tokenInfo tiene: ', tokenInfo.id);
 
-  // Asignamos al objeto "form" los valores que va a tener el formulario
-  const [form, setForm] = useState({
-    nameProduct: '',
-    brand: '',
-    yearOfProduction: '',
-    status: '',
-    category: '',
-    description: '',
-    price: '',
+  const item = idProduct.idProduct.producto;
+
+  // Asignamos los valores por defecto. Serán los valores antiguos del usuario.
+
+  ///////////////////////////////////////////////////////////////////
+  // NOTA: Estoy teniendo dificultades para obtener "active"
+  // de la BdD (no encuentro dónde se agregan a "tokenInfo").
+  //  De manera PROVISIONAL voy a establecer que si "sold" es falso, "active"
+  // es verdadero.
+  if (!item.sold) {
+    item.active = true;
+  }
+
+  const [value, setValue] = useState({
+    active: `${item.active}`,
+    idUser: `${tokenInfo.id}`,
+    createdDate: `${item.createdDate}`,
+    id: `${item.id}`,
+    nameProduct: `${item.nameProduct}`,
+    brand: `${item.brand}`,
+    category: `${item.category}`,
+    description: `${item.description}`,
+    yearOfProduction: `${item.yearOfProduction}`,
+    status: `${item.status}`,
+    price: `${item.price}`,
   });
 
-  // Asignamos el reset del formulario
-  const vaciarFormulario = () => {
-    setForm({
-      nameProduct: '',
-      brand: '',
-      yearOfProduction: '',
-      status: '',
-      category: '',
-      description: '',
-      price: '',
-    });
-  };
-
-  const url = 'http://localhost:4000/sellretro';
-
-  // Funciona que permite que el usuario pueda cambiar los valores iniciales del form.
   const handleChange = (e) => {
-    setForm((valor) => ({
-      ...valor,
+    setValue({
+      ...value,
       [e.target.name]: e.target.value,
-    }));
+    });
   };
 
-  // El botón "enviar" activa estas funcionalidades:
-  const onSubmit = (e) => {
-    e.preventDefault();
-    console.log('e tiene:', e);
+  const url = 'http://localhost:4000';
 
-    // Definimos el body de la petición.
-    const body = {
-      nameProduct: form.nameProduct,
-      brand: form.brand,
-      yearOfProduction: form.yearOfProduction,
-      status: form.status,
-      category: form.category,
-      description: form.description,
-      price: form.price,
-    };
-    //console.log('body tiene:', body);
+  // Función que realiza la peticion PUT controlada por el submit del form
+  // /sellretro/:idProduct
+  const updateData = async (e) => {
+    //e.preventDefault();
+    try {
+      let endpoint = `${url}/sellretro/${item.id}`;
+      const response = await fetch(endpoint, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          value,
+        }),
+      });
 
-    // Peticion POST:
-    async function postData(url = '', data = {}) {
-      try {
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(body),
-        });
-        return response.json();
-      } catch (error) {
-        console.log(error);
-      }
+      const respuesta = await response.json();
+      console.log('Respuesta tiene :', respuesta);
+    } catch (error) {
+      console.error(error);
     }
-
-    postData(url, { body }).then((data) => {
-      console.log(data);
-    });
-    vaciarFormulario();
   };
 
   return (
     <>
-      <h3>Crear Producto</h3>
-      <form onSubmit={onSubmit}>
+      <form onSubmit={updateData()}>
         <ul>
           <li>
             <label htmlFor='nameProduct'>
-              Nombre :
+              Nombre del Artículo:
               <input
                 type='text'
                 name='nameProduct'
                 id='nameProduct'
-                placeholder='Nombre...'
-                value={form.nameProduct}
+                value={value.nameProduct}
                 onChange={handleChange}
-              />
+              ></input>
             </label>
           </li>
           <li>
@@ -107,8 +91,7 @@ export const CrearProducto = () => {
                 type='text'
                 name='brand'
                 id='brand'
-                placeholder='Marca...'
-                value={form.brand}
+                value={value.brand}
                 onChange={handleChange}
               />
             </label>
@@ -121,7 +104,7 @@ export const CrearProducto = () => {
                 name='yearOfProduction'
                 id='yearOfProduction'
                 placeholder='Año de fabricación...'
-                value={form.yearOfProduction}
+                value={value.yearOfProduction}
                 onChange={handleChange}
               />
             </label>
@@ -132,7 +115,7 @@ export const CrearProducto = () => {
               <select
                 name='status'
                 id='status'
-                value={form.status}
+                value={value.status}
                 onChange={handleChange}
               >
                 <option value=''>-- Seleccione --</option>
@@ -150,7 +133,7 @@ export const CrearProducto = () => {
               <select
                 name='category'
                 id='category'
-                value={form.category}
+                value={value.category}
                 onChange={handleChange}
               >
                 <option value=''>-- Seleccione --</option>
@@ -170,7 +153,7 @@ export const CrearProducto = () => {
                 name='description'
                 id='description'
                 placeholder='Describa el producto...'
-                value={form.description}
+                value={value.description}
                 onChange={handleChange}
               />
             </label>
@@ -183,13 +166,13 @@ export const CrearProducto = () => {
                 name='price'
                 id='price'
                 placeholder='Precio...'
-                value={form.price}
+                value={value.price}
                 onChange={handleChange}
               />
             </label>
           </li>
         </ul>
-        <button type='submit'>Publicar producto</button>
+        <button type='submit'>Actualizar datos del producto</button>
       </form>
     </>
   );

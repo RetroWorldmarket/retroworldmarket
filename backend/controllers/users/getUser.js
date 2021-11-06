@@ -41,7 +41,7 @@ const getUser = async (req, res, next) => {
     const [products] = await connection.query(
       `
     
-    SELECT nameProduct, brand, description, price, status FROM products
+    SELECT id, nameProduct, brand, yearOfProduction, description, price, status, category, createdDate, sold FROM products
     WHERE idUser = ?
     `,
       [idUser]

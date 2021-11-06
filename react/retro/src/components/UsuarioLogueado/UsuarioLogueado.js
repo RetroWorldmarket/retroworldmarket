@@ -19,8 +19,6 @@ export const UsuarioLogueado = () => {
     );
   }, [token]);
 
-  console.log('infoUsuario tiene: ', infoUsuario);
-
   const cerrarSesion = (e) => {
     e.preventDefault();
     <CerrarSesion />;

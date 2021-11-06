@@ -26,7 +26,7 @@ const editProduct = async (req, res, next) => {
       error.httpStatus = 400;
       throw error;
     }
-
+    console.log('product en Backend:', product);
     // Aquí obtendremos las propiedades existentes (con destructuring) del producto
     // que vamos a editar (que nos viene en el body de la request):
     // Declaramos la variable con let porque la vamos a modificar.
@@ -41,9 +41,12 @@ const editProduct = async (req, res, next) => {
       price,
       createdDate,
       active,
-    } = req.body;
+    } = req.body.value;
 
-    // En caso que no hubiera NINGUNA propiedad (sería porque no hay producto), lanzamos un error:
+    console.log('req.body:', req.body); // OK
+    console.log('nameProduct', nameProduct);
+
+    // // En caso que no hubiera NINGUNA propiedad (sería porque no hay producto), lanzamos un error:
     if (
       !idUser &&
       !nameProduct &&
@@ -65,6 +68,8 @@ const editProduct = async (req, res, next) => {
     // Nos interesa quedarnos con los valores que traía el producto (línea 16 declaramos
     // el OBJETO product como variable), para editar solo lo que haya que cambiar.
     //idUser = idUser || product[0].idUser;
+
+    // Test:
     nameProduct = nameProduct || product[0].nameProduct;
     brand = brand || product[0].brand;
     yearOfProduction = yearOfProduction || product[0].yearOfProduction;

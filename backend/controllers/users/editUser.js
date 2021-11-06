@@ -41,7 +41,7 @@ const editUser = async (req, res, next) => {
 
     // Ahora bien, vamos pedirle al body de la request todos los campos que podemos modificar:
     const { name, avatar, email, alias, location, province, postalCode } =
-      req.body;
+      req.body.value;
 
     // Si en el paso anterior no nos llega NINGÚN dato, lanzamos un error (no se puede
     // modificar lo que no tenemos, no?):

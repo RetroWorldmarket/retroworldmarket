@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { get } from '../../api/get';
 import { TarjetaArticulo } from '../TarjetaArticulo';
