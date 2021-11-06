@@ -92,6 +92,7 @@ const {
 // Aquí IMPORTAREMOS las funciones controladoras desde la carpeta CONTROLERS: ///
 /////////////////////////////////////////////////////////////////////////////////
 const {
+  addFirstPhoto,
   newProduct,
   editProduct,
   addPhotoProduct,
@@ -121,6 +122,9 @@ app.put(
   userCanEdit,
   editProduct
 );
+//agregar primera foto
+app.post('/sellretro/photos', addFirstPhoto);
+
 //Agregar foto al producto
 app.post(
   '/sellretro/:idProduct/photos',

@@ -1,12 +1,13 @@
-import { useState, useContext, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import { AuthTokenContext } from '../../index';
+import PrimeraFoto from './crearFoto';
+
 //import { post } from '../../api/post';
 
 export const CrearProducto = () => {
   //
   // Obtenemos la informacion del usuario.
-  const [token, , tokenInfo] = useContext(AuthTokenContext);
-  console.log('tokenInfo tiene: ', tokenInfo);
+  const [token] = useContext(AuthTokenContext);
 
   // Asignamos al objeto "form" los valores que va a tener el formulario
   const [form, setForm] = useState({
@@ -45,7 +46,6 @@ export const CrearProducto = () => {
   // El botón "enviar" activa estas funcionalidades:
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log('e tiene:', e);
 
     // Definimos el body de la petición.
     const body = {

@@ -9,37 +9,36 @@ const getDB = require('../../ddbb/getDB');
 ////////////////////////////
 
 const getMessage = async (req, res, next) => {
-    let connection;
+  let connection;
 
-    try {
-        connection = await getDB();
+  try {
+    connection = await getDB();
 
-        // Empezaremos por saber quién quiere obtener los mensajes:
-        // Vamos a obtener ese idReqUser:
-        const idReqUser = req.userAuth.id;
+    // Empezaremos por saber quién quiere obtener los mensajes:
+    // Vamos a obtener ese idReqUser:
+    const idReqUser = req.userAuth.id;
 
-        const idProduct = req.params.idProduct;
+    const idProduct = req.params.idProduct;
 
-        // Ahora le preguntamos a la BdD por los mensajes donde estén idReqUser
-        // (como comprador o vendedor) y el producto en cuestión:
-        const [data] = await connection.query(
-            `
+    // Ahora le preguntamos a la BdD por los mensajes donde estén idReqUser
+    // (como comprador o vendedor) y el producto en cuestión:
+    const [data] = await connection.query(
+      `
         SELECT * FROM messages
         WHERE idOwner = ? OR idUser = ? AND idProduct = ?
     `,
-            [idReqUser, idReqUser, idProduct]
-        );
-        console.log('data tiene : ', data);
+      [idReqUser, idReqUser, idProduct]
+    );
 
-        res.send({
-            status: 'ok',
-            data: data,
-        });
-    } catch (error) {
-        next(error);
-    } finally {
-        if (connection) connection.release();
-    }
+    res.send({
+      status: 'ok',
+      data: data,
+    });
+  } catch (error) {
+    next(error);
+  } finally {
+    if (connection) connection.release();
+  }
 };
 
 module.exports = getMessage;

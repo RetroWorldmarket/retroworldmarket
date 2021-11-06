@@ -38,7 +38,6 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
   const onSubmit = (e) => {
     //para que no se envie por defecto
     e.preventDefault();
-    console.log('e tiene:', e);
 
     //sacamos el body de la peticion; debe coincidir con los nombres de la base de datos
     const body = {

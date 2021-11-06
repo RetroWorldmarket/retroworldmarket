@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { AuthTokenContext } from '../index';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import { useParams } from 'react-router-dom';
 import { get } from '../api/get';
 import { useListaDeMensajes } from '../hooks/useListaMensajes';
@@ -10,10 +9,10 @@ export const Mensajes = () => {
   const [producto, setProducto] = useState([]);
   const [usuario, setUsuario] = useState([]);
   const [token] = useContext(AuthTokenContext);
-  const [inputMensaje, setInputMensaje] = useLocalStorage('', 'mensaje');
-  const [, anadirMensaje] = useListaDeMensajes();
-
+  const [inputMensaje, setInputMensaje] = useState('');
   const { idProduct } = useParams();
+  const [listaDeMensajes] = useListaDeMensajes(idProduct);
+  const [mensajes, setMensajes] = useState([]);
 
   useEffect(() => {
     get(`http://localhost:4000/product/${idProduct}`, (body) =>
@@ -26,12 +25,20 @@ export const Mensajes = () => {
     );
   }, [idProduct, token]);
 
+  useEffect(() => {
+    if (!listaDeMensajes.data) {
+      setMensajes([]);
+    } else {
+      setMensajes(listaDeMensajes.data);
+    }
+  }, [listaDeMensajes]);
+  console.log(inputMensaje, 'input');
+
   const envioDelMensaje = async (e) => {
     e.preventDefault();
-    const nuevoMensaje = { body: inputMensaje };
+    const nuevoMensaje = { text: inputMensaje };
     const cambiaStorageNuevoMensaje = (nuevoMensaje) => {
-      anadirMensaje(nuevoMensaje);
-      setInputMensaje('');
+      setInputMensaje(nuevoMensaje);
     };
     post(
       `http://localhost:4000/messages/${idProduct}`,
@@ -45,7 +52,6 @@ export const Mensajes = () => {
   const cambioEnElMensaje = (e) => {
     setInputMensaje(e.target.value);
   };
-
   return (
     <main>
       {Object.values(producto).length && (
@@ -61,17 +67,31 @@ export const Mensajes = () => {
               <li>{`${producto[0].nameProduct}`}</li>
               <li>{`${producto[0].brand}`}</li>
 
-              <li class='Descript-1'>Descripcion</li>
+              <li className='Descript-1'>Descripcion</li>
               <p>{`${producto[0].description}`}</p>
             </ul>
           </article>
         </section>
       )}
       <section>
-        <h1 class='Hist-men'>historial mensajes</h1>
-        <ul>
-          <li class='list-1'>lista de mensajes</li>
-        </ul>
+        <h1 className='Hist-men'>historial mensajes</h1>
+        <div>
+          <ul>
+            {mensajes.length > 0 &&
+              mensajes.map((msg) => {
+                return (
+                  <li className='list-1' key={msg.idmessage}>
+                    <p> {msg.text} </p>
+                    <img
+                      src={`http://localhost:4000/${usuario.avatar}`}
+                      alt={`${usuario.name}`}
+                      style={{ width: '30px' }}
+                    />
+                  </li>
+                );
+              })}
+          </ul>
+        </div>
         <form id='EnviarMensaje' onSubmit={envioDelMensaje}>
           {Object.values(usuario).length && (
             <figure>
@@ -84,7 +104,7 @@ export const Mensajes = () => {
             </figure>
           )}
 
-          <label for='enviar-mensaje'>
+          <label htmlFor='enviar-mensaje'>
             <input
               type='text'
               name='enviar-mensaje'
@@ -96,7 +116,7 @@ export const Mensajes = () => {
         </form>
       </section>
 
-      <button class='solic-1'>solicitar reserva</button>
+      <button className='solic-1'>solicitar reserva</button>
     </main>
   );
 };

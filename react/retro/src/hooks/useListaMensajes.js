@@ -3,7 +3,7 @@ import { AuthTokenContext } from '../index';
 
 import { get } from '../api/get';
 
-export const useListaDeMensajes = () => {
+export const useListaDeMensajes = (idProduct) => {
   const [token] = useContext(AuthTokenContext);
   const [listaDeMensajes, setListaDeMensajes] = useState([]);
   const [errorMensaje, setErrorMensaje] = useState();
@@ -16,13 +16,13 @@ export const useListaDeMensajes = () => {
     setErrorMensaje('Error de petición');
   }
 
-  const anadirMensaje = (nuevoMensaje) => {
-    setListaDeMensajes([...listaDeMensajes, nuevoMensaje]);
-  };
+  // const anadirMensaje = (nuevoMensaje) => {
+  //   setListaDeMensajes([...listaDeMensajes, nuevoMensaje]);
+  // };
 
   const respuestaMensajesChat = async (e) => {
     get(
-      'http://localhost:4000/messages/:idProduct',
+      `http://localhost:4000/messages/${idProduct}`,
       respuestaListaServidor,
       token
     );
@@ -31,14 +31,14 @@ export const useListaDeMensajes = () => {
   useEffect(() => {
     const intervalo = setInterval(() => {
       get(
-        'http://localhost:4000/messages/list/:idProduct',
+        `http://localhost:4000/messages/list/${idProduct}`,
         respuestaListaServidor,
         token,
         respuestaErrorListaServidor
       );
     }, 5000);
     get(
-      'http://localhost:4000/messages/list/:idProduct',
+      `http://localhost:4000/messages/list/${idProduct}`,
       respuestaListaServidor,
       token,
       respuestaErrorListaServidor
@@ -47,6 +47,6 @@ export const useListaDeMensajes = () => {
     return () => {
       clearInterval(intervalo);
     };
-  }, [token]);
-  return [listaDeMensajes, anadirMensaje, errorMensaje, respuestaMensajesChat];
+  }, [token, idProduct]);
+  return [listaDeMensajes, errorMensaje, respuestaMensajesChat];
 };

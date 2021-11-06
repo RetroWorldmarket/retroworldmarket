@@ -1,20 +1,16 @@
-import { useEffect, useState, useContext } from 'react';
+import { useContext } from 'react';
 import { AuthTokenContext } from '../../index';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 import '../login/LoginModal.css';
 
 export const CerrarSesion = ({ abierto, cerrarModal }) => {
-  const [token, setToken] = useContext(AuthTokenContext);
+  const [, setToken] = useContext(AuthTokenContext);
 
   const cerrarSesion = (e) => {
     e.preventDefault();
     setToken('');
 
-    console.log('token tiene:', token);
-
     //localStorage.removeItem(Storage.accesoToken);
-    console.log('localStorage ahora tiene: ', localStorage);
 
     console.log('Sesión finalizada');
   };

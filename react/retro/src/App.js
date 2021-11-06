@@ -14,7 +14,6 @@ import { EditarUsuario } from './components/editarUsuario/EditarUsuario';
 import { AuthTokenContext } from './index';
 import { InicioHeader } from './components/InicioHeader';
 import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
-import { CrearProducto } from './components/crearProducto/CrearProducto';
 import { Ventas } from './components/ventas/Ventas';
 
 const PrivateRoute = ({ children }) => {

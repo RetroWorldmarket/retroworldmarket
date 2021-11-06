@@ -34,6 +34,8 @@ export const GaleriaProductos = () => {
       get(
         `http://localhost:4000/search?search=${search}&page=${numPagina}`,
         (body) => {
+          setPeticion([]);
+
           setPeticion(body.data.results);
           setPaginas(body.data.info);
         }

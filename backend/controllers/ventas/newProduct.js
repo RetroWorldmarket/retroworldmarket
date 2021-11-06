@@ -6,7 +6,7 @@
 const getDB = require('../../ddbb/getDB.js');
 
 // Importamos la función que hicimos para formatear fechas desde helpers.js:
-const { formatDate } = require('../../helpers.js');
+const { formatDate, guardarFoto } = require('../../helpers.js');
 
 // Ahora creamos la función asíncrona newProduct:
 const newProduct = async (req, res, next) => {
@@ -31,8 +31,6 @@ const newProduct = async (req, res, next) => {
     // Obtenemos del Body (lo que nos envía el cliente en la REQUEST) los valores que
     // necesitamos con destructuring:
     const idUser = req.userAuth.id;
-
-    console.log(idUser);
 
     const {
       nameProduct,
@@ -88,7 +86,7 @@ const newProduct = async (req, res, next) => {
     ////////////////////////////////////////////////////////////
     /// Ahora sí definitivamente creamos la entrada a la BD: ///
     ////////////////////////////////////////////////////////////
-    await connection.query(
+    const [nuevoProducto] = await connection.query(
       `
         INSERT INTO products (idUser, nameProduct, brand, yearOfProduction, status, category, description, price, createdDate, active)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -106,6 +104,35 @@ const newProduct = async (req, res, next) => {
         true,
       ]
     );
+
+    const idProduct = nuevoProducto.insertId;
+
+    console.log(idProduct);
+
+    //////////////////////////
+
+    if (req.files && Object.keys(req.files).length > 0) {
+      // Recorremos los valores de "req.files".
+      for (const photo of Object.values(req.files).slice(0, 3)) {
+        // Variable que almacenará el nombre de la imagen.
+        let photoName;
+
+        try {
+          // Guardamos la foto en el servidor y obtenemos el nombre de la misma.
+          photoName = await guardarFoto(photo);
+        } catch (_) {
+          const error = new Error('Formato de archivo incorrecto');
+          error.httpStatus = 400;
+          throw error;
+        }
+
+        // Guardamos la foto.
+        await connection.query(
+          `INSERT INTO photos (namePhoto, idProduct, createdAt) VALUES (?, ?, ?)`,
+          [photoName, idProduct, formatDate(new Date())]
+        );
+      }
+    }
 
     // Para confirmar si funciona: vamos a devolver (response) un OBJETO con status:200
     // y un mensaje de confirmación:
