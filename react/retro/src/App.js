@@ -13,8 +13,10 @@ import React from 'react';
 import { EditarUsuario } from './components/editarUsuario/EditarUsuario';
 import { AuthTokenContext } from './index';
 import { InicioHeader } from './components/InicioHeader';
-import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
+import { CrearProducto } from './components/crearProducto/CrearProducto';
 import { Ventas } from './components/ventas/Ventas';
+import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
+import { Preguntas_frecuentes } from './components/preguntasFrecuentes/Preguntas_frecuentes';
 
 const PrivateRoute = ({ children }) => {
   const [token] = useContext(AuthTokenContext);
@@ -38,6 +40,7 @@ function App() {
             <Inicio />
           </Route>
           <Route exact path='/catalogo' component={Catalogo} />
+          <Route exact path='/ventas' component={Ventas} />
 
           <Route exact path='/product/:idProduct'>
             <Producto />
@@ -52,8 +55,13 @@ function App() {
           <Route exact path='/contacto' component={FormularioContacto} />
           <Route
             exact
-            path='/politicaPrivacidad'
+            path='/Politica_privacidad'
             component={Politica_privacidad}
+          />
+          <Route
+            exact
+            path='/Preguntas_frecuentes'
+            component={Preguntas_frecuentes}
           />
 
           <Route path='*' component={Error404} />

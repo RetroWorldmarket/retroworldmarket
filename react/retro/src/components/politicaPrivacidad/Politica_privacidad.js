@@ -28,39 +28,54 @@ export const Politica_privacidad = () => {
                 </p>
                 <h2> Definiciones </h2>
                 <p>
-                    A los efectos de esta Política de privacidad: Cuenta
-                    significa una cuenta única creada para que usted acceda a
-                    nuestro Servicio o partes de nuestro Servicio. Compañía
-                    (denominada "la Compañía", "Nosotros", "Nos" o "Nuestro" en
-                    este Acuerdo) se refiere a RetroWorldmarket.com. Las cookies
-                    son pequeños archivos que un sitio web coloca en su
-                    computadora, dispositivo móvil o cualquier otro dispositivo,
-                    que contienen los detalles de su historial de navegación en
-                    ese sitio web, entre sus muchos usos. País se refiere a:
-                    España Dispositivo significa cualquier dispositivo que pueda
-                    acceder al Servicio, como una computadora, un teléfono
-                    celular o una tableta digital. Los datos personales son
-                    cualquier información que se relacione con una persona
-                    identificada o identificable. El servicio se refiere al
-                    sitio web. Proveedor de servicios significa cualquier
-                    persona física o jurídica que procesa los datos en nombre de
-                    la Compañía. Se refiere a empresas de terceros o personas
-                    empleadas por la Compañía para facilitar el Servicio, para
-                    proporcionar el Servicio en nombre de la Compañía, para
-                    realizar servicios relacionados con el Servicio o para
-                    ayudar a la Compañía a analizar cómo se utiliza el Servicio.
-                    Los Datos de uso se refieren a los datos recopilados
-                    automáticamente, ya sea generados por el uso del Servicio o
-                    por la propia infraestructura del Servicio (por ejemplo, la
-                    duración de una visita a la página). El sitio web se refiere
-                    a RetroWorldmarket.com, accesible desde
-                    https://www.RetroWorldmarket.com Usted se refiere a la
-                    persona que accede o utiliza el Servicio, o la empresa u
-                    otra entidad legal en nombre de la cual dicha persona accede
-                    o utiliza el Servicio, según corresponda.
+                    A los efectos de esta Política de privacidad:
+                    <ul>
+                        <li>Cuenta</li>
+                        Significa una cuenta única creada para que usted acceda
+                        a nuestro Servicio o partes de nuestro Servicio.
+                        Compañía (denominada "la Compañía", "Nosotros", "Nos" o
+                        "Nuestro" en este Acuerdo) se refiere a
+                        RetroWorldmarket.com. Las cookies son pequeños archivos
+                        que un sitio web coloca en su computadora, dispositivo
+                        móvil o cualquier otro dispositivo, que contienen los
+                        detalles de su historial de navegación en ese sitio web,
+                        entre sus muchos usos.
+                        <li> País </li>
+                        Se refiere a: España
+                        <li> Dispositivo</li>
+                        Significa cualquier dispositivo que pueda acceder al
+                        Servicio, como una computadora, un teléfono celular o
+                        una tableta digital. Los datos personales son cualquier
+                        información que se relacione con una persona
+                        identificada o identificable.
+                        <li>El servicio</li>
+                        Se refiere al sitio web.
+                        <li>Proveedor de servicios</li>
+                        Significa cualquier persona física o jurídica que
+                        procesa los datos en nombre de la Compañía. Se refiere a
+                        empresas de terceros o personas empleadas por la
+                        Compañía para facilitar el Servicio, para proporcionar
+                        el Servicio en nombre de la Compañía, para realizar
+                        servicios relacionados con el Servicio o para ayudar a
+                        la Compañía a analizar cómo se utiliza el Servicio.
+                        <li>Los Datos de uso</li>
+                        Se refieren a los datos recopilados automáticamente, ya
+                        sea generados por el uso del Servicio o por la propia
+                        infraestructura del Servicio (por ejemplo, la duración
+                        de una visita a la página).
+                        <li>El sitio web</li>
+                        Se refiere a RetroWorldmarket.com, accesible desde
+                        <strong>https://www.RetroWorldmarket.com</strong>.
+                        <li> Usted</li>
+                        Se refiere a la persona que accede o utiliza el
+                        Servicio, o la empresa u otra entidad legal en nombre de
+                        la cual dicha persona accede o utiliza el Servicio,
+                        según corresponda.
+                    </ul>
                 </p>
-                <p> Recopilación y uso de sus datos personales</p>
-                <p> Tipos de datos recopilados </p>
+                <h2> Recopilación y uso de sus datos personales</h2>
+                <h3> Tipos de datos recopilados </h3>
+
                 <p> Información personal</p>
                 <p>
                     Mientras usamos Nuestro Servicio, podemos pedirle que nos
