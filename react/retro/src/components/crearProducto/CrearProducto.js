@@ -1,6 +1,5 @@
 import { useState, useContext } from 'react';
 import { AuthTokenContext } from '../../index';
-import PrimeraFoto from './crearFoto';
 
 //import { post } from '../../api/post';
 
