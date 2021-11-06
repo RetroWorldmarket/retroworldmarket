@@ -13,7 +13,6 @@ import React from 'react';
 import { EditarUsuario } from './components/editarUsuario/EditarUsuario';
 import { AuthTokenContext } from './index';
 import { InicioHeader } from './components/InicioHeader';
-import { CrearProducto } from './components/crearProducto/CrearProducto';
 import { Ventas } from './components/ventas/Ventas';
 import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
 import { Preguntas_frecuentes } from './components/preguntasFrecuentes/Preguntas_frecuentes';
