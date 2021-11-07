@@ -16,7 +16,6 @@ export const useLocalStorage = (valorPorDefecto, key) => {
   useEffect(() => {
     localStorage.setItem(key, JSON.stringify(dato));
   }, [dato, key]);
-  console.log('dato tiene', dato);
   //retornamos el valor de la key y la funcion que lo cambia, es decir el estado
 
   return [dato, setDato];

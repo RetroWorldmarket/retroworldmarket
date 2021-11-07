@@ -32,7 +32,6 @@ export const Mensajes = () => {
       setMensajes(listaDeMensajes.data);
     }
   }, [listaDeMensajes]);
-  console.log(inputMensaje, 'input');
 
   const envioDelMensaje = async (e) => {
     e.preventDefault();
@@ -40,14 +39,27 @@ export const Mensajes = () => {
     const cambiaStorageNuevoMensaje = (nuevoMensaje) => {
       setInputMensaje(nuevoMensaje);
     };
-    post(
-      `http://localhost:4000/messages/${idProduct}`,
-      nuevoMensaje,
-      cambiaStorageNuevoMensaje,
-      token,
-      (response) => console.log(response.status)
-    );
+    if (producto[0].idUser !== usuario.id) {
+      post(
+        `http://localhost:4000/messages/${idProduct}`,
+        nuevoMensaje,
+        cambiaStorageNuevoMensaje,
+        token,
+        (response) => console.log(response.status)
+      );
+    } else {
+      post(
+        `http://localhost:4000/messages/chat/${idProduct}`,
+        nuevoMensaje,
+        cambiaStorageNuevoMensaje,
+        token,
+        (response) => console.log(response.status)
+      );
+    }
   };
+
+  // console.log(producto[0].idUser, 'usuario Producto');
+  // console.log(usuario.id, 'usuario');
 
   const cambioEnElMensaje = (e) => {
     setInputMensaje(e.target.value);
@@ -56,12 +68,12 @@ export const Mensajes = () => {
     <main>
       {Object.values(producto).length && (
         <section>
-          <figure id='img-prod'>
+          {/* <figure id='img-prod'>
             <img
               src={`http://localhost:4000/${producto.fotos[0].namePhoto}`}
               alt={`${producto[0].nameProduct}`}
             />
-          </figure>
+          </figure> */}
           <article>
             <ul>
               <li>{`${producto[0].nameProduct}`}</li>

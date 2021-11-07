@@ -42,6 +42,9 @@ const newProduct = async (req, res, next) => {
       price,
     } = req.body;
 
+    console.log(req.body, 'back');
+    console.log(req.files, 'imagen');
+
     // Para confirmar que el usuario nos dé todos los datos que le pedimos, vamos a
     // hacer que si faltan datos se lance un error y creamos el status del error:
     if (
@@ -106,8 +109,6 @@ const newProduct = async (req, res, next) => {
     );
 
     const idProduct = nuevoProducto.insertId;
-
-    console.log(idProduct);
 
     //////////////////////////
 

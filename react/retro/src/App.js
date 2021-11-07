@@ -16,6 +16,7 @@ import { InicioHeader } from './components/InicioHeader';
 import { Ventas } from './components/ventas/Ventas';
 import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
 import { Preguntas_frecuentes } from './components/preguntasFrecuentes/Preguntas_frecuentes';
+import { Mensajes } from './paginas/Mensajes';
 
 const PrivateRoute = ({ children }) => {
   const [token] = useContext(AuthTokenContext);
@@ -63,6 +64,11 @@ function App() {
             component={Preguntas_frecuentes}
           />
 
+          <Route exact path='/mensajes/:idProduct'>
+            <PrivateRoute>
+              <Mensajes />
+            </PrivateRoute>
+          </Route>
           <Route path='*' component={Error404} />
         </Switch>
       </BrowserRouter>
