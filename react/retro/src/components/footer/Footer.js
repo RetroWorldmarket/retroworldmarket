@@ -7,7 +7,10 @@ export const Footer = () => {
             <p>
                 <Link to='/Politica_privacidad'>Política de Privacidad</Link>
             </p>
-            <p>Preguntas frecuentes</p>
+            <p>
+                <Link to='/Preguntas_frecuentes'>Preguntas frecuentes</Link>
+            </p>
+
             <p>
                 <Link to='/contacto'>Contacto</Link>
             </p>
