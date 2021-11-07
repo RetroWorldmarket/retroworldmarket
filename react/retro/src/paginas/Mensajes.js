@@ -126,6 +126,7 @@ export const Mensajes = () => {
           </label>
           <button type='submit'>enviar</button>
         </form>
+        {Object.values(usuario).length && <button>VENDIDO</button>}
       </section>
 
       <button className='solic-1'>solicitar reserva</button>
