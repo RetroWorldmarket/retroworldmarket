@@ -60,13 +60,12 @@ export const Producto = ({ articulo }) => {
         console.log(response.status);
       }
     );
-    if (!interes) {
+    if (interes.length < 1) {
       setInteres([producto[0].id]);
     } else {
       setInteres([...interes, producto[0].id]);
     }
   };
-  console.log(interes, 'interes');
 
   const cambioEnElMensaje = (e) => {
     setInputMensaje(e.target.value);

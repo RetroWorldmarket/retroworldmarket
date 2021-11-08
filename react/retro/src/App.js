@@ -18,9 +18,9 @@ import { Politica_privacidad } from './components/politicaPrivacidad/Politica_pr
 import { Preguntas_frecuentes } from './components/preguntasFrecuentes/Preguntas_frecuentes';
 import { Mensajes } from './paginas/Mensajes';
 import { useLocalStorage } from './hooks/useLocalStorage';
-export const ContactoProducto = React.createContext(null);
+export const ContactoProducto = React.createContext([]);
 const ContactoProductoProvider = ({ children }) => {
-  const [interes, setInteres] = useLocalStorage(null, 'interesProductos');
+  const [interes, setInteres] = useLocalStorage([], 'interesProductos');
 
   return (
     <ContactoProducto.Provider value={[interes, setInteres]}>
