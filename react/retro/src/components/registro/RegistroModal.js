@@ -242,6 +242,7 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
                 type='checkbox'
                 name='terminos'
                 id='terminos'
+                value={terminos}
                 onChange={(e) => setTerminos(e.target.checked)}
               />
             </li>

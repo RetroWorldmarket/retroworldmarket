@@ -17,6 +17,17 @@ import { Ventas } from './components/ventas/Ventas';
 import { Politica_privacidad } from './components/politicaPrivacidad/Politica_privacidad';
 import { Preguntas_frecuentes } from './components/preguntasFrecuentes/Preguntas_frecuentes';
 import { Mensajes } from './paginas/Mensajes';
+import { useLocalStorage } from './hooks/useLocalStorage';
+export const ContactoProducto = React.createContext(null);
+const ContactoProductoProvider = ({ children }) => {
+  const [interes, setInteres] = useLocalStorage(null, 'interesProductos');
+
+  return (
+    <ContactoProducto.Provider value={[interes, setInteres]}>
+      {children}
+    </ContactoProducto.Provider>
+  );
+};
 
 const PrivateRoute = ({ children }) => {
   const [token] = useContext(AuthTokenContext);
@@ -34,7 +45,10 @@ function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <InicioHeader />
+        <ContactoProductoProvider>
+          <InicioHeader />
+        </ContactoProductoProvider>
+
         <Switch>
           <Route exact path='/'>
             <Inicio />
@@ -43,10 +57,10 @@ function App() {
           <Route exact path='/ventas' component={Ventas} />
 
           <Route exact path='/product/:idProduct'>
-            <Producto />
+            <ContactoProductoProvider>
+              <Producto />
+            </ContactoProductoProvider>
           </Route>
-
-          <Route exact path='/product/:idProduct' component={Producto} />
           <Route exact path='/editarUsuario'>
             <PrivateRoute>
               <EditarUsuario />

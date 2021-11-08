@@ -27,9 +27,9 @@ const PrimeraFoto = (props) => {
         </div>
         <button type='submit'>Upload</button>
       </form>
-      {serverImg && (
+      {/* {serverImg && (
         <img src={`http://localhost:4000/${serverImg}`} alt='server avatar' />
-      )}
+      )} */}
     </div>
   );
 };

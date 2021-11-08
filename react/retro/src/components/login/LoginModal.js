@@ -7,7 +7,7 @@ const LoginModal = ({ abierto, cerrarModal }) => {
   const handelModalContenedorClick = (e) => e.stopPropagation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [token, setToken] = useContext(AuthTokenContext);
+  const [, setToken] = useContext(AuthTokenContext);
 
   // Funcion para resetear el formulario:
   const vaciarFormulario = () => {
