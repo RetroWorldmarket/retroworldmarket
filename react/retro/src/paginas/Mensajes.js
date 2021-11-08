@@ -4,8 +4,11 @@ import { useParams } from 'react-router-dom';
 import { get } from '../api/get';
 import { useListaDeMensajes } from '../hooks/useListaMensajes';
 import { post } from '../api/post';
+import { useHistory } from 'react-router-dom';
 
 export const Mensajes = () => {
+  const history = useHistory();
+
   const [producto, setProducto] = useState([]);
   const [usuario, setUsuario] = useState([]);
   const [token] = useContext(AuthTokenContext);
@@ -13,6 +16,7 @@ export const Mensajes = () => {
   const { idProduct } = useParams();
   const [listaDeMensajes] = useListaDeMensajes(idProduct);
   const [mensajes, setMensajes] = useState([]);
+  const [propietario, setPropietario] = useState(false);
 
   useEffect(() => {
     get(`http://localhost:4000/product/${idProduct}`, (body) =>
@@ -34,10 +38,10 @@ export const Mensajes = () => {
   }, [listaDeMensajes]);
 
   const envioDelMensaje = async (e) => {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const nuevoMensaje = { text: inputMensaje };
     const cambiaStorageNuevoMensaje = (nuevoMensaje) => {
-      setInputMensaje(nuevoMensaje);
+      setInputMensaje(nuevoMensaje.text);
     };
     if (producto[0].idUser !== usuario.id) {
       post(
@@ -45,7 +49,10 @@ export const Mensajes = () => {
         nuevoMensaje,
         cambiaStorageNuevoMensaje,
         token,
-        (response) => console.log(response.status)
+        (response) => {
+          console.log(response.status);
+          setInputMensaje('');
+        }
       );
     } else {
       post(
@@ -53,8 +60,12 @@ export const Mensajes = () => {
         nuevoMensaje,
         cambiaStorageNuevoMensaje,
         token,
-        (response) => console.log(response.status)
+        (response) => {
+          console.log(response.status);
+          setInputMensaje('');
+        }
       );
+      setPropietario(true);
     }
   };
 
@@ -64,16 +75,67 @@ export const Mensajes = () => {
   const cambioEnElMensaje = (e) => {
     setInputMensaje(e.target.value);
   };
+
+  /********************BOTON DE VENDIDO */
+  const productoVendido = (e) => {
+    e.preventDefault();
+    async function put(
+      url,
+      funcionSuceso,
+      token,
+      ErrorPeticion = (respuesta) => {
+        console.error(
+          'Error en la petición al servidor',
+          respuesta.status,
+          respuesta.statusText
+        );
+      },
+      ErrorDeConexion = (msg) => {
+        console.error('Error', msg);
+      }
+    ) {
+      try {
+        const respuesta = await fetch(url, {
+          method: 'PUT',
+          headers: {
+            //no se pone el method porque por defecto es get
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        if (respuesta.ok) {
+          const body = await respuesta.json();
+          funcionSuceso(body);
+        } else {
+          const body = await respuesta.json();
+          console.log('el error es: ', body);
+        }
+      } catch (msg) {
+        ErrorDeConexion(msg);
+      }
+    }
+
+    put(
+      `http://localhost:4000/sellretro/${idProduct}/sell/${usuario.id}`,
+      (body) => alert(body.message),
+      token
+    );
+    setInputMensaje(
+      `Enhorabuena, has adquirido ${producto[0].nameProduct}, Recuerda votarme`
+    );
+    envioDelMensaje(e);
+    history.push('/');
+  };
   return (
     <main>
       {Object.values(producto).length && (
         <section>
-          {/* <figure id='img-prod'>
+          <figure id='img-prod'>
             <img
               src={`http://localhost:4000/${producto.fotos[0].namePhoto}`}
               alt={`${producto[0].nameProduct}`}
             />
-          </figure> */}
+          </figure>
           <article>
             <ul>
               <li>{`${producto[0].nameProduct}`}</li>
@@ -126,7 +188,9 @@ export const Mensajes = () => {
           </label>
           <button type='submit'>enviar</button>
         </form>
-        {Object.values(usuario).length && <button>VENDIDO</button>}
+        {propietario === true && (
+          <button onClick={productoVendido}>VENDIDO</button>
+        )}
       </section>
 
       <button className='solic-1'>solicitar reserva</button>

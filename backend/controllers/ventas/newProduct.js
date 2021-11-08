@@ -98,11 +98,11 @@ const newProduct = async (req, res, next) => {
         idUser,
         nameProduct,
         brand,
-        yearOfProduction,
+        Number(yearOfProduction),
         status,
         category,
         description,
-        price,
+        Number(price),
         createdDate,
         true,
       ]
@@ -129,7 +129,7 @@ const newProduct = async (req, res, next) => {
 
         // Guardamos la foto.
         await connection.query(
-          `INSERT INTO photos (namePhoto, idProduct, createdAt) VALUES (?, ?, ?)`,
+          `INSERT INTO photos (namePhoto, idProduct, createdDate) VALUES (?, ?, ?)`,
           [photoName, idProduct, formatDate(new Date())]
         );
       }
