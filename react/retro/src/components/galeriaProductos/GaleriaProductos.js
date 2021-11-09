@@ -64,7 +64,7 @@ export const GaleriaProductos = () => {
         <div>
             {(search || categorias) && (
                 <div className='centrado'>
-                    <nav className='nav-galeria'>
+                    <nav id='productosAleatorios' className='nav-galeria'>
                         {PeticionSearch.length > 0 &&
                             PeticionSearch.map((art) => {
                                 return (

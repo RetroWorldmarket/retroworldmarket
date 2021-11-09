@@ -26,6 +26,10 @@ body {
     justify-content: space-between;
 }
 
+#cabeceraPrincipalSinLogo > nav > ul li:first-child {
+    flex-grow: 1;
+}
+
 #cabeceraPrincipalSinLogo button {
     background-color: #903495;
     border: none;
@@ -60,8 +64,15 @@ body {
     width: 1rem;
 }
 
-#cabeceraPrincipalSinLogo > section > form {
+#cabeceraPrincipalSinLogo > section > form label {
     text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+#cabeceraPrincipalSinLogo > section > form label button {
+    display: flex;
+    align-items: center;
 }
 
 #barraBusqueda::placeholder {
@@ -108,13 +119,10 @@ body {
 */
 
 #productosAleatorios {
-    margin: auto;
-    width: 110rem;
-    border: none;
-    display: flex;
-    opacity: 0.9;
+    margin: 3rem 1rem;
     gap: 1rem;
-    padding: 5%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
 #productosAleatorios article {
@@ -124,8 +132,6 @@ body {
 }
 
 #productosAleatorios img {
-    min-width: 7rem;
-    max-width: 12rem;
     object-fit: cover;
 }
 
@@ -136,20 +142,6 @@ body {
 /*****************************
 ****NAVEGACION CATEGORIAS*****
 *****************************/
-
-#navegacionCategorias ul {
-    background-color: red;
-    display: flex;
-    flex-direction: row;
-    padding: 0;
-    overflow-y: scroll;
-}
-
-#navegacionCategorias li {
-    text-decoration: none;
-    list-style: none;
-    background-color: #d20076;
-}
 
 /*
 #####################
@@ -177,8 +169,10 @@ body {
     text-decoration: none;
     background-color: #be7edc;
 }
-@media (min-width: 600px) {
-    .column {
-        width: 50%;
+
+@media screen and (max-width: 600px) and (orientation: portrait) {
+    body {
+        background-color: blueviolet;
+        max-height: 100%;
     }
 }

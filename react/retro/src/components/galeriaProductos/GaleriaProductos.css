@@ -1,8 +1,23 @@
 /* Revisar la configuracion CSS de TarjetaArticulo para colocarlos guapos */
 
 .centrado {
-  border: 3px solid black;
-  margin: auto;
-  width: 95%;
-  background-color: #eee;
+    border: 1px solid black;
+    display: grid;
+    padding: 0.5rem;
+    gap: 1rem;
+    background-color: #2a2955;
+}
+
+.productosAleatorios {
+    border: 1px solid red;
+    padding: 0.5rem;
+    margin: 3rem 1rem;
+    display: grid;
+    gap: 1rem;
+    object-fit: cover;
+    background-color: blueviolet;
+    max-height: 100%;
+}
+.productosAleatorios-TarjArticle {
+    grid-template-rows: repeat(auto-fit), minmax(300px, 1fr);
 }
