@@ -6,11 +6,14 @@ import { get } from '../../api/get';
 import { Link } from 'react-router-dom';
 import { CerrarSesion } from '../cerrarSesion/CerrarSesion';
 import { useModal } from '../../hooks/useModal';
+import { Menu } from '../menu/Menu';
 
 export const UsuarioLogueado = () => {
   const [abierto, abrirModal, cerrarModal] = useModal(false);
   const [token] = useContext(AuthTokenContext);
   const [infoUsuario, setInfoUsuario] = useState([]);
+  const [mostrarMenu, setMostrarMenu] = useState (false);
+  
   useEffect(() => {
     get(
       'http://localhost:4000/users',
@@ -24,15 +27,31 @@ export const UsuarioLogueado = () => {
   //   <CerrarSesion />;
   // };
 
+  const desplegarMenu =(e)=>{
+    e.preventDefault();
+    setMostrarMenu(true)
+  }
+
+  const ocultarMenu =(e)=>{
+    e.preventDefault();
+    setMostrarMenu (false)
+  }
+
   return (
     <>
       <figure>
         <img src={`img/${infoUsuario.avatar}`} alt='usuario logueado'></img>
       </figure>
       {infoUsuario ? <p>Bienvenido {infoUsuario.alias}!!!</p> : null}
-      <Link to='./editarUsuario'>Editar perfil</Link>
-      <button onClick={abrirModal}>Cerrar sesión</button>
-      <CerrarSesion abierto={abierto} cerrarModal={cerrarModal}></CerrarSesion>
+      <button onClick={desplegarMenu}>Menu</button>
+      {mostrarMenu && (
+                <>
+                  <Menu/>
+                  <button onClick={ocultarMenu}>
+                    Ocultar Menu
+                  </button>
+                </>
+              )}
     </>
   );
 };

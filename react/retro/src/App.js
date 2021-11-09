@@ -22,6 +22,7 @@ import { Preguntas_frecuentes } from './components/preguntasFrecuentes/Preguntas
 import { Mensajes } from './paginas/Mensajes';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { VotosYProductos } from './paginas/VotosYProductos';
+import { Perfil } from './components/perfil/Perfil';
 export const ContactoProducto = React.createContext([]);
 const ContactoProductoProvider = ({ children }) => {
   const [interes, setInteres] = useLocalStorage([], 'interesProductos');
@@ -100,6 +101,11 @@ function App() {
             exact
             path='/Preguntas_frecuentes'
             component={Preguntas_frecuentes}
+          />
+           <Route
+            exact
+            path='/perfil'
+            component={Perfil}
           />
 
           <Route exact path='/mensajes/:idProduct'>
