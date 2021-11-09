@@ -37,6 +37,7 @@ app.use(express.static('static/upload'));
 /// Controladores de Usuarios: ///
 //////////////////////////////////
 const {
+  historial,
   createUser,
   validateUser,
   login,
@@ -213,6 +214,9 @@ app.get('/users/:idUser', userExists, authUser, getUser);
 //Editar un Usuario:
 
 app.put('/users/:idUser', authUser, userExists, editUser);
+
+//historial de compras
+app.get('/historial', authUser, historial);
 
 //creo boton de votos
 app.post('/sellretro/:idProduct/votes', authUser, productExist, userVotes);

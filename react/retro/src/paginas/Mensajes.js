@@ -116,7 +116,7 @@ export const Mensajes = () => {
     }
 
     put(
-      `http://localhost:4000/sellretro/${idProduct}/sell/${usuario.id}`,
+      `http://localhost:4000/sellretro/${idProduct}/sell/${listaDeMensajes.data[0].emisor}`,
       (body) => alert(body.message),
       token
     );

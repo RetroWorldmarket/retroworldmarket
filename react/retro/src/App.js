@@ -18,6 +18,7 @@ import { Politica_privacidad } from './components/politicaPrivacidad/Politica_pr
 import { Preguntas_frecuentes } from './components/preguntasFrecuentes/Preguntas_frecuentes';
 import { Mensajes } from './paginas/Mensajes';
 import { useLocalStorage } from './hooks/useLocalStorage';
+import { VotosYProductos } from './paginas/VotosYProductos';
 export const ContactoProducto = React.createContext([]);
 const ContactoProductoProvider = ({ children }) => {
   const [interes, setInteres] = useLocalStorage([], 'interesProductos');
@@ -66,6 +67,14 @@ function App() {
               <EditarUsuario />
             </PrivateRoute>
           </Route>
+          <Route exact path='/votos'>
+            <ContactoProductoProvider>
+              <PrivateRoute>
+                <VotosYProductos />
+              </PrivateRoute>
+            </ContactoProductoProvider>
+          </Route>
+
           <Route exact path='/contacto' component={FormularioContacto} />
           <Route
             exact

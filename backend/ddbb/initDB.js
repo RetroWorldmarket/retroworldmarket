@@ -122,7 +122,7 @@ async function main() {
                 emisor INT NOT NULL,
                 FOREIGN KEY (emisor) REFERENCES users(id),
                 receptor INT NOT NULL,
-                FOREIGN KEY (receptor) REFERENCES products(idUser),
+                FOREIGN KEY (receptor) REFERENCES users(id),
                 idUser INT NOT NULL,
                 FOREIGN KEY (IdUser) REFERENCES users(id),
                 text VARCHAR(255),
@@ -154,7 +154,8 @@ async function main() {
                 FOREIGN KEY (idProduct) REFERENCES products (id),
                 idUser INT NOT NULL,
                 FOREIGN KEY (idUser) REFERENCES users (id),
-                dateSoldProduct DATETIME
+                dateSoldProduct DATETIME,
+                votado BOOLEAN DEFAULT false
             )
     `);
     console.log('Tabla de Historial de productos Creada correctamente');
