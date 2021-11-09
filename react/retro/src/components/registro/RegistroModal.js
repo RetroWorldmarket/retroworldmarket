@@ -1,5 +1,6 @@
 // Importamos la lógica de un Modal:
 import { post } from '../../api/post';
+import { toast } from 'react-toastify';
 
 import './RegistroModal.css';
 import { useState } from 'react';
@@ -53,9 +54,9 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
     //creamos la función para hacer o enviar peticiones al servidor
     const funcionManejadoraDeRespuestaDelServidor = (body) => {
       if (body.status === 'ok') {
-        alert(`${body.message}`);
+        toast.success(`${body.message}`);
       } else {
-        alert(`${body.message}`);
+        toast.error(`${body.message}`);
       }
       console.log('Body: ', body);
     };
@@ -67,7 +68,6 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
     // Resetear el formulario:
     //e.target.reset();
     vaciarFormulario();
-    setInterval(cerrarModal(), 4000);
   };
 
   //cuando se enrute se descomentara la siguiente linea

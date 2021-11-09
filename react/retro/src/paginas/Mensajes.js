@@ -5,6 +5,7 @@ import { get } from '../api/get';
 import { useListaDeMensajes } from '../hooks/useListaMensajes';
 import { post } from '../api/post';
 import { useHistory } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const Mensajes = () => {
   const history = useHistory();
@@ -106,9 +107,11 @@ export const Mensajes = () => {
         if (respuesta.ok) {
           const body = await respuesta.json();
           funcionSuceso(body);
+          toast.success(body.message);
         } else {
           const body = await respuesta.json();
           console.log('el error es: ', body);
+          toast.error(body.message);
         }
       } catch (msg) {
         ErrorDeConexion(msg);
@@ -123,6 +126,7 @@ export const Mensajes = () => {
     setInputMensaje(
       `Enhorabuena, has adquirido ${producto[0].nameProduct}, Recuerda votarme`
     );
+
     envioDelMensaje(e);
     history.push('/');
   };

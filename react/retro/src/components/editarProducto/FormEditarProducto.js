@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { AuthTokenContext } from '../../index';
 //import { post } from '../../api/post';
 
@@ -65,7 +66,8 @@ export const FormEditarProducto = (idProduct) => {
       console.log('Respuesta tiene :', respuesta);
     } catch (error) {
       console.error(error);
-    }
+      //toast.error()
+    } // finally {toast.info(respuesta.product.message)}
   };
 
   return (

@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import Message from '../footer/contacto/Message';
 import { AuthTokenContext } from '../../index';
 import { FormEditarUsuario } from './FormEditarUsuario';
+import { toast } from 'react-toastify';
 
 // Pasos:
 //  Obtener la informacion actual del usuario.
@@ -59,9 +60,11 @@ export const EditarUsuario = (data) => {
         }
 
         setUser(data.userInfo);
+        toast.success(data.message);
       } catch (error) {
         console.error(error);
         setError(error.message);
+        toast.error(data.message);
       }
     };
 

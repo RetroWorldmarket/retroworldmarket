@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthTokenContext } from '../../index';
 //import Message from '../footer/contacto/Message';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 /////////////////////////////////
@@ -133,7 +133,7 @@ export const FormEditarUsuario = ({ user, tokenInfo }) => {
     <>
       {/* {mensajeOk ? <Message msg={mensaje} bgColor={'#BAFF96'} /> : null}
       {mensajeKo ? <Message msg={mensaje} bgColor={'#FE6C55'} /> : null} */}
-      {mensajeOk ? <ToastContainer autoClose={15000} /> : null}
+      {/* {mensajeOk ? <ToastContainer autoClose={15000} /> : null} */}
       <h3>Editar perfil</h3>
       <p>Editar datos :</p>
       <form onSubmit={updateData()}>

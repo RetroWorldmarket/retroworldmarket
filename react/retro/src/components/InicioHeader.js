@@ -8,13 +8,19 @@ import { AuthTokenContext } from '../index';
 // Importamos la lógica que va a tener ese Modal (desarrollada en el hook useModal.js)
 import { useModal } from '../hooks/useModal';
 import { UsuarioLogueado } from './UsuarioLogueado/UsuarioLogueado';
+//import { useLocalStorage } from '../hooks/useLocalStorage';
+import { ContactoProducto } from '../App';
 
 export const InicioHeader = () => {
+  // Interes: Array con id de productos con mensaje enviado
+  const [interes, setInteres] = useContext(ContactoProducto);
   // Modal:
   const [abierto, cerrarModal] = useModal(false);
 
   // Definimos el token
   const [token] = useContext(AuthTokenContext);
+
+  console.log('interes', interes);
 
   return (
     <header id='cabeceraPrincipalSinLogo'>

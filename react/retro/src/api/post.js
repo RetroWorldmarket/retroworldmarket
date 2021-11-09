@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 export async function post(
   url,
   body,
@@ -23,7 +25,10 @@ export async function post(
     } else {
       const body = await respuesta.json();
       ErrorPeticion(respuesta);
-      alert(body.message);
+
+      console.log('respuesta tiene: ', respuesta);
+      toast.error(body.message);
+      //alert(body.message);
 
       console.log(
         'respuesta servidor:',

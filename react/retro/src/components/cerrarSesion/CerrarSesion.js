@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { AuthTokenContext } from '../../index';
+import { toast } from 'react-toastify';
 
 import '../login/LoginModal.css';
 
@@ -9,6 +10,7 @@ export const CerrarSesion = ({ abierto, cerrarModal }) => {
   const cerrarSesion = (e) => {
     e.preventDefault();
     setToken('');
+    toast.success('Hasta pronto!!');
 
     //localStorage.removeItem(Storage.accesoToken);
 

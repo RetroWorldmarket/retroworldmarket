@@ -7,6 +7,9 @@ import { Error404 } from './components/error404/Error404';
 import { Producto } from './components/producto/Producto';
 import Modales from './components/modal/Modales';
 import { FormularioContacto } from './paginas/FormularioContacto';
+// Toastify:
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import React from 'react';
 
@@ -45,6 +48,18 @@ function App() {
 
   return (
     <div className='App'>
+      <ToastContainer
+        position='top-right'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        limit={1}
+      />
       <BrowserRouter>
         <ContactoProductoProvider>
           <InicioHeader />

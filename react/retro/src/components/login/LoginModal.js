@@ -2,6 +2,7 @@ import './LoginModal.css';
 import React, { useContext, useState } from 'react';
 import { post } from '../../api/post';
 import { AuthTokenContext } from '../../index';
+import { toast } from 'react-toastify';
 
 const LoginModal = ({ abierto, cerrarModal }) => {
   const handelModalContenedorClick = (e) => e.stopPropagation();
@@ -24,10 +25,10 @@ const LoginModal = ({ abierto, cerrarModal }) => {
 
     const respuestaServidor = (body) => {
       setToken(body.token.split(' ')[1]);
+      toast.success('Te has logueado correctamente');
     };
     post('http://localhost:4000/users/login', body, respuestaServidor);
     vaciarFormulario();
-    setInterval(cerrarModal(), 4000);
   };
   return (
     <div className={`modal ${abierto && 'modal-Abrir'}`} onClick={cerrarModal}>

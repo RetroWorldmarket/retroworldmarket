@@ -1,3 +1,5 @@
+import { toast } from 'react-toastify';
+
 export async function get(
   url,
   funcionSuceso,
@@ -11,6 +13,7 @@ export async function get(
   },
   ErrorDeConexion = (msg) => {
     console.error('Error', msg);
+    toast.error(msg);
   }
 ) {
   try {
@@ -24,9 +27,11 @@ export async function get(
     if (respuesta.ok) {
       const body = await respuesta.json();
       funcionSuceso(body);
+      toast.success(body.message);
     } else {
       const body = await respuesta.json();
       console.log('el error es: ', body);
+      toast.error(body.message);
     }
   } catch (msg) {
     ErrorDeConexion(msg);

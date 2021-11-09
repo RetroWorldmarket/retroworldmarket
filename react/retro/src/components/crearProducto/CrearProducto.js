@@ -1,4 +1,5 @@
 import { useState, useContext, useRef } from 'react';
+import { toast } from 'react-toastify';
 import { AuthTokenContext } from '../../index';
 
 //import { post } from '../../api/post';
@@ -95,6 +96,7 @@ export const CrearProducto = () => {
 
     postData(url, data).then((data) => {
       console.log(data);
+      toast.info(data.message);
       vaciarFormulario();
     });
   };

@@ -19,10 +19,10 @@ export const UsuarioLogueado = () => {
     );
   }, [token]);
 
-  const cerrarSesion = (e) => {
-    e.preventDefault();
-    <CerrarSesion />;
-  };
+  // const cerrarSesion = (e) => {
+  //   e.preventDefault();
+  //   <CerrarSesion />;
+  // };
 
   return (
     <>
@@ -31,7 +31,6 @@ export const UsuarioLogueado = () => {
       </figure>
       {infoUsuario ? <p>Bienvenido {infoUsuario.alias}!!!</p> : null}
       <Link to='./editarUsuario'>Editar perfil</Link>
-      <button onClick={cerrarSesion}></button>
       <button onClick={abrirModal}>Cerrar sesión</button>
       <CerrarSesion abierto={abierto} cerrarModal={cerrarModal}></CerrarSesion>
     </>
