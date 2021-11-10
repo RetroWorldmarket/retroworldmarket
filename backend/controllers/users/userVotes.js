@@ -92,9 +92,9 @@ const userVotes = async (req, res, next) => {
 
     await connection.query(
       `
-            UPDATE historialProducts SET votado = 1 WHERE id = ? 
+            UPDATE historialProducts SET votado = ? WHERE id = ? 
             `,
-      [idProduct]
+      [1, idProduct]
     );
 
     res.send({
