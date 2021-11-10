@@ -39,6 +39,8 @@ export const VotosYProductos = () => {
     }
   }, [idOwner, token]);
 
+  console.log(historialProductos, 'historial');
+
   const votar = (e) => {
     e.preventDefault();
     const funcionManejadoraDeRespuestaDelServidor = (body) => {
@@ -62,53 +64,57 @@ export const VotosYProductos = () => {
   };
 
   return (
-    <section id='fotoPrecioNombre' className='productosAleatorios'>
-      {Object.values(p).length > 1 && (
-        <>
-          <article id='productosAleatorios-TarjArticle'>
-            <figure className='divImagenArticulo'>
-              <img
-                className='articuloImagen'
-                src={`http://localhost:4000/${p.avatar}`}
-                alt={`${p.avatar}`}
-              />
-            </figure>
-            <h2>{`${p.alias} euros`}</h2>
-            <h3>{`${p.province}`}</h3>
-          </article>
-          <form action='' method='POST' onSubmit={votar}>
-            <label htmlFor='votos'>
-              votos
-              <select
-                onChange={(e) => setVotos(e.target.value)}
-                value={votos}
-                name='votos'
-                id='votos'
-              >
-                <option value=''>selecciona</option>
+    <>
+      {historialProductos.length > 0 && (
+        <section id='fotoPrecioNombre' className='productosAleatorios'>
+          {Object.values(p).length > 1 && (
+            <>
+              <article id='productosAleatorios-TarjArticle'>
+                <figure className='divImagenArticulo'>
+                  <img
+                    className='articuloImagen'
+                    src={`http://localhost:4000/${p.avatar}`}
+                    alt={`${p.avatar}`}
+                  />
+                </figure>
+                <h2>{`${p.alias} euros`}</h2>
+                <h3>{`${p.province}`}</h3>
+              </article>
+              <form action='' method='POST' onSubmit={votar}>
+                <label htmlFor='votos'>
+                  votos
+                  <select
+                    onChange={(e) => setVotos(e.target.value)}
+                    value={votos}
+                    name='votos'
+                    id='votos'
+                  >
+                    <option value=''>selecciona</option>
 
-                <option value='1'>
-                  &#11088; &#9734; &#9734; &#9734; &#9734;
-                </option>
-                <option value='2'>
-                  &#11088; &#11088; &#9734; &#9734; &#9734;
-                </option>
-                <option value='3'>
-                  &#11088; &#11088; &#11088; &#9734; &#9734;
-                </option>
-                <option value='4'>
-                  &#11088; &#11088; &#11088; &#11088; &#9734;
-                </option>
-                <option value='5'>
-                  &#11088; &#11088; &#11088; &#11088; &#11088;
-                </option>
-              </select>
-            </label>
+                    <option value='1'>
+                      &#11088; &#9734; &#9734; &#9734; &#9734;
+                    </option>
+                    <option value='2'>
+                      &#11088; &#11088; &#9734; &#9734; &#9734;
+                    </option>
+                    <option value='3'>
+                      &#11088; &#11088; &#11088; &#9734; &#9734;
+                    </option>
+                    <option value='4'>
+                      &#11088; &#11088; &#11088; &#11088; &#9734;
+                    </option>
+                    <option value='5'>
+                      &#11088; &#11088; &#11088; &#11088; &#11088;
+                    </option>
+                  </select>
+                </label>
 
-            <button type='submit'>VOTAR</button>
-          </form>
-        </>
+                <button type='submit'>VOTAR</button>
+              </form>
+            </>
+          )}
+        </section>
       )}
-    </section>
+    </>
   );
 };
