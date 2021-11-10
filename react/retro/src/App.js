@@ -23,6 +23,8 @@ import { Mensajes } from './paginas/Mensajes';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { VotosYProductos } from './paginas/VotosYProductos';
 import { Perfil } from './components/perfil/Perfil';
+import { BuzonEntrada } from './paginas/BuzonEntrada';
+
 export const ContactoProducto = React.createContext([]);
 const ContactoProductoProvider = ({ children }) => {
   const [interes, setInteres] = useLocalStorage([], 'interesProductos');
@@ -90,6 +92,13 @@ function App() {
               </PrivateRoute>
             </ContactoProductoProvider>
           </Route>
+          <Route exact path='/buzon'>
+            <ContactoProductoProvider>
+              <PrivateRoute>
+                <BuzonEntrada />
+              </PrivateRoute>
+            </ContactoProductoProvider>
+          </Route>
 
           <Route exact path='/contacto' component={FormularioContacto} />
           <Route
@@ -102,11 +111,7 @@ function App() {
             path='/Preguntas_frecuentes'
             component={Preguntas_frecuentes}
           />
-           <Route
-            exact
-            path='/perfil'
-            component={Perfil}
-          />
+          <Route exact path='/perfil' component={Perfil} />
 
           <Route exact path='/mensajes/:idProduct'>
             <PrivateRoute>

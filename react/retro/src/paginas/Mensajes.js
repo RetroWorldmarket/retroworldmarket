@@ -196,8 +196,8 @@ export const Mensajes = () => {
           <button onClick={productoVendido}>VENDIDO</button>
         )}
       </section>
-
-      <button className='solic-1'>solicitar reserva</button>
     </main>
   );
 };
+
+//listaDeMensajes.data[0].emisor

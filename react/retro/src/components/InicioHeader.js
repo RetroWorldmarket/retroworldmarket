@@ -20,8 +20,6 @@ export const InicioHeader = () => {
   // Definimos el token
   const [token] = useContext(AuthTokenContext);
 
-  console.log('interes', interes);
-
   return (
     <header id='cabeceraPrincipalSinLogo'>
       <nav>
