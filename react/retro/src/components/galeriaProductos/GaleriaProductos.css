@@ -17,7 +17,5 @@
     object-fit: cover;
     background-color: blueviolet;
     max-height: 100%;
-}
-.productosAleatorios-TarjArticle {
-    grid-template-rows: repeat(auto-fit), minmax(300px, 1fr);
+    border-radius: 10px;
 }

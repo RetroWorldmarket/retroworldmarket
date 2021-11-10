@@ -6,6 +6,12 @@
 **************************
 */
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     min-width: 300px;
 }
@@ -17,6 +23,7 @@ body {
     background-color: #903495;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 }
 
 #cabeceraPrincipalSinLogo > nav > ul {
@@ -107,9 +114,14 @@ body {
 */
 #botonesCompraVenta {
     padding-top: 20px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.botonesCompraVenta button {
+    background-color: lawngreen;
 }
 
 /*

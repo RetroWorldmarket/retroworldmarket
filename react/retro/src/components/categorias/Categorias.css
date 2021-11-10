@@ -4,6 +4,7 @@ nav#navegacionCategorias {
 }
 
 nav#navegacionCategorias ul {
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -19,7 +20,7 @@ nav#navegacionCategorias ul {
 }
 
 .li-icono:hover {
-    background: white;
+    background: rgb(6, 194, 159);
 }
 
 .icono {
