@@ -28,7 +28,7 @@
 
 #registroLogin {
     border: 1px solid black;
-    background-color: whitesmoke;
+    background-color: rgb(141, 10, 10);
     padding: 10%;
     min-width: 10rem;
     max-width: 20rem;
@@ -39,16 +39,14 @@
 }
 
 #email::placeholder {
-    background-color: whitesmoke;
+    background-color: rgb(228, 30, 30);
 }
 
 #password::placeholder {
     background-color: whitesmoke;
 }
 
-
-
- /* Estilos prototipo Modal */
+/* Estilos prototipo Modal */
 .modal {
     position: fixed;
     z-index: 999;
@@ -56,7 +54,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,0,0.75);
+    background-color: rgba(0, 0, 0, 0.75);
     display: none;
     justify-content: center;
     align-items: center;

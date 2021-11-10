@@ -35,5 +35,12 @@
 .productosAleatorios-TarjArticle {
     gap: 1rem;
     display: grid;
+    text-decoration: blanchedalmond;
+
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+.productosAleatorios-TarjArticle h2 h3 h4 h5 {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
 }

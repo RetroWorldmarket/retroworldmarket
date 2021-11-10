@@ -65,9 +65,9 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
       body,
       funcionManejadoraDeRespuestaDelServidor
     );
-
+    // Resetear el formulario:
+    //e.target.reset();
     vaciarFormulario();
-    cerrarModal();
   };
 
   //cuando se enrute se descomentara la siguiente linea
@@ -78,7 +78,11 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
 
   return (
     <div className={`modal ${abierto && 'modal-Abrir'}`} onClick={cerrarModal}>
-      <div className='contenedor-Modal' onClick={handelModalContenedorClick}>
+      <div
+        id='Form-Reg'
+        className='contenedor-Modal'
+        onClick={handelModalContenedorClick}
+      >
         <h1>Formulario de registro</h1>
 
         <button className='modal-Cerrar' onClick={cerrarModal}>

@@ -99,12 +99,11 @@ export const GaleriaProductos = () => {
                     )}
                 </div>
             )}{' '}
-            :
             {!categorias && !search && (
                 <section>
                     <div className='centrado'>
                         <h3>Lo último en llegar...</h3>
-                        <nav className='nav-galeria'>
+                        <nav id='productosAleatorios' className='nav-galeria'>
                             {LoUltimo.length > 0 &&
                                 LoUltimo.map((art) => {
                                     return (
@@ -122,7 +121,7 @@ export const GaleriaProductos = () => {
                     </div>
                     <div className='centrado'>
                         <h3>Lo más buscado...</h3>
-                        <nav className='nav-galeria'>
+                        <nav id='productosAleatorios' className='nav-galeria'>
                             {MasBuscado.length > 0 &&
                                 MasBuscado.map((art) => {
                                     return (

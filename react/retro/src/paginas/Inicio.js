@@ -7,21 +7,21 @@ import { Link } from 'react-router-dom';
 // importar Categorias
 
 export const Inicio = ({ articulo }) => {
-  return (
-    <div>
-      <main id='mainPaginaPrincipal'>
-        <aside id='botonesCompraVenta'>
-          <button>
-            <Link to='/catalogo'>Compra tu retro</Link>
-          </button>
-          <button>
-            <Link to='/ventas'>Vende tu retro</Link>
-          </button>
-        </aside>
-        <SeccionListaArticulos articulo={articulo} />
-        <Categorias />
-      </main>
-      <Footer />
-    </div>
-  );
+    return (
+        <div>
+            <main id='mainPaginaPrincipal'>
+                <aside id='botonesCompraVenta'>
+                    <button>
+                        <Link to='/catalogo'>Compra tu retro</Link>
+                    </button>
+                    <button>
+                        <Link to='/ventas'>Vende tu retro</Link>
+                    </button>
+                </aside>
+                <SeccionListaArticulos articulo={articulo} />
+                <Categorias />
+            </main>
+            <Footer />
+        </div>
+    );
 };
