@@ -6,9 +6,10 @@ const sellRetro = async (req, res, next) => {
 
   try {
     connection = await getDB();
+    const idReqUser = req.userAuth.id;
 
     const { idProduct, idUser } = req.params;
-    console.log(typeof idProduct, typeof idUser);
+    // console.log(typeof idProduct, typeof idUser);
 
     const [sold] = await connection.query(
       `
@@ -36,10 +37,10 @@ const sellRetro = async (req, res, next) => {
 
     const [venta] = await connection.query(
       `
-    INSERT INTO historialProducts (idProduct, idUser, dateSoldProduct)
-    VALUES (?, ?, ?)
+    INSERT INTO historialProducts (idProduct, idUser, idOwner, dateSoldProduct)
+    VALUES (?, ?, ?, ?)
     `,
-      [Number(idProduct), idUser, formatDate(new Date())]
+      [Number(idProduct), idUser, idReqUser, formatDate(new Date())]
     );
 
     res.send({

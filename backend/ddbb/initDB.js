@@ -154,6 +154,9 @@ async function main() {
                 FOREIGN KEY (idProduct) REFERENCES products (id),
                 idUser INT NOT NULL,
                 FOREIGN KEY (idUser) REFERENCES users (id),
+                idOwner INT NOT NULL,
+                FOREIGN KEY (idOwner) REFERENCES products(idUser),
+
                 dateSoldProduct DATETIME,
                 votado BOOLEAN DEFAULT false
             )

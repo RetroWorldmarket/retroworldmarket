@@ -64,7 +64,7 @@ export const EditarUsuario = (data) => {
       } catch (error) {
         console.error(error);
         setError(error.message);
-        toast.error(data.message);
+        // toast.error(data.message);
       }
     };
 
