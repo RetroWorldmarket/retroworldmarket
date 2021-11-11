@@ -62,7 +62,7 @@ const search = async (req, res, next) => {
             FROM photos ph2
             WHERE  ph2.idProduct = ph1.idProduct
             AND (ph2.idProduct > ph1.idProduct OR (ph2.createdDate = ph1.createdDate AND ph2.id > ph1.id))
-        ) AND  p.nameProduct LIKE ? OR p.brand LIKE ? OR p.yearOfProduction LIKE ? OR p.status LIKE ? OR p.category LIKE ? OR p.description LIKE ? OR p.price LIKE ? OR p.createdDate LIKE ? OR p.idUser LIKE ? OR u.province LIKE ?
+        ) AND  (p.nameProduct LIKE ? OR p.brand LIKE ? OR p.yearOfProduction LIKE ? OR p.status LIKE ? OR p.category LIKE ? OR p.description LIKE ? OR p.price LIKE ? OR p.createdDate LIKE ? OR p.idUser LIKE ? OR u.province LIKE ?)
         GROUP BY p.id, ph1.namePhoto; `,
         [
           `%${search}%`,
