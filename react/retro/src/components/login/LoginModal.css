@@ -1,6 +1,6 @@
 @import 'normalize.css';
 
-#contenedorLogin {
+/* #contenedorLogin {
     border: 1px solid black;
     margin: auto;
     margin-top: 15%;
@@ -12,21 +12,17 @@
     max-height: 15rem;
     justify-content: center;
     align-items: center;
-}
+} */
 
-#contenedorLogin h1 {
+/* #contenedorLogin h1 {
     color: black;
     text-align: center;
     font-size: x-large;
     padding: 2%;
-}
+} */
 
-#login {
-    border: 1px solid black;
-    display: block;
-}
 
-#registroLogin {
+/* #registroLogin {
     border: 1px solid black;
     background-color: rgb(141, 10, 10);
     padding: 10%;
@@ -36,15 +32,10 @@
     display: flex;
     flex-direction: column;
     text-align: center;
-}
+} */
 
-#email::placeholder {
-    background-color: rgb(228, 30, 30);
-}
 
-#password::placeholder {
-    background-color: whitesmoke;
-}
+
 
 /* Estilos prototipo Modal */
 .modal {
@@ -81,3 +72,12 @@
     top: 1rem;
     right: 1rem;
 }
+
+#login {
+    margin-bottom: 2%;
+}
+
+#login input {
+    margin-bottom: 3%;
+}
+

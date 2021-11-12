@@ -46,32 +46,26 @@ const LoginModal = ({ abierto, cerrarModal }) => {
             id='login'
             onSubmit={onSubmit}
           >
-            <label htmlFor='nombre'>Email:</label>
             <input
               type='text'
               name='email'
-              placeholder='Escribe aquí tu email'
+              placeholder='Escribe aquí tu Email'
               id='email-login'
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-            ></input>
+            />
 
-            <br />
-
-            <label htmlFor='password'>Password:</label>
             <input
               type='password'
               name='password'
-              placeholder='Escribe aquí tu password'
+              placeholder='Escribe aquí tu Password'
               id='password-login'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            ></input>
+            />
             <button type='submit'>Enviar</button>
           </form>
         </section>
-
-        <button>Cancelar</button>
       </div>
     </div>
   );
