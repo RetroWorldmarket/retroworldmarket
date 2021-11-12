@@ -68,6 +68,7 @@ const RegistroModal = ({ abierto, cerrarModal }) => {
     // Resetear el formulario:
     //e.target.reset();
     vaciarFormulario();
+    cerrarModal();
   };
 
   //cuando se enrute se descomentara la siguiente linea
