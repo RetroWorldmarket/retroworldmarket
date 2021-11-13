@@ -11,10 +11,17 @@ const sendMessage = async (req, res, next) => {
 
     // tests. Bernardo 19/9:
     //console.log('req.userAuth.id =', req.userAuth.id);
+<<<<<<< Updated upstream
     // console.log('req.params = ', req.params);
     // console.log('req.params.id = ', req.params.idProduct);
     // console.log('req.body =', req.body);
     // console.log('req.userAuth tiene : ', req.userAuth);
+=======
+    console.log('req.params = ', req.params);
+    console.log('req.params.id = ', req.params.idProduct);
+    console.log('req.body =', req.body);
+    console.log('req.userAuth tiene : ', req.userAuth);
+>>>>>>> Stashed changes
 
     // Empezaremos con idUser el que escribe el mensaje:
     // idUser ha pasado ya por authUser y tiene un idReqUser...
@@ -36,9 +43,15 @@ const sendMessage = async (req, res, next) => {
       [idProduct]
     );
 
+<<<<<<< Updated upstream
     const idOwner = owner[0].idUser;
     // console.log('idOwner = ', idOwner);
     // console.log('idReqUser = ', idReqUser);
+=======
+    idOwner = owner[0].idUser;
+    console.log('idOwner = ', idOwner);
+    console.log('idReqUser = ', idReqUser);
+>>>>>>> Stashed changes
 
     // Para enviar un mensaje necesitaremos saber quién envía, a quién lo envía,
     // qué envía, cuándo lo envía...

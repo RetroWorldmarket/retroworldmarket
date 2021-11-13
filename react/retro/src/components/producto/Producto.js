@@ -4,6 +4,7 @@ import { get } from '../../api/get';
 import { AuthTokenContext } from '../..';
 import { post } from '../../api/post';
 import { ContactoProducto } from '../../App';
+import './producto.css';
 
 export const Producto = ({ articulo }) => {
   const history = useHistory();
