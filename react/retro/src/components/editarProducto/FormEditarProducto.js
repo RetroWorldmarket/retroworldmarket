@@ -72,8 +72,8 @@ export const FormEditarProducto = (idProduct) => {
 
   return (
     <>
-      <form onSubmit={updateData()}>
-        <ul>
+      <form onSubmit={updateData()} className='crear-producto'>
+        <ul className='editar-articulo'>
           <li>
             <label htmlFor='nameProduct'>
               Nombre del Artículo:
@@ -162,7 +162,7 @@ export const FormEditarProducto = (idProduct) => {
           </li>
           <li>
             <label htmlFor='price'>
-              Precio :
+              Precio (€) :
               <input
                 type='text'
                 name='price'
@@ -174,7 +174,9 @@ export const FormEditarProducto = (idProduct) => {
             </label>
           </li>
         </ul>
-        <button type='submit'>Actualizar datos del producto</button>
+        <button type='submit' className='boton-actualizar-datos-producto'>
+          Actualizar datos del producto
+        </button>
       </form>
     </>
   );

@@ -1,0 +1,108 @@
+
+.contenedor-nuevo-producto{
+    width: 90%;
+    margin: auto;
+    margin-top: 3%;
+}
+
+.contenedor-nuevo-producto ul {
+    /* padding: 2%; */
+    /* background-color: lightblue; */
+}
+
+.crear-producto {
+    border: 2px solid lightsteelblue;
+    background-color: whitesmoke;
+    margin-top: 3%;
+    margin-right: 1%;
+    margin-left: 1%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px lightsteelblue;
+}
+
+
+
+#seleccion-fotos-producto {
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    box-shadow: 2px 3px rgb(207, 225, 233);
+}
+
+#li-description {
+    width: 100%;
+}
+
+#description {
+    
+    resize: none;
+    min-width: 95%;
+    border-radius: 5px;
+
+    /* Modificar este campo con la info del Body */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+}
+
+h3 {
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background-color: lightsteelblue;
+    text-align: center;
+    box-shadow: 2px 2px lightgrey;
+    border-radius: 8px;
+}
+
+
+
+.boton-publicar-producto {
+    margin-left: 70%;
+    margin-right: 2%;
+    margin-bottom: 3%;
+    margin-top: 2%;
+    
+}
+
+.figure-producto {
+    border: 1px solid lightsteelblue;
+    box-shadow: 2px 2px lightsteelblue;
+    border-radius: 5px;
+}
+
+.figure-producto p{
+    margin-bottom: 1%;
+}
+
+.figure-producto p span {
+    margin-right: 3%;
+    margin-left: 2%;
+    font-size: large;
+    color: lightsteelblue;
+}
+
+.label-input {
+    display: inline;
+}
+
+.editar-articulo li {
+    margin-left: 1%;
+    margin-right: 1%;
+}
+.editar-articulo{
+    box-shadow: 2px 2px lightsteelblue;
+    
+}
+
+.boton-actualizar-datos-producto {
+    width: 50%;
+    margin: auto;
+    background-color: lightsteelblue;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 5px;
+    border: none;
+}
+

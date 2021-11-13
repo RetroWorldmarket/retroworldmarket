@@ -1,6 +1,7 @@
 import { CrearProducto } from '../crearProducto/CrearProducto';
 import { useState } from 'react';
 import { TusProductos } from '../tusProductos/TusProductos';
+import './ventas.css';
 
 export const Ventas = () => {
   const [mostrarCrearProducto, setMostrarCrearProducto] = useState(false);
@@ -16,19 +17,27 @@ export const Ventas = () => {
   };
 
   return (
-    <>
+    <div className='contenedor-nuevo-producto'>
       <h3>Tus productos</h3>
       <TusProductos />
-      <button onClick={desplegarCrearProducto}>Publicar nuevo producto</button>
+      <button
+        onClick={desplegarCrearProducto}
+        className='boton-publicar-producto'
+      >
+        Publicar nuevo producto
+      </button>
 
       {mostrarCrearProducto ? (
-        <>
-          <CrearProducto />
-          <button onClick={esconderCrearProducto}>
-            Cerrar Publicar Nuevo Producto
+        <figure className='crear-producto'>
+          <button
+            onClick={esconderCrearProducto}
+            className='boton-publicar-producto'
+          >
+            Cerrar
           </button>
-        </>
+          <CrearProducto />
+        </figure>
       ) : null}
-    </>
+    </div>
   );
 };

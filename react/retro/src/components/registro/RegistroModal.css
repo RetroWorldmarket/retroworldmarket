@@ -33,8 +33,11 @@
     width: 5%;
 }
 
+.contenedor-Modal h1{
+    text-align: center;
+}
 
- input, select, #email, #password {
+ input, select, #email, #password, #description {
      width: 100%;
     background-color: #eee;
     border-radius: 5px;

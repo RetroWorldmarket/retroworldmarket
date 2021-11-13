@@ -107,142 +107,124 @@ export const CrearProducto = () => {
       <form onSubmit={onSubmit} ref={formulario}>
         <ul>
           <li>
-            <label>Select file to upload</label>
             <input
-              type='file'
-              onChange={(e) => {
-                setFile_1(e.target.files[0]);
-              }}
+              required
+              type='text'
+              name='nameProduct'
+              id='nameProduct'
+              placeholder='Indica el Nombre del artículo'
+              value={form.nameProduct}
+              onChange={handleChange}
             />
           </li>
           <li>
-            <label>Select file to upload</label>
             <input
-              type='file'
-              onChange={(e) => {
-                setFile_2(e.target.files[0]);
-              }}
+              required
+              type='text'
+              name='brand'
+              id='brand'
+              placeholder='Indica la Marca'
+              value={form.brand}
+              onChange={handleChange}
             />
           </li>
           <li>
-            <label>Select file to upload</label>
             <input
-              type='file'
-              onChange={(e) => {
-                setFile_3(e.target.files[0]);
-              }}
+              type='number'
+              name='yearOfProduction'
+              id='yearOfProduction'
+              placeholder='Añade el año de fabricación'
+              value={form.yearOfProduction}
+              onChange={handleChange}
             />
           </li>
-
           <li>
-            <label htmlFor='nameProduct'>
-              Nombre :
-              <input
-                required
-                type='text'
-                name='nameProduct'
-                id='nameProduct'
-                placeholder='Nombre...'
-                value={form.nameProduct}
-                onChange={handleChange}
-              />
-            </label>
+            <select
+              required
+              name='status'
+              id='status'
+              value={form.status}
+              onChange={handleChange}
+            >
+              <option value=''>Selecciona el estado de funcionamiento</option>
+              <option value='No funciona'>No funciona</option>
+              <option value='A veces falla'>A veces falla</option>
+              <option value='Bien'>Bien</option>
+              <option value='Muy bien'>Muy bien</option>
+              <option value='Excelente'>Excelente</option>
+            </select>
           </li>
           <li>
-            <label htmlFor='brand'>
-              Marca :
-              <input
-                required
-                type='text'
-                name='brand'
-                id='brand'
-                placeholder='Marca...'
-                value={form.brand}
-                onChange={handleChange}
-              />
-            </label>
+            <select
+              required
+              name='category'
+              id='category'
+              value={form.category}
+              onChange={handleChange}
+            >
+              <option value=''>Seleccione la categoría</option>
+              <option value='ordenadores'>Ordenadores</option>
+              <option value='televisores'>Televisores</option>
+              <option value='telefonia'>Telefonía</option>
+              <option value='musica y radio'>Música y Radio</option>
+              <option value='consolas y juegos'>Consolas y Juegos</option>
+            </select>
+          </li>
+          <li id='li-description'>
+            <textarea
+              required
+              type='text'
+              name='description'
+              id='description'
+              placeholder='Describe tu artículo'
+              value={form.description}
+              onChange={handleChange}
+            />
           </li>
           <li>
-            <label htmlFor='yearOfProduction'>
-              Año de fabricación :
-              <input
-                type='number'
-                name='yearOfProduction'
-                id='yearOfProduction'
-                placeholder='Año de fabricación...'
-                value={form.yearOfProduction}
-                onChange={handleChange}
-              />
-            </label>
+            <input
+              required
+              type='number'
+              name='price'
+              id='price'
+              placeholder='Indica el Precio que pides por tu artículo'
+              value={form.price}
+              onChange={handleChange}
+            />
           </li>
           <li>
-            <label htmlFor='status'>
-              Estado del producto :
-              <select
-                required
-                name='status'
-                id='status'
-                value={form.status}
-                onChange={handleChange}
-              >
-                <option value=''>-- Seleccione --</option>
-                <option value='No funciona'>No funciona</option>
-                <option value='A veces falla'>A veces falla</option>
-                <option value='Bien'>Bien</option>
-                <option value='Muy bien'>Muy bien</option>
-                <option value='Excelente'>Excelente</option>
-              </select>
-            </label>
-          </li>
-          <li>
-            <label htmlFor='category'>
-              Categoría :
-              <select
-                required
-                name='category'
-                id='category'
-                value={form.category}
-                onChange={handleChange}
-              >
-                <option value=''>-- Seleccione --</option>
-                <option value='ordenadores'>Ordenadores</option>
-                <option value='televisores'>Televisores</option>
-                <option value='telefonia'>Telefonía</option>
-                <option value='musica y radio'>Música y Radio</option>
-                <option value='consolas y juegos'>Consolas y Juegos</option>
-              </select>
-            </label>
-          </li>
-          <li>
-            <label htmlFor='description'>
-              Descripción :
-              <textarea
-                required
-                type='text'
-                name='description'
-                id='description'
-                placeholder='Describa el producto...'
-                value={form.description}
-                onChange={handleChange}
-              />
-            </label>
-          </li>
-          <li>
-            <label htmlFor='price'>
-              Precio :
-              <input
-                required
-                type='number'
-                name='price'
-                id='price'
-                placeholder='Precio...'
-                value={form.price}
-                onChange={handleChange}
-              />
-            </label>
+            <ul id='seleccion-fotos-producto'>
+              <li>
+                <label>Selecciona hasta 3 fotos de tu artículo</label>
+                <input
+                  type='file'
+                  onChange={(e) => {
+                    setFile_1(e.target.files[0]);
+                  }}
+                />
+              </li>
+              <li>
+                <input
+                  type='file'
+                  onChange={(e) => {
+                    setFile_2(e.target.files[0]);
+                  }}
+                />
+              </li>
+              <li>
+                <input
+                  type='file'
+                  onChange={(e) => {
+                    setFile_3(e.target.files[0]);
+                  }}
+                />
+              </li>
+            </ul>
           </li>
         </ul>
-        <button type='submit'>Publicar producto</button>
+        <button className='boton-publicar-producto' type='submit'>
+          Publicar producto
+        </button>
       </form>
     </>
   );

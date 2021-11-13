@@ -9,7 +9,7 @@ export const EditarProducto = (idProduct, el) => {
 
   return (
     <>
-      <p>Formulario Editar Producto</p>
+      <h3>Edita tu artículo</h3>
 
       {mostrarEditarProducto ? (
         <FormEditarProducto idProduct={idProduct} producto={el} />

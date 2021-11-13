@@ -69,24 +69,49 @@ export const TusProductos = () => {
   function Producto() {
     return (
       <>
-        <figure>
+        <figure className='figure-producto'>
           {productos.map((el) => (
             <li>
-              <p>Nombre :{el.nameProduct}</p>
-              <p>Marca :{el.brand}</p>
-              <p>Descripción :{el.description}</p>
-              <p>Precio :{el.price}</p>
-              <p>Estado :{el.status}</p>
-              <p>Fabricación :{el.yearOfProduction}</p>
-              <p>ID :{el.id}</p>
+              <p>
+                <span>Nombre :</span>
+                {el.nameProduct}
+              </p>
+              <p>
+                <span>Marca :</span>
+                {el.brand}
+              </p>
+              <p>
+                <span>Descripción :</span>
+                {el.description}
+              </p>
+              <p>
+                <span>Precio :</span>
+                {el.price}
+                <span>€</span>
+              </p>
+              <p>
+                <span>Estado :</span>
+                {el.status}
+              </p>
+              <p>
+                <span>Fabricación :</span>
+                {el.yearOfProduction}
+              </p>
+              <p>
+                <span>ID :</span>
+                {el.id}
+              </p>
               <button onClick={desplegarEditarProducto}>Editar producto</button>
 
               {mostrarEditarProducto && (
                 <>
-                  <EditarProducto idProduct={el.id} producto={el} />
-                  <button onClick={ocultarEditarProducto}>
-                    Ocultar Editar producto
+                  <button
+                    onClick={ocultarEditarProducto}
+                    className='boton-publicar-producto'
+                  >
+                    Cerrar
                   </button>
+                  <EditarProducto idProduct={el.id} producto={el} />
                 </>
               )}
             </li>
