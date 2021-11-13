@@ -4,14 +4,6 @@
 ********************************
 */
 
-/* .productosAleatorios img {
-    object-fit: cover;
-} */
-
-/* .productosAleatorios h3 {
-    text-align: center;
-} */
-
 /* Las fotos... */
 .divImagenArticulo {
     margin: auto;
@@ -38,9 +30,4 @@
     text-decoration: blanchedalmond;
 
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-.productosAleatorios-TarjArticle h2 h3 h4 h5 {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
 }

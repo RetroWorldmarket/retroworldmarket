@@ -20,7 +20,6 @@ body {
 
 #cabeceraPrincipalSinLogo {
     border: 2px solid #d20076;
-    background-color: #903495;
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -30,15 +29,22 @@ body {
     padding: 0;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
+#cabeceraPrincipalSinLogo > nav > ul > a {
+    padding: 0;
+    display: grid;
+    flex-direction: row;
+    width: 300px;
+    height: 80px;
+}
 #cabeceraPrincipalSinLogo > nav > ul li:first-child {
-    flex-grow: 1;
+    flex-grow: 0.2;
 }
 
 #cabeceraPrincipalSinLogo button {
-    background-color: #903495;
+    /* background-color: #903495; */
     border: none;
 }
 #cabeceraPrincipalSinLogo button:hover {
@@ -54,6 +60,7 @@ body {
 #cabeceraPrincipalSinLogo a {
     text-decoration: none;
     color: #00fff6;
+    display: inline-flex;
 }
 
 /* barra de busqueda */
@@ -65,10 +72,6 @@ body {
     justify-content: center;
     text-align: center;
     justify-items: center;
-}
-
-#cabeceraPrincipalSinLogo img {
-    width: 1rem;
 }
 
 #cabeceraPrincipalSinLogo > section > form label {
@@ -93,18 +96,18 @@ body {
 ****MAIN PRINCIPAL***
 *********************
 */
-
+/*
 #mainPaginaPrincipal {
-    background-color: #2a2955;
-}
+     background-color: #2a2955; 
+}*/
 
 #mainPaginaPrincipal a {
     text-decoration: none;
 }
 
-#footerPaginaPrincipal {
-    background-color: blue;
-}
+/* #footerPaginaPrincipal {
+     background-color: blue; 
+} */
 
 /*
 ********************************
@@ -114,14 +117,8 @@ body {
 */
 #botonesCompraVenta {
     padding-top: 20px;
-
     display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.botonesCompraVenta button {
-    background-color: lawngreen;
+    justify-content: space-evenly;
 }
 
 /*
@@ -138,9 +135,10 @@ body {
 }
 
 #productosAleatorios article {
-    border: 2px solid violet;
+    border: 8px solid violet;
     background-color: #9506e8;
     padding: 0.5rem;
+    border-radius: 5px;
 }
 
 #productosAleatorios img {
@@ -148,7 +146,7 @@ body {
 }
 
 #productosAleatorios h3 {
-    text-align: center;
+    text-align: left;
 }
 
 /*****************************
@@ -162,12 +160,10 @@ body {
 */
 
 #footerPaginaPrincipal {
-    background-color: #dc7e7e;
     font-size: 25px;
     display: flex;
     flex-direction: column;
     transition: 0.3s all;
-    padding-top: 15px;
 }
 
 #footerPaginaPrincipal ul {

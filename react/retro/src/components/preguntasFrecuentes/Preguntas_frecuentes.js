@@ -1,3 +1,4 @@
+import './Preguntas_frecuentes.css';
 export const Preguntas_frecuentes = () => {
     return (
         <>

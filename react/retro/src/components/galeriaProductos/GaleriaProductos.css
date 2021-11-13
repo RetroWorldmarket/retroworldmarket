@@ -5,12 +5,13 @@
     display: grid;
     padding: 0.5rem;
     gap: 1rem;
-    background-color: #2a2955;
+    /* background-color: #120fda; */
 }
 
 .productosAleatorios {
-    border: 1px solid red;
+    border: 5px solid rgb(146, 9, 151);
     padding: 0.5rem;
+
     margin: 3rem 1rem;
     display: grid;
     gap: 1rem;

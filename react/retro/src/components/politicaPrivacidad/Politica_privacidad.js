@@ -1,3 +1,4 @@
+import './Politica_privacidad.css';
 export const Politica_privacidad = () => {
     return (
         <>
@@ -16,9 +17,7 @@ export const Politica_privacidad = () => {
                     utilizar el Servicio, acepta la recopilación y el uso de
                     información de acuerdo con esta Política de privacidad.
                 </p>
-                <h1>
-                    <b> Interpretación y definiciones</b>
-                </h1>
+                <h1>Interpretación y definiciones</h1>
                 <h2>Interpretación</h2>
                 <p>
                     Las palabras cuya letra inicial está en mayúscula tienen
@@ -403,7 +402,7 @@ export const Politica_privacidad = () => {
                     cuando se publican en esta página.
                 </p>
                 <h2> Contáctenos </h2>
-                <p>
+                <p id='footer'>
                     Si tiene alguna pregunta sobre esta Política de privacidad,
                     puede contactarnos: Por correo electrónico:
                     retroworldmarket2021@gmail.com

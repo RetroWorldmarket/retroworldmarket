@@ -1,12 +1,19 @@
 .footer {
-    background-color: #00fff6;
+    border: 2px solid #00fff6;
+    /* background-color: #00fff6; */
     margin: auto;
     display: flex;
-    /* gap: 3%; */
+
     justify-content: space-around;
     font-size: 70%;
+    padding-top: 15px;
 }
 
 /* .redes-sociales {
     
 } */
+
+.footer p {
+    font-size: 14px;
+    font-style: bold;
+}
