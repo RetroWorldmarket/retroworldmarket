@@ -12,8 +12,8 @@ export const UsuarioLogueado = () => {
   const [abierto, abrirModal, cerrarModal] = useModal(false);
   const [token] = useContext(AuthTokenContext);
   const [infoUsuario, setInfoUsuario] = useState([]);
-  const [mostrarMenu, setMostrarMenu] = useState (false);
-  
+  const [mostrarMenu, setMostrarMenu] = useState(false);
+
   useEffect(() => {
     get(
       'http://localhost:4000/users',
@@ -27,31 +27,37 @@ export const UsuarioLogueado = () => {
   //   <CerrarSesion />;
   // };
 
-  const desplegarMenu =(e)=>{
+  const desplegarMenu = (e) => {
     e.preventDefault();
-    setMostrarMenu(true)
-  }
+    setMostrarMenu(true);
+  };
 
-  const ocultarMenu =(e)=>{
+  const ocultarMenu = (e) => {
     e.preventDefault();
-    setMostrarMenu (false)
-  }
+    setMostrarMenu(false);
+  };
 
   return (
     <>
-      <figure>
-        <img src={`img/${infoUsuario.avatar}`} alt='usuario logueado'></img>
+      <figure id='imagen-avatar'>
+        <img
+          id='imagen-avatar-usuario'
+          src={`img/${infoUsuario.avatar}`}
+          alt='usuario logueado'
+        ></img>
       </figure>
-      {infoUsuario ? <p>Bienvenido {infoUsuario.alias}!!!</p> : null}
-      <button onClick={desplegarMenu}>Menu</button>
+      {infoUsuario ? (
+        <h4 id='bienvenido'>Bienvenido {infoUsuario.alias}</h4>
+      ) : null}
+      <button onClick={desplegarMenu}>
+        <h3>Menu</h3>
+      </button>
       {mostrarMenu && (
-                <>
-                  <Menu/>
-                  <button onClick={ocultarMenu}>
-                    Ocultar Menu
-                  </button>
-                </>
-              )}
+        <>
+          <Menu />
+          <button onClick={ocultarMenu}>Ocultar Menu</button>
+        </>
+      )}
     </>
   );
 };

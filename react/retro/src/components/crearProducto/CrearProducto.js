@@ -5,10 +5,7 @@ import { AuthTokenContext } from '../../index';
 //import { post } from '../../api/post';
 
 export const CrearProducto = () => {
-<<<<<<< Updated upstream
   const formulario = useRef();
-=======
->>>>>>> Stashed changes
   //
   // Obtenemos la informacion del usuario.
   const [token] = useContext(AuthTokenContext);

@@ -1,10 +1,7 @@
 import { CrearProducto } from '../crearProducto/CrearProducto';
 import { useState } from 'react';
 import { TusProductos } from '../tusProductos/TusProductos';
-<<<<<<< Updated upstream
 import './ventas.css';
-=======
->>>>>>> Stashed changes
 
 export const Ventas = () => {
   const [mostrarCrearProducto, setMostrarCrearProducto] = useState(false);
@@ -23,7 +20,6 @@ export const Ventas = () => {
     <div className='contenedor-nuevo-producto'>
       <h3>Tus productos</h3>
       <TusProductos />
-<<<<<<< Updated upstream
       <button
         onClick={desplegarCrearProducto}
         className='boton-publicar-producto'
@@ -43,18 +39,5 @@ export const Ventas = () => {
         </figure>
       ) : null}
     </div>
-=======
-      <button onClick={desplegarCrearProducto}>Publicar nuevo producto</button>
-
-      {mostrarCrearProducto ? (
-        <>
-          <CrearProducto />
-          <button onClick={esconderCrearProducto}>
-            Cerrar Publicar Nuevo Producto
-          </button>
-        </>
-      ) : null}
-    </>
->>>>>>> Stashed changes
   );
 };
