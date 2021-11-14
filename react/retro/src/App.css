@@ -1,5 +1,6 @@
 @import 'normalize.css';
 
+
 /*
 **************************
 ****CABECERA PRINCIPAL****
@@ -14,6 +15,11 @@
 
 body {
     min-width: 300px;
+    /* background-color: brown; */
+    background-color: rgb(196, 189, 189);
+    /* background-image: url('../public/img/fondo.jpg'); */
+    
+    
 }
 
 /* nav principal */
@@ -22,7 +28,7 @@ body {
     /* border: 2px solid #d20076; */
     /* display: flex;
     flex-direction: column; */
-    background-color: #eee;
+    background-color: lightsteelblue;
     /* padding: 1rem; */
 }
 
@@ -189,8 +195,8 @@ body {
 }
 
 #productosAleatorios article {
-    border: 8px solid violet;
-    background-color: #9506e8;
+    border: 8px solid rgb(215, 219, 200);
+    background-color: #ecf3f3fb;
     padding: 0.5rem;
     border-radius: 5px;
 }
@@ -240,7 +246,7 @@ body {
 
 @media screen and (max-width: 600px) and (orientation: portrait) {
     body {
-        background-color: blueviolet;
+        background-color: rgb(194, 186, 201);
         max-height: 100%;
     }
 }

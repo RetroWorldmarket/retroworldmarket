@@ -1,5 +1,5 @@
 nav#navegacionCategorias {
-    background: #6664ff;
+    background: lightsteelblue;
     padding: 1rem;
 }
 
@@ -14,7 +14,7 @@ nav#navegacionCategorias ul {
 }
 
 .li-icono {
-    background: #b60ba8;
+    background-color: rgb(217, 230, 107);
     padding: 0.5rem;
     max-width: 150px;
 }

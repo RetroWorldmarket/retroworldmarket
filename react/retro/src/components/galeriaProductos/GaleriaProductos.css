@@ -9,14 +9,14 @@
 }
 
 .productosAleatorios {
-    border: 5px solid rgb(146, 9, 151);
+    border: 5px solid rgb(167, 179, 66);
     padding: 0.5rem;
 
     margin: 3rem 1rem;
     display: grid;
     gap: 1rem;
     object-fit: cover;
-    background-color: blueviolet;
+    background-color: rgb(193, 206, 138);
     max-height: 100%;
     border-radius: 10px;
 }
