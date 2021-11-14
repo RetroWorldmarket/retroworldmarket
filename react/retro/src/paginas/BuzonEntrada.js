@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { get } from '../api/get';
 import { ContactoProducto } from '../App';
 import { AuthTokenContext } from '../index';
+import './buzonEntrada.css';
 
 //Pasos:
 //  1) Obtener la informacion del usuario. Allí vendrá un array (products) con
@@ -66,11 +67,13 @@ export const BuzonEntrada = () => {
     return (
       <>
         {productos.map((el) => (
-          <section key={el.id}>
-            <p>Nombre :{el.nameProduct}</p>
-            <p>Precio :{el.price}</p>
+          <section className='section-buzon-mensajes' key={el.id}>
+            <span>Nombre :{el.nameProduct}</span>
+
+            <span>Precio :{el.price}€</span>
+            <br />
             <button>
-              <Link to={`/mensajes/${el.id}`}>ir a mensajes</Link>
+              <Link to={`/mensajes/${el.id}`}>Ir a mensajes</Link>
             </button>
           </section>
         ))}
@@ -97,21 +100,22 @@ export const BuzonEntrada = () => {
   return (
     <section>
       <>
-        <h4>Estos son tus productos activos actualmente:</h4>
+        <h3>Estos son tus productos activos actualmente:</h3>
         <ul>
           <Producto />
         </ul>
       </>
       <>
-        <h4>MENSAJES ENVIADOS:</h4>
+        <h3>MENSAJES ENVIADOS:</h3>
         <ul>
           {mensajesEnviado &&
             mensajesEnviado.map((el) => (
-              <li key={el[0].id}>
-                <p>Nombre :{el[0].nameProduct}</p>
-                <p>Precio :{el[0].price}</p>
+              <li className='section-buzon-mensajes' key={el[0].id}>
+                <span>Nombre :{el[0].nameProduct}</span>
+                <span>Precio :{el[0].price}€</span>
+                <br />
                 <button>
-                  <Link to={`/mensajes/${el[0].id}`}>ir a mensajes</Link>
+                  <Link to={`/mensajes/${el[0].id}`}>Ir a mensajes</Link>
                 </button>
               </li>
             ))}
