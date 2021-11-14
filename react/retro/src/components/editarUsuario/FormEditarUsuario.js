@@ -139,6 +139,11 @@ export const FormEditarUsuario = ({ user, tokenInfo }) => {
       <form onSubmit={updateData()}>
         <ul>
           <li>
+            <label>Edita tus fotos</label>
+            <input type='file' />
+          </li>
+
+          <li>
             <label htmlFor='email'>
               Email:
               <input type='email' name='email' value={value.email} />

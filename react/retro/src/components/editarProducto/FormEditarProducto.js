@@ -75,6 +75,11 @@ export const FormEditarProducto = (idProduct) => {
       <form onSubmit={updateData()} className='crear-producto'>
         <ul className='editar-articulo'>
           <li>
+            <label>Edita tus fotos</label>
+            <input type='file' />
+          </li>
+
+          <li>
             <label htmlFor='nameProduct'>
               Nombre del Artículo:
               <input

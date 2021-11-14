@@ -48,22 +48,15 @@ export const OrdenarPor = () => {
       <form action='' method='GET'>
         <label htmlFor='precio'>
           Precio
-          <select
+          <input
+            type='number'
+            step='10'
+            min='0'
             value={precio}
             onChange={(e) => setPrecio(e.target.value)}
             name='precio'
             id='precio'
-          >
-            <option value=''>selecciona</option>
-            <option value='0-5'>0-5</option>
-            <option value='5-10'>5-10</option>
-            <option value='10-20'>10-20</option>
-            <option value='20-50'>20-50</option>
-            <option value='50-100'>50-100</option>
-            <option value='100-200'>100-200</option>
-            <option value='200-500'>200-500</option>
-            <option value='+500'>+500</option>
-          </select>
+          ></input>
         </label>
 
         <label htmlFor='estado'>
@@ -76,21 +69,11 @@ export const OrdenarPor = () => {
           >
             <option value=''>selecciona</option>
 
-            <option value='1 estrella'>
-              &#11088; &#9734; &#9734; &#9734; &#9734;
-            </option>
-            <option value='2 estrella'>
-              &#11088; &#11088; &#9734; &#9734; &#9734;
-            </option>
-            <option value='3 estrella'>
-              &#11088; &#11088; &#11088; &#9734; &#9734;
-            </option>
-            <option value='4 estrella'>
-              &#11088; &#11088; &#11088; &#11088; &#9734;
-            </option>
-            <option value='5 estrella'>
-              &#11088; &#11088; &#11088; &#11088; &#11088;
-            </option>
+            <option value='No funciona'>No funciona</option>
+            <option value='A veces falla'>A veces falla</option>
+            <option value='Bien'>Bien</option>
+            <option value='Muy bien'>Muy bien</option>
+            <option value='Excelente'>Excelente</option>
           </select>
         </label>
 

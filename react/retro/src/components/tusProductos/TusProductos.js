@@ -63,7 +63,7 @@ export const TusProductos = () => {
     setMostrarEditarProducto(false);
   };
 
-  console.log('Los productos del Usuario son: ', productos);
+  // console.log('Los productos del Usuario son: ', productos);
 
   // Antes de terminar, debemos definir el componente donde se va a renderizar cada resultado:
   function Producto() {
@@ -71,50 +71,59 @@ export const TusProductos = () => {
       <>
         <figure className='figure-producto'>
           {productos.map((el) => (
-            <li>
-              <p>
-                <span>Nombre :</span>
-                {el.nameProduct}
-              </p>
-              <p>
-                <span>Marca :</span>
-                {el.brand}
-              </p>
-              <p>
-                <span>Descripción :</span>
-                {el.description}
-              </p>
-              <p>
-                <span>Precio :</span>
-                {el.price}
-                <span>€</span>
-              </p>
-              <p>
-                <span>Estado :</span>
-                {el.status}
-              </p>
-              <p>
-                <span>Fabricación :</span>
-                {el.yearOfProduction}
-              </p>
-              <p>
-                <span>ID :</span>
-                {el.id}
-              </p>
-              <button onClick={desplegarEditarProducto}>Editar producto</button>
+            <>
+              {/* <li>
+                <figure>
+                  <img src={el.photos} alt='foto producto' />
+                </figure>
+              </li> */}
+              <li>
+                <p>
+                  <span>Nombre :</span>
+                  {el.nameProduct}
+                </p>
+                <p>
+                  <span>Marca :</span>
+                  {el.brand}
+                </p>
+                <p>
+                  <span>Descripción :</span>
+                  {el.description}
+                </p>
+                <p>
+                  <span>Precio :</span>
+                  {el.price}
+                  <span>€</span>
+                </p>
+                <p>
+                  <span>Estado :</span>
+                  {el.status}
+                </p>
+                <p>
+                  <span>Fabricación :</span>
+                  {el.yearOfProduction}
+                </p>
+                <p>
+                  <span>ID :</span>
+                  {el.id}
+                </p>
+                <button onClick={desplegarEditarProducto}>
+                  Editar producto
+                </button>
 
-              {mostrarEditarProducto && (
-                <>
-                  <button
-                    onClick={ocultarEditarProducto}
-                    className='boton-publicar-producto'
-                  >
-                    Cerrar
-                  </button>
-                  <EditarProducto idProduct={el.id} producto={el} />
-                </>
-              )}
-            </li>
+                {mostrarEditarProducto && (
+                  <>
+                    <button
+                      onClick={ocultarEditarProducto}
+                      className='boton-publicar-producto'
+                    >
+                      Cerrar
+                    </button>
+                    <EditarProducto idProduct={el.id} producto={el} />
+                  </>
+                )}
+              </li>
+            </>
           ))}
         </figure>
       </>
