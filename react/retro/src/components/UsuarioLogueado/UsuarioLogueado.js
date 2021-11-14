@@ -26,6 +26,7 @@ export const UsuarioLogueado = () => {
   //   e.preventDefault();
   //   <CerrarSesion />;
   // };
+  console.log(infoUsuario);
 
   const desplegarMenu = (e) => {
     e.preventDefault();
@@ -42,7 +43,7 @@ export const UsuarioLogueado = () => {
       <figure id='imagen-avatar'>
         <img
           id='imagen-avatar-usuario'
-          src={`img/${infoUsuario.avatar}`}
+          src={`http://localhost:4000/${infoUsuario.avatar}`}
           alt='usuario logueado'
         ></img>
       </figure>

@@ -186,6 +186,47 @@ async function main() {
     `);
     console.log('Usuario Administrador creado correctamente en Tabla usuarios');
 
+    /////////////////////////usuarios///////////////////
+    await connection.query(`
+    INSERT INTO users (name, alias, avatar, email, password, location, province, postalCode, rol, active, deleted, createdDate)
+    VALUES (
+      "Stuart Mcfly",
+      "Stew",
+      "miniom.jpeg",
+      "user1@gmail.com",
+      SHA2("00000000", 512),
+      "GRANADA",
+      "GRANADA",
+      "18200",
+      "administrador",
+      true,
+      false,
+      "${formatDate(new Date())}"
+      )
+     
+    `);
+    console.log('Usuario STEW creado correctamente en Tabla usuarios');
+
+    await connection.query(`
+    INSERT INTO users (name, alias, avatar, email, password, location, province, postalCode, rol, active, deleted, createdDate)
+    VALUES (
+      "Mc Compras",
+      "SoyFriki",
+      "monaLisa.jpeg",
+      "user2@gmail.com",
+      SHA2("00000000", 512),
+      "MALAGA",
+      "MALAGA",
+      "35000",
+      "administrador",
+      true,
+      false,
+      "${formatDate(new Date())}"
+      )
+     
+    `);
+    console.log('Usuario Administrador creado correctamente en Tabla usuarios');
+
     ///////////////////////////////////////////////////////////////////////////
     /////////////// Insertar Datos en las Tablas, con Faker ///////////////////
     ///////////////////////////////////////////////////////////////////////////
