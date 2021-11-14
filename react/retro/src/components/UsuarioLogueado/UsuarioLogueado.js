@@ -6,13 +6,16 @@ import { get } from '../../api/get';
 import { Link } from 'react-router-dom';
 import { CerrarSesion } from '../cerrarSesion/CerrarSesion';
 import { useModal } from '../../hooks/useModal';
-import { Menu } from '../menu/Menu';
+import { NewMenu } from '../menu/Menu';
+import { toast } from 'react-toastify';
+
 
 export const UsuarioLogueado = () => {
   const [abierto, abrirModal, cerrarModal] = useModal(false);
-  const [token] = useContext(AuthTokenContext);
+  const [token, setToken] = useContext(AuthTokenContext);
   const [infoUsuario, setInfoUsuario] = useState([]);
   const [mostrarMenu, setMostrarMenu] = useState(false);
+
 
   useEffect(() => {
     get(
@@ -22,21 +25,27 @@ export const UsuarioLogueado = () => {
     );
   }, [token]);
 
-  // const cerrarSesion = (e) => {
+  //  const cerrarSesion = (e) => {
   //   e.preventDefault();
-  //   <CerrarSesion />;
+  //  <CerrarSesion />;
   // };
-  console.log(infoUsuario);
+  const cerrarSesion = (e) => {
+    e.preventDefault();
+    setToken('');
+    toast.success('Hasta pronto!!');
+
+    
+
+    console.log('Sesión finalizada');
+  };
+
 
   const desplegarMenu = (e) => {
     e.preventDefault();
-    setMostrarMenu(true);
+    setMostrarMenu(!mostrarMenu);
   };
 
-  const ocultarMenu = (e) => {
-    e.preventDefault();
-    setMostrarMenu(false);
-  };
+
 
   return (
     <>
@@ -50,14 +59,17 @@ export const UsuarioLogueado = () => {
       {infoUsuario ? (
         <h4 id='bienvenido'>Bienvenido {infoUsuario.alias}</h4>
       ) : null}
-      <button onClick={desplegarMenu}>
+      <button onClick={desplegarMenu }>
         <h3>Menu</h3>
       </button>
       {mostrarMenu && (
-        <>
-          <Menu />
-          <button onClick={ocultarMenu}>Ocultar Menu</button>
-        </>
+        <ul>
+          <li><Link to="/editarUsuario">Editar Usuario</Link></li>
+          <li><Link to="/perfil">Tus Productos</Link></li>
+          <li><Link to="/buzon">Buzon de Mensajes</Link></li>
+          <li><Link to="/votos">Votos</Link></li>
+          <li onClick={cerrarSesion}>Cerrar Sesion</li>
+        </ul>
       )}
     </>
   );

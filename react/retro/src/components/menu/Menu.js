@@ -1,51 +1,64 @@
-import React, { useState } from 'react';
-import {
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-} from 'reactstrap';
+
+import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
-import { CerrarSesion } from '../cerrarSesion/CerrarSesion';
-import { useModal } from '../../hooks/useModal';
-import { useContext } from 'react';
-import { AuthTokenContext } from '../../index';
 
-export const Menu = () => {
-  const [abierto, abrirModal, cerrarModal] = useModal(false);
-  const [dropdown, setDropdown] = useState(false);
-  const [, setToken] = useContext(AuthTokenContext);
 
-  const abrirCerrarDropdown = () => {
-    setDropdown(!dropdown);
-  };
-
-  const cerrarSesion = (e) => {
-    e.preventDefault();
-    setToken('');
-  };
-
+export const NewMenu = () => {
   return (
-    <div className='DesplegarMenu'>
-      <Dropdown isOpen={dropdown} toggle={abrirCerrarDropdown}>
-        <DropdownMenu>
-          <DropdownItem>
-            <Link to='/editarUsuario'>Editar Usuario</Link>
-          </DropdownItem>
-          <DropdownItem>
-            <Link to='/ventas'>Vender tu producto</Link>
-          </DropdownItem>
-          <DropdownItem>
-            <Link to='/buzon'>Buzon de Mensajes</Link>
-          </DropdownItem>
-          <DropdownItem>
-            <Link to='/votos'>Votos</Link>
-          </DropdownItem>
+    <Navbar>
+      <NavItem  y="/">Editar Usuario</NavItem> 
+      <NavItem/>
+      <NavItem />
+      <navItem >
+      </navItem>
+      
+    </Navbar>
 
-          <DropdownItem onClick={cerrarSesion}>Cerrar Sesion</DropdownItem>
-        </DropdownMenu>
-      </Dropdown>
-      <CerrarSesion abierto={abierto} cerrarModal={cerrarModal}></CerrarSesion>
-    </div>
   );
-};
+}
+
+// function DropdownMenu() {
+//   function DropdownItem (props) {
+//     return (
+//       <a href="#" className ="menu-item">
+//         <span className="icon-button">{props.lefticon}</span>
+//         {props.children}
+//         <span className="icon-right">{props.rightIcon}</span>
+//       </a>
+//     )
+
+//   }
+
+//   return (
+//     <div className="dropdown">
+//       <DropdownItem>MY MENU</DropdownItem>
+//     </div>
+//   )
+// }
+
+// function Navbar(props){
+//   return(
+//     <nav className="navbar">
+//       <ul className="Navbar-nav">{ props.children }
+//       </ul>
+//     </nav>
+//   )
+// }
+
+// function NavItem({children,y}){
+
+//   const [open, setOpen] =useState(false);
+//   return(
+//     <li className="nav-item">
+//       <Link to = {y} >
+
+      
+//        {open && children} 
+//       </Link>
+//     </li>
+//   );
+// }
+
+
+
+//nClick={(e) => setOpen(!open)}

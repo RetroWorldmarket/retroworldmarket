@@ -32,6 +32,7 @@ const User = async (req, res, next) => {
     // Creamos un OBJETO con información básica de un usuario (la obtenemos del array guardado antes):
     const userInfo = {
       id: idReqUser,
+      name:user[0].name,
       alias: user[0].alias,
       avatar: user[0].avatar,
       province: user[0].province,

@@ -49,9 +49,20 @@ body {
     /* background-color: #903495; */
     border: none;
 }
+#loguito {
+    position: grid;
+    place-items: left;
+    width: 25%;
+    min-width: 70px;
+}
+
+/* #cabeceraPrincipalSinLogo button { */
+/* background-color: yellow; */
+/* border: none; */
+/* } */
 #cabeceraPrincipalSinLogo button:hover {
-    transition-duration: 2s;
-    font-size: x-large;
+    transition-duration: 03s all;
+    /* font-size: x-large; */
     font-weight: bolder;
 }
 
@@ -61,21 +72,21 @@ body {
 
 #cabeceraPrincipalSinLogo a {
     text-decoration: none;
-    color: #00fff6;
+    color: black;
     display: inline-flex;
 }
 
 /* Avatar de Usuario Logueado */
 
-#contenedor-avatar{
+#contenedor-avatar {
     /* border: 2px solid black; */
-    width: 50%;
+    width: 30%;
     /* display: flex;
     flex-direction: ;
     justify-content: center; */
 }
 
-#imagen-avatar{
+#imagen-avatar {
     /* border: 2px solid grey; */
     display: flex;
     flex-direction: row;
@@ -86,7 +97,7 @@ body {
 #imagen-avatar-usuario {
     width: 200%;
     margin-right: 10%;
-    align-self:flex-start;
+    align-self: flex-start;
     width: 20%;
     border: 2px solid rgba(100, 148, 144, 0.596);
 }
@@ -96,7 +107,6 @@ body {
     margin-top: 2%;
     margin-bottom: 3%;
 }
-
 
 /* barra de busqueda */
 
@@ -121,7 +131,7 @@ body {
 }
 
 #contenedor-busqueda {
-    width: 80%;
+    width: 50%;
     margin-bottom: 3%;
 }
 
@@ -202,9 +212,6 @@ body {
     background-color: rgba(253, 249, 249, 0.007);
     border: none;
 }
-
-
-
 
 /*
 #####################
