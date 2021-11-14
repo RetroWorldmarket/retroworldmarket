@@ -78,70 +78,116 @@ export const Producto = ({ articulo }) => {
       {Object.values(producto).length && (
         <section id='articulo'>
           {producto.fotos.length > 1 && (
-            <>
-              <button onClick={fotoPrevia}>previa</button>
-              <button onClick={fotoSiguiente}>anterior</button>
-            </>
+            <div className='slide-fotos-articulo'>
+              <button className='boton-anterior' onClick={fotoPrevia}>
+                Anterior
+              </button>
+
+              {producto.fotos.length &&
+                producto.fotos.map((nombre, posicion) => (
+                  <figure key={posicion}>
+                    {posicion === foto && (
+                      <div className='contenedor-imagen-articulo'>
+                        <img
+                          className='imagen-del-articulo'
+                          src={`http://localhost:4000/${producto.fotos[posicion].namePhoto}`}
+                          alt='Imagen de artículo'
+                        />
+                      </div>
+                    )}
+                  </figure>
+                ))}
+
+              <button className='boton-siguiente' onClick={fotoSiguiente}>
+                Siguiente
+              </button>
+            </div>
           )}
 
-          {producto.fotos.length &&
-            producto.fotos.map((nombre, posicion) => (
-              <figure key={posicion}>
-                {posicion === foto && (
-                  <>
-                    <img
-                      src={`http://localhost:4000/${producto.fotos[posicion].namePhoto}`}
-                      alt='Imagen de artículo'
-                    />
-                  </>
-                )}
-              </figure>
-            ))}
           <article>
             <ul>
-              <li>{`Nombre: ${producto[0].nameProduct}`} </li>
-              <li>{`Marca: ${producto[0].brand}`}</li>
-              <li>{`Precio: ${producto[0].price}`}</li>
-              <li>{`Categoria: ${producto[0].category}`}</li>
-              <li>{`Estado: ${producto[0].status}`}</li>
-              <li>
-                Descripción:
+              <li className='li-producto'>
+                <span>Nombre:</span>
+                <p>{`${producto[0].nameProduct}`}</p>
+              </li>
+
+              <li className='li-producto'>
+                <span>Marca:</span>
+                {`${producto[0].brand}`}
+              </li>
+
+              <li className='li-producto'>
+                <span>Precio: </span>
+                {`${producto[0].price}€`}
+              </li>
+
+              <li className='li-producto'>
+                <span>Categoria: </span>
+                {`${producto[0].category}`}
+              </li>
+
+              <li className='li-producto'>
+                <span>Estado de funcionamiento: </span>
+                {`${producto[0].status}`}
+              </li>
+
+              <li className='li-producto'>
+                <span>Descripción:</span>
+
                 <p>{`${producto[0].description}`}</p>
               </li>
-              <li>{`Año de Fabricación: ${producto[0].yearOfProduction}`}</li>
-              <li>{`Vendido por: ${producto[0].name}`}</li>
-              <li>{`Valoración: ${producto[0].status}`}</li>
-              <li>{`Lugar: ${producto[0].province}`}</li>
+
+              <li className='li-producto'>
+                <span>Año de Fabricación: </span>
+                {`${producto[0].yearOfProduction}`}
+              </li>
+
+              <li className='li-producto'>
+                <span>Vendido por: </span>
+                {`${producto[0].name}`}
+              </li>
+
+              <li className='li-producto'>
+                <span>Provincia: </span>
+                {`${producto[0].province}`}
+              </li>
             </ul>
           </article>
         </section>
       )}
       {token ? (
         <section id='sectionMensajeAlVendedor'>
-          <legend>Mensaje al Vendedor</legend>
+          <legend>Envíale un mensaje al Vendedor</legend>
           {!interes.includes(Number(idProduct)) ? (
             <form id='EnviarMensaje' onSubmit={envioDelMensaje}>
               {Object.values(usuario).length && (
-                <figure>
+                <figure id='imagen-usuario-mensaje'>
+                  <h4>{usuario.alias} dice:</h4>
                   <img
                     src={`http://localhost:4000/${usuario.avatar}`}
                     alt={`${usuario.name}`}
                     style={{ width: '50px' }}
                   />
-                  <h1 style={{ fontSize: '10px' }}>{usuario.alias}</h1>
                 </figure>
               )}
 
               <label htmlFor='enviar-mensaje'>
-                <input
+                <textarea
                   type='text'
                   name='enviar-mensaje'
+                  id='description-mensaje'
                   value={inputMensaje}
                   onChange={cambioEnElMensaje}
                 />
               </label>
 
-              <button type='submit'>enviar</button>
+              <button
+                className='boton-actualizar-datos-producto'
+                id='enviar-mensaje-vendedor'
+                type='submit'
+              >
+                Enviar
+              </button>
             </form>
           ) : (
             <p>{`Mensaje enviado , comprueba tu bandeja de entrada`}</p>
