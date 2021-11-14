@@ -1,21 +1,21 @@
 
-import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+// import React, {useState} from 'react';
+// import { Link } from 'react-router-dom';
 
 
-export const NewMenu = () => {
-  return (
-    <Navbar>
-      <NavItem  y="/">Editar Usuario</NavItem> 
-      <NavItem/>
-      <NavItem />
-      <navItem >
-      </navItem>
+// export const NewMenu = () => {
+//   return (
+//     <Navbar>
+//       <NavItem  y="/">Editar Usuario</NavItem> 
+//       <NavItem/>
+//       <NavItem />
+//       <navItem >
+//       </navItem>
       
-    </Navbar>
+//     </Navbar>
 
-  );
-}
+//   );
+// }
 
 // function DropdownMenu() {
 //   function DropdownItem (props) {
