@@ -6,6 +6,7 @@ import { useListaDeMensajes } from '../hooks/useListaMensajes';
 import { post } from '../api/post';
 import { useHistory } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import './mensajes.css';
 
 export const Mensajes = () => {
   const history = useHistory();
@@ -133,26 +134,35 @@ export const Mensajes = () => {
   return (
     <main>
       {Object.values(producto).length && (
-        <section>
-          <figure id='img-prod'>
+        <section id='articulo-mensajes'>
+          <figure id='contenedor-imagen-articulo'>
             <img
+              id='imagen-del-articulo'
               src={`http://localhost:4000/${producto.fotos[0].namePhoto}`}
               alt={`${producto[0].nameProduct}`}
             />
           </figure>
           <article>
             <ul>
-              <li>{`${producto[0].nameProduct}`}</li>
-              <li>{`${producto[0].brand}`}</li>
+              <li className='li-producto'>
+                <span>Nombre:</span>
+                {`${producto[0].nameProduct}`}
+              </li>
+              <li className='li-producto'>
+                <span>Marca:</span>
+                {`${producto[0].brand}`}
+              </li>
 
-              <li className='Descript-1'>Descripcion</li>
-              <p>{`${producto[0].description}`}</p>
+              <li className='li-producto'>
+                <span>Descripción:</span>
+                <p>{`${producto[0].description}`}</p>
+              </li>
             </ul>
           </article>
         </section>
       )}
       <section>
-        <h1 className='Hist-men'>historial mensajes</h1>
+        <legend>Tu historial de mensajes</legend>
         <div>
           <ul>
             {mensajes.length > 0 &&
@@ -172,28 +182,34 @@ export const Mensajes = () => {
         </div>
         <form id='EnviarMensaje' onSubmit={envioDelMensaje}>
           {Object.values(usuario).length && (
-            <figure>
+            <figure id='sectionMensajeAlVendedor-mensajes'>
+              <h4>{usuario.alias}</h4>
               <img
+                id='imagen-usuario-mensaje-mensajes'
                 src={`http://localhost:4000/${usuario.avatar}`}
                 alt={`${usuario.name}`}
-                style={{ width: '50px' }}
               />
-              <h1 style={{ fontSize: '10px' }}>{usuario.alias}</h1>
             </figure>
           )}
 
           <label htmlFor='enviar-mensaje'>
-            <input
+            <textarea
+              className='description-mensaje-mensajes'
               type='text'
               name='enviar-mensaje'
+              placeholder='Escribe aquí tu mensaje'
               value={inputMensaje}
               onChange={cambioEnElMensaje}
             />
           </label>
-          <button type='submit'>enviar</button>
+          <button className='boton-actualizar-datos-producto' type='submit'>
+            Enviar
+          </button>
         </form>
         {propietario === true && (
-          <button onClick={productoVendido}>VENDIDO</button>
+          <button id='vendido' onClick={productoVendido}>
+            Vender
+          </button>
         )}
       </section>
     </main>
