@@ -8,6 +8,7 @@ import { CerrarSesion } from '../cerrarSesion/CerrarSesion';
 import { useModal } from '../../hooks/useModal';
 import { NewMenu } from '../menu/Menu';
 import { toast } from 'react-toastify';
+import { useHistory } from 'react-router';
 
 
 export const UsuarioLogueado = () => {
@@ -15,7 +16,7 @@ export const UsuarioLogueado = () => {
   const [token, setToken] = useContext(AuthTokenContext);
   const [infoUsuario, setInfoUsuario] = useState([]);
   const [mostrarMenu, setMostrarMenu] = useState(false);
-
+  const history = useHistory()
 
   useEffect(() => {
     get(
@@ -36,7 +37,7 @@ export const UsuarioLogueado = () => {
 
     
 
-    console.log('Sesión finalizada');
+    history.push ("/")
   };
 
 
