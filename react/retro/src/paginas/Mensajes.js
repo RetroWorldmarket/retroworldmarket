@@ -170,11 +170,11 @@ export const Mensajes = () => {
                 return (
                   <li className='list-1' key={msg.idmessage}>
                     <p> {msg.text} </p>
-                    <img
+                    {/* <img
                       src={`http://localhost:4000/${usuario.avatar}`}
                       alt={`${usuario.name}`}
                       style={{ width: '30px' }}
-                    />
+                    /> */}
                   </li>
                 );
               })}
